@@ -2,8 +2,10 @@ using UnityEngine;
 
 namespace TankTogether.M0
 {
-    static class CarryJump
+    sealed class CarryJump
     {
+        readonly float[] apex = new float[3], deadline = new float[3], correction = new float[3];
+        readonly Vector3[] arms = new Vector3[3], response = new Vector3[3];
         public static void BrakePlantedGrips(M0CarryLab lab)
         {
             foreach (var a in lab.Players)
@@ -19,9 +21,29 @@ namespace TankTogether.M0
         }
 
         // Project this step's leg impulses onto the motion allowed by the remaining planted grips.
-        public static void Apply(M0CarryLab lab, int jumpMask)
+        public void Apply(M0CarryLab lab, int jumpMask)
         {
             Rigidbody tank = lab.Tank;
+            float gravity = -Physics.gravity.y;
+            float launchSpeed = Mathf.Sqrt(2 * gravity * lab.GripJumpHeight);
+            int assist = 0;
+            for (int i = 0; i < lab.LocalPlayerCount; i++)
+            {
+                if (!lab.IsGripping(i) || !lab.Players[i].carryJumpAirborne) continue;
+                Vector3 grip = tank.position + tank.rotation * lab.Players[i].anchor;
+                bool takeoff = (jumpMask & (1 << i)) != 0;
+                if (takeoff)
+                {
+                    apex[i] = grip.y + lab.GripJumpHeight;
+                    deadline[i] = Time.fixedTime + launchSpeed / gravity + Time.fixedDeltaTime;
+                }
+                float speed = tank.GetPointVelocity(grip).y;
+                if (Time.fixedTime > deadline[i] || (!takeoff && speed <= 0)) continue;
+                float target = Mathf.Sqrt(2 * gravity * Mathf.Max(0, apex[i] - grip.y)) + gravity * Time.fixedDeltaTime * .5f;
+                correction[i] = Mathf.Clamp(target - speed, takeoff ? -launchSpeed : -.30f, takeoff ? 2 * launchSpeed : .40f);
+                assist |= 1 << i;
+            }
+            if (assist == 0) return;
             float mass = tank.mass;
             Vector3 massMoment = Vector3.zero;
             Vector3 first = Vector3.zero, second = Vector3.zero;
@@ -39,7 +61,6 @@ namespace TankTogether.M0
                 else second = grip;
             }
             Vector3 pivot = supports == 2 ? (first + second) * .5f : supports == 1 ? first : massMoment / mass;
-            Vector3 impulse = Vector3.zero, angularImpulse = Vector3.zero;
             Quaternion principal = tank.rotation * tank.inertiaTensorRotation;
             Matrix4x4 inertia = Matrix4x4.Rotate(principal) * Matrix4x4.Scale(tank.inertiaTensor) *
                 Matrix4x4.Rotate(Quaternion.Inverse(principal));
@@ -51,22 +72,37 @@ namespace TankTogether.M0
                 // Player rotation is locked. Each player's whole mass translates with their grip.
                 Vector3 arm = tank.rotation * a.anchor - comOffset - pivot;
                 AddPointInertia(ref inertia, a.body.mass, arm);
-                if ((jumpMask & (1 << i)) == 0) continue;
-                Vector3 push = Vector3.up * (a.body.mass * lab.baseline.carryJumpVelocity);
-                impulse += push;
-                angularImpulse += Vector3.Cross(arm, push);
+                arms[i] = arm;
             }
 
-            Vector3 axis = second - first;
-            Vector3 spin;
-            if (supports == 2 && axis.sqrMagnitude > .000225f)
+            Vector3 axis = (second - first).normalized;
+            float axisInertia = Vector3.Dot(axis, inertia.MultiplyVector(axis));
+            float liftPerImpulse = supports == 0 ? 1 / mass : 0;
+            Matrix4x4 inverse = inertia.inverse;
+            for (int i = 0; i < lab.LocalPlayerCount; i++)
             {
-                axis.Normalize();
-                spin = axis * (Vector3.Dot(axis, angularImpulse) / Vector3.Dot(axis, inertia.MultiplyVector(axis)));
+                if ((assist & (1 << i)) == 0) continue;
+                Vector3 lever = Vector3.Cross(arms[i], Vector3.up);
+                response[i] = supports < 2 ? inverse.MultiplyVector(lever) : axisInertia > .001f
+                    ? axis * (Vector3.Dot(lever, axis) / axisInertia) : Vector3.zero;
             }
-            else
-                spin = inertia.inverse.MultiplyVector(angularImpulse);
-            Vector3 travel = supports == 0 ? impulse / mass : Vector3.zero;
+
+            // Solve all active grip speeds together while retaining the planted pivot.
+            float lift = 0;
+            Vector3 spin = Vector3.zero;
+            for (int pass = 0; pass < 8; pass++)
+            for (int i = 0; i < lab.LocalPlayerCount; i++)
+            {
+                if ((assist & (1 << i)) == 0) continue;
+                float gain = liftPerImpulse + Vector3.Cross(response[i], arms[i]).y;
+                if (gain < .0001f) continue;
+                float residual = correction[i] - lift - Vector3.Cross(spin, arms[i]).y;
+                float impulse = Mathf.Clamp(residual / gain, -mass * launchSpeed, mass * launchSpeed);
+                lift += impulse * liftPerImpulse;
+                spin += response[i] * impulse;
+            }
+            spin = Vector3.ClampMagnitude(spin, jumpMask == 0 ? .45f : tank.maxAngularVelocity);
+            Vector3 travel = Vector3.up * Mathf.Clamp(lift, -launchSpeed, 2 * launchSpeed);
             tank.AddForce(travel + Vector3.Cross(spin, -pivot), ForceMode.VelocityChange);
             tank.AddTorque(spin, ForceMode.VelocityChange);
             foreach (var a in lab.Players)

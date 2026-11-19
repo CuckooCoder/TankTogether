@@ -45,7 +45,7 @@ namespace TankTogether.Editor
             public List<Trial> trials = new List<Trial>();
         }
 
-        static readonly float[] Widths = { .8f, 1.4f, 2f, 2.5f, 3f, 3.5f };
+        static readonly float[] Widths = { 1.4f, 2f, 2.5f, 3f, 3.5f, 4.5f, 5.5f };
         enum Jump { Together, PairFirst, SingleFirst, LeftFirst, RightFirst }
         const string FileName = "Logs/carry-gap-distances.json";
         static readonly WaitForFixedUpdate Tick = new WaitForFixedUpdate();

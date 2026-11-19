@@ -58,6 +58,9 @@ namespace TankTogether.M0
         TankFailureFeedback failureFeedback;
         M0TankContact tankContact;
         readonly CarryGripStability gripStability = new CarryGripStability();
+        readonly CarryJump carryJump = new CarryJump();
+        internal float GripJumpHeight => baseline.carryJumpHeightTarget *
+            Mathf.Pow(baseline.carryJumpVelocity / Mathf.Max(.01f, shippedBaseline.carryJumpVelocity), 2);
         public bool Testing { get; set; }
         public bool ExternalControl { get; set; }
         public bool Simulate { get; set; } = true;
@@ -112,10 +115,8 @@ namespace TankTogether.M0
         float yaw, pitch = 24;
         Vector3 cameraFocus;
         const int SharedGripMode = 4;
-        int sharedMoverCount = 1;
         static bool Digit5Bound => Array.IndexOf(Prefs.Data.keys, (int)Key.Digit5) >= 0;
-        static Key SharedJumpModifier => Array.IndexOf(Prefs.Data.keys, (int)Key.RightShift) < 0 ? Key.RightShift : Key.Enter;
-        readonly string[] modes = { "单独控制", "三人同向模拟", "两顺一逆模拟", "两侧反向模拟", "三人抓取" };
+        readonly string[] modes = { "单独控制", "三人同向模拟", "两顺一逆模拟", "两侧反向模拟", "队友原地抓取" };
 
         void Awake()
         {
@@ -584,15 +585,9 @@ namespace TankTogether.M0
         public void ChangeMode(int mode)
         {
             Mode = mode;
-            sharedMoverCount = 1;
-            for (int i = 0; i < LocalPlayerCount; i++) { SetInput(i, Vector3.zero, false); }
-            Message = Mode == SharedGripMode ? "三人站在缸底，按住" + Prefs.Binding(ControlAction.Grab) + "一起抓取。WASD 移动，Tab 换领走者。" : modes[Mode] + "；模拟角色只复用输入，不自动寻路或救援。";
-        }
-
-        void CycleSharedGrip()
-        {
-            if (Mode == SharedGripMode) sharedMoverCount = sharedMoverCount % LocalPlayerCount + 1;
-            else ChangeMode(SharedGripMode);
+            if (mode != SharedGripMode)
+                for (int i = 0; i < LocalPlayerCount; i++) SetInput(i, Vector3.zero, false);
+            Message = mode == SharedGripMode ? "队友保持抓取，不主动移动。当前角色独立操作，Tab 换人。" : modes[Mode] + "；模拟角色只复用输入，不自动寻路或救援。";
         }
 
         void Update()
@@ -610,12 +605,13 @@ namespace TankTogether.M0
             if (!(Stretch && Stretch.Active && !Stretch.InLevel) && k.digit1Key.wasPressedThisFrame) ChangeMode(0);
             if (!(Stretch && Stretch.Active && !Stretch.InLevel) && k.digit2Key.wasPressedThisFrame) ChangeMode(1);
             if (!(Stretch && Stretch.Active && !Stretch.InLevel) && k.digit3Key.wasPressedThisFrame) ChangeMode(2);
-            if (!(Stretch && Stretch.Active && !Stretch.InLevel) && k.digit4Key.wasPressedThisFrame)
-            {
-                if (Digit5Bound && (k.leftShiftKey.isPressed || k.rightShiftKey.isPressed)) CycleSharedGrip();
-                else ChangeMode(3);
-            }
-            if (!(Stretch && Stretch.Active && !Stretch.InLevel) && k.digit5Key.wasPressedThisFrame && !Digit5Bound) CycleSharedGrip();
+            bool teamControls = !(Stretch && Stretch.Active && !Stretch.InLevel);
+            bool mode4Pressed = teamControls && k.digit4Key.wasPressedThisFrame;
+            bool sharedGripPressed = Digit5Bound
+                ? mode4Pressed && (k.leftShiftKey.isPressed || k.rightShiftKey.isPressed)
+                : teamControls && k.digit5Key.wasPressedThisFrame;
+            if (sharedGripPressed) ChangeMode(SharedGripMode);
+            else if (mode4Pressed) ChangeMode(3);
             if (!(Stretch && Stretch.Active && !Stretch.InLevel) && k.tabKey.wasPressedThisFrame)
             {
                 if (Mode != SharedGripMode) SetInput(Selected, Vector3.zero, false);
@@ -630,7 +626,6 @@ namespace TankTogether.M0
             var move = Quaternion.Euler(0, yaw, 0) * Vector3.ClampMagnitude(raw, 1);
             bool hold = Prefs.Held(ControlAction.Grab);
             bool jump = Prefs.Pressed(ControlAction.Jump);
-            bool groupJump = Mode == SharedGripMode && jump && k[SharedJumpModifier].isPressed;
             bool crouch = Prefs.Held(ControlAction.Crouch);
             bool sprint = Prefs.Held(ControlAction.Run);
             if (Stretch && Stretch.Active) Stretch.ReadKeys(k);
@@ -639,8 +634,12 @@ namespace TankTogether.M0
                 if (i == Selected) SetInput(i, move, hold, jump, crouch, sprint, Stretch && Stretch.Active ? Stretch.Direction : 0);
                 else if (Mode == SharedGripMode)
                 {
-                    bool assists = (i - Selected + LocalPlayerCount) % LocalPlayerCount < sharedMoverCount;
-                    SetInput(i, assists ? move : Vector3.zero, hold, assists && groupJump, sprint: assists && sprint);
+                    var teammate = Players[i];
+                    teammate.jump = false;
+                    teammate.jumpQueuedUntil = -100;
+                    if (sharedGripPressed && !teammate.joint) teammate.held = false;
+                    if (!teammate.held) teammate.gripArmed = true;
+                    SetInput(i, Vector3.zero, true);
                 }
                 else
                 {
@@ -880,7 +879,7 @@ namespace TankTogether.M0
                 plantedSupport |= a.grounded && (a.joint || a.support);
             }
             // All holders now have this tick's ground contact and takeoff state, independent of slot order.
-            if (jumpingGrips != 0 && !Broken) CarryJump.Apply(this, jumpingGrips);
+            if ((jumpingGrips != 0 || carryingInFlight) && !Broken && !Tank.isKinematic) carryJump.Apply(this, jumpingGrips);
             if (carryingInFlight && movers == 0 && !Broken) CarryJump.BrakePlantedGrips(this);
             HeightBalance.Step(this,Time.fixedDeltaTime);
             if (unstable && plantedSupport && !Broken && !tankContact.HasSupport) Tank.AddTorque(tipTorque);
@@ -999,7 +998,7 @@ namespace TankTogether.M0
             {
                 // A click on the start button is not a gameplay grab edge.
                 bool alreadyHeld = Mouse.current != null && Prefs.Held(ControlAction.Grab);
-                for (int i = 0; i < LocalPlayerCount; i++) if (Players[i] != null && Players[i].active && Players[i].body) Players[i].held = alreadyHeld;
+                for (int i = 0; i < LocalPlayerCount; i++) if (Players[i] != null && Players[i].active && Players[i].body) Players[i].held = alreadyHeld && (Mode != SharedGripMode || i == Selected);
             }
         }
         void OnApplicationFocus(bool focus) { if (!focus && Players[0] != null && !Testing) SetCaptured(false); }
@@ -1028,7 +1027,7 @@ namespace TankTogether.M0
             GUI.Label(new Rect(42, 73, 370, 24), "本地模拟 · 基线 " + baseline.version + " · 米", smallStyle);
             float speedRowY = 86 + LocalPlayerCount * 30;
             Panel(new Rect(width - 278, 22, 254, speedRowY + 20), new Color(0.035f, 0.065f, 0.09f, 0.94f));
-            string modeLabel = Mode == SharedGripMode ? $"三人抓取 · {sharedMoverCount}人出力" : modes[Mode];
+            string modeLabel = modes[Mode];
             GUI.Label(new Rect(width - 260, 36, 220, 26), "当前：P" + (Selected + 1) + "  " + modeLabel, smallStyle);
             for (int i = 0; i < LocalPlayerCount; i++)
             {
@@ -1048,10 +1047,9 @@ namespace TankTogether.M0
             GUI.Label(new Rect(width - 260, speedRowY, 224, 26), "速度 " + Tank.linearVelocity.magnitude.ToString("F2") + " m/s  |  按 R 重置", smallStyle);
             Panel(new Rect(24, height - 116, width - 48, 94), new Color(0.035f, 0.065f, 0.09f, 0.94f));
             GUI.Label(new Rect(42, height - 108, width - 90, 29), Message, textStyle);
-            string jumpKey = Prefs.Binding(ControlAction.Jump);
-            string jumpHelp = Mode == SharedGripMode ? jumpKey + " 单跳 / " + (SharedJumpModifier == Key.RightShift ? "右Shift" : "Enter") + "+" + jumpKey + " 出力组同跳" : jumpKey + " 跳跃";
+            string jumpHelp = Prefs.Binding(ControlAction.Jump) + " 跳跃";
             GUI.Label(new Rect(42, height - 74, width - 90, 24), (Stretch && Stretch.Active ? "WASD 移动   鼠标看向   Shift 奔跑   "+jumpHelp+"   "+Prefs.Binding(ControlAction.Shrink)+" 变矮 / "+Prefs.Binding(ControlAction.Grow)+" 长高   F2 伸缩参数" : "WASD 移动   鼠标看向   左键按住抓取 / 松开脱手   Shift 奔跑   "+jumpHelp+"   Ctrl 蹲下   Tab 换角色"), smallStyle);
-            GUI.Label(new Rect(42, height - 49, width - 90, 24), (Stretch && Stretch.Active && !Stretch.InLevel ? "B0 单人沙盒 · 暂无鱼缸交互" : "1 单独控制 / 2 同向 / 3 两顺一逆 / 4 两侧反向 / " + (Digit5Bound ? "Shift+4" : "5") + " 三人抓取，重复切换1/2/3人出力   Tab 换人") + "   R 重置   Esc 释放鼠标   Enter 开始操作", smallStyle);
+            GUI.Label(new Rect(42, height - 49, width - 90, 24), (Stretch && Stretch.Active && !Stretch.InLevel ? "B0 单人沙盒 · 暂无鱼缸交互" : "1 单独控制 / 2 同向 / 3 两顺一逆 / 4 两侧反向 / " + (Digit5Bound ? "Shift+4" : "5") + " 队友原地抓取   Tab 换人") + "   R 重置   Esc 释放鼠标   Enter 开始操作", smallStyle);
             if (Broken && !Testing)
             {
                 float x = width / 2 - 260, y = height / 2 - 90;

@@ -53,12 +53,21 @@ public static class HeightExperimentChecks {
    PlayerPreferences.Data.keys[(int)PlayerAction.Grab]=(int)Key.G;
    Check("Stretch B menu entry",s.StartLocalStretchLevel()&&lab.Stretch.Active&&lab.Stretch.InLevel);
    Check("P1-P3 models and bodies",lab.LocalPlayerCount==3&&HasLocalActors(lab,3));
-   for(int i=1;i<=3;i++){Press(Key.Tab);Check("Tab press "+i,lab.Selected==i%3);}
-   var oldTank=lab.Tank;
-   Press(Key.R);Check("R recreates only three actors",lab.Tank!=oldTank&&HasLocalActors(lab,3));
-   Press(Key.Enter);Press(Key.LeftShift,Key.F4);
    Vector3 LocalFeet(int slot)=>Vector3.ProjectOnPlane(lab.Tank.transform.InverseTransformPoint(lab.Players[slot].body.position),Vector3.up);
    bool AtOwnEdge(int slot)=>Vector3.Distance(LocalFeet(slot),lab.CarryFormationOffset(slot))<.04f;
+   bool UnderTank(){
+    for(int slot=0;slot<3;slot++){
+     var head=lab.Tank.transform.InverseTransformPoint(lab.Head(slot));
+     if(Mathf.Abs(head.x)>lab.tankSize.x*.5f||Mathf.Abs(head.z)>lab.tankSize.z*.5f||
+        Mathf.Abs(head.y+lab.tankSize.y*.5f)>.04f)return false;
+    }
+    return true;
+   }
+   Check("all three spawn beneath the tank",UnderTank());
+   for(int i=1;i<=3;i++){Press(Key.Tab);Check("Tab press "+i,lab.Selected==i%3);}
+   var oldTank=lab.Tank;
+   Press(Key.R);Check("R recreates three actors beneath the tank",lab.Tank!=oldTank&&HasLocalActors(lab,3)&&UnderTank());
+   Press(Key.Enter);Press(Key.LeftShift,Key.F4);
    Check("Shift F4 moves three to the left, right and rear pickup edges",HasLocalActors(lab,3)&&AtOwnEdge(0)&&AtOwnEdge(1)&&AtOwnEdge(2));
    var leftFeet=lab.Players[0].body.position;var rightFeet=lab.Players[1].body.position;var rearFeet=lab.Players[2].body.position;
    var obstacle=GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -72,44 +81,24 @@ public static class HeightExperimentChecks {
      lab.Players[1].body.position==rightFeet&&lab.Players[2].body.position==rearFeet);
    }finally{obstacle.SetActive(false);Object.Destroy(obstacle);}
    Press(Key.F4);Check("single F4 recovers the assigned edge",AtOwnEdge(0));
-   Press(Key.Digit5);Press(Key.D,Key.G);
-   Check("mode 5 drives only P1 while all three hold",lab.Mode==4&&lab.Players[0].move.sqrMagnitude>.9f&&lab.Players[1].move==Vector3.zero&&lab.Players[2].move==Vector3.zero&&lab.IsGripping(0)&&lab.IsGripping(1)&&lab.IsGripping(2));
-   var firstGrip=lab.Players[0].joint;
-   Press(Key.Tab,Key.D,Key.G);
-   Check("Tab transfers movement and preserves the previous grip",lab.Selected==1&&lab.Players[0].joint==firstGrip&&lab.Players[0].move==Vector3.zero&&lab.Players[1].move.sqrMagnitude>.9f&&lab.Players[2].move==Vector3.zero);
    var p1=lab.Players[0];var p2=lab.Players[1];var p3=lab.Players[2];
+   Press(Key.Digit1);Press(Key.Digit5,Key.D);
+   Check("5 holds both teammates without grabbing for P1",lab.Mode==4&&p1.move.sqrMagnitude>.9f&&p2.move==Vector3.zero&&p3.move==Vector3.zero&&!lab.IsGripping(0)&&lab.IsGripping(1)&&lab.IsGripping(2));
    var secondGrip=p2.joint;var thirdGrip=p3.joint;
-   bool SameGrips()=>p1.joint==firstGrip&&p2.joint==secondGrip&&p3.joint==thirdGrip;
-   Press(Key.Digit5,Key.D,Key.G,Key.LeftShift,Key.Space,Key.E);
-   Check("two movers share direction and sprint, keep all grips",p1.move==Vector3.zero&&!p1.sprint&&p2.move.sqrMagnitude>.9f&&p2.move==p3.move&&p2.sprint&&p3.sprint&&SameGrips());
-   Check("only the selected mover jumps and stretches",p2.jump&&p2.stretchInput==1&&!p1.jump&&!p3.jump&&p1.stretchInput==0&&p3.stretchInput==0);
-   // These input samples run synchronously, before physics consumes the previous jump edge.
-   p2.jump=false;
-   Press(Key.G,Key.RightShift,Key.Space);
-   Check("two stationary movers can jump together",!p1.jump&&p2.jump&&p3.jump&&p2.move==Vector3.zero&&p3.move==Vector3.zero&&SameGrips());
-   p2.jump=p3.jump=false;
-   Press(Key.Tab,Key.D,Key.G);
-   Check("two movers follow Tab across the last slot",lab.Selected==2&&p1.move==p3.move&&p3.move.sqrMagnitude>.9f&&p2.move==Vector3.zero&&SameGrips());
-   Press(Key.Digit5,Key.D,Key.G,Key.RightShift,Key.Space);
-   Check("three movers keep all grips",p3.move.sqrMagnitude>.9f&&p1.move==p3.move&&p2.move==p3.move&&SameGrips());
-   Check("three moving carriers can jump together",p1.jump&&p2.jump&&p3.jump);
-   p1.jump=p2.jump=p3.jump=false;
+   Press(Key.D,Key.G,Key.LeftShift,Key.Space,Key.E);
+   Check("P1 still grabs, moves, sprints, jumps and stretches",lab.IsGripping(0)&&p1.move.sqrMagnitude>.9f&&p1.sprint&&p1.jump&&p1.stretchInput==1);
+   Check("teammates receive no active inputs",p2.move==Vector3.zero&&p3.move==Vector3.zero&&!p2.sprint&&!p3.sprint&&!p2.jump&&!p3.jump&&p2.stretchInput==0&&p3.stretchInput==0);
+   var firstGrip=p1.joint;
    Press(Key.Digit5,Key.D,Key.G);
-   Check("cycle returns to one mover without releasing",p3.move.sqrMagnitude>.9f&&p1.move==Vector3.zero&&p2.move==Vector3.zero&&SameGrips());
-   Press();Check("releasing the shared grip releases all three",!lab.IsGripping(0)&&!lab.IsGripping(1)&&!lab.IsGripping(2));
+   Check("pressing 5 again preserves every grip and leaves teammates idle",p1.joint==firstGrip&&p2.joint==secondGrip&&p3.joint==thirdGrip&&p1.move.sqrMagnitude>.9f&&p2.move==Vector3.zero&&p3.move==Vector3.zero);
+   Press();Check("releasing the grip key releases only P1",!lab.IsGripping(0)&&p2.joint==secondGrip&&p3.joint==thirdGrip);
+   Press(Key.Tab,Key.D);
+   Check("Tab gives P2 independent control while P1 takes over the grip",lab.Selected==1&&lab.IsGripping(0)&&!lab.IsGripping(1)&&p3.joint==thirdGrip&&p1.move==Vector3.zero&&p2.move.sqrMagnitude>.9f&&p3.move==Vector3.zero);
    PlayerPreferences.Data.keys[(int)PlayerAction.Grab]=(int)Key.Digit5;
-   Press(Key.Digit1);Press(Key.Digit5);Check("custom Digit5 binding takes priority",lab.Mode==0&&lab.IsGripping(lab.Selected));
-   Press(Key.LeftShift,Key.Digit4);Check("Shift+4 alternate selects shared grip",lab.Mode==4);
-   Press(Key.Digit5,Key.D);
-   Check("bound grip key does not advance movers",p1.move==Vector3.zero&&p2.move==Vector3.zero&&p3.move.sqrMagnitude>.9f);
+   Press(Key.Digit1);Press(Key.Digit5);Check("custom Digit5 binding takes priority",lab.Mode==0&&lab.IsGripping(1)&&!lab.IsGripping(0)&&!lab.IsGripping(2));
+   secondGrip=p2.joint;
    Press(Key.LeftShift,Key.Digit4,Key.Digit5,Key.D);
-   Check("Shift+4 alternate adds a second mover",p1.move==p3.move&&p3.move.sqrMagnitude>.9f&&p2.move==Vector3.zero&&lab.IsGripping(0)&&lab.IsGripping(1)&&lab.IsGripping(2));
-   PlayerPreferences.Data.keys[(int)PlayerAction.Jump]=(int)Key.RightShift;
-   Press(Key.Digit5,Key.RightShift);
-   Check("rebound right shift jump remains individual",!p1.jump&&!p2.jump&&p3.jump);
-   p3.jump=false;
-   Press(Key.Digit5,Key.Enter,Key.RightShift);
-   Check("alternate modifier supports rebound group jump",p1.jump&&!p2.jump&&p3.jump);
+   Check("Shift+4 enables idle teammates and preserves the selected grip",lab.Mode==4&&p2.joint==secondGrip&&lab.IsGripping(0)&&lab.IsGripping(2)&&p1.move==Vector3.zero&&p2.move.sqrMagnitude>.9f&&p3.move==Vector3.zero);
    s.ReturnToLobby();
    Check("A menu creates three",s.StartLocalTest()&&HasLocalActors(lab,3));
    s.ReturnToLobby();

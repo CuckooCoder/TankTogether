@@ -16,7 +16,10 @@ namespace TankTogether.Editor {
   public static void RestoreAuthoredCentralPedestal(){
    if(EditorApplication.isPlaying||SceneManager.GetActiveScene().path!=ScenePath)throw new InvalidOperationException("Stopped formal scene required");
    var route=UnityEngine.Object.FindFirstObjectByType<WhiteboxCarryLevel>();
-   FormalLevelRevisionSetup.SplitPedestal(route,route.checkpoints[0].tankFeet);
+   var pedestal=route.levelRoot.Find("Group 31/Authored central pedestal safe contact");
+   var sourceFeet=route.checkpoints[0].tankFeet;
+   if(pedestal)sourceFeet-=pedestal.parent.TransformVector(pedestal.localPosition);
+   FormalLevelRevisionSetup.SplitPedestal(route,sourceFeet);
    EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());AssetDatabase.SaveAssets();EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
   }
 

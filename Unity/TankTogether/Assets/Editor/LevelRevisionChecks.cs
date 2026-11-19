@@ -27,16 +27,22 @@ namespace TankTogether.Editor {
    var prefab=AssetDatabase.LoadAssetAtPath<GameObject>(WhiteboxV2Setup.ModelPath);
    foreach(var source in prefab.GetComponentsInChildren<MeshFilter>(true)){
     var actual=r.levelRoot.GetComponentsInChildren<MeshFilter>(true).Single(x=>x.name==source.name);
-    C("mesh_current_"+source.name,actual.sharedMesh==source.sharedMesh,actual.sharedMesh.vertexCount);
+    var expected=source.name=="Group 31"?actual.GetComponent<MeshCollider>().sharedMesh:source.sharedMesh;
+    C("mesh_current_"+source.name,actual.sharedMesh==expected,actual.sharedMesh.vertexCount);
    }
    var routeMesh=r.levelRoot.GetComponentsInChildren<MeshFilter>(true).Single(x=>x.name=="Group 31");
-   int total=routeMesh.sharedMesh.triangles.Length,rest=routeMesh.GetComponent<MeshCollider>().sharedMesh.triangles.Length,safe=routeMesh.transform.Find("Authored central pedestal safe contact").GetComponent<MeshCollider>().sharedMesh.triangles.Length;
+   var pedestal=routeMesh.transform.Find("Authored central pedestal safe contact");
+   long IndexCount(Mesh mesh)=>Enumerable.Range(0,mesh.subMeshCount).Sum(i=>(long)mesh.GetIndexCount(i));
+   long total=IndexCount(prefab.GetComponentsInChildren<MeshFilter>(true).Single(x=>x.name=="Group 31").sharedMesh),rest=IndexCount(routeMesh.GetComponent<MeshCollider>().sharedMesh),safe=IndexCount(pedestal.GetComponent<MeshCollider>().sharedMesh);
    C("collision_triangles_partition",total==rest+safe&&safe>0,total+"="+rest+"+"+safe);
+   C("pedestal_visual_uses_moved_collision_mesh",pedestal.GetComponent<MeshFilter>().sharedMesh==pedestal.GetComponent<MeshCollider>().sharedMesh,pedestal.position);
    var control=r.levelRoot.GetComponentsInChildren<Transform>(true).Single(x=>x.name=="Group 51");C("switch_moves_with_lift",control.parent==lift.platform.transform,control.position);
    C("lift_rules_retained",lift.delay==2&&lift.speed==2.5f&&lift.travel==101,lift.delay+"/"+lift.speed+"/"+lift.travel);
-   r.SelectCheckpoint("start");l.ResetLab();yield return Wait(100);
+   r.SelectCheckpoint("start");l.ResetLab();
+   var fish=r.levelRoot.GetComponentsInChildren<MeshRenderer>(true).Single(x=>x.name=="Group 29");
+   C("initial_matches_authored_marker",Vector3.Distance(l.Tank.position,fish.bounds.center)<.04f,l.Tank.position);
+   yield return Wait(100);
    C("initial_tank_safe",!l.Broken,l.Message);C("no_spawn_auto_checkpoint",r.CheckpointId=="start",r.CheckpointId);
-   var fish=r.levelRoot.GetComponentsInChildren<MeshRenderer>(true).Single(x=>x.name=="Group 29");C("initial_matches_authored_marker",Vector3.Distance(l.Tank.position,fish.bounds.center)<.04f,l.Tank.position);
    Picture(l,"pickup",l.Tank.position-Vector3.up*.6f,new Vector3(6,4,7));
    Picture(l,"start",r.checkpoints[0].playerFeet,new Vector3(15,12,20));
    var snap=new SteamCarryProtocol.Snapshot{round=1,tick=1,checkpoint=3,rotation=Quaternion.identity};for(int i=0;i<4;i++)snap.actors[i]=new SteamCarryProtocol.Actor{height=1.7f,active=i<l.LocalPlayerCount};C("network_upper_index3_roundtrip",SteamCarryProtocol.DecodeSnapshot(SteamCarryProtocol.Encode(snap)).checkpoint==3,SteamCarryProtocol.Version);

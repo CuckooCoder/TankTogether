@@ -374,7 +374,45 @@ namespace TankTogether.Editor
         public static void BeginStandalone(M0CarryLab lab)
         {
             Last = new Report();
-            lab.StartCoroutine(Run(lab, null));
+            lab.StartCoroutine(RunStandalone(lab));
+        }
+
+        static IEnumerator RunStandalone(M0CarryLab lab)
+        {
+            var floor = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            floor.transform.position = Origin + Vector3.down * .5f;
+            floor.transform.localScale = new Vector3(20, 1, 20);
+            lab.PlacePlayer(0, Origin);
+            lab.SetInput(0, Vector3.zero, false);
+            for (int step = 0; step < 260; step++)
+            {
+                lab.SetInput(0, Vector3.zero, false, stretch: 1);
+                yield return Tick;
+            }
+            float height = lab.Players[0].height;
+            Check("standing_growth_stops_at_3_4", Mathf.Abs(height - 3.4f) < .005f, $"height={height:F3}");
+            for (int test = 0; test < 3; test++)
+            {
+                lab.ResetLab();
+                var target = test == 0 ? floor : GameObject.CreatePrimitive(PrimitiveType.Cube);
+                if (test != 0)
+                {
+                    target.transform.position = Origin + new Vector3(test == 1 ? 3 : 0, test == 1 ? 2 : .5f, 0);
+                    target.transform.localScale = test == 1 ? new Vector3(.3f, 3, 4) : new Vector3(5, 1, 4);
+                    if (test == 2) target.AddComponent<TankSupportSurface>();
+                }
+                lab.Tank.position = Origin + Vector3.up * (test == 1 ? 2 : 3);
+                lab.Tank.linearVelocity = test == 1 ? Vector3.right * 12 : Vector3.down * 4;
+                Physics.SyncTransforms();
+                for (int step = 0; step < 45 && !lab.Broken; step++) yield return Tick;
+                Check(test == 0 ? "plain_floor_breaks_glass" : test == 1 ? "plain_wall_breaks_glass" : "pickup_stand_top_supports_glass",
+                    test == 2 ? !lab.Broken && lab.TankContacts.Touches(target.GetComponent<Collider>()) : lab.Broken && lab.LastFailureWasDanger,
+                    $"broken={lab.Broken} collisionFailure={lab.LastFailureWasDanger}");
+                if (test != 0) { target.SetActive(false); UnityEngine.Object.Destroy(target); }
+            }
+            floor.SetActive(false);
+            UnityEngine.Object.Destroy(floor);
+            yield return Run(lab, null);
         }
 
         static IEnumerator Run(M0CarryLab lab, SteamCarrySession session)
