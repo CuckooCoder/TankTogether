@@ -1,0 +1,14 @@
+Assets/_Recovery/0.unity deleted=True
+Assets/Scenes/FishTank关卡白盒.skp deleted=True
+Assets/Scenes/FishTank关卡白盒(1).skp deleted=True
+Assets/Scenes/FishTank关卡白盒(3).skp deleted=True
+Assets/Scenes/WhiteboxCarryLab.unity deleted=True
+Assets/Scenes/SteamWhiteboxCarryLab.unity deleted=True
+Assets/Scenes/SteamWhiteboxRevision3.unity deleted=True
+Assets/Scenes/Revision3RouteWithoutReferencePedestal.asset deleted=True
+Assets/Scenes/Revision3TankAccessRamp.asset deleted=True
+Assets/Editor/WhiteboxCarrySetup.cs deleted=True
+Assets/Editor/WhiteboxRevisionSetup.cs deleted=True
+Assets/Editor/Revision3AccessFix.cs deleted=True
+retainedScenes=Assets/Scenes/CharacterArtPreview.unity,Assets/Scenes/M0CarryLab.unity,Assets/Scenes/M1InteractionLab.unity,Assets/Scenes/Main.unity,Assets/Scenes/SteamCarryLab.unity,Assets/Scenes/SteamFormalWhiteboxV1.unity
+references=0

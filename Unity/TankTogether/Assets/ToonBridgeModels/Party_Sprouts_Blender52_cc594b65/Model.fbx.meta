@@ -1,0 +1,81 @@
+fileFormatVersion: 2
+guid: ed0a3898e0b059f185ff67bc88fff4ac
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "NPR_Coral"
+    second: {fileID: 2100000, guid: 9f9e907124af5fc088a47a197c901170, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "NPR_Lemon"
+    second: {fileID: 2100000, guid: fdf7cb9e1d3e548cb6688f70770c3a48, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "NPR_Lilac"
+    second: {fileID: 2100000, guid: 68bfa37325645ce98397545dc7404ac2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "NPR_Mint"
+    second: {fileID: 2100000, guid: f0872c00546558fbbdc22e95a89420cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "NPR_Sky"
+    second: {fileID: 2100000, guid: 00ebabc126e45daf9e9d9837125d0b38, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 0
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 0
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    animationCompression: 0
+    animationRotationError: 0
+    animationPositionError: 0
+    animationScaleError: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 2
+    useFileUnits: 1
+    useFileScale: 1
+    weldVertices: 0
+    preserveHierarchy: 1
+    skinWeightsMode: 1
+    maxBonesPerVertex: 32
+    minBoneWeight: 0
+    optimizeBones: 0
+    meshOptimizationFlags: 0
+    indexFormat: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 3
+    blendShapeNormalImportMode: 0
+    normalSmoothAngle: 60
+  referencedClips: []
+  importAnimation: 1
+  animationType: 2
+  avatarSetup: 1
+  autoGenerateAvatarMappingIfUnspecified: 1
+  userData: ToonBridge 1.1 prebound URP materials
+  assetBundleName: 
+  assetBundleVariant: 

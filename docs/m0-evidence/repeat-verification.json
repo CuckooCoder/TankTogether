@@ -1,0 +1,11 @@
+{
+  "first_run_utc": "2026-10-10T02:34:07.7928590Z",
+  "repeat_run_utc": "2026-10-10T02:35:27.0129836Z",
+  "samples_identical": true,
+  "checks_passed": 16,
+  "script_sha256": "73966ca1551dcd735064422bb84b39f8374584a15d9246b08be5e280c9a3f700",
+  "main_scene_unchanged": true,
+  "unity_console_errors_after_run": 0,
+  "human_playtest": false,
+  "network_test": false
+}

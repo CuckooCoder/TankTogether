@@ -1,0 +1,9 @@
+self_vote_rejected=True
+outsider_rejected=True
+valid_vote=True
+duplicate_rejected=True
+all_submitted_closes=True
+tie_preserved=True
+blame_votes=True
+solo_no_winners=True
+deep_copy_no_alias=True

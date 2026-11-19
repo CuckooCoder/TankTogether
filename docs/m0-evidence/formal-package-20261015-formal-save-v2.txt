@@ -1,0 +1,16 @@
+slot1_preserves_original_id=True
+five_distinct_slots=True
+sixth_slot_rejected=True
+create=True
+real_v1_without_new_fields_loads=True
+read_does_not_modify_legacy=True
+write_explicitly_upgrades=True
+original_v1_preserved=True
+stats_roundtrip=True
+no_mutable_alias=True
+stale_delete_denied=True
+confirmed_delete=True
+deleted_save_cannot_resurrect=True
+delete_isolated_from_other_slots=True
+deleted_slot_recreatable=True
+passed=True

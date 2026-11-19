@@ -1,0 +1,8 @@
+F2_unified_page=True
+GM_apply=True 0.6
+real_grow_speed=True 0.6000011
+real_shrink_speed=True 0.4500011
+network_keeps_config=True 0.6
+copy_contains_applied_stretch=True 64
+return_restores_defaults=True 0.3
+passed=True

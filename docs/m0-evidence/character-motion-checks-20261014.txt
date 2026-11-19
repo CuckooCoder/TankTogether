@@ -1,0 +1,1 @@
+scope=isolated-local-animation; walkAngle=5.882492; airAngle=15.45319; grip=True; handAboveShoulder=True; enabledCameras=1; passed=True

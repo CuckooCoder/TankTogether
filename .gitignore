@@ -1,0 +1,28 @@
+**/[Ll]ibrary/
+**/[Tt]emp/
+**/[Oo]bj/
+**/[Ll]ogs/
+**/[Bb]uilds/
+**/[Uu]ser[Ss]ettings/
+**/MemoryCaptures/
+**/Recordings/
+**/.vs/
+*.csproj
+*.sln
+*.slnx
+*.pidb
+*.user
+*.pyc
+__pycache__/
+.codex/local/
+.DS_Store
+Thumbs.db
+
+# 可下载构建归档通过私有 GitHub Releases 分发；Git 保留说明和校验清单。
+/包体/**/*.zip
+
+# 本地解压构建、Unity 恢复场景与启动日志不进入源码历史。
+/包体/*/*/
+/包体/**/*.log
+/Unity/TankTogether/Assets/_Recovery/
+/Unity/TankTogether/Assets/_Recovery.meta

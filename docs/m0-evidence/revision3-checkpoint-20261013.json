@@ -1,0 +1,87 @@
+{
+    "complete": true,
+    "passed": true,
+    "scope": "isolated-authoritative-physics-and-save-store-not-remote-or-route",
+    "checks": [
+        {
+            "name": "initial_tank_safe",
+            "evidence": "tank=(-126.06, -27.33, 0.00)",
+            "passed": true
+        },
+        {
+            "name": "players_spawn_at_first_yellow",
+            "evidence": "players=(-0.70, 0.00, -0.70);(0.70, 0.00, -0.70);(-0.70, 0.00, 0.70);(0.70, 0.00, 0.70)",
+            "passed": true
+        },
+        {
+            "name": "tank_at_authored_first_marker_height",
+            "evidence": "tank=(-126.06, -27.33, 0.00)",
+            "passed": true
+        },
+        {
+            "name": "first_spawn_tank_grabbable",
+            "evidence": "four grips",
+            "passed": true
+        },
+        {
+            "name": "players_alone_do_not_save",
+            "evidence": "all players at upper yellow",
+            "passed": true
+        },
+        {
+            "name": "hovering_tank_does_not_save",
+            "evidence": "no top contacts",
+            "passed": true
+        },
+        {
+            "name": "four_actual_support_contacts_activate",
+            "evidence": "checkpoint=upper broken=False",
+            "passed": true
+        },
+        {
+            "name": "retry_from_upper_allowed",
+            "evidence": "local retry",
+            "passed": true
+        },
+        {
+            "name": "retry_keeps_upper_checkpoint",
+            "evidence": "checkpoint=upper",
+            "passed": true
+        },
+        {
+            "name": "retry_players_at_second_yellow",
+            "evidence": "positions=(-231.55, 65.50, -7.54);(-230.15, 65.50, -7.54);(-231.55, 65.50, -6.14);(-230.15, 65.50, -6.14)",
+            "passed": true
+        },
+        {
+            "name": "retry_tank_at_second_white_xz_on_safe_supports",
+            "evidence": "tank=(-238.64, 66.68, 0.00)",
+            "passed": true
+        },
+        {
+            "name": "upper_checkpoint_restores_lift_at_top",
+            "evidence": "distance=101",
+            "passed": true
+        },
+        {
+            "name": "single_fall_respawns_at_current_checkpoint",
+            "evidence": "P1=(-231.55, 65.50, -7.54)",
+            "passed": true
+        },
+        {
+            "name": "upper_checkpoint_persists_and_reloads",
+            "evidence": "isolated save root, no personal save overwritten",
+            "passed": true
+        },
+        {
+            "name": "unknown_checkpoint_rejected",
+            "evidence": "catalog validation",
+            "passed": true
+        },
+        {
+            "name": "checkpoint_index_snapshot_roundtrip",
+            "evidence": "protocol05",
+            "passed": true
+        }
+    ]
+}

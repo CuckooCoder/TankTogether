@@ -1,0 +1,17 @@
+single_actual_whitebox=passed
+other_players_unchanged=passed
+stretch_height_preserved=passed
+released_and_velocity_cleared=passed
+all_four_actual_whitebox=passed
+tank_and_checkpoint_unchanged=passed
+separated_0_1=passed
+separated_0_2=passed
+separated_0_3=passed
+separated_1_2=passed
+separated_1_3=passed
+separated_2_3=passed
+external_control_blocked=passed
+network_roster_blocked=passed
+no_floor_no_teleport=passed
+shortcut_reserved=passed
+F4_InputSystem_event=passed; distance=2.417251

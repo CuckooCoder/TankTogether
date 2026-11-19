@@ -1,0 +1,59 @@
+{
+    "levelRoot": {
+        "instanceID": 179220395354192
+    },
+    "levelId": "formal-whitebox-v1",
+    "geometryRevision": "4b8186f-formal-v1-no-finish",
+    "startFeet": {
+        "x": -0.00000286102294921875,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "startYaw": -90.0,
+    "killHeight": -60.0,
+    "checkpoints": [
+        {
+            "id": "start",
+            "label": "起始平台",
+            "playerFeet": {
+                "x": -0.00000286102294921875,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "tankFeet": {
+                "x": -115.56331634521484,
+                "y": -29.500011444091797,
+                "z": -4.76837158203125e-7
+            },
+            "parkingFeet": {
+                "x": -0.00000286102294921875,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "tankYaw": 0.0,
+            "liftAtTop": false
+        },
+        {
+            "id": "upper",
+            "label": "高处中途存档点",
+            "playerFeet": {
+                "x": -220.3503875732422,
+                "y": 65.5,
+                "z": -6.843146324157715
+            },
+            "tankFeet": {
+                "x": -220.3503875732422,
+                "y": 65.5,
+                "z": -6.843146324157715
+            },
+            "parkingFeet": {
+                "x": -220.3503875732422,
+                "y": 65.5,
+                "z": -6.843146324157715
+            },
+            "tankYaw": 0.0,
+            "liftAtTop": true
+        }
+    ],
+    "FinalStationIsTestFinish": false
+}

@@ -1,0 +1,27 @@
+{
+    "complete": true,
+    "passed": true,
+    "scope": "isolated-editor-physics-not-full-route-or-remote",
+    "checks": [
+        {
+            "name": "carry_full_lift_2",
+            "evidence": "distance=101 broken=False allFeetOnLift=True maxTilt=0 tank=(-222.20, 66.66, 2.00)",
+            "passed": true
+        },
+        {
+            "name": "carry_full_descent_2",
+            "evidence": "distance=0 broken=False allFeetOnLift=True maxTilt=0",
+            "passed": true
+        },
+        {
+            "name": "carry_full_lift_4",
+            "evidence": "distance=101 broken=False allFeetOnLift=True maxTilt=0 tank=(-222.20, 66.66, 2.00)",
+            "passed": true
+        },
+        {
+            "name": "carry_full_descent_4",
+            "evidence": "distance=0 broken=False allFeetOnLift=True maxTilt=0",
+            "passed": true
+        }
+    ]
+}

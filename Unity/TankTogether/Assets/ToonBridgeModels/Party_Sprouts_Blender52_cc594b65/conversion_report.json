@@ -1,0 +1,845 @@
+{
+  "status": "completed_with_warnings",
+  "source": "F:\\独游角色\\Party_Sprouts_Blender52.blend",
+  "source_sha256": "084ed611088b9644ab9f1f1e0960d98ec4b9d236bb86d8e326f2ede714988f03",
+  "source_unchanged": true,
+  "summary": {
+    "mesh_count": 5,
+    "bone_count": 115,
+    "rig_count": 5,
+    "vertex_count": 10970,
+    "action_count": 3,
+    "image_count": 6
+  },
+  "materials": [
+    {
+      "name": "NPR_Coral",
+      "base_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "base_map": "Textures/Atlas_Coral_f0630c.png",
+      "normal_map": "",
+      "normal_strength": 1.0,
+      "emission_map": "",
+      "emission_color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "alpha_mode": "OPAQUE",
+      "alpha_cutoff": 0.5,
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "uv_scale": [
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0
+      ],
+      "conversion": "npr_single_atlas_to_urp",
+      "source_nodes": [
+        "TEX_IMAGE",
+        "BSDF_DIFFUSE",
+        "SHADERTORGB",
+        "VALTORGB",
+        "MIX_RGB",
+        "EMISSION",
+        "OUTPUT_MATERIAL"
+      ],
+      "source_ramps": [
+        {
+          "interpolation": "EASE",
+          "elements": [
+            {
+              "position": 0.0,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.6000000238418579,
+                1.0
+              ]
+            },
+            {
+              "position": 0.2800000011920929,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.6000000238418579,
+                1.0
+              ]
+            },
+            {
+              "position": 0.47999998927116394,
+              "color": [
+                0.7799999713897705,
+                0.800000011920929,
+                0.8399999737739563,
+                1.0
+              ]
+            },
+            {
+              "position": 0.6800000071525574,
+              "color": [
+                0.7799999713897705,
+                0.800000011920929,
+                0.8399999737739563,
+                1.0
+              ]
+            },
+            {
+              "position": 0.8999999761581421,
+              "color": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "color": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "fbx_embedded_base_map": true
+    },
+    {
+      "name": "NPR_Lemon",
+      "base_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "base_map": "Textures/Atlas_Lemon_a6f03d.png",
+      "normal_map": "",
+      "normal_strength": 1.0,
+      "emission_map": "",
+      "emission_color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "alpha_mode": "OPAQUE",
+      "alpha_cutoff": 0.5,
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "uv_scale": [
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0
+      ],
+      "conversion": "npr_single_atlas_to_urp",
+      "source_nodes": [
+        "TEX_IMAGE",
+        "BSDF_DIFFUSE",
+        "SHADERTORGB",
+        "VALTORGB",
+        "MIX_RGB",
+        "EMISSION",
+        "OUTPUT_MATERIAL"
+      ],
+      "source_ramps": [
+        {
+          "interpolation": "EASE",
+          "elements": [
+            {
+              "position": 0.0,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.6000000238418579,
+                1.0
+              ]
+            },
+            {
+              "position": 0.2800000011920929,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.6000000238418579,
+                1.0
+              ]
+            },
+            {
+              "position": 0.47999998927116394,
+              "color": [
+                0.7799999713897705,
+                0.800000011920929,
+                0.8399999737739563,
+                1.0
+              ]
+            },
+            {
+              "position": 0.6800000071525574,
+              "color": [
+                0.7799999713897705,
+                0.800000011920929,
+                0.8399999737739563,
+                1.0
+              ]
+            },
+            {
+              "position": 0.8999999761581421,
+              "color": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "color": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "fbx_embedded_base_map": true
+    },
+    {
+      "name": "NPR_Lilac",
+      "base_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "base_map": "Textures/Atlas_Lilac_346273.png",
+      "normal_map": "",
+      "normal_strength": 1.0,
+      "emission_map": "",
+      "emission_color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "alpha_mode": "OPAQUE",
+      "alpha_cutoff": 0.5,
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "uv_scale": [
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0
+      ],
+      "conversion": "npr_single_atlas_to_urp",
+      "source_nodes": [
+        "TEX_IMAGE",
+        "BSDF_DIFFUSE",
+        "SHADERTORGB",
+        "VALTORGB",
+        "MIX_RGB",
+        "EMISSION",
+        "OUTPUT_MATERIAL"
+      ],
+      "source_ramps": [
+        {
+          "interpolation": "EASE",
+          "elements": [
+            {
+              "position": 0.0,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.6000000238418579,
+                1.0
+              ]
+            },
+            {
+              "position": 0.2800000011920929,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.6000000238418579,
+                1.0
+              ]
+            },
+            {
+              "position": 0.47999998927116394,
+              "color": [
+                0.7799999713897705,
+                0.800000011920929,
+                0.8399999737739563,
+                1.0
+              ]
+            },
+            {
+              "position": 0.6800000071525574,
+              "color": [
+                0.7799999713897705,
+                0.800000011920929,
+                0.8399999737739563,
+                1.0
+              ]
+            },
+            {
+              "position": 0.8999999761581421,
+              "color": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "color": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "fbx_embedded_base_map": true
+    },
+    {
+      "name": "NPR_Mint",
+      "base_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "base_map": "Textures/Atlas_Mint_0f3456.png",
+      "normal_map": "",
+      "normal_strength": 1.0,
+      "emission_map": "",
+      "emission_color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "alpha_mode": "OPAQUE",
+      "alpha_cutoff": 0.5,
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "uv_scale": [
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0
+      ],
+      "conversion": "npr_single_atlas_to_urp",
+      "source_nodes": [
+        "TEX_IMAGE",
+        "BSDF_DIFFUSE",
+        "SHADERTORGB",
+        "VALTORGB",
+        "MIX_RGB",
+        "EMISSION",
+        "OUTPUT_MATERIAL"
+      ],
+      "source_ramps": [
+        {
+          "interpolation": "EASE",
+          "elements": [
+            {
+              "position": 0.0,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.6000000238418579,
+                1.0
+              ]
+            },
+            {
+              "position": 0.2800000011920929,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.6000000238418579,
+                1.0
+              ]
+            },
+            {
+              "position": 0.47999998927116394,
+              "color": [
+                0.7799999713897705,
+                0.800000011920929,
+                0.8399999737739563,
+                1.0
+              ]
+            },
+            {
+              "position": 0.6800000071525574,
+              "color": [
+                0.7799999713897705,
+                0.800000011920929,
+                0.8399999737739563,
+                1.0
+              ]
+            },
+            {
+              "position": 0.8999999761581421,
+              "color": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "color": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "fbx_embedded_base_map": true
+    },
+    {
+      "name": "NPR_Sky",
+      "base_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "base_map": "Textures/Atlas_Sky_e2e975.png",
+      "normal_map": "",
+      "normal_strength": 1.0,
+      "emission_map": "",
+      "emission_color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "alpha_mode": "OPAQUE",
+      "alpha_cutoff": 0.5,
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "uv_scale": [
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0
+      ],
+      "conversion": "npr_single_atlas_to_urp",
+      "source_nodes": [
+        "TEX_IMAGE",
+        "BSDF_DIFFUSE",
+        "SHADERTORGB",
+        "VALTORGB",
+        "MIX_RGB",
+        "EMISSION",
+        "OUTPUT_MATERIAL"
+      ],
+      "source_ramps": [
+        {
+          "interpolation": "EASE",
+          "elements": [
+            {
+              "position": 0.0,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.6000000238418579,
+                1.0
+              ]
+            },
+            {
+              "position": 0.2800000011920929,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.6000000238418579,
+                1.0
+              ]
+            },
+            {
+              "position": 0.47999998927116394,
+              "color": [
+                0.7799999713897705,
+                0.800000011920929,
+                0.8399999737739563,
+                1.0
+              ]
+            },
+            {
+              "position": 0.6800000071525574,
+              "color": [
+                0.7799999713897705,
+                0.800000011920929,
+                0.8399999737739563,
+                1.0
+              ]
+            },
+            {
+              "position": 0.8999999761581421,
+              "color": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "color": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "fbx_embedded_base_map": true
+    }
+  ],
+  "images": [
+    {
+      "name": "Atlas_Coral",
+      "path": "Textures/Atlas_Coral_f0630c.png",
+      "bytes": 41422,
+      "sha256": "fb6678fa5d1c5b6083819394c6efc4800a1109e71cd76e9443bc53eebbe306e2",
+      "packed_source": true,
+      "original_bytes_preserved": true
+    },
+    {
+      "name": "Atlas_Lemon",
+      "path": "Textures/Atlas_Lemon_a6f03d.png",
+      "bytes": 41410,
+      "sha256": "3ff653036c70880c80f2c86d5c2349a9cf48a47ca38125255428795bb2d4a21a",
+      "packed_source": true,
+      "original_bytes_preserved": true
+    },
+    {
+      "name": "Atlas_Lilac",
+      "path": "Textures/Atlas_Lilac_346273.png",
+      "bytes": 42334,
+      "sha256": "1c2f7221c8f40c992cbb43b1ae258f4ed9b9aa048ab24f0ae3c5b23e545a0f8b",
+      "packed_source": true,
+      "original_bytes_preserved": true
+    },
+    {
+      "name": "Atlas_Mint",
+      "path": "Textures/Atlas_Mint_0f3456.png",
+      "bytes": 41761,
+      "sha256": "5cd379b9c4b15efd26f1c6b63d9e0c61404764ff445cca41c3e832a2757be014",
+      "packed_source": true,
+      "original_bytes_preserved": true
+    },
+    {
+      "name": "Atlas_Sky",
+      "path": "Textures/Atlas_Sky_e2e975.png",
+      "bytes": 41969,
+      "sha256": "390c139e139cd3bdd4bc1de900c96f47999de36a0fb93dbaea332472ded076f0",
+      "packed_source": true,
+      "original_bytes_preserved": true
+    },
+    {
+      "name": "clipboard-2026-10-15T13-15-00-951Z-7cdbfff1.jpg",
+      "path": "Textures/clipboard-2026-10-15T13-15-00-951Z-7cdbfff1.jpg_2ce09b.jpg",
+      "bytes": 175141,
+      "sha256": "4bfd5f5629dba5fd019f120931e536a55f8cae68fbc426cc40110c84365650a6",
+      "packed_source": true,
+      "original_bytes_preserved": true
+    }
+  ],
+  "characters": [
+    {
+      "name": "RIG_Coral",
+      "manifest": "Characters/RIG_Coral/toonbridge_manifest.json"
+    },
+    {
+      "name": "RIG_Lemon",
+      "manifest": "Characters/RIG_Lemon/toonbridge_manifest.json"
+    },
+    {
+      "name": "RIG_Lilac",
+      "manifest": "Characters/RIG_Lilac/toonbridge_manifest.json"
+    },
+    {
+      "name": "RIG_Mint",
+      "manifest": "Characters/RIG_Mint/toonbridge_manifest.json"
+    },
+    {
+      "name": "RIG_Sky",
+      "manifest": "Characters/RIG_Sky/toonbridge_manifest.json"
+    }
+  ],
+  "verification": {
+    "method": "Blender FBX export/reimport (not a Unity runtime test)",
+    "pass": true,
+    "embedded_textures": [
+      {
+        "material": "NPR_Coral",
+        "base_map_connected": true,
+        "embedded_bytes": 41422,
+        "original_bytes_match": true,
+        "pass": true
+      },
+      {
+        "material": "NPR_Lemon",
+        "base_map_connected": true,
+        "embedded_bytes": 41410,
+        "original_bytes_match": true,
+        "pass": true
+      },
+      {
+        "material": "NPR_Lilac",
+        "base_map_connected": true,
+        "embedded_bytes": 42334,
+        "original_bytes_match": true,
+        "pass": true
+      },
+      {
+        "material": "NPR_Mint",
+        "base_map_connected": true,
+        "embedded_bytes": 41761,
+        "original_bytes_match": true,
+        "pass": true
+      },
+      {
+        "material": "NPR_Sky",
+        "base_map_connected": true,
+        "embedded_bytes": 41969,
+        "original_bytes_match": true,
+        "pass": true
+      }
+    ],
+    "meshes": [
+      {
+        "name": "Sprout_Coral",
+        "pass": true,
+        "vertex_count_before": 2194,
+        "vertex_count_after": 2194,
+        "max_weight_delta": 0.0,
+        "max_local_vertex_delta": 0.0,
+        "uv_layers_after": 1,
+        "shape_keys_after": []
+      },
+      {
+        "name": "Sprout_Lemon",
+        "pass": true,
+        "vertex_count_before": 2194,
+        "vertex_count_after": 2194,
+        "max_weight_delta": 0.0,
+        "max_local_vertex_delta": 0.0,
+        "uv_layers_after": 1,
+        "shape_keys_after": []
+      },
+      {
+        "name": "Sprout_Lilac",
+        "pass": true,
+        "vertex_count_before": 2194,
+        "vertex_count_after": 2194,
+        "max_weight_delta": 0.0,
+        "max_local_vertex_delta": 0.0,
+        "uv_layers_after": 1,
+        "shape_keys_after": []
+      },
+      {
+        "name": "Sprout_Mint",
+        "pass": true,
+        "vertex_count_before": 2194,
+        "vertex_count_after": 2194,
+        "max_weight_delta": 0.0,
+        "max_local_vertex_delta": 0.0,
+        "uv_layers_after": 1,
+        "shape_keys_after": []
+      },
+      {
+        "name": "Sprout_Sky",
+        "pass": true,
+        "vertex_count_before": 2194,
+        "vertex_count_after": 2194,
+        "max_weight_delta": 0.0,
+        "max_local_vertex_delta": 0.0,
+        "uv_layers_after": 1,
+        "shape_keys_after": []
+      }
+    ],
+    "rigs": [
+      {
+        "name": "RIG_Coral",
+        "pass": true,
+        "expected_bones": 23,
+        "actual_bones": 23
+      },
+      {
+        "name": "RIG_Lemon",
+        "pass": true,
+        "expected_bones": 23,
+        "actual_bones": 23
+      },
+      {
+        "name": "RIG_Lilac",
+        "pass": true,
+        "expected_bones": 23,
+        "actual_bones": 23
+      },
+      {
+        "name": "RIG_Mint",
+        "pass": true,
+        "expected_bones": 23,
+        "actual_bones": 23
+      },
+      {
+        "name": "RIG_Sky",
+        "pass": true,
+        "expected_bones": 23,
+        "actual_bones": 23
+      }
+    ],
+    "imported_actions": [
+      {
+        "name": "RIG_Coral|RIG_Coral|Sprout_Celebrate",
+        "frames": [
+          1.0,
+          91.0
+        ]
+      },
+      {
+        "name": "RIG_Coral|RIG_Coral|Sprout_Idle",
+        "frames": [
+          1.0,
+          61.0
+        ]
+      },
+      {
+        "name": "RIG_Coral|RIG_Coral|Sprout_Run",
+        "frames": [
+          1.0,
+          25.0
+        ]
+      },
+      {
+        "name": "RIG_Lemon|RIG_Lemon|Sprout_Celebrate",
+        "frames": [
+          1.0,
+          91.0
+        ]
+      },
+      {
+        "name": "RIG_Lemon|RIG_Lemon|Sprout_Idle",
+        "frames": [
+          1.0,
+          61.0
+        ]
+      },
+      {
+        "name": "RIG_Lemon|RIG_Lemon|Sprout_Run",
+        "frames": [
+          1.0,
+          25.0
+        ]
+      },
+      {
+        "name": "RIG_Lilac|RIG_Lilac|Sprout_Celebrate",
+        "frames": [
+          1.0,
+          91.0
+        ]
+      },
+      {
+        "name": "RIG_Lilac|RIG_Lilac|Sprout_Idle",
+        "frames": [
+          1.0,
+          61.0
+        ]
+      },
+      {
+        "name": "RIG_Lilac|RIG_Lilac|Sprout_Run",
+        "frames": [
+          1.0,
+          25.0
+        ]
+      },
+      {
+        "name": "RIG_Mint|RIG_Mint|Sprout_Celebrate",
+        "frames": [
+          1.0,
+          91.0
+        ]
+      },
+      {
+        "name": "RIG_Mint|RIG_Mint|Sprout_Idle",
+        "frames": [
+          1.0,
+          61.0
+        ]
+      },
+      {
+        "name": "RIG_Mint|RIG_Mint|Sprout_Run",
+        "frames": [
+          1.0,
+          25.0
+        ]
+      },
+      {
+        "name": "RIG_Sky|RIG_Sky|Sprout_Celebrate",
+        "frames": [
+          1.0,
+          91.0
+        ]
+      },
+      {
+        "name": "RIG_Sky|RIG_Sky|Sprout_Idle",
+        "frames": [
+          1.0,
+          61.0
+        ]
+      },
+      {
+        "name": "RIG_Sky|RIG_Sky|Sprout_Run",
+        "frames": [
+          1.0,
+          25.0
+        ]
+      }
+    ],
+    "animation_note": "Clip presence checked. Pose sampling is reported separately when available; Blender controllers/constraints are not transferred as logic."
+  },
+  "warnings": [
+    "NPR_Coral: Blender Shader-to-RGB/ramp lighting is reconstructed with URP toon lighting, not a pixel-identical shader translation.",
+    "NPR_Lemon: Blender Shader-to-RGB/ramp lighting is reconstructed with URP toon lighting, not a pixel-identical shader translation.",
+    "NPR_Lilac: Blender Shader-to-RGB/ramp lighting is reconstructed with URP toon lighting, not a pixel-identical shader translation.",
+    "NPR_Mint: Blender Shader-to-RGB/ramp lighting is reconstructed with URP toon lighting, not a pixel-identical shader translation.",
+    "NPR_Sky: Blender Shader-to-RGB/ramp lighting is reconstructed with URP toon lighting, not a pixel-identical shader translation.",
+    "Multiple rigs: combined FBX may contain separate takes per rig. Use Characters/<rig>/toonbridge_manifest.json for independent playable characters."
+  ],
+  "unity_runtime_tested": false,
+  "limitations": [
+    "FBX carries sampled animation, not Blender drivers, constraints, NLA editing, rig UI or Unity state-machine logic.",
+    "URP toon reconstructs lighting; complex/procedural node graphs require separate baking.",
+    "Use Unity Generic and preserve transforms; humanoid retargeting is an additional step."
+  ]
+}

@@ -1,0 +1,5 @@
+Sky sameVertices=True sameUV=True sameTriangles=True
+Lilac sameVertices=True sameUV=True sameTriangles=True
+Lemon sameVertices=True sameUV=True sameTriangles=True
+Coral sameVertices=True sameUV=True sameTriangles=True
+Mint sameVertices=True sameUV=True sameTriangles=True

@@ -1,0 +1,43 @@
+{
+    "utc": "2026-10-13T06:43:07.5504676Z",
+    "scope": "local injected peer state; not a second Steam client",
+    "complete": true,
+    "passed": true,
+    "checks": [
+        {
+            "name": "one_player_cannot_start",
+            "evidence": "local state injection",
+            "passed": true
+        },
+        {
+            "name": "two_members_wait_for_current_epoch_ack",
+            "evidence": "local state injection",
+            "passed": true
+        },
+        {
+            "name": "start_prepares_checkpoint_but_waits_for_ack",
+            "evidence": "local state injection",
+            "passed": true
+        },
+        {
+            "name": "checkpoint_creates_exact_two_bodies",
+            "evidence": "local state injection",
+            "passed": true
+        },
+        {
+            "name": "current_epoch_ack_begins_simulation",
+            "evidence": "local state injection",
+            "passed": true
+        },
+        {
+            "name": "disconnect_pauses_before_despawn",
+            "evidence": "local state injection",
+            "passed": true
+        },
+        {
+            "name": "remaining_one_cannot_resume",
+            "evidence": "local state injection",
+            "passed": true
+        }
+    ]
+}

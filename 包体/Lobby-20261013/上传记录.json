@@ -1,0 +1,15 @@
+{
+  "verifiedAtUtc": "2026-10-13T07:26:32.174512+00:00",
+  "releaseUrl": "https://github.com/1205971577/tank-together/releases/tag/lobby-20261013",
+  "releaseId": 411401005,
+  "tag": "lobby-20261013",
+  "targetCommit": "51743289c68804709a67392d3c3c0bce926f35c2",
+  "assetId": 636248794,
+  "name": "TankTogether-Lobby-20261013.zip",
+  "bytes": 72047395,
+  "serverDigest": "sha256:7164a19731f132352d7d123754d51dc18e25ec767ca2e544e0d34f2a5f957ed2",
+  "state": "uploaded",
+  "localHashMatchesServer": true,
+  "downloadedAgain": false,
+  "privateRepository": true
+}

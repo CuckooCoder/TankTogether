@@ -1,0 +1,15 @@
+bothCancel=True value=0
+grow2sec=True value=2.3
+retain=True value=2.3
+shrink=True value=1.1
+widthMass=True value=0.3
+ctrlDisabled=True value=1.1
+ceiling=True value=1.944
+feetStable=True value=-5.960464E-08
+noQueuedGrowth=True value=1.944
+airNoExtraJump=True value=0.6499197
+airHeightChanged=True value=2.120003
+respawnDefault=True value=1.7
+respawnInputCleared=True value=0
+AStillCrouches=True value=1.1
+passed=True

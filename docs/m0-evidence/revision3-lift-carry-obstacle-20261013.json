@@ -1,0 +1,17 @@
+{
+    "complete": true,
+    "passed": false,
+    "scope": "isolated-editor-physics-not-full-route-or-remote",
+    "checks": [
+        {
+            "name": "carry_full_lift_2",
+            "evidence": "distance=17.45002 broken=True allFeetOnLift=True maxTilt=2.967947 tank=(-232.70, -16.94, 0.00)",
+            "passed": false
+        },
+        {
+            "name": "carry_full_lift_4",
+            "evidence": "distance=17.45002 broken=True allFeetOnLift=True maxTilt=2.967947 tank=(-232.70, -16.94, 0.00)",
+            "passed": false
+        }
+    ]
+}

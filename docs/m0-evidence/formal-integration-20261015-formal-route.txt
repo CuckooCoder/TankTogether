@@ -1,0 +1,7 @@
+local_started=True
+real_route_four_posts=True
+finish_once=True
+broken=False
+physicsTicks=547
+passed=True
+fixture=isolated placement at authored final posts; not full route traversal

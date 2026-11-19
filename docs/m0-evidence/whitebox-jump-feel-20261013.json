@@ -1,0 +1,110 @@
+{
+    "utc": "2026-10-13T02:54:06.5405554Z",
+    "complete": true,
+    "trials": [
+        {
+            "impulse": 6.0,
+            "rise": 0.5385775566101074,
+            "airSeconds": 0.6599997282028198,
+            "distance": 1.6090670824050903,
+            "maxGripError": 0.16498248279094696,
+            "sprint": false,
+            "broken": false,
+            "settled": true,
+            "mode": 0,
+            "groundedAtPress": 4,
+            "gripsAtPress": 4
+        },
+        {
+            "impulse": 6.0,
+            "rise": 0.5389018058776855,
+            "airSeconds": 0.6999997496604919,
+            "distance": 2.410778045654297,
+            "maxGripError": 0.16827711462974548,
+            "sprint": true,
+            "broken": false,
+            "settled": true,
+            "mode": 0,
+            "groundedAtPress": 4,
+            "gripsAtPress": 4
+        },
+        {
+            "impulse": 8.0,
+            "rise": 0.88313889503479,
+            "airSeconds": 0.8999996185302734,
+            "distance": 2.2258901596069336,
+            "maxGripError": 0.19432134926319122,
+            "sprint": false,
+            "broken": false,
+            "settled": true,
+            "mode": 0,
+            "groundedAtPress": 4,
+            "gripsAtPress": 4
+        },
+        {
+            "impulse": 8.0,
+            "rise": 0.8826191425323486,
+            "airSeconds": 0.9399996399879456,
+            "distance": 3.271106004714966,
+            "maxGripError": 0.1987283080816269,
+            "sprint": true,
+            "broken": false,
+            "settled": true,
+            "mode": 0,
+            "groundedAtPress": 4,
+            "gripsAtPress": 4
+        },
+        {
+            "impulse": 10.0,
+            "rise": 1.3472516536712646,
+            "airSeconds": 1.0999995470046997,
+            "distance": 2.703996181488037,
+            "maxGripError": 0.22691527009010315,
+            "sprint": false,
+            "broken": false,
+            "settled": true,
+            "mode": 0,
+            "groundedAtPress": 4,
+            "gripsAtPress": 4
+        },
+        {
+            "impulse": 10.0,
+            "rise": 1.3381884098052979,
+            "airSeconds": 1.1999995708465576,
+            "distance": 4.191717147827148,
+            "maxGripError": 0.23214992880821228,
+            "sprint": true,
+            "broken": false,
+            "settled": false,
+            "mode": 0,
+            "groundedAtPress": 4,
+            "gripsAtPress": 4
+        },
+        {
+            "impulse": 8.0,
+            "rise": 0.20524048805236816,
+            "airSeconds": 0.39999985694885254,
+            "distance": 1.0031728744506836,
+            "maxGripError": 0.19304287433624268,
+            "sprint": false,
+            "broken": false,
+            "settled": true,
+            "mode": 1,
+            "groundedAtPress": 4,
+            "gripsAtPress": 4
+        },
+        {
+            "impulse": 8.0,
+            "rise": 0.6101474761962891,
+            "airSeconds": 0.8399996757507324,
+            "distance": 2.8782222270965576,
+            "maxGripError": 0.1976703554391861,
+            "sprint": true,
+            "broken": false,
+            "settled": true,
+            "mode": 2,
+            "groundedAtPress": 4,
+            "gripsAtPress": 4
+        }
+    ]
+}

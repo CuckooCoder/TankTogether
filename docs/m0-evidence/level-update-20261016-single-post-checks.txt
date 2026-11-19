@@ -1,0 +1,36 @@
+initial_tank_safe_single_post=True 从黄球平台出发，前往白色标记对应的鱼缸；R 重试当前检查点。
+initial_bottom_aligns_model=True (-115.56, -27.33, 0.00)
+no_generated_four_posts=True 0
+single_authored_safe_collider=True True
+no_floor_repair=True 
+yellow_visible_nonblocking_Group 33=True (-1.05, 2.00, -1.05)
+yellow_visible_nonblocking_Group 35=True (-221.40, 67.50, -7.89)
+can_grip_around_central_post=True 4
+players_only_do_not_save=True pickup
+too_high_does_not_save=True pickup
+outside_radius_does_not_save=True pickup
+client_proxy_cannot_save=True pickup
+save_failure_keeps_checkpoint=True 3
+isolated_save_created=True Created
+disk_saved_upper=True Loaded
+intact_tank_arrival_saves=True upper writes=1
+arrival_only_once=True 1
+not_final=True 
+checkpoint_respawn_safe_2=True 已恢复检查点，鱼缸由队员承托；按住左键抓取后继续。 tilt=0
+respawn_above_heads_2=True (-220.35, 67.66, -6.84)
+respawn_no_reactivation_2=True 1
+respawn_no_hidden_posts_2=True 0
+respawn_grab_2=True 2
+checkpoint_respawn_safe_3=True 已恢复检查点，鱼缸由队员承托；按住左键抓取后继续。 tilt=0
+respawn_above_heads_3=True (-220.35, 67.66, -6.84)
+respawn_no_reactivation_3=True 1
+respawn_no_hidden_posts_3=True 0
+respawn_grab_3=True 3
+checkpoint_respawn_safe_4=True 已恢复检查点，鱼缸由队员承托；按住左键抓取后继续。 tilt=0
+respawn_above_heads_4=True (-220.35, 67.66, -6.84)
+respawn_no_reactivation_4=True 1
+respawn_no_hidden_posts_4=True 0
+respawn_grab_4=True 4
+danger_priority=True start
+passed=True
+Scope: local fixture and callback persistence; not remote multiplayer or continuous route.

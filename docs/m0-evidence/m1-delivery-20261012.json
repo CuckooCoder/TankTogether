@@ -1,0 +1,35 @@
+{
+  "utc": "2026-10-12T03:29:44.425761+00:00",
+  "scope": "Controlled local M1 parking and short rescue experiment; not checkpoint activation, long static hanging, or remote acceptance.",
+  "sourceSHA256": {
+    "Unity/TankTogether/Assets/Scripts/M0BaselineMeasurements.cs": "40774cd7a0022087395beebcb3506ce9e9c0493762cb31492915d06475d91e22",
+    "Unity/TankTogether/Assets/Scripts/M0CarryBaseline.cs": "633b10bd1edc4abfaa005aa8ec4228affa61946e61f18f37727b1c1faa613f45",
+    "Unity/TankTogether/Assets/Scripts/M0CarryChecks.cs": "5b0593cdf1a45b4575af258c41bea8424d4f1b1b59f576c6eb28f980c0752542",
+    "Unity/TankTogether/Assets/Scripts/M0CarryLab.cs": "89a39ae81bfb6d6e7db9ebb08a6776585774433a6aeed8f63e11160136c12bef",
+    "Unity/TankTogether/Assets/Scripts/M1InteractionChecks.cs": "9941d58c36f84a56af0b1d47b5276e5cdea6a4ea1f579755dfbe6a0804dcd715",
+    "Unity/TankTogether/Assets/Scripts/M1InteractionLab.cs": "0bb9dc31b356899356aa7a7e2a4b82143a0f22d629c0f284a79bb7073996304a",
+    "Unity/TankTogether/Assets/Scripts/SteamCarryProtocol.cs": "8fc45e2e2df037b9bec4b3ff12684b2391e71154827064e982705a3780dbec84",
+    "Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs": "1c2dc01c43918cc014b25e073a6aad6484a24d7c4bad87f75f88e5061cb3439c",
+    "Unity/TankTogether/Assets/Editor/M0BaselineSetup.cs": "7d8edc9b635db0e2c4238609e3c9d78bdd00e812b4b29cda34c8a766c19244df",
+    "Unity/TankTogether/Assets/Editor/M0CarryLabSetup.cs": "6e072276b05544d225a021ef3f34cef16c9954a6fe48293c7af492bfea807772",
+    "Unity/TankTogether/Assets/Editor/M0PhysicsProbe.cs": "73966ca1551dcd735064422bb84b39f8374584a15d9246b08be5e280c9a3f700",
+    "Unity/TankTogether/Assets/Editor/M1InteractionSetup.cs": "4515bbe63e7a373bfd78d3e93937e84679d3cb55063f97e0c18fdc31719c3fe8",
+    "Unity/TankTogether/Assets/Editor/ProjectSetup.cs": "66d126cf08d231e5a0f93668a4cfb989d84e80ffae68c554856d29f167dbd55a",
+    "Unity/TankTogether/Assets/Editor/SteamCarrySetup.cs": "f3295ff206542bd6e4549dae692dc2fcec1a92ca557a8bd0fb4db2a75f44e257",
+    "Unity/TankTogether/Assets/Scenes/M1InteractionLab.unity": "9d6260cf17b1fc46a26ffbe6f3519b3b1ce4b0067a7359785b093c0a17a5ada1",
+    "Unity/TankTogether/Assets/Resources/CarryBaseline.asset": "f271d574087ddee256b87c2dcb88f03078d997ed01d3cd3bb2d562ce0d7cea63"
+  },
+  "package": {
+    "utc": "2026-10-12T03:29:44.425761+00:00",
+    "version": "m1-20261012",
+    "baseline": "v0.2.2-r1",
+    "localExperimentOnly": true,
+    "uploaded": false,
+    "parkingCheckpointImplemented": false,
+    "longTermHangingVerified": false,
+    "file": "TankTogether-M1-20261012.zip",
+    "bytes": 71737500,
+    "entries": 323,
+    "sha256": "86913d0185e13328048e30177dc17463ce5e299a8ac47286e1d12fa13fe13554"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "Scripts/M0CarryLab.cs": "1f6e0f79929d5de427387e432944cdeb6569eb3d95214fecb794901e2da4e479",
+  "Scripts/M0CarryBaseline.cs": "466ae9cfb7e17ed51cd30c165dac49e9f82d57e3eb2e69f6c057ae71eec573c5",
+  "Scripts/CarryTuning.cs": "8e1eeb54322f5cc24cce2259417dc0e99552c6d86df039b672c326d89bd2ba7c",
+  "Scripts/CarryGMPanel.cs": "62b728d5d2081ec6a188b1fea8f07fa9d7f4fe5d036dbabb74e76edad8a7a24d",
+  "Scripts/SteamCarryProtocol.cs": "2376c4ccab2d6d311452daf9345a34b2fbcf93a54e757431d6646a1ff5db8961",
+  "Editor/CarryParametersWindow.cs": "61dfd6245f87f01aa29368e84d0fed1f79173830b49a799626a8f258dfbfac5e",
+  "Editor/SteamCarrySetup.cs": "17412f976425c3c8ea0846b4c8325d45974aa5e517ec3492f16105857181a5ed",
+  "Editor/ControlFeelChecks.cs": "d4695b4ae42e9b822994dc26c9c01d13fd80181dc64e6a8202ededde8c6a7395",
+  "Editor/ControlFeelBoundaryChecks.cs": "1ab8a005ddf72419c1eefd2f369d6d9ad6f7a81f0bc80f60ba9830eee90f2557",
+  "Resources/WhiteboxJumpTrial.asset": "6b6b6b89ae58e031a6c03e8e33ecc5a46a6cbb9cc6d39b37a458735935200afe"
+}

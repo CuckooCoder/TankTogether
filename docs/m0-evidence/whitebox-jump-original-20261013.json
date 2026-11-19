@@ -1,0 +1,113 @@
+{
+    "utc": "2026-10-13T02:04:00.2960903Z",
+    "baseline": "v0.2.2-r1-267def3bd0995bf0bcc110602c127381",
+    "nearEdge": -25.010000228881836,
+    "farEdge": -27.5,
+    "gapWidth": 2.489999771118164,
+    "trials": [
+        {
+            "sprint": false,
+            "success": false,
+            "broken": true,
+            "lead": 1.0,
+            "takeoffX": -24.048370361328125,
+            "speed": 2.492577314376831,
+            "tankRise": 0.5002114772796631,
+            "lowestFeet": -2.2410125732421875,
+            "lastX": -26.776073455810547,
+            "groundedAtPress": 4,
+            "reason": "鱼缸破碎：Group 3。按 R 回起点重试。"
+        },
+        {
+            "sprint": false,
+            "success": false,
+            "broken": true,
+            "lead": 0.6499999761581421,
+            "takeoffX": -24.39820671081543,
+            "speed": 2.5009677410125732,
+            "tankRise": 0.5012228488922119,
+            "lowestFeet": -2.017284870147705,
+            "lastX": -26.918516159057617,
+            "groundedAtPress": 4,
+            "reason": "鱼缸破碎：Group 3。按 R 回起点重试。"
+        },
+        {
+            "sprint": false,
+            "success": false,
+            "broken": true,
+            "lead": 0.3499999940395355,
+            "takeoffX": -24.69794464111328,
+            "speed": 2.5000226497650146,
+            "tankRise": 0.5009775161743164,
+            "lowestFeet": -2.7785048484802246,
+            "lastX": -26.610509872436523,
+            "groundedAtPress": 4,
+            "reason": "鱼缸破碎：Group 3。按 R 回起点重试。"
+        },
+        {
+            "sprint": false,
+            "success": false,
+            "broken": true,
+            "lead": 0.10000000149011612,
+            "takeoffX": -24.94601821899414,
+            "speed": 2.4884564876556396,
+            "tankRise": 0.5079574584960938,
+            "lowestFeet": -2.927217960357666,
+            "lastX": -26.584501266479492,
+            "groundedAtPress": 4,
+            "reason": "鱼缸破碎：Group 3。按 R 回起点重试。"
+        },
+        {
+            "sprint": true,
+            "success": false,
+            "broken": true,
+            "lead": 1.0,
+            "takeoffX": -24.041645050048828,
+            "speed": 3.4971494674682617,
+            "tankRise": 0.4995715916156769,
+            "lowestFeet": -2.421550989151001,
+            "lastX": -26.644468307495117,
+            "groundedAtPress": 4,
+            "reason": "鱼缸破碎：Group 3。按 R 回起点重试。"
+        },
+        {
+            "sprint": true,
+            "success": false,
+            "broken": true,
+            "lead": 0.6499999761581421,
+            "takeoffX": -24.391801834106445,
+            "speed": 3.4864938259124756,
+            "tankRise": 0.49784472584724426,
+            "lowestFeet": -3.4686384201049805,
+            "lastX": -26.44745445251465,
+            "groundedAtPress": 4,
+            "reason": "鱼缸破碎：Group 3。按 R 回起点重试。"
+        },
+        {
+            "sprint": true,
+            "success": false,
+            "broken": false,
+            "lead": 0.3499999940395355,
+            "takeoffX": -24.671770095825195,
+            "speed": 3.493216037750244,
+            "tankRise": 0.4984722435474396,
+            "lowestFeet": -6.177269458770752,
+            "lastX": -26.429954528808594,
+            "groundedAtPress": 4,
+            "reason": "Fell or failed to land all four"
+        },
+        {
+            "sprint": true,
+            "success": false,
+            "broken": false,
+            "lead": 0.10000000149011612,
+            "takeoffX": -24.95134925842285,
+            "speed": 3.4996509552001953,
+            "tankRise": 0.49909117817878723,
+            "lowestFeet": -1.7449281215667725,
+            "lastX": -27.073184967041016,
+            "groundedAtPress": 4,
+            "reason": "Fell or failed to land all four"
+        }
+    ]
+}

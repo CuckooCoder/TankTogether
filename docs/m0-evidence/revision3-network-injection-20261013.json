@@ -1,0 +1,17 @@
+{
+    "complete": true,
+    "passed": true,
+    "scope": "isolated-editor-physics-not-full-route-or-remote",
+    "checks": [
+        {
+            "name": "proxy_new_checkpoint_and_lift",
+            "evidence": "actual SteamCarrySession.ApplySnapshot, two active bodies",
+            "passed": true
+        },
+        {
+            "name": "prepare_round_uses_saved_upper",
+            "evidence": "PrepareRound restored upper, paused, saved position",
+            "passed": true
+        }
+    ]
+}

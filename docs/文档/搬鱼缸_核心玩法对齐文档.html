@@ -1,0 +1,2502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>搬鱼缸｜核心玩法对齐文档｜排版最终润色版</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0c1830;
+      --panel: rgba(13, 24, 46, 0.72);
+      --panel-solid: #0d1830;
+      --paper: #eef4ff;
+      --card: rgba(255,255,255,0.92);
+      --card-2: rgba(255,255,255,0.76);
+      --ink: #13213b;
+      --text: #31415f;
+      --sub: #7080a2;
+      --line: rgba(255,255,255,0.14);
+      --line-2: #d9e3f8;
+      --blue: #59a8ff;
+      --blue-strong: #2d7eff;
+      --cyan: #58d8e5;
+      --green: #47d58f;
+      --amber: #ffb65a;
+      --orange: #ff8a5b;
+      --red: #ff6b7d;
+      --purple: #a689ff;
+      --teal: #7cf0d3;
+      --shadow-lg: 0 40px 120px rgba(4, 10, 24, .42);
+      --shadow-md: 0 18px 50px rgba(10, 20, 40, .15);
+      --shadow-sm: 0 10px 24px rgba(10, 20, 40, .10);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --page: 1360px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      color: #e9f0ff;
+      background:
+        radial-gradient(circle at 8% -6%, rgba(88,216,229,.16), transparent 22%),
+        radial-gradient(circle at 82% 2%, rgba(166,137,255,.20), transparent 22%),
+        radial-gradient(circle at 54% 22%, rgba(89,168,255,.12), transparent 30%),
+        linear-gradient(180deg, #07111f 0%, #0a1427 28%, #0d1830 66%, #edf4ff 66%, #eef4ff 100%);
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.30) 65%, transparent);
+      opacity: .55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .page {
+      width: min(var(--page), calc(100% - 28px));
+      margin: 22px auto 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-shell {
+      position: relative;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 40px;
+      background:
+        linear-gradient(135deg, rgba(18,30,58,.92), rgba(9,18,34,.96) 60%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.00));
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .hero-shell::before,
+    .hero-shell::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(8px);
+      opacity: .7;
+      pointer-events: none;
+    }
+    .hero-shell::before {
+      width: 420px; height: 420px;
+      top: -180px; right: -120px;
+      background: radial-gradient(circle, rgba(89,168,255,.35), rgba(89,168,255,0) 68%);
+    }
+    .hero-shell::after {
+      width: 360px; height: 360px;
+      bottom: -180px; left: -120px;
+      background: radial-gradient(circle, rgba(166,137,255,.28), rgba(166,137,255,0) 68%);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(420px, .95fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+    .meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .badge, .tiny-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: .03em;
+    }
+    .badge {
+      padding: 9px 14px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.12);
+      color: #cfe2ff;
+      font-size: 12px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
+      backdrop-filter: blur(12px);
+    }
+    .hero-kv {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      gap: 16px;
+      min-height: 100%;
+    }
+    .eyebrow {
+      color: #8fb9ff;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 5vw, 78px);
+      line-height: .95;
+      letter-spacing: -.05em;
+      color: white;
+      max-width: 760px;
+    }
+    .hero-sub {
+      color: rgba(230,238,255,.84);
+      font-size: 17px;
+      max-width: 780px;
+      margin: 0;
+    }
+    .slogan-card {
+      display: grid;
+      gap: 14px;
+      padding: 20px 22px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .slogan-main {
+      font-size: clamp(20px, 2.6vw, 32px);
+      line-height: 1.35;
+      font-weight: 900;
+      color: #fff;
+      max-width: 720px;
+    }
+    .slogan-sub {
+      color: rgba(214,228,255,.76);
+      font-size: 13px;
+    }
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chip {
+      padding: 10px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.08);
+      color: #e6efff;
+      backdrop-filter: blur(10px);
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .hero-stat {
+      padding: 16px 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+    }
+    .hero-stat .num {
+      font-size: clamp(20px, 1.9vw, 30px);
+      font-weight: 950;
+      letter-spacing: -.02em;
+      color: white;
+      line-height: 1.05;
+      margin-bottom: 4px;
+    }
+    .hero-stat .label {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(219,228,247,.78);
+    }
+
+    .hero-art {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(circle at 50% 18%, rgba(89,168,255,.24), transparent 32%),
+        linear-gradient(180deg, #152645 0%, #0d1730 55%, #0a1325 100%);
+      min-height: 580px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.10);
+    }
+    .hero-art .scanlines {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,.06) 0, transparent 28%), linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: auto, 100% 4px;
+      mix-blend-mode: screen;
+      opacity: .18;
+      pointer-events: none;
+    }
+    .hero-note {
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+      right: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      z-index: 2;
+    }
+    .hero-note .note {
+      padding: 12px 12px 11px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(6, 16, 32, .55);
+      backdrop-filter: blur(12px);
+    }
+    .hero-note strong {
+      display: block;
+      color: #ffffff;
+      font-size: 12px;
+      margin-bottom: 3px;
+    }
+    .hero-note span {
+      color: rgba(217,227,245,.82);
+      font-size: 12px;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 22px;
+      margin-top: 22px;
+      align-items: start;
+    }
+    .side-nav {
+      position: sticky;
+      top: 16px;
+      padding: 18px 16px;
+      border-radius: 22px;
+      background: rgba(10,21,41,.78);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow-md);
+      color: #d7e4ff;
+    }
+    .side-nav .title {
+      font-size: 12px;
+      color: #90a7cf;
+      font-weight: 900;
+      letter-spacing: .12em;
+      margin-bottom: 12px;
+    }
+    .side-nav a {
+      display: block;
+      padding: 11px 12px;
+      border-radius: 13px;
+      color: #d0def8;
+      font-size: 13px;
+      font-weight: 800;
+      transition: .18s ease;
+      border: 1px solid transparent;
+    }
+    .side-nav a:hover,
+    .side-nav a.active {
+      color: white;
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.12);
+      transform: translateX(2px);
+    }
+    .side-tip {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(89,168,255,.16), rgba(166,137,255,.11));
+      border: 1px solid rgba(255,255,255,.10);
+      color: #e8f1ff;
+      font-size: 12px;
+    }
+
+    .content { display: grid; gap: 18px; min-width: 0; }
+    .section-card,
+    .quote-band,
+    .chapter-road,
+    .manifesto,
+    .closing {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      box-shadow: var(--shadow-md);
+    }
+    .section-card {
+      background: var(--card);
+      border: 1px solid #dfe7fb;
+      color: var(--ink);
+    }
+    .section-head {
+      padding: 26px 28px 12px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      color: var(--blue-strong);
+      background: rgba(45,126,255,.10);
+      border: 1px solid rgba(45,126,255,.16);
+    }
+    .section-head h2 {
+      margin: 10px 0 0;
+      font-size: clamp(26px, 2.6vw, 38px);
+      line-height: 1.16;
+      letter-spacing: -.03em;
+      color: var(--ink);
+    }
+    .section-head p {
+      margin: 8px 0 0;
+      font-size: 14px;
+      color: var(--sub);
+      max-width: 860px;
+    }
+    .section-body { padding: 8px 28px 28px; }
+
+    .dual-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.16fr) minmax(320px, .84fr);
+      gap: 18px;
+    }
+    .feature-quote {
+      padding: 24px 24px 22px;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(45,126,255,.10), rgba(166,137,255,.10)),
+        #fff;
+      border: 1px solid #dfe7fb;
+    }
+    .feature-quote .lead {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--blue-strong);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .feature-quote .text {
+      font-size: clamp(18px, 2.1vw, 29px);
+      line-height: 1.38;
+      font-weight: 900;
+      color: var(--ink);
+    }
+    .feature-quote .sub {
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--sub);
+    }
+    .summary-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .summary-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 12px;
+      padding: 14px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fff, #f8fbff);
+      border: 1px solid #dfe7fb;
+    }
+    .icon-badge {
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      display: grid; place-items: center;
+      background: linear-gradient(180deg, #eef5ff, #e2eeff);
+      border: 1px solid #d4e3ff;
+      color: var(--blue-strong);
+      flex: 0 0 auto;
+    }
+    .summary-item strong {
+      display: block;
+      font-size: 13px;
+      color: #293758;
+      margin-bottom: 4px;
+    }
+    .summary-item span {
+      font-size: 12px;
+      color: var(--sub);
+    }
+
+    .quote-band {
+      padding: 26px 30px;
+      color: white;
+      background: linear-gradient(130deg, #0e1c35 0%, #17325a 54%, #102140 100%);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .quote-band .small {
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      color: rgba(156,198,255,.85);
+      text-transform: uppercase;
+    }
+    .quote-band .big {
+      margin-top: 10px;
+      font-size: clamp(24px, 2.5vw, 38px);
+      line-height: 1.42;
+      font-weight: 950;
+      max-width: 1000px;
+    }
+
+    .loop-panel {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .loop-diagram,
+    .panel-box,
+    .visual-wall,
+    .dna-board,
+    .do-grid,
+    .principle-grid,
+    .rule-grid,
+    .moments-grid,
+    .split-grid,
+    .story-grid,
+    .metric-row,
+    .vs-grid {
+      display: grid;
+      gap: 14px;
+    }
+    .loop-diagram {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+    }
+    .loop-node {
+      position: relative;
+      min-height: 132px;
+      padding: 16px;
+      border-radius: 20px;
+      border: 1px solid #dce6fb;
+      background: linear-gradient(180deg, #fff, #f8fbff);
+      overflow: hidden;
+    }
+    .loop-node::before {
+      content: attr(data-step);
+      position: absolute;
+      right: 14px;
+      top: 12px;
+      font-size: 42px;
+      font-weight: 950;
+      line-height: 1;
+      color: rgba(45,126,255,.10);
+    }
+    .loop-node .label {
+      font-size: 16px;
+      font-weight: 900;
+      color: #243452;
+      margin-bottom: 6px;
+    }
+    .loop-node .desc {
+      font-size: 12px;
+      color: var(--sub);
+    }
+    .center-tank {
+      grid-column: span 3;
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(45,126,255,.08), rgba(124,240,211,.12));
+      border: 1px solid #d8e6ff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .center-tank h3 {
+      margin: 0;
+      font-size: 22px;
+      color: var(--ink);
+    }
+    .center-tank p {
+      margin: 6px 0 0;
+      color: var(--sub);
+      font-size: 13px;
+      max-width: 620px;
+    }
+    .tank-pill {
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: white;
+      color: var(--blue-strong);
+      border: 1px solid #d6e3ff;
+      font-size: 12px;
+      font-weight: 900;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .panel-box {
+      grid-template-columns: 1fr;
+    }
+    .panel {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid #dce6fb;
+      background: linear-gradient(180deg, #fff, #f8fbff);
+    }
+    .panel h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: #233350;
+    }
+    .panel p, .panel li { font-size: 13px; color: var(--sub); }
+    .panel ul, .panel ol { margin: 8px 0 0; padding-left: 18px; }
+
+    .rule-grid {
+      grid-template-columns: repeat(4, minmax(180px, 1fr));
+    }
+    .rule-card {
+      position: relative;
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #fff, #f8fbff);
+      border: 1px solid #dce6fb;
+      min-height: 178px;
+      overflow: hidden;
+    }
+    .rule-card .ico {
+      width: 50px; height: 50px;
+      display: grid; place-items: center;
+      border-radius: 16px;
+      border: 1px solid #dce6fb;
+      background: linear-gradient(180deg, #f1f6ff, #e7efff);
+      color: var(--blue-strong);
+      margin-bottom: 14px;
+    }
+    .rule-card h4 { margin: 0 0 8px; font-size: 16px; color: var(--ink); }
+    .rule-card p { margin: 0; font-size: 12px; color: var(--sub); }
+
+    .metric-row {
+      grid-template-columns: repeat(4, minmax(180px, 1fr));
+      margin-top: 10px;
+    }
+    .metric {
+      padding: 18px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #fff, #f9fbff);
+      border: 1px solid #dce6fb;
+    }
+    .metric .m-number {
+      font-size: clamp(24px, 2vw, 30px);
+      font-weight: 950;
+      color: var(--ink);
+      line-height: 1.18;
+      margin-bottom: 6px;
+    }
+    .metric .m-label {
+      color: var(--sub);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .dna-board {
+      grid-template-columns: 1.08fr .92fr;
+    }
+    .dna-panel,
+    .visual-wall,
+    .road-shell,
+    .story-panel,
+    .compare-panel {
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid #dce6fb;
+      background: linear-gradient(180deg, #fff, #f8fbff);
+    }
+    .dna-panel h3,
+    .story-panel h3,
+    .compare-panel h3,
+    .road-shell h3 { margin: 0 0 10px; font-size: 18px; color: var(--ink); }
+    .dna-tags { display:flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .dna-tag {
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: #eff5ff;
+      color: var(--blue-strong);
+      border: 1px solid #d7e6ff;
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .competitors {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .comp {
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid #dce6fb;
+      background: white;
+    }
+    .comp strong { display:block; font-size: 13px; color: #233350; margin-bottom: 4px; }
+    .comp span { font-size: 12px; color: var(--sub); }
+
+    .visual-wall {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .mini-scene {
+      position: relative;
+      min-height: 180px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #15305c, #0d1d3f 52%, #0a1632 100%);
+      border: 1px solid rgba(18,42,84,.12);
+    }
+    .mini-scene .label {
+      position: absolute;
+      left: 12px; top: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.12);
+      color: white;
+      font-size: 11px;
+      font-weight: 900;
+      z-index: 1;
+    }
+
+    .story-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .story-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 250px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #17305d, #10203f 54%, #09122b 100%);
+      border: 1px solid rgba(16,49,98,.12);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .story-card .cap {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      padding: 12px 13px;
+      border-radius: 16px;
+      background: rgba(6,15,30,.56);
+      backdrop-filter: blur(12px);
+      color: #edf4ff;
+      font-size: 12px;
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .story-card .no {
+      position: absolute;
+      right: 14px; top: 12px;
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 950;
+      color: rgba(255,255,255,.18);
+    }
+
+    .moments-grid {
+      grid-template-columns: repeat(4, minmax(0,1fr));
+    }
+    .moment {
+      position: relative;
+      padding: 18px 18px 18px 20px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fff, #f8fbff);
+      border: 1px solid #dce6fb;
+      font-size: 13px;
+      color: #43516d;
+      font-weight: 750;
+      min-height: 120px;
+    }
+    .moment::before {
+      content: "";
+      position: absolute;
+      width: 4px;
+      left: 0; top: 14px; bottom: 14px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--blue-strong), var(--purple));
+    }
+
+    .chapter-road {
+      background: linear-gradient(180deg, #ffffff, #f5f9ff);
+      border: 1px solid #dce6fb;
+      color: var(--ink);
+      padding: 30px;
+    }
+    .road-head {
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:flex-end;
+      margin-bottom: 18px;
+    }
+    .road-head h2 { margin: 8px 0 0; font-size: clamp(28px, 2.7vw, 42px); line-height:1.14; }
+    .road-head p { margin: 8px 0 0; color: var(--sub); font-size: 14px; max-width: 800px; }
+    .road-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .road-shell {
+      background: linear-gradient(180deg, #fafdff, #f4f8ff);
+    }
+    .roadline {
+      position: relative;
+      display: grid;
+      gap: 16px;
+      padding-left: 18px;
+    }
+    .roadline::before {
+      content:"";
+      position:absolute;
+      left:26px; top:8px; bottom:8px;
+      width:4px;
+      border-radius:999px;
+      background: linear-gradient(180deg, #8cc4ff, #7cf0d3, #ffb65a, #ff6b7d, #a689ff);
+    }
+    .stage {
+      position: relative;
+      display:grid;
+      grid-template-columns: 70px 1.15fr 1.15fr .95fr;
+      gap: 16px;
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid #dce6fb;
+      background: white;
+      box-shadow: var(--shadow-sm);
+    }
+    .stage-index {
+      position: relative;
+      width: 52px; height: 52px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #eef5ff, #e4edff);
+      border: 1px solid #d6e2ff;
+      display:grid; place-items:center;
+      color: var(--blue-strong);
+      font-size: 16px;
+      font-weight: 950;
+      z-index: 1;
+    }
+    .tag {
+      display:inline-flex;
+      padding:5px 9px;
+      border-radius:999px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      margin-bottom: 8px;
+    }
+    .t-blue{ background:#edf4ff; color:#2d7eff; }
+    .t-cyan{ background:#e8fbff; color:#0a8da3; }
+    .t-green{ background:#edfff5; color:#16995f; }
+    .t-orange{ background:#fff4e8; color:#db6c16; }
+    .t-red{ background:#fff0f2; color:#d84a4a; }
+    .t-purple{ background:#f3efff; color:#7a57df; }
+    .stage h4 { margin:0 0 6px; font-size: 16px; color: var(--ink); }
+    .stage p { margin: 0; font-size: 12px; color: var(--sub); }
+
+    .vs-grid {
+      grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+    .compare-panel ul { margin: 8px 0 0; padding-left: 18px; }
+    .compare-panel li { font-size: 13px; color: var(--sub); margin: 6px 0; }
+    .compare-panel.good { background: linear-gradient(180deg, #f8fff9, #f3fff7); border-color: #d8f7e5; }
+    .compare-panel.bad { background: linear-gradient(180deg, #fff8f8, #fff4f4); border-color: #ffe0e5; }
+
+    .split-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .do-card {
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid #dce6fb;
+      background: linear-gradient(180deg, #fff, #f8fbff);
+    }
+    .do-card.good { background: linear-gradient(180deg, #f8fff9, #f3fff7); border-color: #d8f7e5; }
+    .do-card.bad { background: linear-gradient(180deg, #fff8f8, #fff4f4); border-color: #ffe0e5; }
+    .do-card h3 { margin: 0 0 10px; font-size: 18px; color: var(--ink); }
+    .do-card ul { margin: 0; padding-left: 18px; }
+    .do-card li { font-size: 13px; color: var(--sub); margin: 8px 0; }
+
+    .principle-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .principle {
+      display:grid;
+      grid-template-columns: 56px 1fr;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #fff, #f8fbff);
+      border: 1px solid #dce6fb;
+    }
+    .principle .idx {
+      width: 56px; height: 56px; border-radius: 18px;
+      display:grid; place-items:center;
+      background: linear-gradient(180deg, #eef5ff, #e4edff);
+      border: 1px solid #d6e2ff;
+      font-weight: 950; color: var(--blue-strong); font-size: 18px;
+    }
+    .principle strong { display:block; margin-bottom:4px; font-size: 15px; color: var(--ink); }
+    .principle > div:last-child > span { display:block; font-size: 12px; color: var(--sub); }
+
+    .manifesto {
+      padding: 34px 36px;
+      color: white;
+      background: linear-gradient(125deg, #08111f 0%, #112442 46%, #17325a 100%);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .manifesto .eyebrow { color: #9fd7ff; }
+    .manifesto h2 {
+      margin: 10px 0 16px;
+      font-size: clamp(30px, 3.6vw, 54px);
+      line-height: 1.05;
+      color: white;
+      max-width: 930px;
+    }
+    .manifesto p {
+      margin: 0;
+      max-width: 840px;
+      color: rgba(231,239,255,.82);
+      font-size: 15px;
+    }
+    .manifesto-grid {
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .manifesto-grid .m {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.07);
+    }
+    .manifesto-grid strong { display:block; margin-bottom: 6px; font-size: 14px; color: white; }
+    .manifesto-grid span { font-size: 12px; color: rgba(221,231,247,.82); }
+
+    .closing {
+      padding: 28px 30px;
+      color: white;
+      background: linear-gradient(135deg, #101f38 0%, #122548 55%, #0a1630 100%);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .closing h3 { margin: 0 0 12px; font-size: 14px; letter-spacing: .16em; text-transform: uppercase; color:#9fc6ff; }
+    .closing p { margin: 0; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.55; font-weight: 900; max-width: 1100px; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .svg-wrap { width: 100%; height: 100%; }
+    .legend { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+    .legend span { padding: 8px 10px; border-radius: 999px; background:#eff5ff; border:1px solid #d6e3ff; color:#2d7eff; font-size:12px; font-weight:800; }
+
+    /* ---------- Chinese typography polish ---------- */
+    .keep-phrase {
+      display: inline-block;
+      white-space: nowrap;
+    }
+    p, li, .label, .desc, .sub, .m-label, .cap, .moment, .side-tip {
+      word-break: normal;
+      overflow-wrap: break-word;
+      line-break: strict;
+      text-wrap: pretty;
+    }
+    h1, h2, h3, h4,
+    .hero-stat .num,
+    .feature-quote .text,
+    .quote-band .big,
+    .metric .m-number,
+    .principle strong,
+    .closing p {
+      word-break: normal;
+      overflow-wrap: normal;
+      line-break: strict;
+      text-wrap: balance;
+    }
+    .feature-quote .text {
+      font-size: clamp(19px, 2vw, 28px);
+      line-height: 1.42;
+    }
+    .hero-stat .num {
+      font-size: clamp(20px, 1.85vw, 29px);
+      line-height: 1.12;
+    }
+    .metric .m-number {
+      font-size: clamp(22px, 1.9vw, 29px);
+      line-height: 1.18;
+    }
+    .hero-stats,
+    .road-metrics,
+    .metric-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .story-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .moments-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .section-head > div:first-child,
+    .road-head > div:first-child {
+      min-width: 0;
+      max-width: 100%;
+    }
+    .section-head h2,
+    .road-head h2 {
+      max-width: 980px;
+    }
+    .feature-quote,
+    .metric,
+    .hero-stat,
+    .stage,
+    .rule-card,
+    .principle,
+    .moment {
+      min-width: 0;
+    }
+
+    /* ---------- Competitive viewing references ---------- */
+    .video-ref-card {
+      background: linear-gradient(180deg, #ffffff, #f7faff);
+      border: 1px solid #dce6fb;
+      color: var(--ink);
+    }
+    .video-ref-intro {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding: 0 28px 18px;
+    }
+    .video-ref-note {
+      max-width: 760px;
+      margin: 0;
+      font-size: 13px;
+      color: var(--sub);
+      text-wrap: pretty;
+    }
+    .video-ref-label {
+      flex: 0 0 auto;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: #fff0f6;
+      color: #d44a76;
+      border: 1px solid #ffd6e5;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .06em;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      padding: 0 28px 28px;
+    }
+    .video-card {
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 74px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 16px;
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid #dce6fb;
+      background: #fff;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .video-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(27, 51, 95, .11);
+      border-color: #bfd3ff;
+    }
+    .video-thumb {
+      width: 74px;
+      height: 74px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #fb7aa9, #ff4f88 58%, #e94278);
+      color: white;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 10px 24px rgba(232,66,120,.18);
+    }
+    .video-thumb svg { filter: drop-shadow(0 2px 4px rgba(113,21,54,.18)); }
+    .video-meta { min-width: 0; }
+    .video-meta .source {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 7px;
+      color: #d44a76;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .06em;
+    }
+    .video-meta h3 {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.45;
+      color: #1c2b49;
+      text-wrap: pretty;
+      word-break: normal;
+      overflow-wrap: break-word;
+      line-break: strict;
+    }
+    .video-meta p {
+      margin: 7px 0 0;
+      color: var(--sub);
+      font-size: 12px;
+      text-wrap: pretty;
+    }
+    .video-open {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #dce6fb;
+      background: #f5f8ff;
+      color: var(--blue-strong);
+      flex: 0 0 auto;
+      transition: background .18s ease, transform .18s ease;
+    }
+    .video-card:hover .video-open {
+      background: #edf4ff;
+      transform: translateX(2px);
+    }
+
+
+    /* =========================================================
+       FINAL VISUAL POLISH — semantic line breaking + color zoning
+       ========================================================= */
+    .key-statement {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      text-wrap: initial;
+    }
+    .statement-line,
+    .formula-line {
+      display: block;
+      max-width: 100%;
+      white-space: nowrap;
+      word-break: keep-all;
+      overflow-wrap: normal;
+    }
+    .formula-line {
+      margin-top: 8px;
+      color: #2d7eff;
+      font-size: .96em;
+      letter-spacing: -.025em;
+    }
+    .formula-result {
+      margin-top: 0;
+    }
+
+    /* Avoid accidental one-character tails in prominent text. */
+    .section-head h2,
+    .road-head h2,
+    .quote-band .big,
+    .manifesto h2,
+    .closing p,
+    .metric .m-number,
+    .hero-stat .num,
+    .stage h4,
+    .video-meta h3 {
+      text-wrap: pretty;
+      word-break: keep-all;
+      overflow-wrap: normal;
+    }
+
+    /* A clearer color language for each reading block. */
+    .section-card,
+    .chapter-road {
+      position: relative;
+      isolation: isolate;
+    }
+    .section-card::before,
+    .chapter-road::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 5px;
+      background: var(--section-accent, #2d7eff);
+      z-index: 2;
+    }
+    .section-card .section-head,
+    .chapter-road .road-head {
+      position: relative;
+    }
+
+    #core {
+      --section-accent: #2d7eff;
+      background: linear-gradient(180deg, #f1f6ff 0%, #ffffff 28%, #fbfdff 100%);
+      border-color: #d5e4ff;
+    }
+    #core .section-kicker { color:#246fe5; background:#e7f0ff; border-color:#c9dcff; }
+    #core .feature-quote { background: linear-gradient(135deg, #edf4ff, #f7f2ff); border-color:#d7e5ff; }
+
+    #loop {
+      --section-accent: #16a9b9;
+      background: linear-gradient(180deg, #eefcfd 0%, #ffffff 28%, #fbffff 100%);
+      border-color: #cfeef1;
+    }
+    #loop .section-kicker { color:#0d8e9c; background:#e1f8fa; border-color:#bfe8ec; }
+    #loop .loop-node:nth-child(1), #loop .loop-node:nth-child(4) { background:linear-gradient(180deg,#f3fbff,#edf7ff); }
+    #loop .loop-node:nth-child(2), #loop .loop-node:nth-child(5) { background:linear-gradient(180deg,#f1fffb,#eafff8); }
+    #loop .loop-node:nth-child(3), #loop .loop-node:nth-child(6) { background:linear-gradient(180deg,#f9f5ff,#f4efff); }
+    #loop .center-tank { background:linear-gradient(135deg,#e7f7ff,#e8fff7); border-color:#c9e8ef; }
+
+    #rules {
+      --section-accent: #7b57df;
+      background: linear-gradient(180deg, #f7f3ff 0%, #ffffff 28%, #fdfcff 100%);
+      border-color: #e4dafd;
+    }
+    #rules .section-kicker { color:#6f4dd0; background:#f0eaff; border-color:#ded1ff; }
+    #rules .rule-card:nth-child(4n+1){ background:linear-gradient(180deg,#f3f7ff,#fff); border-color:#d7e5ff; }
+    #rules .rule-card:nth-child(4n+2){ background:linear-gradient(180deg,#f0fffb,#fff); border-color:#d4f1e8; }
+    #rules .rule-card:nth-child(4n+3){ background:linear-gradient(180deg,#faf4ff,#fff); border-color:#eadcff; }
+    #rules .rule-card:nth-child(4n){ background:linear-gradient(180deg,#fff7ee,#fff); border-color:#f8e2c7; }
+
+    #fun {
+      --section-accent: #e98a2e;
+      background: linear-gradient(180deg, #fff8ee 0%, #ffffff 28%, #fffdf9 100%);
+      border-color: #f4dfc2;
+    }
+    #fun .section-kicker { color:#c96b13; background:#fff0db; border-color:#f4d1a8; }
+    #fun .dna-panel { background:linear-gradient(180deg,#fffaf2,#fff); border-color:#f0dfc8; }
+    #fun .comp:nth-child(1), #fun .comp:nth-child(4){ background:#fff7ed; border-color:#f3dfc6; }
+    #fun .comp:nth-child(2), #fun .comp:nth-child(3){ background:#f4f7ff; border-color:#dce5fb; }
+
+    #reference-videos {
+      --section-accent: #e5548a;
+      background: linear-gradient(180deg, #fff2f7 0%, #ffffff 30%, #fffbfd 100%);
+      border-color: #f5d5e2;
+    }
+    #reference-videos .section-kicker { color:#c94273; background:#ffe6f0; border-color:#f5c9d9; }
+    #reference-videos .video-card:nth-child(1){ background:linear-gradient(180deg,#fff8fb,#fff); border-color:#f4d7e2; }
+    #reference-videos .video-card:nth-child(2){ background:linear-gradient(180deg,#f6f2ff,#fff); border-color:#e4dbfb; }
+
+    #storyboard {
+      --section-accent: #f06c5e;
+      background: linear-gradient(180deg, #fff3f0 0%, #ffffff 28%, #fffdfc 100%);
+      border-color: #f3d8d3;
+    }
+    #storyboard .section-kicker { color:#d75448; background:#ffe6e2; border-color:#f5cbc4; }
+    #storyboard .story-card:nth-child(odd){ box-shadow:inset 0 4px 0 rgba(240,108,94,.7); }
+    #storyboard .story-card:nth-child(even){ box-shadow:inset 0 4px 0 rgba(89,168,255,.7); }
+
+    #moments {
+      --section-accent: #1aa673;
+      background: linear-gradient(180deg, #effcf6 0%, #ffffff 28%, #fbfffd 100%);
+      border-color: #cfeee1;
+    }
+    #moments .section-kicker { color:#15875e; background:#e3f8ee; border-color:#c7eadc; }
+    #moments .moment:nth-child(4n+1)::before { background:#2d7eff; }
+    #moments .moment:nth-child(4n+2)::before { background:#1aa673; }
+    #moments .moment:nth-child(4n+3)::before { background:#e98a2e; }
+    #moments .moment:nth-child(4n)::before { background:#8a62e8; }
+    #moments .moment:nth-child(4n+1){ background:#f5f8ff; border-color:#dce6fb; }
+    #moments .moment:nth-child(4n+2){ background:#f2fff8; border-color:#d8f0e5; }
+    #moments .moment:nth-child(4n+3){ background:#fff8ee; border-color:#f2dfc7; }
+    #moments .moment:nth-child(4n){ background:#f8f4ff; border-color:#e5dcf7; }
+
+    #map {
+      --section-accent: #2b9fc8;
+      background: linear-gradient(180deg, #edf9ff 0%, #ffffff 26%, #fbfeff 100%);
+      border-color:#cfe7f1;
+    }
+    #map .section-kicker { color:#247da0; background:#def4fb; border-color:#bfe5f1; }
+    #map .metric:nth-child(1){ background:#f1f6ff; border-color:#d7e4fb; }
+    #map .metric:nth-child(2){ background:#effcf8; border-color:#d2eee4; }
+    #map .metric:nth-child(3){ background:#fff7ee; border-color:#f1dec7; }
+    #map .metric:nth-child(4){ background:#f8f2ff; border-color:#e5d8fa; }
+
+    #chapters {
+      --section-accent: linear-gradient(90deg,#2d7eff,#1aa673,#e98a2e,#e5548a,#7b57df);
+      background: linear-gradient(180deg, #f7faff 0%, #ffffff 22%, #fbfdff 100%);
+      border-color:#dce6f8;
+    }
+    #chapters::before { background:linear-gradient(90deg,#2d7eff,#18a8b9,#1aa673,#e98a2e,#e5548a,#7b57df); }
+
+    #method {
+      --section-accent: #8a62e8;
+      background: linear-gradient(180deg, #f7f3ff 0%, #ffffff 28%, #fdfcff 100%);
+      border-color:#e5dcf7;
+    }
+    #method .section-kicker { color:#704bc8; background:#eee7ff; border-color:#ddd0fb; }
+    #method .compare-panel:nth-child(1){ background:linear-gradient(180deg,#f0fff8,#fff); border-color:#d6eee3; }
+    #method .compare-panel:nth-child(2){ background:linear-gradient(180deg,#f5f2ff,#fff); border-color:#e2d9f7; }
+
+    #boundaries {
+      --section-accent: #4e607e;
+      background: linear-gradient(180deg, #f3f6fa 0%, #ffffff 28%, #fbfcfe 100%);
+      border-color:#dfe5ee;
+    }
+    #boundaries .section-kicker { color:#4e607e; background:#eaf0f7; border-color:#d8e1ec; }
+    #boundaries .metric:nth-child(1){ background:#f1f6ff; border-color:#d8e5fa; }
+    #boundaries .metric:nth-child(2){ background:#f1fff9; border-color:#d7eee4; }
+    #boundaries .metric:nth-child(3){ background:#fff8ef; border-color:#f1dfc9; }
+    #boundaries .metric:nth-child(4){ background:#f8f2ff; border-color:#e4d9f8; }
+
+    #principles {
+      --section-accent: #3657d8;
+      background: linear-gradient(180deg, #f1f4ff 0%, #ffffff 28%, #fbfcff 100%);
+      border-color:#d6def8;
+    }
+    #principles .section-kicker { color:#3453c9; background:#e8ecff; border-color:#ccd7ff; }
+    #principles .principle:nth-child(4n+1){ background:#f4f7ff; border-color:#d9e4fb; }
+    #principles .principle:nth-child(4n+2){ background:#f2fff8; border-color:#d8eee5; }
+    #principles .principle:nth-child(4n+3){ background:#fff8ef; border-color:#f1dfc9; }
+    #principles .principle:nth-child(4n){ background:#f8f3ff; border-color:#e5daf8; }
+
+    /* Keep color zoning elegant rather than noisy. */
+    #core .section-body,
+    #loop .section-body,
+    #rules .section-body,
+    #fun .section-body,
+    #reference-videos .section-body,
+    #storyboard .section-body,
+    #moments .section-body,
+    #method .section-body,
+    #boundaries .section-body,
+    #principles .section-body {
+      position: relative;
+      z-index: 1;
+    }
+
+
+    .nowrap-tail {
+      display: inline-block;
+      white-space: nowrap;
+      word-break: keep-all;
+    }
+
+    /* Colored header bands make the long document easier to scan. */
+    #core .section-head { background:linear-gradient(90deg,rgba(45,126,255,.09),rgba(45,126,255,0) 70%); border-bottom:1px solid rgba(45,126,255,.10); }
+    #loop .section-head { background:linear-gradient(90deg,rgba(22,169,185,.10),rgba(22,169,185,0) 70%); border-bottom:1px solid rgba(22,169,185,.10); }
+    #rules .section-head { background:linear-gradient(90deg,rgba(123,87,223,.10),rgba(123,87,223,0) 70%); border-bottom:1px solid rgba(123,87,223,.10); }
+    #fun .section-head { background:linear-gradient(90deg,rgba(233,138,46,.11),rgba(233,138,46,0) 70%); border-bottom:1px solid rgba(233,138,46,.10); }
+    #reference-videos .section-head { background:linear-gradient(90deg,rgba(229,84,138,.10),rgba(229,84,138,0) 70%); border-bottom:1px solid rgba(229,84,138,.10); }
+    #storyboard .section-head { background:linear-gradient(90deg,rgba(240,108,94,.10),rgba(240,108,94,0) 70%); border-bottom:1px solid rgba(240,108,94,.10); }
+    #moments .section-head { background:linear-gradient(90deg,rgba(26,166,115,.10),rgba(26,166,115,0) 70%); border-bottom:1px solid rgba(26,166,115,.10); }
+    #method .section-head { background:linear-gradient(90deg,rgba(138,98,232,.10),rgba(138,98,232,0) 70%); border-bottom:1px solid rgba(138,98,232,.10); }
+    #boundaries .section-head { background:linear-gradient(90deg,rgba(78,96,126,.10),rgba(78,96,126,0) 70%); border-bottom:1px solid rgba(78,96,126,.10); }
+    #principles .section-head { background:linear-gradient(90deg,rgba(54,87,216,.10),rgba(54,87,216,0) 70%); border-bottom:1px solid rgba(54,87,216,.10); }
+    #map .road-head { padding:4px 4px 20px; border-bottom:1px solid rgba(43,159,200,.12); }
+    #chapters .road-head { padding:4px 4px 20px; border-bottom:1px solid rgba(123,87,223,.12); }
+
+    /* Keep headers visually spacious after adding color bands. */
+    .section-card .section-head { border-radius:27px 27px 0 0; }
+
+    @media (max-width: 1180px) {
+      .workspace { grid-template-columns: 1fr; }
+      .side-nav { position: relative; top: auto; display: flex; flex-wrap: wrap; gap: 8px; }
+      .side-nav .title, .side-tip { width: 100%; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-art { min-height: 520px; }
+      .hero-stats, .road-metrics, .metric-row, .moments-grid, .rule-grid, .manifesto-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .story-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stage { grid-template-columns: 70px 1fr 1fr; }
+      .stage > div:last-child { grid-column: 2 / span 2; }
+    }
+    @media (max-width: 900px) {
+      .dual-hero, .loop-panel, .dna-board, .vs-grid, .split-grid, .principle-grid { grid-template-columns: 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+      .loop-diagram { grid-template-columns: 1fr; }
+      .center-tank { grid-column: span 1; }
+      .story-grid, .moments-grid, .road-metrics, .hero-stats, .rule-grid, .metric-row, .manifesto-grid, .visual-wall { grid-template-columns: 1fr; }
+      .hero-note { grid-template-columns: 1fr; }
+      .stage { grid-template-columns: 60px 1fr; }
+      .stage > div:nth-child(n+3) { grid-column: 2; }
+    }
+
+    @media (max-width: 780px) {
+      .feature-quote .text.key-statement { font-size: clamp(17px, 4.7vw, 24px); }
+      .statement-line, .formula-line { white-space: nowrap; }
+      .formula-line { letter-spacing: -.04em; }
+    }
+
+    @media (max-width: 640px) {
+      .page { width: min(var(--page), calc(100% - 16px)); margin: 10px auto 44px; }
+      .keep-phrase { white-space: nowrap; display: inline-block; max-width:100%; }
+      .hero-stats, .road-metrics, .metric-row, .story-grid, .moments-grid { grid-template-columns: 1fr; }
+      .video-ref-intro, .video-grid { padding-left: 18px; padding-right: 18px; }
+      .video-card { grid-template-columns: 58px minmax(0, 1fr) 38px; gap: 12px; padding: 14px; }
+      .video-thumb { width: 58px; height: 58px; border-radius: 17px; }
+      .video-meta h3 { font-size: 15px; }
+      .video-open { width: 38px; height: 38px; border-radius: 12px; }
+      .hero { padding: 18px; }
+      .hero-art { min-height: 420px; }
+      .section-head, .section-body, .chapter-road, .manifesto, .closing { padding-left: 18px; padding-right: 18px; }
+      .quote-band { padding: 22px 18px; }
+      .section-card, .quote-band, .chapter-road, .manifesto, .closing, .hero-shell { border-radius: 22px; }
+      h1 { font-size: 38px; }
+      .slogan-main { font-size: 22px; }
+    }
+  
+
+    /* =========================================================
+       FINAL QA PASS — layout stability, emphasis & density
+       ========================================================= */
+
+    /* Never mutate copy with JS just to control line breaks.  Key copy uses
+       semantic blocks / sizing instead, which is stable across browsers. */
+    .nowrap-tail { white-space: inherit; }
+
+    /* Principles: fix the previous nested-span styling bug and keep headings
+       visually intact on desktop/tablet. */
+    #principles .principle-grid {
+      gap: 14px;
+    }
+    #principles .principle {
+      grid-template-columns: 56px minmax(0,1fr);
+      align-items: center;
+      min-height: 104px;
+      padding: 17px 18px;
+    }
+    #principles .principle strong {
+      display: block;
+      margin: 0 0 6px;
+      font-size: 15px;
+      line-height: 1.38;
+      letter-spacing: -.012em;
+      color: #213150;
+      white-space: nowrap;
+      word-break: keep-all;
+      overflow-wrap: normal;
+    }
+    #principles .principle > div:last-child > span {
+      display: block;
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: #7282a2;
+      white-space: normal;
+    }
+
+    /* Signature moments: less empty card area, much stronger readability. */
+    #moments .moments-grid {
+      counter-reset: moment-card;
+      gap: 14px;
+    }
+    #moments .moment {
+      counter-increment: moment-card;
+      position: relative;
+      min-height: 96px;
+      padding: 20px 22px 20px 74px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      line-height: 1.58;
+      font-weight: 800;
+      letter-spacing: -.008em;
+      color: #33435f;
+    }
+    #moments .moment::before {
+      left: 0;
+      top: 14px;
+      bottom: 14px;
+      width: 4px;
+    }
+    #moments .moment::after {
+      content: counter(moment-card, decimal-leading-zero);
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(104,130,180,.18);
+      box-shadow: 0 5px 14px rgba(45,70,120,.06);
+      font-size: 12px;
+      font-weight: 950;
+      color: #567099;
+    }
+
+    /* Manifesto: use one warm accent for the three decisive product traits. */
+    .manifesto h2 {
+      max-width: 1010px;
+      font-size: clamp(38px, 4vw, 56px);
+      line-height: 1.06;
+      letter-spacing: -.045em;
+      text-wrap: balance;
+    }
+    .manifesto-hot {
+      color: #ff6f76;
+      white-space: nowrap;
+      text-shadow: 0 8px 28px rgba(255,91,104,.12);
+    }
+    .manifesto p {
+      font-size: 15px;
+      line-height: 1.78;
+    }
+    .manifesto-grid .m strong {
+      font-size: 15px;
+    }
+    .manifesto-grid .m span {
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+
+    /* Video references: eliminate the floating-pill row that could look detached
+       from the cards at some viewport widths. */
+    #reference-videos .video-ref-intro {
+      display: block;
+      padding: 16px 28px 18px;
+    }
+    #reference-videos .video-ref-note {
+      max-width: none;
+      margin: 0;
+      padding: 14px 16px;
+      display: grid;
+      grid-template-columns: auto minmax(0,1fr) auto;
+      align-items: center;
+      gap: 12px;
+      border-radius: 16px;
+      background: linear-gradient(90deg, #fff4f8 0%, #fff8fb 58%, #fff 100%);
+      border: 1px solid #ffdce8;
+      color: #6f5870;
+    }
+    #reference-videos .video-ref-note p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.65;
+      color: #6e7088;
+    }
+    .video-ref-purpose,
+    .video-ref-platform {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .video-ref-purpose {
+      padding: 7px 10px;
+      background: #ffedf4;
+      border: 1px solid #ffd4e3;
+      color: #d44a76;
+    }
+    .video-ref-platform {
+      padding: 7px 10px;
+      background: #fff;
+      border: 1px solid #ffdbe7;
+      color: #ca5379;
+    }
+    #reference-videos .video-grid {
+      padding-top: 0;
+    }
+    #reference-videos .video-card {
+      min-height: 150px;
+    }
+    #reference-videos .video-meta h3 {
+      font-size: 17px;
+      line-height: 1.42;
+      letter-spacing: -.01em;
+    }
+    #reference-videos .video-meta p {
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+
+    /* Improve general large-copy hierarchy. */
+    .section-head h2,
+    .road-head h2 {
+      letter-spacing: -.035em;
+      line-height: 1.18;
+    }
+    .section-head p,
+    .road-head p {
+      font-size: 14px;
+      line-height: 1.72;
+    }
+    .quote-band .big,
+    .closing p {
+      text-wrap: balance;
+    }
+
+    /* Tablet: keep two-column principles clean, then collapse before titles get cramped. */
+    @media (max-width: 1080px) {
+      #principles .principle-grid { grid-template-columns: 1fr; }
+      #principles .principle strong { white-space: normal; }
+      #reference-videos .video-ref-note {
+        grid-template-columns: auto minmax(0,1fr);
+      }
+      #reference-videos .video-ref-platform {
+        grid-column: 2;
+        justify-self: start;
+      }
+    }
+
+    @media (max-width: 760px) {
+      #moments .moment {
+        min-height: 88px;
+        padding: 18px 18px 18px 66px;
+        font-size: 15px;
+      }
+      #moments .moment::after {
+        left: 16px;
+        width: 36px;
+        height: 36px;
+      }
+      .manifesto h2 {
+        font-size: clamp(34px, 9vw, 46px);
+        line-height: 1.08;
+      }
+      .manifesto-hot { white-space: normal; }
+      #reference-videos .video-ref-note {
+        grid-template-columns: 1fr;
+        gap: 9px;
+      }
+      #reference-videos .video-ref-platform { grid-column: auto; justify-self: start; }
+      #reference-videos .video-card {
+        grid-template-columns: 58px minmax(0,1fr);
+        gap: 13px;
+      }
+      #reference-videos .video-thumb { width: 58px; height: 58px; border-radius: 17px; }
+      #reference-videos .video-open { display:none; }
+    }
+
+
+
+    /* Final narrow-screen guardrails discovered during viewport QA. */
+    @media (max-width: 640px) {
+      .section-head h2,
+      .road-head h2,
+      .quote-band .big,
+      .closing p {
+        max-width: 100%;
+        font-size: clamp(25px, 7.3vw, 32px);
+        line-height: 1.18;
+        letter-spacing: -.03em;
+        word-break: normal;
+        overflow-wrap: anywhere;
+        text-wrap: pretty;
+      }
+      .roadline { padding-left: 0; }
+      .roadline::before { left: 8px; opacity: .45; }
+      .chapter-road { overflow: hidden; }
+      #principles .principle strong {
+        font-size: 14px;
+        line-height: 1.45;
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+    }
+
+
+
+    @media (min-width: 901px) and (max-width: 1180px) {
+      .manifesto-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+</style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero-shell reveal" id="top">
+      <div class="hero">
+        <div class="hero-kv">
+          <div class="meta-row">
+            <span class="badge">项目概念说明 · 核心玩法与体验方向</span>
+            <span class="badge">当前版本：核心玩法说明 / 非详细落地策划案</span>
+          </div>
+          <div>
+            <div class="eyebrow">CO-OP PARTY GAME / CORE VISION</div>
+            <h1>搬鱼缸</h1>
+          </div>
+          <p class="hero-sub">
+            这份文档用于让程序、美术、关卡、策划以及后续加入项目的人，在看完后对“这款游戏到底玩什么、怎么玩、为什么好玩、关卡如何持续变化”形成同一个理解。
+          </p>
+          <div class="slogan-card">
+            <div class="slogan-main">2–4 名玩家共同抬着一个极其脆弱、价值连城的鱼缸一路逃跑。<br>每个人只能控制自己，但所有人共同影响同一个鱼缸。</div>
+            <div class="slogan-sub">鱼缸碰到墙壁或地面就会碎。全队必须依靠沟通、站位、节奏和临场补救，把它安全送到终点。</div>
+          </div>
+          <div class="chip-row">
+            <span class="chip">2–4 人合作</span>
+            <span class="chip">第三人称</span>
+            <span class="chip">连续大地图</span>
+            <span class="chip">自动记录点</span>
+            <span class="chip">物理互动</span>
+            <span class="chip">高事故密度</span>
+            <span class="chip">直播 / 短视频友好</span>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><div class="num">2–4</div><div class="label">玩家人数：少人可通关，4 人更混乱</div></div>
+            <div class="hero-stat"><div class="num">1</div><div class="label">共享核心对象：巨大、脆弱的鱼缸</div></div>
+            <div class="hero-stat"><div class="num"><span class="keep-phrase">接触即碎</span></div><div class="label">鱼缸本体触碰墙壁或地面立即失败</div></div>
+            <div class="hero-stat"><div class="num">5–12m</div><div class="label">记录点间重试成本的当前评估区间</div></div>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="搬鱼缸概念主视觉">
+          <svg class="svg-wrap" viewBox="0 0 720 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="tankGlass" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="rgba(117,210,255,0.55)" />
+                <stop offset="1" stop-color="rgba(255,255,255,0.15)" />
+              </linearGradient>
+              <linearGradient id="pathGlow" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f5b35c" />
+                <stop offset="1" stop-color="#ff6b7d" />
+              </linearGradient>
+              <radialGradient id="fishGlow" cx="50%" cy="50%" r="65%">
+                <stop offset="0" stop-color="#ffd97a" stop-opacity=".9" />
+                <stop offset="1" stop-color="#ffd97a" stop-opacity="0" />
+              </radialGradient>
+              <filter id="blur40"><feGaussianBlur stdDeviation="18"/></filter>
+              <filter id="shadow1" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#02101f" flood-opacity=".55"/></filter>
+            </defs>
+
+            <circle cx="360" cy="120" r="130" fill="#59A8FF" opacity=".12" filter="url(#blur40)"/>
+            <path d="M50 620C118 578 173 552 240 552C332 552 345 586 425 586C502 586 553 531 630 440" stroke="url(#pathGlow)" stroke-width="86" stroke-linecap="round" opacity=".18"/>
+            <path d="M88 618C170 566 200 534 258 524C330 512 364 544 432 544C507 544 570 508 632 424" stroke="#f2b96a" stroke-width="30" stroke-linecap="round" opacity=".52"/>
+
+            <rect x="168" y="415" width="360" height="118" rx="16" fill="#0f1a32" opacity=".65"/>
+            <path d="M121 573L209 528" stroke="#5B6E9B" stroke-width="12" stroke-linecap="round" opacity=".6"/>
+            <path d="M535 367L610 323" stroke="#5B6E9B" stroke-width="12" stroke-linecap="round" opacity=".5"/>
+
+            <g filter="url(#shadow1)">
+              <path d="M267 347L465 309L543 421L347 462L267 347Z" fill="rgba(115,190,255,.12)" stroke="rgba(186,233,255,.75)" stroke-width="5"/>
+              <path d="M248 381L446 342L524 454L327 494L248 381Z" fill="rgba(117,210,255,.12)" stroke="rgba(230,246,255,.88)" stroke-width="4"/>
+              <path d="M347 462V494" stroke="rgba(236,247,255,.9)" stroke-width="4"/>
+              <path d="M465 309V342" stroke="rgba(236,247,255,.9)" stroke-width="4"/>
+              <path d="M543 421V454" stroke="rgba(236,247,255,.9)" stroke-width="4"/>
+              <path d="M267 347V381" stroke="rgba(236,247,255,.9)" stroke-width="4"/>
+              <ellipse cx="390" cy="404" rx="110" ry="58" fill="url(#fishGlow)" opacity=".75"/>
+              <path d="M353 396C372 382 401 384 422 398C405 410 391 420 355 417C365 411 371 404 353 396Z" fill="#FFD87D"/>
+              <circle cx="404" cy="397" r="3" fill="#6b5321"/>
+              <path d="M290 398C322 384 365 373 410 371C453 369 491 376 520 390" stroke="rgba(130,214,255,.52)" stroke-width="10" stroke-linecap="round"/>
+              <path d="M277 422C310 409 354 399 399 398C441 397 476 401 505 411" stroke="rgba(130,214,255,.45)" stroke-width="8" stroke-linecap="round"/>
+            </g>
+
+            <g>
+              <ellipse cx="195" cy="500" rx="42" ry="15" fill="#020915" opacity=".35"/>
+              <circle cx="188" cy="441" r="22" fill="#101b36"/>
+              <rect x="175" y="461" width="27" height="58" rx="13" fill="#192745"/>
+              <path d="M183 474L152 426" stroke="#D1E6FF" stroke-width="10" stroke-linecap="round"/>
+              <path d="M197 474L233 425" stroke="#D1E6FF" stroke-width="10" stroke-linecap="round"/>
+              <path d="M180 520L165 572" stroke="#192745" stroke-width="12" stroke-linecap="round"/>
+              <path d="M197 520L212 568" stroke="#192745" stroke-width="12" stroke-linecap="round"/>
+            </g>
+            <g>
+              <ellipse cx="540" cy="500" rx="42" ry="15" fill="#020915" opacity=".35"/>
+              <circle cx="543" cy="438" r="22" fill="#101b36"/>
+              <rect x="530" y="458" width="27" height="60" rx="13" fill="#192745"/>
+              <path d="M539 472L505 424" stroke="#D1E6FF" stroke-width="10" stroke-linecap="round"/>
+              <path d="M551 472L585 425" stroke="#D1E6FF" stroke-width="10" stroke-linecap="round"/>
+              <path d="M535 519L521 571" stroke="#192745" stroke-width="12" stroke-linecap="round"/>
+              <path d="M551 519L566 568" stroke="#192745" stroke-width="12" stroke-linecap="round"/>
+            </g>
+            <g>
+              <ellipse cx="298" cy="572" rx="38" ry="12" fill="#020915" opacity=".3"/>
+              <circle cx="288" cy="514" r="20" fill="#101b36"/>
+              <rect x="276" y="533" width="24" height="52" rx="12" fill="#192745"/>
+              <path d="M281 545L322 513" stroke="#D1E6FF" stroke-width="10" stroke-linecap="round"/>
+              <path d="M293 545L254 506" stroke="#D1E6FF" stroke-width="10" stroke-linecap="round"/>
+              <path d="M282 584L274 631" stroke="#192745" stroke-width="12" stroke-linecap="round"/>
+              <path d="M295 584L311 626" stroke="#192745" stroke-width="12" stroke-linecap="round"/>
+            </g>
+            <g>
+              <ellipse cx="460" cy="570" rx="38" ry="12" fill="#020915" opacity=".3"/>
+              <circle cx="470" cy="511" r="20" fill="#101b36"/>
+              <rect x="458" y="529" width="24" height="54" rx="12" fill="#192745"/>
+              <path d="M463 540L499 507" stroke="#D1E6FF" stroke-width="10" stroke-linecap="round"/>
+              <path d="M476 540L437 506" stroke="#D1E6FF" stroke-width="10" stroke-linecap="round"/>
+              <path d="M465 583L451 626" stroke="#192745" stroke-width="12" stroke-linecap="round"/>
+              <path d="M478 583L491 632" stroke="#192745" stroke-width="12" stroke-linecap="round"/>
+            </g>
+
+            <path d="M525 342L660 286" stroke="#FF6B7D" stroke-width="16" stroke-linecap="round" opacity=".68"/>
+            <path d="M650 258L681 304L623 321" fill="#FF6B7D" opacity=".75"/>
+            <text x="585" y="252" fill="white" font-size="20" font-weight="800">撞墙风险</text>
+            <text x="94" y="609" fill="#F0C987" font-size="18" font-weight="800">狭窄路线 / 转角 / 高压沟通</text>
+          </svg>
+          <div class="hero-note">
+            <div class="note"><strong>核心对象</strong><span>一个巨大、脆弱、有重量、有惯性的鱼缸。</span></div>
+            <div class="note"><strong>共享约束</strong><span>所有玩家共同影响同一个物理物体，任何一个人的失误都可能影响全队。</span></div>
+            <div class="note"><strong>体验目标</strong><span>让沟通、失误、补救、甩锅和爆笑自然发生。</span></div>
+          </div>
+          <div class="scanlines"></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="side-nav reveal">
+        <div class="title">DOCUMENT MAP</div>
+        <a href="#core">01 · 核心定义</a>
+        <a href="#loop">02 · 玩家循环</a>
+        <a href="#rules">03 · 核心规则</a>
+        <a href="#fun">04 · 乐趣来源</a>
+        <a href="#reference-videos">04A · 竞品实机</a>
+        <a href="#storyboard">05 · 体验分镜</a>
+        <a href="#moments">06 · 名场面</a>
+        <a href="#map">07 · 地图结构</a>
+        <a href="#chapters">08 · 主题章节</a>
+        <a href="#method">09 · 关卡方法论</a>
+        <a href="#boundaries">10 · 项目边界</a>
+        <a href="#principles">11 · 统一原则</a>
+        <div class="side-tip">目标不是做“搬运模拟器”，而是用一个共享鱼缸制造高密度社交事故、可读性强的失败过程和极强的传播画面。</div>
+      </aside>
+
+      <main class="content">
+        <section class="section-card reveal" id="core">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Part 01 · Core Definition</span>
+              <h2>核心玩法：四个人，共同“驾驶”一个鱼缸</h2>
+              <p>先把游戏骨架、玩家循环和共享约束完全对齐。这里不是四个各自行动的角色，而是四个玩家共同控制一个会出事故的共享对象。</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="dual-hero">
+              <div class="feature-quote">
+                <div class="lead">一眼理解</div>
+                <div class="text key-statement">
+                  <span class="statement-line">四个玩家不是</span>
+                  <span class="statement-line">四个互相独立的角色。</span>
+                  <span class="formula-line">四个人 + 一个鱼缸</span>
+                  <span class="formula-line formula-result">= 一个完整的移动单位。</span>
+                </div>
+                <div class="sub">每个人的动作都会改变鱼缸状态，也会立刻影响另外三个人。这款游戏的难点不是“谁单人操作最强”，而是“大家能不能在同一个节奏里做正确的事”。</div>
+                <div class="legend">
+                  <span>单人操作简单</span>
+                  <span>复杂度来自多人共享控制</span>
+                  <span>鱼缸本身就是游戏核心</span>
+                </div>
+              </div>
+              <div class="summary-grid">
+                <div class="summary-item">
+                  <div class="icon-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="7" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M7 12h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  </div>
+                  <div><strong>共享鱼缸</strong><span>所有玩家共同影响同一个鱼缸，没有任何人拥有单独的“方向盘”。</span></div>
+                </div>
+                <div class="summary-item">
+                  <div class="icon-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 8l4-4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 16l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div><strong>重量与惯性</strong><span>启动、急停、转向、跳跃都不是瞬时完成，动作一定会留下后果。</span></div>
+                </div>
+                <div class="summary-item">
+                  <div class="icon-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 5v8l-8 5-8-5V8l8-5Z" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="15.5" r="1" fill="currentColor"/></svg>
+                  </div>
+                  <div><strong>失败可读</strong><span>鱼缸本体与墙壁或地面发生任何接触，立即碎裂并判定全队失败。失败过程要清楚、可读、可笑，而不是莫名其妙。</span></div>
+                </div>
+                <div class="summary-item">
+                  <div class="icon-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 15.5c1.5-2.7 4-4 7-4s5.5 1.3 7 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="10" r="2" stroke="currentColor" stroke-width="1.8"/><circle cx="16" cy="10" r="2" stroke="currentColor" stroke-width="1.8"/></svg>
+                  </div>
+                  <div><strong>社交事故引擎</strong><span>真正想卖的体验是沟通、指挥、救援、甩锅和爆笑，而不是单纯“把东西搬过去”。</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="quote-band reveal">
+          <div class="small">Internal one-liner</div>
+          <div class="big">我们不是在做“四个人搬着一个任务物品”，而是在做 <span style="color:#8fd0ff">“四个人共同驾驶一个没有方向盘的巨大玻璃鱼缸”</span>。</div>
+        </section>
+
+        <section class="section-card reveal" id="loop">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Part 02 · Gameplay Loop</span>
+              <h2>玩家一直在干什么：不是抽象合作，而是不断解决搬运问题</h2>
+              <p>真正循环不是“走到终点”，而是不断解决：这一次，我们四个人怎么把这个鱼缸安全弄过去？</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="loop-panel">
+              <div class="loop-diagram">
+                <div class="loop-node" data-step="01">
+                  <div class="label">观察前方</div>
+                  <div class="desc">先看清空间关系：宽度、拐角、断层、坡度、环境外力。</div>
+                </div>
+                <div class="loop-node" data-step="02">
+                  <div class="label">沟通方案</div>
+                  <div class="desc">说人话、倒数、确认谁先谁后，临时定一个队内“节拍器”。</div>
+                </div>
+                <div class="loop-node" data-step="03">
+                  <div class="label">调整站位</div>
+                  <div class="desc">不是谁想站哪就站哪，而是要围绕重心和空间重新摆位。</div>
+                </div>
+                <div class="center-tank">
+                  <div>
+                    <h3>共享对象始终在中间：鱼缸就是节奏源</h3>
+                    <p>所有人永远只控制“我这个人”。鱼缸向哪里走，是多人站位和动作共同作用出来的结果。</p>
+                  </div>
+                  <span class="tank-pill">Shared Tank Physics</span>
+                </div>
+                <div class="loop-node" data-step="04">
+                  <div class="label">共同搬运</div>
+                  <div class="desc">大家在同一个节拍里前进、转向、抬高或跳跃。</div>
+                </div>
+                <div class="loop-node" data-step="05">
+                  <div class="label">出现失误</div>
+                  <div class="desc">快一步、慢一步、突然松手、撞角、节奏错拍，任何人都能制造事故。</div>
+                </div>
+                <div class="loop-node" data-step="06">
+                  <div class="label">紧急补救</div>
+                  <div class="desc">停！扶住！回身！补位！只要鱼缸没碎，局面就还有戏。</div>
+                </div>
+                <div class="loop-node" data-step="07">
+                  <div class="label">继续推进</div>
+                  <div class="desc">救回局面后重新稳定队形，进入下一段路线，再次面对新的搬运问题。</div>
+                </div>
+              </div>
+              <div class="panel-box">
+                <div class="panel">
+                  <h3>基础操作</h3>
+                  <ul>
+                    <li><strong>WASD：</strong>移动</li>
+                    <li><strong>鼠标：</strong>调整方向 / 视角</li>
+                    <li><strong>Shift：</strong>长按奔跑</li>
+                    <li><strong>Space：</strong>跳跃</li>
+                    <li><strong>Ctrl：</strong>长按蹲下</li>
+                    <li><strong>抓取键：</strong>长按抓住鱼缸，松开即松手</li>
+                  </ul>
+                </div>
+                <div class="panel">
+                  <h3>失败与重生</h3>
+                  <ul>
+                    <li>鱼缸本体与墙壁或地面发生任何接触，立即碎裂并判定全队失败；随后回到最近自动记录点。</li>
+                    <li>玩家掉下平台不算失败，角色立即重生。</li>
+                    <li>只要鱼缸安全，场上剩 1–3 人也允许继续维持局面。</li>
+                    <li>记录点间隔优先围绕约 5–12 分钟重试成本评估。</li>
+                  </ul>
+                </div>
+                <div class="panel">
+                  <h3>关键认知</h3>
+                  <p>单人操作必须简单，复杂度来自多人共同控制一个巨大、脆弱、有重量、有惯性的物理物体。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card reveal" id="rules">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Part 03 · Rules Backbone</span>
+              <h2>最核心的规则：规则要少，但组合结果要够多</h2>
+              <p>这些规则不是为了写完整而存在，而是为了共同制造一种稳定可读、稳定好笑、稳定可传播的多人合作事故。</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="rule-grid">
+              <div class="rule-card">
+                <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="7" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/></svg></div>
+                <h4>共享鱼缸</h4>
+                <p>所有玩家共同影响同一个鱼缸。</p>
+              </div>
+              <div class="rule-card">
+                <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12h16" stroke="currentColor" stroke-width="1.8"/><path d="M12 4v16" stroke="currentColor" stroke-width="1.8"/></svg></div>
+                <h4>只控制自己</h4>
+                <p>不存在“直接控制鱼缸”的独立按键。</p>
+              </div>
+              <div class="rule-card">
+                <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 13.5c0-2 1.4-3.5 3.3-3.5 1.2 0 2.2.6 2.8 1.5.5-.9 1.5-1.5 2.7-1.5 1.9 0 3.2 1.5 3.2 3.5V19H7v-5.5Z" stroke="currentColor" stroke-width="1.8"/></svg></div>
+                <h4>长按抓住</h4>
+                <p>按住抓取键维持抓取，松开即松手。</p>
+              </div>
+              <div class="rule-card">
+                <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9 17l3 3 3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <h4>物理实体</h4>
+                <p>鱼缸有重量、惯性、倾斜，不是挂在角色身上的动画道具。</p>
+              </div>
+              <div class="rule-card">
+                <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10" stroke="currentColor" stroke-width="1.8"/><path d="M17 7 7 17" stroke="currentColor" stroke-width="1.8"/></svg></div>
+                <h4>鱼缸碎 = 全队失败</h4>
+                <p>鱼缸本体与墙壁或地面发生任何接触，立即碎裂并判定全队失败；随后回到最近自动记录点。</p>
+              </div>
+              <div class="rule-card">
+                <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M7 20c1-3 2.8-5 5-5s4 2 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+                <h4>玩家自己不失败</h4>
+                <p>玩家掉落后立即重生；只要鱼缸没碎，游戏继续。</p>
+              </div>
+              <div class="rule-card">
+                <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 6v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 10h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 14h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+                <h4>少人也能撑</h4>
+                <p>只要有人找到中心平衡点，就能极慢地独自顶住鱼缸。</p>
+              </div>
+              <div class="rule-card">
+                <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 15.5c1.5-2.7 4-4 7-4s5.5 1.3 7 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="10" r="2" stroke="currentColor" stroke-width="1.8"/><circle cx="16" cy="10" r="2" stroke="currentColor" stroke-width="1.8"/></svg></div>
+                <h4>目标完全合作</h4>
+                <p>不设计阵营背叛或 PvP，混乱来自环境与协调失误。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card reveal" id="fun">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Part 04 · Fun Pillars</span>
+              <h2>为什么它会好玩：它卖的不是“搬东西”，而是“社交事故”</h2>
+              <p>乐趣不能只写“团队合作”，而要拆成可以被设计、被验证、被传播的具体体验。</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="dna-board">
+              <div class="dna-panel">
+                <h3>核心乐趣拆解</h3>
+                <div class="legend">
+                  <span>普通空间变成难题</span>
+                  <span>我的操作会变成队友的问题</span>
+                  <span>沟通自然发生</span>
+                  <span>失败本身就是内容</span>
+                </div>
+                <p style="margin-top:14px;color:var(--sub);font-size:13px;">一个门、一个台阶、一个拐角，对普通角色没意义；对四个人抬着的鱼缸却会自然变成题目。一个人快一步、慢一步、突然松手或站错位置，都可能直接伤害全队。玩家会主动喊“慢点”“别动”“右边退”“一起跳”，因为不沟通真的更容易失败。</p>
+                <div class="competitors">
+                  <div class="comp"><strong>① 普通空间，被鱼缸变成难题</strong><span>门、台阶、拐角原本没有难度，但鱼缸的尺寸、惯性和脆弱性会自然把它们变成空间题。</span></div>
+                  <div class="comp"><strong>② 我的操作，会变成队友的问题</strong><span>一个人快一步、慢一步、突然松手或站错位置，都可能直接改变整个团队的风险。</span></div>
+                  <div class="comp"><strong>③ 沟通自然发生</strong><span>“慢点”“别动”“右边退”“一起跳”不是系统要求玩家喊，而是玩法本身逼着玩家交流。</span></div>
+                  <div class="comp"><strong>④ 失败本身就是内容</strong><span>鱼缸滑向墙、最后几米碎掉、有人慢半拍，这些失败过程本身就具备笑点和复述价值。</span></div>
+                </div>
+              </div>
+              <div class="visual-wall">
+                <div class="mini-scene">
+                  <span class="label">狭窄转角</span>
+                  <svg class="svg-wrap" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="320" height="220" fill="url(#g1)"/>
+                    <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1a386a"/><stop offset="1" stop-color="#0d1831"/></linearGradient></defs>
+                    <path d="M36 190H140V136H224V92H292" stroke="#f0be77" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" opacity=".72"/>
+                    <rect x="112" y="96" width="92" height="48" rx="8" fill="rgba(120,206,255,.18)" stroke="rgba(220,245,255,.9)" stroke-width="3" transform="rotate(-10 112 96)"/>
+                    <circle cx="90" cy="136" r="12" fill="#101a34"/><circle cx="118" cy="170" r="12" fill="#101a34"/><circle cx="188" cy="162" r="12" fill="#101a34"/><circle cx="215" cy="126" r="12" fill="#101a34"/>
+                    <path d="M84 145 116 116M122 177 132 146M183 170 175 143M222 136 196 111" stroke="#d9edff" stroke-width="6" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div class="mini-scene">
+                  <span class="label">同步跳跃</span>
+                  <svg class="svg-wrap" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="320" height="220" fill="#11264b"/>
+                    <rect x="24" y="160" width="110" height="22" rx="11" fill="#7993b8"/>
+                    <rect x="186" y="110" width="110" height="22" rx="11" fill="#7993b8"/>
+                    <rect x="105" y="84" width="110" height="46" rx="8" fill="rgba(120,206,255,.18)" stroke="rgba(220,245,255,.9)" stroke-width="3" transform="rotate(-8 105 84)"/>
+                    <circle cx="76" cy="115" r="12" fill="#0d1831"/><circle cx="104" cy="148" r="12" fill="#0d1831"/><circle cx="172" cy="142" r="12" fill="#0d1831"/><circle cx="199" cy="104" r="12" fill="#0d1831"/>
+                    <path d="M74 124C70 98 82 80 102 74" stroke="#8bd1ff" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M174 152C180 126 188 112 204 106" stroke="#8bd1ff" stroke-width="4" stroke-linecap="round"/>
+                    <text x="34" y="42" fill="#fff" font-size="16" font-weight="700">“3、2、1——跳！”</text>
+                  </svg>
+                </div>
+                <div class="mini-scene">
+                  <span class="label">一人掉落，局面还在</span>
+                  <svg class="svg-wrap" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="320" height="220" fill="#102140"/>
+                    <path d="M24 174H296" stroke="#758ab0" stroke-width="20" stroke-linecap="round"/>
+                    <rect x="102" y="86" width="110" height="50" rx="8" fill="rgba(120,206,255,.18)" stroke="rgba(220,245,255,.9)" stroke-width="3" transform="rotate(9 102 86)"/>
+                    <circle cx="92" cy="126" r="12" fill="#0c1730"/><circle cx="132" cy="166" r="12" fill="#0c1730"/><circle cx="206" cy="154" r="12" fill="#0c1730"/><circle cx="258" cy="204" r="12" fill="#ff6b7d"/>
+                    <path d="M258 196 266 164" stroke="#ff6b7d" stroke-width="5" stroke-linecap="round"/>
+                    <text x="165" y="40" fill="#fff" font-size="16" font-weight="700">掉了一个，但还没失败</text>
+                  </svg>
+                </div>
+                <div class="mini-scene">
+                  <span class="label">撒手漂流</span>
+                  <svg class="svg-wrap" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="320" height="220" fill="#0e1b36"/>
+                    <path d="M22 152C60 132 93 132 132 152C170 172 202 172 238 152C262 139 282 139 300 147V220H22V152Z" fill="#2a5ea6"/>
+                    <path d="M22 160C60 140 93 140 132 160C170 180 202 180 238 160C262 147 282 147 300 155" stroke="#82ddff" stroke-width="8" fill="none"/>
+                    <rect x="112" y="102" width="96" height="44" rx="8" fill="rgba(120,206,255,.18)" stroke="rgba(220,245,255,.9)" stroke-width="3"/>
+                    <path d="M80 88 112 112M240 88 208 112M96 132 112 132M224 132 208 132" stroke="#e8f3ff" stroke-width="5" stroke-linecap="round"/>
+                    <text x="34" y="38" fill="#fff" font-size="16" font-weight="700">前面一直说别松手，这里反而必须放</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card video-ref-card reveal" id="reference-videos">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Reference · Streamer Gameplay</span>
+              <h2>竞品主播实机参考：直接看“节目效果”是怎么发生的</h2>
+              <p>以下视频用于快速感受同类搬运 / 物理合作玩法在主播实机环境中的笑点强度、失误观感与观看吸引力。它们是体验参考，不代表本项目照搬其规则或关卡。</p>
+            </div>
+          </div>
+          <div class="video-ref-intro">
+            <div class="video-ref-note">
+              <span class="video-ref-purpose">观看用途</span>
+              <p>建议团队在讨论“这个事故到底够不够好笑、观众能不能立刻看懂”时，直接打开主播实机观看，而不是只靠文字想象。</p>
+              <span class="video-ref-platform">外部链接 · 哔哩哔哩</span>
+            </div>
+          </div>
+          <div class="video-grid">
+            <a class="video-card" href="https://www.bilibili.com/video/BV1JXyNBtEtq/?spm_id_from=333.337.search-card.all.click&amp;vd_source=69a9f293487cf42ae388d4b7e83875e1" target="_blank" rel="noopener noreferrer">
+              <div class="video-thumb" aria-hidden="true">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3.5" y="6" width="17" height="13" rx="3" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M8 3.5 10 6M16 3.5 14 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="m10 10 5 2.5-5 2.5v-5Z" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="video-meta">
+                <div class="source">BILIBILI · 主播完整游玩</div>
+                <h3>水晶哥和节奏玩《搬玻璃 Carry The Glass》通关完整弹幕版</h3>
+                <p>标题标注“顶级节目效果”，可作为同类合作搬运玩法的主播观感参考。</p>
+              </div>
+              <div class="video-open" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M10 7h7v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </a>
+            <a class="video-card" href="https://www.bilibili.com/video/BV1Dz421B7Q6?spm_id_from=333.788.videopod.sections&amp;vd_source=69a9f293487cf42ae388d4b7e83875e1" target="_blank" rel="noopener noreferrer">
+              <div class="video-thumb" aria-hidden="true">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3.5" y="6" width="17" height="13" rx="3" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M8 3.5 10 6M16 3.5 14 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="m10 10 5 2.5-5 2.5v-5Z" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="video-meta">
+                <div class="source">BILIBILI · 实机片段</div>
+                <h3>如果没有意外，我就是那个意外！</h3>
+                <p>用于观察“玩家自己成为事故源”时，失误如何转化成可观看的多人节目效果。</p>
+              </div>
+              <div class="video-open" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M10 7h7v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <section class="section-card reveal" id="storyboard">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Part 05 · Storyboard</span>
+              <h2>一分钟典型体验：把“真实游玩感觉”说成可视化分镜</h2>
+              <p>用具体片段，统一大家对真实游玩感觉的想象。下面这 6 格不是装饰，而是以后做关卡、做演出、做宣传片时的体验对齐模板。</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="story-grid">
+              <div class="story-card">
+                <div class="no">01</div>
+                <svg class="svg-wrap" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="320" height="260" fill="#17305d"/>
+                  <path d="M38 214H142V120H282" stroke="#6f83aa" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" opacity=".62"/>
+                  <rect x="100" y="102" width="116" height="56" rx="10" fill="rgba(120,206,255,.18)" stroke="rgba(220,245,255,.9)" stroke-width="3" transform="rotate(-4 100 102)"/>
+                  <circle cx="83" cy="144" r="13" fill="#101b36"/><circle cx="116" cy="181" r="13" fill="#101b36"/><circle cx="195" cy="170" r="13" fill="#101b36"/><circle cx="222" cy="135" r="13" fill="#101b36"/>
+                  <path d="M79 153 110 123M121 191 130 158M189 180 181 154M226 145 202 123" stroke="#d9edff" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+                <div class="cap">四名玩家抬着鱼缸来到一个狭窄的 L 型走廊。普通角色能轻松通过的空间，因为鱼缸尺寸立刻变成一道团队题。</div>
+              </div>
+
+              <div class="story-card">
+                <div class="no">02</div>
+                <svg class="svg-wrap" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="320" height="260" fill="#102140"/>
+                  <path d="M36 212H148V118H286" stroke="#7187ad" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" opacity=".62"/>
+                  <rect x="105" y="98" width="116" height="56" rx="10" fill="rgba(120,206,255,.18)" stroke="rgba(220,245,255,.9)" stroke-width="3" transform="rotate(15 105 98)"/>
+                  <circle cx="82" cy="142" r="12" fill="#0d1831"/><circle cx="112" cy="184" r="12" fill="#ff8a5b"/><circle cx="200" cy="170" r="12" fill="#0d1831"/><circle cx="229" cy="134" r="12" fill="#0d1831"/>
+                  <path d="M91 133 111 117M118 175 139 151M193 161 190 147M219 143 201 124" stroke="#d9edff" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M154 70c26 2 46 13 58 33" stroke="#ff8a5b" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M210 94l4 13-13-2" fill="none" stroke="#ff8a5b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <text x="34" y="44" fill="#fff" font-size="18" font-weight="800">“停停停！”</text>
+                </svg>
+                <div class="cap">左前方玩家发现快碰墙，于是往后退；但右后方玩家还在继续往前，鱼缸开始顺时针旋转。所有人立刻喊“停停停”。</div>
+              </div>
+
+              <div class="story-card">
+                <div class="no">03</div>
+                <svg class="svg-wrap" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="320" height="260" fill="#11264b"/>
+                  <rect x="28" y="184" width="112" height="22" rx="11" fill="#7993b8"/>
+                  <rect x="186" y="126" width="106" height="22" rx="11" fill="#7993b8"/>
+                  <rect x="101" y="108" width="112" height="48" rx="8" fill="rgba(120,206,255,.18)" stroke="rgba(220,245,255,.9)" stroke-width="3"/>
+                  <circle cx="82" cy="151" r="12" fill="#0d1831"/><circle cx="111" cy="181" r="12" fill="#0d1831"/><circle cx="181" cy="176" r="12" fill="#0d1831"/><circle cx="210" cy="145" r="12" fill="#0d1831"/>
+                  <text x="45" y="56" fill="#fff" font-size="19" font-weight="800">“3、2、1——跳！”</text>
+                </svg>
+                <div class="cap">好不容易摆正，转过弯以后马上看到一个断层。四个人先稳定鱼缸，然后开始统一倒数：“3、2、1——跳！”</div>
+              </div>
+
+              <div class="story-card">
+                <div class="no">04</div>
+                <svg class="svg-wrap" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="320" height="260" fill="#0d1931"/>
+                  <path d="M22 208H298" stroke="#7388ad" stroke-width="20" stroke-linecap="round"/>
+                  <rect x="104" y="96" width="118" height="52" rx="8" fill="rgba(120,206,255,.18)" stroke="rgba(220,245,255,.9)" stroke-width="3" transform="rotate(9 104 96)"/>
+                  <circle cx="94" cy="136" r="12" fill="#0c1730"/><circle cx="136" cy="176" r="12" fill="#0c1730"/><circle cx="212" cy="162" r="12" fill="#0c1730"/><circle cx="264" cy="232" r="12" fill="#ff6b7d"/>
+                  <path d="M265 220 272 185" stroke="#ff6b7d" stroke-width="5" stroke-linecap="round"/>
+                </svg>
+                <div class="cap">三个人跳了，第四个人慢了半拍。鱼缸瞬间被拽歪，其中一名玩家掉下平台；玩家掉落不算失败，只要鱼缸还安全，局面就继续。</div>
+              </div>
+
+              <div class="story-card">
+                <div class="no">05</div>
+                <svg class="svg-wrap" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="320" height="260" fill="#0d1b35"/>
+                  <path d="M38 208H282" stroke="#7087b0" stroke-width="18" stroke-linecap="round"/>
+                  <rect x="106" y="94" width="112" height="50" rx="8" fill="rgba(120,206,255,.18)" stroke="rgba(220,245,255,.9)" stroke-width="3" transform="rotate(5 106 94)"/>
+                  <circle cx="162" cy="168" r="13" fill="#0c1730"/>
+                  <path d="M162 155 161 135" stroke="#d9edff" stroke-width="7" stroke-linecap="round"/>
+                  <path d="M146 174 177 174" stroke="#7cf0d3" stroke-width="5" stroke-linecap="round"/>
+                  <text x="52" y="51" fill="#fff" font-size="17" font-weight="800">一个人也能极慢地撑住</text>
+                </svg>
+                <div class="cap">剩下的人拼命调整，最后甚至只剩一个玩家刚好顶在中心平衡点。鱼缸几乎不再前进，但他可以极慢地独自撑住局面，为队友争取回来接手的时间。</div>
+              </div>
+
+              <div class="story-card">
+                <div class="no">06</div>
+                <svg class="svg-wrap" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="320" height="260" fill="#102140"/>
+                  <path d="M36 204H286" stroke="#7087b0" stroke-width="18" stroke-linecap="round"/>
+                  <rect x="110" y="108" width="102" height="48" rx="8" fill="rgba(120,206,255,.18)" stroke="rgba(220,245,255,.9)" stroke-width="3"/>
+                  <circle cx="126" cy="166" r="12" fill="#0d1831"/><circle cx="150" cy="126" r="12" fill="#0d1831"/><circle cx="180" cy="126" r="12" fill="#0d1831"/><circle cx="205" cy="166" r="12" fill="#0d1831"/>
+                  <text x="42" y="61" fill="#fff" font-size="17" font-weight="800">“快回来接手！”</text>
+                </svg>
+                <div class="cap">其他玩家重生后重新跑回来接手。队形恢复，大家继续推进，同时开始骂刚才没跳的人。一次完整的沟通、失误、救援、甩锅和爆笑闭环自然完成。</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card reveal" id="moments">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Part 06 · Signature Moments</span>
+              <h2>我们想稳定制造的“名场面”</h2>
+              <p>每个新玩法都应该思考：它能不能自然制造可复述、可围观、可传播的瞬间？</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="moments-grid">
+              <div class="moment">四个人一起喊“停”，但鱼缸还在因为惯性慢慢滑向墙。</div>
+              <div class="moment">三个人已经起跳，一个人慢半拍，整个鱼缸瞬间被拽歪。</div>
+              <div class="moment">一个玩家掉下去，剩下一个人刚好顶在中心点，极慢地独自撑住鱼缸。</div>
+              <div class="moment">鱼缸离墙只剩几厘米，所有人完全不敢动。</div>
+              <div class="moment">经历十分钟艰难搬运，离记录点只差最后几米时突然撞碎。</div>
+              <div class="moment">一个人疯狂指挥其他三个人，最后发现真正站错位置的是自己。</div>
+              <div class="moment">四个人第一次看到鱼被放进缸里，瞬间意识到游戏规则升级了。</div>
+              <div class="moment">前面一直被教育“千万别松手”，后面却必须全员一起喊“放！”让鱼缸自己漂走。</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="chapter-road reveal" id="map">
+          <div class="road-head">
+            <div>
+              <span class="section-kicker">Part 07 · Map Structure</span>
+              <h2>地图与关卡：一张连续旅程，不断改变“怎么搬”</h2>
+              <p>整张地图不靠堆机关续命，而靠不同主题章节持续制造新的合作问题。视觉上是一张不断向前推进的连续大地图，但每一段都有明显不同的合作主题。</p>
+            </div>
+          </div>
+          <div class="road-metrics">
+            <div class="metric"><div class="m-number">5–6h</div><div class="m-label">目标首次完整通关时长</div></div>
+            <div class="metric"><div class="m-number">2.5–3.5h</div><div class="m-label">熟练队伍净通关目标</div></div>
+            <div class="metric"><div class="m-number">8–10</div><div class="m-label">大型主题章节建议量级</div></div>
+            <div class="metric"><div class="m-number">25–40m</div><div class="m-label">单主题首次体验参考</div></div>
+          </div>
+          <div class="road-shell">
+            <h3>重要说明</h3>
+            <p style="margin:0;color:var(--sub);font-size:13px;">这些是当前项目目标，不是死指标。如果真正有趣的内容只能支撑 4 小时，就做 4 小时；不能为了“时长”硬塞重复内容。</p>
+          </div>
+        </section>
+
+        <section class="chapter-road reveal" id="chapters">
+          <div class="road-head">
+            <div>
+              <span class="section-kicker">Part 08 · Chapter Directions</span>
+              <h2>主题章节设计方向：每一章都应该提出一种新的合作问题</h2>
+              <p>每一段都围绕一种新的“合作问题”，而不是单纯增加更多障碍。好的新章节不是加入一个新机关，而是让玩家重新问一次：“原来鱼缸还能这样搬？”</p>
+            </div>
+          </div>
+          <div class="roadline">
+            <article class="stage">
+              <div class="stage-index">01</div>
+              <div><span class="tag t-blue">基础理解</span><h4>学会搬</h4><p>平地、宽路、窄路、基础站位。</p></div>
+              <div><h4>核心问题</h4><p>四个人如何共同让鱼缸稳定前进，而不是彼此拉扯。</p></div>
+              <div><h4>主要考验</h4><p>站位、速度统一、基础沟通。</p></div>
+            </article>
+            <article class="stage">
+              <div class="stage-index">02</div>
+              <div><span class="tag t-cyan">空间控制</span><h4>拐弯</h4><p>90° 弯、连续 S 弯、U 型弯、极窄通道。</p></div>
+              <div><h4>核心问题</h4><p>鱼缸不是角色，不能“按一下方向键”完成转向。</p></div>
+              <div><h4>主要考验</h4><p>旋转、前后错位、临时换站位。</p></div>
+            </article>
+            <article class="stage">
+              <div class="stage-index">03</div>
+              <div><span class="tag t-green">节奏同步</span><h4>跳跳乐</h4><p>断层、连续平台、同步跳、顺序跳、蹲跳组合。</p></div>
+              <div><h4>核心问题</h4><p>大家不是“都会跳”就够了，而是必须在接近同一个节奏里完成动作。</p></div>
+              <div><h4>主要考验</h4><p>倒数、同步、落地稳定。</p></div>
+            </article>
+            <article class="stage">
+              <div class="stage-index">04</div>
+              <div><span class="tag t-green">高低关系</span><h4>坡道 / 楼梯 / 高低差</h4><p>倾斜地面、楼梯、上下层路线。</p></div>
+              <div><h4>核心问题</h4><p>鱼缸天然倾斜后，谁该抬高、谁该降低。</p></div>
+              <div><h4>主要考验</h4><p>高度补偿、队形调整、重心管理。</p></div>
+            </article>
+            <article class="stage">
+              <div class="stage-index">05</div>
+              <div><span class="tag t-purple">规则变化</span><h4>高矮胖瘦实验室</h4><p>玩家选择不同药丸，可自由变形或恢复正常。</p></div>
+              <div><h4>核心问题</h4><p>不同体型改变整个团队的搬运结构，而不是简单充当“钥匙”。</p></div>
+              <div><h4>主要考验</h4><p>重新分工、体型组合、临时切换。</p></div>
+            </article>
+            <article class="stage">
+              <div class="stage-index">06</div>
+              <div><span class="tag t-orange">重大转折</span><h4>鱼终于来了</h4><p>前面一直是空缸；这里第一次加入水和真正的鱼，整个搬运逻辑被重新定义。</p></div>
+              <div><h4>核心问题</h4><p>以前只怕撞墙，现在还要处理水的惯性、鱼的安全和倾斜角度。</p></div>
+              <div><h4>主要考验</h4><p>柔和启动、急停控制、角度与惯性。</p></div>
+            </article>
+            <article class="stage">
+              <div class="stage-index">07</div>
+              <div><span class="tag t-orange">人数变化</span><h4>失去完整队形</h4><p>踩按钮、绕路、暂时松手、部分玩家离开鱼缸。</p></div>
+              <div><h4>核心问题</h4><p>四个人并不总能同时抓住鱼缸，如何交接与临时支撑。</p></div>
+              <div><h4>主要考验</h4><p>一人中心托举、三人搬运、交接和救援。</p></div>
+            </article>
+            <article class="stage">
+              <div class="stage-index">08</div>
+              <div><span class="tag t-red">外力介入</span><h4>环境开始和你抢鱼缸</h4><p>风、流水、斜坡、传送带、移动地面。</p></div>
+              <div><h4>核心问题</h4><p>环境像“第五个玩家”一样持续向鱼缸施加力量。</p></div>
+              <div><h4>主要考验</h4><p>抵抗外力、提前预判、站位重组。</p></div>
+            </article>
+            <article class="stage">
+              <div class="stage-index">09</div>
+              <div><span class="tag t-red">规则反转</span><h4>撒手漂流</h4><p>某些区域里，继续抓着鱼缸反而过不去。</p></div>
+              <div><h4>核心问题</h4><p>前面一直教育“别松手”，这里要求四个人主动同时撒手，让鱼缸独自漂行。</p></div>
+              <div><h4>主要考验</h4><p>判断放手时机、玩家绕行追赶、在危险前重新接住。</p></div>
+            </article>
+            <article class="stage">
+              <div class="stage-index">10</div>
+              <div><span class="tag t-purple">综合终局</span><h4>最终逃亡</h4><p>将已经学会的主题重新组合，而不是继续增加全新系统。</p></div>
+              <div><h4>核心问题</h4><p>玩家是否真正掌握这套“共同驾驶鱼缸”的语言。</p></div>
+              <div><h4>主要考验</h4><p>综合配合、临场纠错、完整团队默契。</p></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-card reveal" id="method">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Part 09 · Level Method</span>
+              <h2>两种关卡扩展方式：环境变化 vs 规则变化</h2>
+              <p>以后设计新章节时，优先判断它属于环境变化，还是规则变化。最好的新章节，不只是加入一个新机关，而是让玩家重新学习“怎么搬”。</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="vs-grid">
+              <div class="compare-panel good">
+                <h3>环境变化</h3>
+                <p style="margin:0;color:var(--sub);font-size:13px;">鱼缸和玩家规则基本不变，环境提出新的搬运问题。</p>
+                <ul>
+                  <li>窄路 / 转弯 / 跳台</li>
+                  <li>楼梯 / 斜坡</li>
+                  <li>风 / 水流</li>
+                  <li>传送带 / 移动平台</li>
+                </ul>
+              </div>
+              <div class="compare-panel">
+                <h3>规则变化</h3>
+                <p style="margin:0;color:var(--sub);font-size:13px;">直接改变玩家、鱼缸或搬运关系，让玩家重新学习“怎么搬”。</p>
+                <ul>
+                  <li>高矮胖瘦</li>
+                  <li>加入水 / 加入鱼</li>
+                  <li>部分玩家必须松手</li>
+                  <li>鱼缸变长 / 变重 / 多一条鱼</li>
+                </ul>
+              </div>
+            </div>
+            <div class="quote-band" style="margin-top:16px;border-radius:24px; box-shadow:none;">
+              <div class="small">Design principle</div>
+              <div class="big">好的章节应该让玩家产生新的那句：<span style="color:#7cf0d3">“原来还能这样搬。”</span></div>
+            </div>
+            <div class="vs-grid" style="margin-top:16px;">
+              <div class="compare-panel">
+                <h3>体型变化的设计原则</h3>
+                <ul>
+                  <li><strong>高：</strong>支撑高度更高、跨越能力强，但低矮空间困难。</li>
+                  <li><strong>矮：</strong>重心更低、可通过低空间，但托举高度低。</li>
+                  <li><strong>胖：</strong>支撑 / 推动力更强，但横向占位更大。</li>
+                  <li><strong>瘦：</strong>占位小、调整位置灵活，但支撑能力较弱。</li>
+                </ul>
+                <p style="margin-top:10px;color:var(--sub);font-size:12px;"><strong>禁止做法：</strong>“前面有矮洞 → 吃矮药 → 通过”。那只是钥匙解谜。体型应该改变整个团队搬运结构和鱼缸平衡关系。</p>
+              </div>
+              <div class="compare-panel">
+                <h3>水和鱼：中段最大的玩法升级</h3>
+                <ul>
+                  <li><strong>加入水：</strong>产生明显惯性、晃动与重心变化。</li>
+                  <li><strong>加入鱼：</strong>玩家第一次真正需要保护“鱼缸里的东西”。</li>
+                  <li><strong>水可以洒：</strong>洒水不立刻失败，可作为持续视觉反馈和压力。</li>
+                  <li><strong>鱼掉出去 = 失败：</strong>除鱼缸撞击外，增加新的清晰失败条件。</li>
+                </ul>
+                <p style="margin-top:10px;color:var(--sub);font-size:12px;">前几个章节，玩家已经习惯“只要玻璃别碰到墙壁或地面就行”。到这一章，工作人员把水灌进鱼缸，再把真正价值连城的鱼放进去。玩家第一次推动鱼缸，水立刻向后晃，鱼跟着滑向边缘。所有人会马上意识到：之前学会的搬法，不够用了。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card reveal" id="boundaries">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Part 10 · Project Boundaries</span>
+              <h2>项目边界：知道我们要做什么，也知道什么坚决不做</h2>
+              <p>让后续所有系统、关卡、美术与技术决策都围绕同一个产品方向收敛。</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="metric-row">
+              <div class="metric"><div class="m-number"><span class="keep-phrase">博物馆 → 城市</span></div><div class="m-label">从现实起点建立鱼缸贵重感，再让普通城市空间逐渐变成搬运难题</div></div>
+              <div class="metric"><div class="m-number"><span class="keep-phrase">工厂 → 实验设施</span></div><div class="m-label">逐步允许更强的机关、外力与规则变化进入旅程</div></div>
+              <div class="metric"><div class="m-number"><span class="keep-phrase">山体 → 河流</span></div><div class="m-label">利用高低差、风、水流和漂流，把自然环境变成新的合作压力</div></div>
+              <div class="metric"><div class="m-number"><span class="keep-phrase">荒诞终局</span></div><div class="m-label">最终进入更夸张的空间，综合前面学会的合作语言完成逃亡</div></div>
+            </div>
+            <div class="split-grid" style="margin-top:16px;">
+              <div class="do-card bad">
+                <h3>这款游戏不是什么</h3>
+                <ul>
+                  <li><strong>不是搬运模拟器：</strong>不追求真实搬运流程和拟真操作。</li>
+                  <li><strong>不是复杂物理沙盒：</strong>物理服务于合作事故，不服务于模拟真实性。</li>
+                  <li><strong>不是传统解谜游戏：</strong>可以有“怎么过去”的思考，但核心仍是多人执行。</li>
+                  <li><strong>不是操作硬核游戏：</strong>单人操作简单，困难来自多人协调。</li>
+                  <li><strong>不是内容堆积型游戏：</strong>不能靠几十种技能、敌人或剧情续命。</li>
+                  <li><strong>不是对抗互坑游戏：</strong>互坑来自失误、性格和临场混乱。</li>
+                </ul>
+              </div>
+              <div class="do-card good">
+                <h3>我们真正要做的是什么</h3>
+                <ul>
+                  <li>简单规则下的复杂团队结果。</li>
+                  <li>一个共享物体制造的强耦合合作。</li>
+                  <li>失败也能成为节目效果的多人体验。</li>
+                  <li>持续出现“都怪你”“快救一下”“你先别动”的社交反应。</li>
+                  <li>一条连续旅程里，不断改变“怎么搬鱼缸”这个问题。</li>
+                  <li>让观众在很短时间内看懂发生了什么，并让失败过程本身具备观看和复述价值。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="split-grid" style="margin-top:16px;">
+              <div class="do-card">
+                <h3>不同人数如何成立</h3>
+                <ul>
+                  <li>鱼缸视觉尺寸和核心体验保持一致。</li>
+                  <li>系统根据实际玩家人数，后台适配重量、惯性、支撑等关键物理参数。</li>
+                  <li>目标不是让 2 人和 4 人完全一样，而是让两者都“合理可通关”。</li>
+                  <li>4 人局更混乱、更容易制造社交事故；2 人局更强调精确配合。</li>
+                </ul>
+              </div>
+              <div class="do-card">
+                <h3>世界观与场景尺度</h3>
+                <ul>
+                  <li>基础设定保持简单：2–4 名小偷偷走了一个价值连城的巨大鱼缸，需要把它一路安全运走。</li>
+                  <li>旅程前段主要搬运空缸；到中段特定章节，鱼缸第一次被加入水和真正的鱼，成为一次明确的玩法升级。</li>
+                  <li>世界不追求严格现实主义，可以从现实起点逐渐进入越来越荒诞、异想天开的空间。</li>
+                  <li>世界观的任务，是给关卡设计自由，而不是解释所有事情为什么“现实中合理”。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card reveal" id="principles">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Part 11 · Unified Principles</span>
+              <h2>后续所有设计都应该遵守的统一原则</h2>
+              <p>未来评审新机制、新关卡、新点子时，统一用这些原则收口。它们不是装饰语，而是以后的评审尺子。</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="principle-grid">
+              <div class="principle"><div class="idx">01</div><div><strong>先问是否强化“共同搬鱼缸”</strong><span>再问它本身酷不酷。玩法核心必须始终优先于局部噱头。</span></div></div>
+              <div class="principle"><div class="idx">02</div><div><strong>新内容优先创造新的合作问题</strong><span>不是单纯增加障碍数量，而是改变协作关系。</span></div></div>
+              <div class="principle"><div class="idx">03</div><div><strong>玩家之间必须持续互相负责</strong><span>任何人的失误都应该与其他人的风险直接关联。</span></div></div>
+              <div class="principle"><div class="idx">04</div><div><strong>失败过程要清楚、可读、可笑</strong><span>不能莫名其妙。要让人知道是怎么坏掉的。</span></div></div>
+              <div class="principle"><div class="idx">05</div><div><strong>最好让观众 5 秒内看懂发生了什么</strong><span>可读性本身就是传播力。</span></div></div>
+              <div class="principle"><div class="idx">06</div><div><strong>规则可以阶段性变化，但核心不变</strong><span>“共同保护鱼缸”永远是这款游戏的底层主题。</span></div></div>
+              <div class="principle"><div class="idx">07</div><div><strong>如果只是更窄、更快、更难，说明变化不够</strong><span>难度增长不等于玩法增长。</span></div></div>
+              <div class="principle"><div class="idx">08</div><div><strong>好的章节应该让玩家说“原来还能这样搬”</strong><span>这是判断章节是否成立的高价值信号。</span></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="manifesto reveal">
+          <div class="eyebrow">Manifesto / Product Direction</div>
+          <h2>核心产品方向：简单规则、<span class="manifesto-hot">强共享约束</span>、连续大旅程、<span class="manifesto-hot">高事故密度</span>、<span class="manifesto-hot">极强观看性</span>。</h2>
+          <p>如果以后你看到一个新点子很酷，但它不能增强“共同搬鱼缸”这个体验，不管它多花哨，都应该谨慎甚至直接砍掉。这个项目真正的内容，不是机关本身，而是每一个新环境、新规则如何再次让四个人陷入沟通、失误、救援、甩锅和爆笑之中。</p>
+          <div class="manifesto-grid">
+            <div class="m"><strong>观众一眼看懂</strong><span>失败过程清晰，短视频与直播观感强。</span></div>
+            <div class="m"><strong>玩家第一局就能笑出来</strong><span>乐趣必须在首次上手时成立，而不是熟练后才有。</span></div>
+            <div class="m"><strong>持续变化，但不靠堆内容</strong><span>用关卡方法论和规则变化扩大体验杠杆。</span></div>
+          </div>
+        </section>
+
+        <footer class="closing reveal">
+          <h3>Final one-liner</h3>
+          <p>这是一款让 2–4 名玩家共同“驾驶”一个没有方向盘、极其脆弱的巨大鱼缸，穿过一整条越来越荒诞的连续路线的合作闯关游戏。真正的内容不是机关本身，而是每一个新环境、新规则如何再次让四个人陷入沟通、失误、救援、甩锅和爆笑之中。</p>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const navLinks = Array.from(document.querySelectorAll('.side-nav a'));
+    const sections = navLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    const revealEls = Array.from(document.querySelectorAll('.reveal'));
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in-view');
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + id));
+      });
+    }, { rootMargin: '-30% 0px -55% 0px', threshold: 0.01 });
+
+    sections.forEach(section => sectionObserver.observe(section));
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+final_id_and_enabled=True 
+finish_on_authored_top=True (-271.83, 47.00, 151.19)
+finish_rule_changes_compatibility=True 
+players_only_do_not_finish=True 
+outside_radius_rejected=True 
+above_height_rejected=True 
+below_platform_rejected=True 
+proxy_cannot_finish=True 
+paused_cannot_finish=True 
+broken_tank_cannot_finish=True 
+intact_local_arrival_finishes=True 
+local_finish_feedback=True 已抵达测试终点：完整鱼缸已送达。
+no_duplicate_completion=True 
+failed_save_blocks_completion=True 
+isolated_save_created=True 
+successful_save_precedes_finish=True 
+finish_snapshot_roundtrip=True 
+unknown_checkpoint_rejected=True 
+passed=True
+Editor fixture calls real after-physics resolver; isolated disk save. Not continuous traversal or remote multiplayer.

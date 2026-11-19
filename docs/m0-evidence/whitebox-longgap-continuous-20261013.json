@@ -1,0 +1,22 @@
+{
+    "utc": "2026-10-13T03:54:47.6362379Z",
+    "baseline": "v0.2.2-whitebox-gap2-r3-2612ef5523bc5c9afbbe737dc2399dd5",
+    "message": "已抓取：移动会影响鱼缸；松开左键可换位。",
+    "complete": true,
+    "success": true,
+    "firstJump": true,
+    "secondJump": true,
+    "broken": false,
+    "firstGrounded": 4,
+    "secondGrounded": 4,
+    "finalGrounded": 4,
+    "maxTilt": 24.552865982055664,
+    "firstTakeoffX": -26.585773468017578,
+    "secondTakeoffX": -37.71472930908203,
+    "speed": 0.04086114093661308,
+    "end": {
+        "x": -42.9007453918457,
+        "y": 1.6575723886489868,
+        "z": -1.9474743604660034
+    }
+}

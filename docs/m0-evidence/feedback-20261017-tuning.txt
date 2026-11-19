@@ -1,0 +1,8 @@
+editor_accepts_planner_values=True 
+GM_accepts_planner_values=True 
+copy_import_roundtrip=True 
+runtime_four_times_gravity=True -39.24
+editor_rejects_above_four=True 
+GM_rejects_above_four=True 
+test_restores_original_values=True 
+passed=True

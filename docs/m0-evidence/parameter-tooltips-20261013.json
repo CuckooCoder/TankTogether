@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-13",
+  "fieldCount": 31,
+  "missingTooltips": [],
+  "isCompiling": false,
+  "playing": false,
+  "scene": "Assets/Scenes/WhiteboxCarryLab.unity",
+  "dirty": false,
+  "panelStates": [
+    "changed=False;draft={\"version\":\"v0.2.2-whitebox-gap2-r3\",\"tankSize\":{\"x\":3.200000047683716,\"y\":0.949999988079071,\"z\":2.200000047683716},\"standingHeight\":1.7000000476837158,\"playerDiameter\":0.6000000238418579,\"crouchingHeight\":1.100000023841858,\"spawnHalfSpacing\":{\"x\":0.8999999761581421,\"y\":0.550000011920929},\"carryBottomHeight\":1.7000000476837158,\"walkSpeed\":4.0,\"sprintSpeed\":6.0,\"carrySpeed\":2.5,\"carrySprintSpeed\":3.5,\"freeJumpHeight\":0.6499999761581421,\"carryJumpHeightTarget\":1.3300000429153442,\"standInset\":{\"x\":0.20000000298023224,\"y\":0.15000000596046448},\"standWidth\":0.25,\"gripInset\":0.11999999731779099,\"gripVerticalReach\":0.23000000417232513,\"tankMass\":24.0,\"playerMass\":7.0,\"tankDamping\":0.800000011920929,\"angularDamping\":5.0,\"motorGain\":95.0,\"motorForce\":160.0,\"carryMotorGain\":65.0,\"carryMotorForce\":70.0,\"carryBrakeAcceleration\":2.5,\"carryJumpVelocity\":10.199999809265137,\"gripLimit\":0.11999999731779099,\"supportStiffness\":3500.0,\"supportDamping\":100.0,\"supportMaxForce\":240.0}"
+  ],
+  "sample": "鱼缸刚体的质量。\n调大通常更难推动、抬升和转动；调小更容易被角色带动，也更容易被扰动。\n改后需配合检查搬运推力与头顶支撑；质量不直接改变重力加速度。",
+  "consoleErrors": 0,
+  "sourceAssetSha256BeforeAndAfter": "4A9C7E3506977D7CD7145319B05DFECFE2DB96C72C94C567687D8AD1191CD50A",
+  "sharedBaselineSha256BeforeAndAfter": "F271D574087DDEE256B87C2DCB88F03078D997ED01D3CD3BB2D562CE0D7CEA63",
+  "limits": "验证编译后的 GUIContent 覆盖与配置保持；未进行真人悬浮显示/游戏手感验收。"
+}

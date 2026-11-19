@@ -1,0 +1,38 @@
+{
+  "utc": "2026-10-12T03:08:00.035581+00:00",
+  "baseline": "v0.2.2-r1-267def3bd0995bf0bcc110602c127381",
+  "scope": "Fixed-input Windows physics measurements; local Steam host only. No remote human validation.",
+  "measurementTargetsChecked": true,
+  "sourceSHA256": {
+    "Unity/TankTogether/Assets/Scripts/M0BaselineMeasurements.cs": "40774cd7a0022087395beebcb3506ce9e9c0493762cb31492915d06475d91e22",
+    "Unity/TankTogether/Assets/Scripts/M0CarryBaseline.cs": "633b10bd1edc4abfaa005aa8ec4228affa61946e61f18f37727b1c1faa613f45",
+    "Unity/TankTogether/Assets/Scripts/M0CarryChecks.cs": "5b0593cdf1a45b4575af258c41bea8424d4f1b1b59f576c6eb28f980c0752542",
+    "Unity/TankTogether/Assets/Scripts/M0CarryLab.cs": "1c6815cc58b5b003dc51a5af0e7a21f607f41790896423142bd9d15616f82f58",
+    "Unity/TankTogether/Assets/Scripts/SteamCarryProtocol.cs": "8fc45e2e2df037b9bec4b3ff12684b2391e71154827064e982705a3780dbec84",
+    "Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs": "1c2dc01c43918cc014b25e073a6aad6484a24d7c4bad87f75f88e5061cb3439c",
+    "Unity/TankTogether/Assets/Editor/M0BaselineSetup.cs": "7d8edc9b635db0e2c4238609e3c9d78bdd00e812b4b29cda34c8a766c19244df",
+    "Unity/TankTogether/Assets/Editor/M0CarryLabSetup.cs": "6e072276b05544d225a021ef3f34cef16c9954a6fe48293c7af492bfea807772",
+    "Unity/TankTogether/Assets/Editor/M0PhysicsProbe.cs": "73966ca1551dcd735064422bb84b39f8374584a15d9246b08be5e280c9a3f700",
+    "Unity/TankTogether/Assets/Editor/ProjectSetup.cs": "66d126cf08d231e5a0f93668a4cfb989d84e80ffae68c554856d29f167dbd55a",
+    "Unity/TankTogether/Assets/Editor/SteamCarrySetup.cs": "f3295ff206542bd6e4549dae692dc2fcec1a92ca557a8bd0fb4db2a75f44e257",
+    "Unity/TankTogether/Assets/Resources/CarryBaseline.asset": "f271d574087ddee256b87c2dcb88f03078d997ed01d3cd3bb2d562ce0d7cea63",
+    "Unity/TankTogether/Assets/Scenes/M0CarryLab.unity": "2fe27045029c90da35f277b8d568b1b79e706f0717f29d7417ee49d8c0481f6d",
+    "Unity/TankTogether/Assets/Scenes/SteamCarryLab.unity": "d847a88054097ac1f800de7e54d92ab9589239e1d95ec30dbc290b9db3c9b67d",
+    "Unity/TankTogether/Packages/manifest.json": "ccbc6c96551a42fecd72e0e41c91e01d5a485b0d10b244e1c85401a78f38dbdc",
+    "Unity/TankTogether/Packages/packages-lock.json": "1390477b5e359e77e15c0bda66b670563da71d187ad5903448d7b86a8af1e87e"
+  },
+  "packages": [
+    {
+      "file": "TankTogether-M0-Baseline-20261012.zip",
+      "bytes": 71729064,
+      "entries": 323,
+      "sha256": "0e620b12eb335bcd42470892dadc900eb9787a37dd6f9a73f9b5bf4ce31a2700"
+    },
+    {
+      "file": "TankTogether-Steam-Baseline-20261012.zip",
+      "bytes": 71731014,
+      "entries": 324,
+      "sha256": "08bb7068b1fa9bf4dfb16d41fde9acfaa910ef0a4b551463f6ad3d4bee69fe42"
+    }
+  ]
+}

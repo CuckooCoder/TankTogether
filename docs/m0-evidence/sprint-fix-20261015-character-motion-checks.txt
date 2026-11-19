@@ -1,0 +1,1 @@
+contact=0.8639028; airborneContact=0; carryLean=0.3733472; scope=isolated-local-animation; walkAngle=27.01422; airAngle=17.994; grip=True; handAboveShoulder=True; enabledCameras=1; passed=True

@@ -1,0 +1,13 @@
+{
+  "status": "awaiting_explicit_upload_confirmation",
+  "sourceCommit": "c1472fe",
+  "sourcePushed": true,
+  "repository": "1205971577/tank-together",
+  "private": true,
+  "releaseTag": "formal-whitebox-20261016",
+  "zip": "TankTogether-FormalWhitebox-20261016.zip",
+  "zipBytes": 72891605,
+  "sha256": "abc5a7bb5e7451fa957cb6f31baeb88cfd2e42e52a8c23aea13e870e6206ff9b",
+  "reason": "Automatic approval rejected Release upload: requires explicit confirmation for this ZIP destination. No Release or upload confirmed.",
+  "updated": "2026-10-16T10:26:43.819468+08:00"
+}

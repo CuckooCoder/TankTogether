@@ -1,0 +1,33 @@
+{
+    "utc": "2026-10-13T06:36:05.0848681Z",
+    "scope": "two-player-support-probe",
+    "complete": true,
+    "passed": false,
+    "checks": [
+        {
+            "name": "variant_0",
+            "evidence": "offset=(0.00, 0.00, 0.55); damping=2; carryTilt=0.6935157; beforeJumpTilt=0.4102162; jumpTilt=7.799208; lift=0.5126719; speed=2.501309; broken=False",
+            "passed": true
+        },
+        {
+            "name": "variant_1",
+            "evidence": "offset=(0.90, 0.00, 0.55); damping=2; carryTilt=21.11475; beforeJumpTilt=82.31018; jumpTilt=94.14903; lift=0; speed=2.191252; broken=True",
+            "passed": false
+        },
+        {
+            "name": "variant_2",
+            "evidence": "offset=(0.00, 0.00, 0.55); damping=5; carryTilt=0.7146374; beforeJumpTilt=0.4735395; jumpTilt=5.795116; lift=0.5149155; speed=2.499843; broken=False",
+            "passed": true
+        },
+        {
+            "name": "variant_3",
+            "evidence": "offset=(0.90, 0.00, 0.55); damping=5; carryTilt=13.72346; beforeJumpTilt=30.47243; jumpTilt=90.49524; lift=0.4825604; speed=2.30739; broken=True",
+            "passed": false
+        },
+        {
+            "name": "variant_4",
+            "evidence": "offset=(0.90, 0.00, 0.00); damping=12; carryTilt=8.741432; beforeJumpTilt=8.920111; jumpTilt=22.91824; lift=0.5176389; speed=2.357954; broken=False",
+            "passed": true
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+1.1 grip=True width=0.3265381 elbowOut=0.008666992 boneLengths=True acquireMaxFrameDeg=44.08578 handY=0.9816467 shoulderY=0.4067031
+1.1 released=True releaseMaxFrameDeg=63.80342
+1.7 grip=True width=0.3266602 elbowOut=0.008544922 boneLengths=True acquireMaxFrameDeg=38.22272 handY=1.581671 shoulderY=1.006691
+1.7 released=True releaseMaxFrameDeg=60.15945
+5 grip=True width=0.3265381 elbowOut=0.008544922 boneLengths=True acquireMaxFrameDeg=38.72371 handY=4.881626 shoulderY=4.306705
+5 released=True releaseMaxFrameDeg=97.93707

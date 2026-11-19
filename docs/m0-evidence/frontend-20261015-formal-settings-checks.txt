@@ -1,0 +1,17 @@
+default_keys_valid=True
+duplicates_rejected=True
+escape_reserved=True
+mouse_bindable=True
+old_vote_key_inactive=True
+new_vote_key_edge=True
+held_key_has_no_new_edge=True
+old_move_key_inactive=True
+new_move_key_drives=True
+personal_mapping_persists=True
+escape_capture_returns_to_settings=True
+display_timeout_restores=True
+unconfirmed_display_not_persisted=True
+escape_settings_returns_to_home=True
+duration_over_24h_does_not_wrap=True
+english_menu_text=True
+passed=True

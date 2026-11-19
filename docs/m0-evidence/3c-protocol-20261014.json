@@ -1,0 +1,30 @@
+{
+    "utc": "2026-10-14T03:15:07.3252589Z",
+    "passed": true,
+    "checks": [
+        "input_round_trip_edges_and_identity",
+        "ngo_named_message_payload_offset",
+        "old_round_input_rejected",
+        "duplicate_input_rejected",
+        "next_input_accepted",
+        "old_round_snapshot_rejected",
+        "out_of_order_snapshot_rejected",
+        "new_round_snapshot_accepted",
+        "snapshot_fits_unreliable_message",
+        "session_phase_and_team_round_trip",
+        "snapshot_state_round_trip",
+        "truncated_input_rejected",
+        "overspeed_input_rejected",
+        "nan_input_rejected",
+        "oversized_snapshot_rejected",
+        "failure_phase_round_trip",
+        "unknown_phase_rejected",
+        "invalid_team_size_rejected",
+        "invalid_rotation_rejected",
+        "baseline_in_build_resources",
+        "same_configuration_same_fingerprint",
+        "geometry_change_changes_room_compatibility",
+        "motion_change_changes_room_compatibility",
+        "versioned_approval_payload_fits_limit"
+    ]
+}

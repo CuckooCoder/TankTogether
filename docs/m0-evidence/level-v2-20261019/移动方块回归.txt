@@ -1,0 +1,23 @@
+five_blocks_three_up_two_down=True 5
+authored_speed_and_stroke=True 0.6/2
+kinematic_mesh_colliders=True 
+one_second_speed=True 0.6
+blue_up_red_down=True 0.5999985
+rider_carried_up=True -3.814697E-06
+full_cycle_bounded_and_reversed=True 0.003986359..1.996002
+rider_still_on_block_after_cycle=True 3.814697E-06
+pause_freezes_phase=True 0.2000117
+proxy_never_simulates=True 0.2000117
+proxy_wrap_uses_short_path=True 0
+proxy_pose_matches_host=True 1.25
+network_phase_and_new_checkpoint=True tank-together-steam-19
+reject_phase_-1=True 
+reject_phase_1=True 
+reject_phase_1.1=True 
+reject_phase_NaN=True 
+reject_phase_Infinity=True 
+actual_client_snapshot_moves_blocks=True 1.25
+broken_tank_freezes_phase=True 1.25
+checkpoint_reset_restores_phase=True 0
+passed=True
+Local physics and injected client snapshot; not remote multiplayer or continuous full route.

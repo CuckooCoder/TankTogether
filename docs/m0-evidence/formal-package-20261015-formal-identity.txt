@@ -1,0 +1,17 @@
+host_alone_not_lockable=True
+zero_identity_rejected=True
+host_impersonation_rejected=True
+two_players_admitted=True
+duplicate_identity_rejected=True
+duplicate_connection_rejected=True
+two_players_lock=True
+newcomer_cannot_steal_reserved_seat=True
+same_steam_new_connection_same_seat=True
+old_disconnect_cannot_remove_reconnected_peer=True
+voluntary_departure_revokes_rejoin=True
+lobby_kick=True
+kicked_steam_cannot_rejoin=True
+kicked_seat_can_be_reused=True
+normal_lobby_leave_frees_seat=True
+new_room_clears_ban=True
+passed=True

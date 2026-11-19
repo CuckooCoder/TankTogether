@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1de233b28a7187c4bbeebd5dab540ce6, type: 3}
+  m_Name: MotionStyle
+  m_EditorClassIdentifier: Assembly-CSharp::TankTogether.M0.CarryMotionStyle
+  armSoftness: 1
+  tallStartHeight: 2.3
+  tallFullHeight: 4.5
+  tallSwayDegrees: 3
+  tallSwayHz: 1.1
+  settleSeconds: 0.22
+  carryHandHalfWidth: 0.32
+  carryShoulderLift: 0.22

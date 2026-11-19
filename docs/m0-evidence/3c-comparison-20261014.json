@@ -1,0 +1,80 @@
+{
+    "scope": "isolated-real-Unity-physics-input-replay; NOT complete-route or real remote play",
+    "complete": true,
+    "passed": true,
+    "samples": [
+        {
+            "mode": "A previous",
+            "startTime": 0.09999996423721313,
+            "reverseTime": 0.19999992847442627,
+            "stopDistance": 0.0960693359375,
+            "releasedJumpDistance": 0.360107421875,
+            "releasedJumpPeak": 0.6499203443527222,
+            "releasedJumpTime": 0.6399997472763062,
+            "liftGroundedFraction": 0.0,
+            "liftJumpRelativePeak": 2.384185791015625e-7,
+            "movingFloorDrift": 4.00390625,
+            "wallSlideDistance": 3.228752613067627
+        },
+        {
+            "mode": "B candidate",
+            "startTime": 0.09999996423721313,
+            "reverseTime": 0.19999992847442627,
+            "stopDistance": 0.0960693359375,
+            "releasedJumpDistance": 1.0400390625,
+            "releasedJumpPeak": 0.6499203443527222,
+            "releasedJumpTime": 0.6399997472763062,
+            "liftGroundedFraction": 1.0,
+            "liftJumpRelativePeak": 0.6499207019805908,
+            "movingFloorDrift": 0.0,
+            "wallSlideDistance": 3.228752613067627
+        }
+    ],
+    "checks": [
+        {
+            "name": "A previous ground_response",
+            "evidence": "{\"mode\":\"A previous\",\"startTime\":0.09999996423721313,\"reverseTime\":0.19999992847442627,\"stopDistance\":0.0960693359375,\"releasedJumpDistance\":0.360107421875,\"releasedJumpPeak\":0.6499203443527222,\"releasedJumpTime\":0.6399997472763062,\"liftGroundedFraction\":0.0,\"liftJumpRelativePeak\":2.384185791015625e-7,\"movingFloorDrift\":4.00390625,\"wallSlideDistance\":3.228752613067627}",
+            "passed": true
+        },
+        {
+            "name": "A previous jump_height_time",
+            "evidence": "0.6499203 / 0.6399997",
+            "passed": true
+        },
+        {
+            "name": "A previous wall_slide",
+            "evidence": "3.228753",
+            "passed": true
+        },
+        {
+            "name": "B candidate ground_response",
+            "evidence": "{\"mode\":\"B candidate\",\"startTime\":0.09999996423721313,\"reverseTime\":0.19999992847442627,\"stopDistance\":0.0960693359375,\"releasedJumpDistance\":1.0400390625,\"releasedJumpPeak\":0.6499203443527222,\"releasedJumpTime\":0.6399997472763062,\"liftGroundedFraction\":1.0,\"liftJumpRelativePeak\":0.6499207019805908,\"movingFloorDrift\":0.0,\"wallSlideDistance\":3.228752613067627}",
+            "passed": true
+        },
+        {
+            "name": "B candidate jump_height_time",
+            "evidence": "0.6499203 / 0.6399997",
+            "passed": true
+        },
+        {
+            "name": "B candidate wall_slide",
+            "evidence": "3.228753",
+            "passed": true
+        },
+        {
+            "name": "B moving_platform_jump",
+            "evidence": "1 / 0.6499207",
+            "passed": true
+        },
+        {
+            "name": "B moving_floor_no_slip",
+            "evidence": "0",
+            "passed": true
+        },
+        {
+            "name": "B modest_air_release_carry",
+            "evidence": "0.3601074 -> 1.040039",
+            "passed": true
+        }
+    ]
+}

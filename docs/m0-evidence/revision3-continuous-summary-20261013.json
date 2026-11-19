@@ -1,0 +1,139 @@
+{
+  "date": "2026-10-13",
+  "scene": "SteamWhiteboxRevision3",
+  "result": "BLOCKED_BEFORE_TANK_PICKUP",
+  "fullRoutePassed": false,
+  "teleportsByDriver": 0,
+  "checkpointSelectionsByDriver": 0,
+  "midRunResetsByDriver": 0,
+  "initialization": "SteamCarrySession.StartLocalTest once at start",
+  "inputOnly": true,
+  "normalTimeScale": 1,
+  "dynamicRoster": false,
+  "players": 4,
+  "scope": "四角色本地输入模拟；不是真人异地验收。P1连续到达鱼缸圆台，其他三人停在环形入口。",
+  "trace": "D:\\工作区\\Project\\Game\\搬鱼缸项目\\Unity\\TankTogether\\Logs\\revision3-continuous-20261013-a.json",
+  "traceSha256": "742830dddada3c06010bc7631be97fe001ae55f4c15c4b397f04909bea3453ca",
+  "commands": 64,
+  "samples": 7638,
+  "seconds": 763.6936645507812,
+  "naturalRespawns": [
+    {
+      "t": 163.99,
+      "player": 4,
+      "beforeY": -58.43528366088867,
+      "afterY": 0.018227994441986084
+    },
+    {
+      "t": 174.99,
+      "player": 2,
+      "beforeY": -59.39997482299805,
+      "afterY": 0.0012900233268737793
+    },
+    {
+      "t": 263.19,
+      "player": 1,
+      "beforeY": -57.5981330871582,
+      "afterY": 0.02607595920562744
+    },
+    {
+      "t": 263.19,
+      "player": 3,
+      "beforeY": -57.60589599609375,
+      "afterY": 0.02607595920562744
+    },
+    {
+      "t": 268.69,
+      "player": 2,
+      "beforeY": -58.05716323852539,
+      "afterY": 0.02607595920562744
+    },
+    {
+      "t": 268.69,
+      "player": 4,
+      "beforeY": -58.10090255737305,
+      "afterY": 0.018227994441986084
+    },
+    {
+      "t": 283.19,
+      "player": 3,
+      "beforeY": -58.762237548828125,
+      "afterY": 0.00645601749420166
+    },
+    {
+      "t": 283.49,
+      "player": 4,
+      "beforeY": -58.15445327758789,
+      "afterY": 0.018227994441986084
+    },
+    {
+      "t": 286.59,
+      "player": 1,
+      "beforeY": -60.04045486450195,
+      "afterY": 0.00026220083236694336
+    },
+    {
+      "t": 286.99,
+      "player": 2,
+      "beforeY": -58.336395263671875,
+      "afterY": 0.018227994441986084
+    },
+    {
+      "t": 394.09,
+      "player": 3,
+      "beforeY": -60.36499786376953,
+      "afterY": 0.00026220083236694336
+    }
+  ],
+  "respawnInterpretation": "共11次游戏自然坠落重生，含输入脚本偏向、坡道等待和后续未及时识别重生导致的重复坠落；不可全部归因为关卡缺陷。重生后均从起点正常重走。",
+  "hardBlock": {
+    "outerFloorY": -30.5,
+    "daisY": -29.5,
+    "rise": 1.0,
+    "configuredFreeJumpHeight": 0.65,
+    "jumpAttempts": [
+      {
+        "command": "44_p1_tank_dais_jump",
+        "outcome": "timeout_or_blocked",
+        "peakLift": 0.6487026214599609,
+        "endFeet": {
+          "x": -132.08656311035156,
+          "y": -30.5,
+          "z": -7.08734655380249
+        }
+      },
+      {
+        "command": "45_p1_dais_close_jump",
+        "outcome": "timeout_or_blocked",
+        "peakLift": 0.6404895782470703,
+        "endFeet": {
+          "x": -132.5868377685547,
+          "y": -30.499998092651367,
+          "z": -6.58704137802124
+        }
+      },
+      {
+        "command": "48_p1_west_jump",
+        "outcome": "timeout_or_blocked",
+        "peakLift": 0.6499233245849609,
+        "endFeet": {
+          "x": -134.3633270263672,
+          "y": -30.5,
+          "z": -1.291302396566607e-05
+        }
+      }
+    ],
+    "connectingSlopedTrianglesFound": 0
+  },
+  "notReached": [
+    "取缸",
+    "携缸后半程",
+    "升降台",
+    "上层停车存档"
+  ],
+  "baselineSha256": {
+    "WhiteboxJumpTrial.asset": "4a9c7e3506977d7cd7145319b05dfecfe2db96c72c94c567687d8ad1191cd50a",
+    "CarryBaseline.asset": "f271d574087ddee256b87c2dcb88f03078d997ed01d3cd3bb2d562ce0d7cea63"
+  },
+  "note": "Go 的 targets_reached 只表示水平目标距离，单项通过另以实际高度、落稳状态、后续轨迹确认。不得将命令结果直接当成过关。"
+}

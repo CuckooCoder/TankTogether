@@ -1,0 +1,21 @@
+{
+  "checkedUTC": "2026-10-12T11:46:39.521292+00:00",
+  "release": "https://github.com/1205971577/tank-together/releases/tag/m1-20261012",
+  "sourceCommit": "814c0a4e4b5f69553adf7f8585c3505b5f8f0b8d",
+  "uploaded": true,
+  "verification": "GitHub asset size and server SHA256 match local verified archives; not a full re-download.",
+  "assets": [
+    {
+      "name": "manifest.json",
+      "bytes": 406,
+      "digest": "sha256:21a1082a80326dbd8f5afe23c20602f954913ced57f16de8d8082ae105fc47e4",
+      "state": "uploaded"
+    },
+    {
+      "name": "TankTogether-M1-20261012.zip",
+      "bytes": 71737500,
+      "digest": "sha256:86913d0185e13328048e30177dc17463ce5e299a8ac47286e1d12fa13fe13554",
+      "state": "uploaded"
+    }
+  ]
+}

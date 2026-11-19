@@ -1,0 +1,85 @@
+{
+    "scope": "isolated-local-physics-camera-GM-not-full-route-or-remote-multiplayer",
+    "complete": true,
+    "passed": true,
+    "stopDistance": 0.09600830078125,
+    "jumpPeak": 0.6499205827713013,
+    "slopeDrift": 0.0,
+    "checks": [
+        {
+            "name": "walk_and_release",
+            "evidence": "speed=4.000, stop=0.096m; before stop=0.356m",
+            "passed": true
+        },
+        {
+            "name": "free_jump_height",
+            "evidence": "0.650",
+            "passed": true
+        },
+        {
+            "name": "early_jump_buffer",
+            "evidence": "peak=0.711",
+            "passed": true
+        },
+        {
+            "name": "walk_off_coyote_jump",
+            "evidence": "peak=0.587",
+            "passed": true
+        },
+        {
+            "name": "idle_15deg_slope",
+            "evidence": "drift over 2s=0.0000m",
+            "passed": true
+        },
+        {
+            "name": "walk_up_slope",
+            "evidence": "(5.254, 1.408, 0.000)",
+            "passed": true
+        },
+        {
+            "name": "camera_in_front_of_wall",
+            "evidence": "distance=2.590, camera=(1000.000, 1.250, -2.590)",
+            "passed": true
+        },
+        {
+            "name": "camera_returns_after_wall",
+            "evidence": "7.500",
+            "passed": true
+        },
+        {
+            "name": "camera_can_look_up",
+            "evidence": "(295.00, 0.00, 0.00)",
+            "passed": true
+        },
+        {
+            "name": "camera_can_look_down",
+            "evidence": "(80.00, 0.00, 0.00)",
+            "passed": true
+        },
+        {
+            "name": "GM_pauses_local",
+            "evidence": "open=True",
+            "passed": true
+        },
+        {
+            "name": "GM_updates_motor_and_tank_collider",
+            "evidence": "(3.840, 1.140, 2.640)",
+            "passed": true
+        },
+        {
+            "name": "GM_never_writes_source_asset",
+            "evidence": "WhiteboxJumpTrial",
+            "passed": true
+        },
+        {
+            "name": "GM_resumes_time",
+            "evidence": "1",
+            "passed": true
+        },
+        {
+            "name": "lobby_restores_shipping_config_and_locks_GM",
+            "evidence": "v0.2.4-whitebox-3c1-422aeb92997e6a84b22436b3bab15e51",
+            "passed": true
+        }
+    ]
+}

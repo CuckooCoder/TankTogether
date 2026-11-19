@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light">
+<title>《搬鱼缸》尺寸与运动基线 V0.2.2｜精简交接版</title>
+<style>
+:root{--ink:#203645;--sub:#657987;--line:#dce8ed;--cyan:#267c98;--bg:#f5f8fa;--soft:#eef6f9;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:13.4px/1.57 -apple-system,BlinkMacSystemFont,'Microsoft YaHei','PingFang SC',system-ui,sans-serif}
+main{max-width:1040px;margin:auto;padding:28px 23px 38px}h1{font-size:26px;letter-spacing:-.04em;line-height:1.2;margin:4px 0 8px}h2{font-size:16px;letter-spacing:-.02em;margin:0}h3{font-size:12px;margin:0 0 8px;color:#2d657e}p{margin:0}strong{font-weight:750}small{font-size:11px}
+.top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:15px}.eyebrow{color:var(--cyan);font-size:10px;letter-spacing:.15em;font-weight:800}.subtitle{font-size:12px;color:var(--sub)}.stamp{border:1px solid #cfdee4;border-radius:6px;background:#edf5f8;color:var(--cyan);font-weight:700;white-space:nowrap;padding:6px 10px;font-size:11px}
+.panel{border:1px solid var(--line);border-radius:12px;background:var(--white);box-shadow:0 3px 12px rgba(29,53,68,.03);overflow:hidden}.hero{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:10px;padding:17px 18px}.hero-art{width:100%;max-height:228px;display:block}.intro{font-size:13px;color:#526a7a;margin:0 0 13px}.keygrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.key{padding:9px 11px;background:#f4f8fa;border:1px solid #e7eff2;border-radius:7px}.key small{display:block;color:var(--sub)}.key b{display:block;font-size:19px;letter-spacing:-.035em;font-variant-numeric:tabular-nums}.key span{font-size:11px;color:var(--sub)}
+.strip{font-size:11.5px;line-height:1.6;border-left:3px solid #68a6b9;background:#edf5f8;padding:8px 11px;color:#466878;margin-top:11px}
+.heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:20px 0 9px}.heading small{color:#8696a0}
+.views{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.view{padding:10px 9px}.view h3{margin:0 0 1px;padding-left:3px;font-size:12px}.view svg{display:block;width:100%;height:174px}.view p{font-size:10.5px;color:var(--sub);margin:0 4px;min-height:34px;line-height:1.5}
+.tankfill{fill:rgba(101,189,215,.17);stroke:#3b9ab8;stroke-width:2.4}.dimstroke{stroke:#86a3b0;stroke-width:1.15;fill:none}.dimtext{font-size:11px;font-weight:750;fill:#426679}.undertext{font-size:10.5px;fill:#6b8290}.iso-tag{fill:#45778c;font-size:13px;font-weight:650}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}.block{padding:13px 16px}.block h3{font-size:13px;margin:0 0 8px}table{border-collapse:collapse;width:100%;font-size:12px}th,td{border-bottom:1px solid #edf1f3;padding:5px 3px;vertical-align:top}tr:last-child td{border-bottom:0}th{text-align:left;color:#788d99;font-size:11px;font-weight:700}td:first-child{color:#506b7a}td:last-child{text-align:right;color:#243f4f;font-weight:750;font-variant-numeric:tabular-nums;white-space:nowrap}
+.table3 td:last-child{text-align:left;white-space:normal;color:#69808d;font-weight:400;padding-left:9px}.table3 td:nth-child(2){white-space:nowrap;text-align:right;font-weight:750}.table3 th:nth-child(2){text-align:right}.table3 th:nth-child(3){padding-left:9px}.table3 td:first-child{width:42%}
+.note{font-size:11px;color:#6b8190;line-height:1.56;margin-top:8px}.single{padding:14px 16px}.statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}.stat{padding:10px;border:1px solid #e5eef2;border-radius:7px;background:#f6f9fb}.stat small{color:var(--sub);display:block}.stat b{font-size:19px;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.rule{border-left:3px solid var(--cyan);padding:8px 11px;background:#edf6f9;border-radius:4px;font-size:12px;margin:8px 0 10px;color:#315e73;line-height:1.65}
+.diagram-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.diagram{border:1px solid #e6eef2;border-radius:8px;padding:8px}.diagram strong{display:block;font-size:11px;color:#335d73}.diagram svg{display:block;width:100%;height:160px}.diagram p{font-size:10.5px;color:var(--sub);line-height:1.5}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}.check{padding:7px 0;border-bottom:1px solid #edf1f4;font-size:11.7px;line-height:1.65;color:#536b7c}.check strong{color:#2c586f}
+.foot{font-size:10.7px;color:#6e8290;border-top:1px solid #dce6ec;margin-top:16px;padding-top:9px;line-height:1.6}
+@media(max-width:750px){main{padding:18px 13px 28px}.hero{grid-template-columns:1fr}.hero-art{max-height:200px}.views{grid-template-columns:1fr}.view svg{height:220px}.view p{min-height:0}.cols,.diagram-grid,.checks{grid-template-columns:1fr}.heading small{display:none}.top{flex-wrap:wrap}.statrow{grid-template-columns:1fr 1fr}.diagram svg{height:190px}.table3 th{display:none}.table3 tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 8px;padding:6px 0;border-bottom:1px solid #edf1f3}.table3 td{border:0;padding:1px 0}.table3 td:first-child{width:auto}.table3 td:nth-child(2){white-space:normal;max-width:170px;text-align:right}.table3 td:last-child{grid-column:1/-1;padding:2px 0 0;line-height:1.4}}
+@media print{@page{size:A4 portrait;margin:10mm}body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:11px}main{padding:0;max-width:none}.top{margin-bottom:8px}h1{font-size:21px}.hero{padding:11px 12px}.hero-art{max-height:175px}.heading{margin:12px 0 6px}.view{padding:7px}.view svg{height:143px}.view p{font-size:9px;min-height:0}.block,.single{padding:9px 10px}th,td{padding:3px 2px}.stat{padding:6px}.stat b{font-size:15px}.diagram svg{height:127px}.diagram p{font-size:9px}.check{padding:4px 0}.strip,.note{font-size:9.7px}.panel,.views,.cols,.diagram-grid,.check{break-inside:avoid}.hero{break-inside:avoid}h2{font-size:14px}.foot{font-size:9.5px}}
+</style></head><body><main>
+<header class="top"><div><div class="eyebrow">搬鱼缸 · 程序 / 关卡联合交接</div><h1>初版尺寸与运动基线</h1><p class="subtitle">V0.2.2 精简版｜2026.10.11｜Unity 建议 1 单位 = 1 米</p></div><span class="stamp">首轮试搭 · 数值可调</span></header>
+<section class="hero panel"><div><p class="intro"><strong>方案已定：</strong>厚重长方形玻璃缸、略卡通人物；四人自由站位、实体互挡。<strong>一人按空格仅自己主动起跳</strong>，不触发全队自动跳跃。</p>
+<div class="keygrid"><div class="key"><small>鱼缸｜长 × 宽 × 高</small><b>3.20 × 2.20</b><b>× 0.95 <span>m</span></b></div><div class="key"><small>人物｜站高 / 碰撞直径</small><b>1.70 <span>m</span></b><b>0.60 <span>m</span></b></div><div class="key"><small>水平搬运｜缸底离地</small><b>1.70 <span>m</span></b></div><div class="key"><small>水平搬运｜缸顶高度</small><b>2.65 <span>m</span></b></div></div></div><svg aria-label="略微卡通化的四名玩家在透明长方形鱼缸下方协作承托的等轴测示意图。图形是尺寸关系示意，不是物理或动画最终效果。" class="hero-art" role="img" viewbox="0 0 720 305">
+<defs>
+<lineargradient id="gls" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#daf5fc" stop-opacity=".66"></stop><stop offset="1" stop-color="#79c9e1" stop-opacity=".20"></stop></lineargradient>
+<lineargradient id="gside" x1="0" x2="1"><stop stop-color="#74beda" stop-opacity=".25"></stop><stop offset="1" stop-color="#c7f4fc" stop-opacity=".50"></stop></lineargradient>
+<filter id="shadow"><fegaussianblur stddeviation="8"></fegaussianblur></filter>
+</defs>
+<ellipse cx="360" cy="259" fill="#9bc0d8" filter="url(#shadow)" opacity=".22" rx="172" ry="27"></ellipse>
+<path d="M157 241 354 288 548 224 351 178Z" fill="#f6fbfd" stroke="#dcebf0" stroke-width="1.5"></path>
+<path d="M206 252 404 300 M267 235 468 280 M331 215 527 257 M215 227 408 273 M270 207 466 250" opacity=".8" stroke="#ddebef" stroke-width=".8"></path>
+<g stroke-linecap="round" stroke-linejoin="round">
+<path d="M 329.8 171.2 L 321.1 216.0 M 329.8 171.2 L 338.5 220.2" stroke="#327d9b" stroke-width="10"></path>
+<path d="M 329.8 150.9 L 329.8 171.2" stroke="#327d9b" stroke-width="19"></path>
+<path d="M 319.9 149.7 L 319.4 114.1 M 339.7 154.4 L 340.2 119.2" stroke="#327d9b" stroke-width="7"></path>
+<circle cx="329.8" cy="126.9" fill="#f2cead" r="10.2" stroke="#fff" stroke-width="2"></circle>
+<path d="M 321.8 124.9 Q 329.8 114.9 337.8 124.9" fill="none" stroke="#745443" stroke-width="3.1"></path>
+</g><g stroke-linecap="round" stroke-linejoin="round">
+<path d="M 434.2 196.4 L 425.5 241.2 M 434.2 196.4 L 442.9 245.3" stroke="#e0a168" stroke-width="10"></path>
+<path d="M 434.2 176.1 L 434.2 196.4" stroke="#e0a168" stroke-width="19"></path>
+<path d="M 424.3 174.9 L 423.8 139.3 M 444.1 179.6 L 444.6 144.4" stroke="#e0a168" stroke-width="7"></path>
+<circle cx="434.2" cy="152.1" fill="#f2cead" r="10.2" stroke="#fff" stroke-width="2"></circle>
+<path d="M 426.2 150.1 Q 434.2 140.1 442.2 150.1" fill="none" stroke="#745443" stroke-width="3.1"></path>
+</g><g stroke-linecap="round" stroke-linejoin="round">
+<path d="M 285.8 189.9 L 277.1 234.7 M 285.8 189.9 L 294.5 238.8" stroke="#e0a168" stroke-width="10"></path>
+<path d="M 285.8 169.6 L 285.8 189.9" stroke="#e0a168" stroke-width="19"></path>
+<path d="M 275.9 168.4 L 275.4 132.8 M 295.7 173.1 L 296.2 137.9" stroke="#e0a168" stroke-width="7"></path>
+<circle cx="285.8" cy="145.6" fill="#f2cead" r="10.2" stroke="#fff" stroke-width="2"></circle>
+<path d="M 277.8 143.6 Q 285.8 133.6 293.8 143.6" fill="none" stroke="#745443" stroke-width="3.1"></path>
+</g><g stroke-linecap="round" stroke-linejoin="round">
+<path d="M 390.2 215.1 L 381.5 259.9 M 390.2 215.1 L 398.9 264.1" stroke="#327d9b" stroke-width="10"></path>
+<path d="M 390.2 194.8 L 390.2 215.1" stroke="#327d9b" stroke-width="19"></path>
+<path d="M 380.3 193.6 L 379.8 158.0 M 400.1 198.3 L 400.6 163.1" stroke="#327d9b" stroke-width="7"></path>
+<circle cx="390.2" cy="170.8" fill="#f2cead" r="10.2" stroke="#fff" stroke-width="2"></circle>
+<path d="M 382.2 168.8 Q 390.2 158.8 398.2 168.8" fill="none" stroke="#745443" stroke-width="3.1"></path>
+</g><polygon fill="url(#gside)" points="311.2,96.9 496.8,141.7 496.8,84.7 311.2,39.9" stroke="#2f9cc0" stroke-opacity=".65" stroke-width="2"></polygon>
+<polygon fill="#c7f2fc" fill-opacity=".31" points="496.8,141.7 408.8,179.1 408.8,122.1 496.8,84.7" stroke="#2f9cc0" stroke-opacity=".75" stroke-width="2"></polygon>
+<polygon fill="url(#gls)" points="408.8,179.1 223.2,134.3 223.2,77.3 408.8,122.1" stroke="#2f9cc0" stroke-opacity=".7" stroke-width="2"></polygon>
+<polygon fill="#d6f3fa" fill-opacity=".23" points="223.2,134.3 311.2,96.9 311.2,39.9 223.2,77.3" stroke="#2f9cc0" stroke-opacity=".65" stroke-width="2"></polygon>
+<polygon fill="#e7faff" fill-opacity=".24" points="311.2,39.9 496.8,84.7 408.8,122.1 223.2,77.3" stroke="#1d95bb" stroke-width="2.2"></polygon>
+<polygon fill="#6cbad5" fill-opacity=".11" points="311.2,96.9 496.8,141.7 408.8,179.1 223.2,134.3" stroke="#318db1" stroke-dasharray="5 5" stroke-opacity=".5" stroke-width="1.4"></polygon>
+<path d="M 311.2 39.9 L 496.8 84.7" stroke="#e4fcff" stroke-opacity=".95" stroke-width="3"></path>
+<text class="iso-tag" x="545" y="61">玻璃鱼缸</text>
+<path d="M 536 67 506 96" fill="none" stroke="#4b9fbe" stroke-width="1.4"></path>
+<text class="iso-tag" x="44" y="221">四人共同承托</text>
+<path d="M 159 216 252 204" fill="none" stroke="#4b9fbe" stroke-width="1.4"></path>
+</svg></section>
+<div class="strip"><strong>使用说明：</strong>外形与控制原则按当前决定执行；所有速度、跳高、制动距离、障碍尺寸为<strong>初版调试目标或试搭值</strong>，不代表程序已实现、四人已能通关。程序和关卡须使用相同版本的参数。</div>
+<div class="heading"><h2>01　人物 / 鱼缸三视图</h2><small>按标称比例绘制 · 示意水平搬运姿态</small></div>
+<section class="views"><article class="panel view"><h3>俯视｜2×2 参考站位</h3><svg aria-label="俯视：3.20乘2.20米的长方形鱼缸，底面四个初始人物站位，支持自由换位。" role="img" viewbox="0 0 320 257"><rect class="tankfill" height="136.4" rx="3" width="198.4" x="60.8" y="74"></rect><rect fill="none" height="122.4" stroke="#84bbc9" stroke-dasharray="5 4" stroke-width="1.4" width="184.4" x="67.8" y="81"></rect><circle cx="104.2" cy="108.1" fill="#327d9b" fill-opacity=".83" r="18.6" stroke="#fff" stroke-width="2.6"></circle><circle cx="104.2" cy="103.1" fill="white" fill-opacity=".92" r="5.5"></circle><path d="M 96.2 117.1 Q 104.2 107.1 112.2 117.1" fill="none" stroke="white" stroke-width="2.5"></path><circle cx="215.8" cy="108.1" fill="#e0a168" fill-opacity=".83" r="18.6" stroke="#fff" stroke-width="2.6"></circle><circle cx="215.8" cy="103.1" fill="white" fill-opacity=".92" r="5.5"></circle><path d="M 207.8 117.1 Q 215.8 107.1 223.8 117.1" fill="none" stroke="white" stroke-width="2.5"></path><circle cx="104.2" cy="176.3" fill="#e0a168" fill-opacity=".83" r="18.6" stroke="#fff" stroke-width="2.6"></circle><circle cx="104.2" cy="171.3" fill="white" fill-opacity=".92" r="5.5"></circle><path d="M 96.2 185.3 Q 104.2 175.3 112.2 185.3" fill="none" stroke="white" stroke-width="2.5"></path><circle cx="215.8" cy="176.3" fill="#327d9b" fill-opacity=".83" r="18.6" stroke="#fff" stroke-width="2.6"></circle><circle cx="215.8" cy="171.3" fill="white" fill-opacity=".92" r="5.5"></circle><path d="M 207.8 185.3 Q 215.8 175.3 223.8 185.3" fill="none" stroke="white" stroke-width="2.5"></path><path class="dimstroke" d="M60.8,58.0 H259.2 M60.8,53.0 V63.0 M259.2,53.0 V63.0"></path><text class="dimtext" text-anchor="middle" x="160.0" y="51.0">3.20 m</text><path class="dimstroke" d="M35.0,74.0 V210.4 M30.0,74.0 H40.0 M30.0,210.4 H40.0"></path><text class="dimtext" text-anchor="middle" transform="rotate(-90 24.0 142.2)" x="24.0" y="142.2">2.20 m</text><text class="undertext" text-anchor="middle" x="160" y="239">建议 2×2 参考站位 · 不锁定位置</text></svg><p>角色中心相对缸中心：X ±0.90 m、Y ±0.55 m；不锁固定抓取位。</p></article><article class="panel view"><h3>正视｜沿 3.20 m 长边</h3><svg aria-label="正视：人物高1.70米，鱼缸长3.20米、高0.95米，鱼缸底面距地暂定1.70米，总高2.65米。" role="img" viewbox="0 0 320 257"><path d="M28 228 H292" stroke="#a9bac5" stroke-width="2"></path><g opacity="0.36" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="104.19999999999999" cy="131.6" fill="#f2cfb1" r="9" stroke="#aabfcb" stroke-width="2"></circle>
+<path d="M 96.2 152.6 L 94.2 175.0 Q 104.2 189.0 114.2 175.0 L 112.2 152.6 Z" fill="#aabfcb"></path>
+<path d="M 99.2 175.0 L 92.2 224.0 M 109.2 175.0 L 116.2 224.0" stroke="#aabfcb" stroke-width="7"></path>
+<path d="M 96.2 155.6 L 89.2 124.6 M 112.2 155.6 L 119.2 124.6" stroke="#aabfcb" stroke-width="5"></path>
+</g><g opacity="0.36" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="215.8" cy="131.6" fill="#f2cfb1" r="9" stroke="#aabfcb" stroke-width="2"></circle>
+<path d="M 207.8 152.6 L 205.8 175.0 Q 215.8 189.0 225.8 175.0 L 223.8 152.6 Z" fill="#aabfcb"></path>
+<path d="M 210.8 175.0 L 203.8 224.0 M 220.8 175.0 L 227.8 224.0" stroke="#aabfcb" stroke-width="7"></path>
+<path d="M 207.8 155.6 L 200.8 124.6 M 223.8 155.6 L 230.8 124.6" stroke="#aabfcb" stroke-width="5"></path>
+</g><g opacity="1" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="104.19999999999999" cy="131.6" fill="#f2cfb1" r="9" stroke="#327d9b" stroke-width="2"></circle>
+<path d="M 96.2 152.6 L 94.2 175.0 Q 104.2 189.0 114.2 175.0 L 112.2 152.6 Z" fill="#327d9b"></path>
+<path d="M 99.2 175.0 L 92.2 224.0 M 109.2 175.0 L 116.2 224.0" stroke="#327d9b" stroke-width="7"></path>
+<path d="M 96.2 155.6 L 89.2 124.6 M 112.2 155.6 L 119.2 124.6" stroke="#327d9b" stroke-width="5"></path>
+</g><g opacity="1" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="215.8" cy="131.6" fill="#f2cfb1" r="9" stroke="#e0a168" stroke-width="2"></circle>
+<path d="M 207.8 152.6 L 205.8 175.0 Q 215.8 189.0 225.8 175.0 L 223.8 152.6 Z" fill="#e0a168"></path>
+<path d="M 210.8 175.0 L 203.8 224.0 M 220.8 175.0 L 227.8 224.0" stroke="#e0a168" stroke-width="7"></path>
+<path d="M 207.8 155.6 L 200.8 124.6 M 223.8 155.6 L 230.8 124.6" stroke="#e0a168" stroke-width="5"></path>
+</g><rect class="tankfill" height="58.9" rx="2" width="198.4" x="60.8" y="63.7"></rect><path d="M64.8 71.7 H255.2" stroke="#fff" stroke-opacity=".95" stroke-width="2.5"></path><path class="dimstroke" d="M60.8,52.7 H259.2 M60.8,47.7 V57.7 M259.2,47.7 V57.7"></path><text class="dimtext" text-anchor="middle" x="160.0" y="45.7">3.20 m</text><path class="dimstroke" d="M34.0,63.7 V122.6 M29.0,63.7 H39.0 M29.0,122.6 H39.0"></path><text class="dimtext" text-anchor="middle" transform="rotate(-90 23.0 93.2)" x="23.0" y="93.2">0.95 m</text><path class="dimstroke" d="M285.0,122.6 V228.0 M280.0,122.6 H290.0 M280.0,228.0 H290.0"></path><text class="dimtext" text-anchor="middle" transform="rotate(-90 274.0 175.3)" x="274.0" y="175.3">1.70 m</text><text class="undertext" text-anchor="middle" x="160" y="246">总高约 2.65 m（水平承托时）</text></svg><p>人物头顶与缸底约同高；抓取/支撑接触点由程序验证。</p></article><article class="panel view"><h3>侧视｜沿 2.20 m 短边</h3><svg aria-label="侧视：鱼缸宽度2.20米、高0.95米，鱼缸底面离地暂定1.70米。" role="img" viewbox="0 0 320 257"><path d="M28 228 H292" stroke="#a9bac5" stroke-width="2"></path><g opacity="0.36" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="125.9" cy="131.6" fill="#f2cfb1" r="9" stroke="#aabfcb" stroke-width="2"></circle>
+<path d="M 117.9 152.6 L 115.9 175.0 Q 125.9 189.0 135.9 175.0 L 133.9 152.6 Z" fill="#aabfcb"></path>
+<path d="M 120.9 175.0 L 113.9 224.0 M 130.9 175.0 L 137.9 224.0" stroke="#aabfcb" stroke-width="7"></path>
+<path d="M 117.9 155.6 L 110.9 124.6 M 133.9 155.6 L 140.9 124.6" stroke="#aabfcb" stroke-width="5"></path>
+</g><g opacity="0.36" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="194.1" cy="131.6" fill="#f2cfb1" r="9" stroke="#aabfcb" stroke-width="2"></circle>
+<path d="M 186.1 152.6 L 184.1 175.0 Q 194.1 189.0 204.1 175.0 L 202.1 152.6 Z" fill="#aabfcb"></path>
+<path d="M 189.1 175.0 L 182.1 224.0 M 199.1 175.0 L 206.1 224.0" stroke="#aabfcb" stroke-width="7"></path>
+<path d="M 186.1 155.6 L 179.1 124.6 M 202.1 155.6 L 209.1 124.6" stroke="#aabfcb" stroke-width="5"></path>
+</g><g opacity="1" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="125.9" cy="131.6" fill="#f2cfb1" r="9" stroke="#e0a168" stroke-width="2"></circle>
+<path d="M 117.9 152.6 L 115.9 175.0 Q 125.9 189.0 135.9 175.0 L 133.9 152.6 Z" fill="#e0a168"></path>
+<path d="M 120.9 175.0 L 113.9 224.0 M 130.9 175.0 L 137.9 224.0" stroke="#e0a168" stroke-width="7"></path>
+<path d="M 117.9 155.6 L 110.9 124.6 M 133.9 155.6 L 140.9 124.6" stroke="#e0a168" stroke-width="5"></path>
+</g><g opacity="1" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="194.1" cy="131.6" fill="#f2cfb1" r="9" stroke="#327d9b" stroke-width="2"></circle>
+<path d="M 186.1 152.6 L 184.1 175.0 Q 194.1 189.0 204.1 175.0 L 202.1 152.6 Z" fill="#327d9b"></path>
+<path d="M 189.1 175.0 L 182.1 224.0 M 199.1 175.0 L 206.1 224.0" stroke="#327d9b" stroke-width="7"></path>
+<path d="M 186.1 155.6 L 179.1 124.6 M 202.1 155.6 L 209.1 124.6" stroke="#327d9b" stroke-width="5"></path>
+</g><rect class="tankfill" height="58.9" rx="2" width="136.4" x="91.8" y="63.7"></rect><path d="M95.8 71.7 H224.2" stroke="#fff" stroke-opacity=".95" stroke-width="2.5"></path><path class="dimstroke" d="M91.8,52.7 H228.2 M91.8,47.7 V57.7 M228.2,47.7 V57.7"></path><text class="dimtext" text-anchor="middle" x="160.0" y="45.7">2.20 m</text><path class="dimstroke" d="M56.0,63.7 V122.6 M51.0,63.7 H61.0 M51.0,122.6 H61.0"></path><text class="dimtext" text-anchor="middle" transform="rotate(-90 45.0 93.2)" x="45.0" y="93.2">0.95 m</text><path class="dimstroke" d="M270.0,122.6 V228.0 M265.0,122.6 H275.0 M265.0,228.0 H275.0"></path><text class="dimtext" text-anchor="middle" transform="rotate(-90 259.0 175.3)" x="259.0" y="175.3">1.70 m</text><text class="undertext" text-anchor="middle" x="160" y="246">前后排人物在投影方向重叠</text></svg><p>厚重缸体高 0.95 m；图中不展示动态倾斜。</p></article></section>
+<div class="heading"><h2>02　运动 / 静态关卡参数</h2><small>首轮目标 · 尚未实测</small></div>
+<section class="cols"><article class="panel block"><h3>人物与携缸运动</h3><table><tbody>
+<tr><td>单人行走 / Shift 奔跑</td><td>4.0 / 6.0 m/s</td></tr><tr><td>四人稳定携缸 / 奔跑</td><td>2.5 / 3.5 m/s</td></tr><tr><td>四人协同起步</td><td>0.5–0.8 s</td></tr><tr><td>普通携缸刹车距离</td><td>0.8–1.2 m</td></tr><tr><td>携缸奔跑刹车距离</td><td>1.5–2.0 m</td></tr><tr><td>蹲下碰撞高度</td><td>1.10 m</td></tr><tr><td>鱼缸转向速度 / 惯性</td><td>待实测调整</td></tr>
+</tbody></table><p class="note">携缸速度是四人配合时的<strong>目标表现</strong>，不是锁死鱼缸速度；受队友、碰撞与物理受力影响。松手不清除既有惯性。</p></article>
+<article class="panel block"><h3>关卡空间留白</h3><table><tbody>
+<tr><td>宽松直线通道</td><td>4.50 m 宽</td></tr><tr><td>第一版窄直道</td><td>3.60 m 宽</td></tr><tr><td>高难窄道（仅探索）</td><td>3.00–3.30 m</td></tr><tr><td>转弯 / 检查点操作区</td><td>5.50 × 5.50 m</td></tr><tr><td>首轮净空高度</td><td>≥ 4.00 m</td></tr><tr><td>起跳前准备区</td><td>约 5.00 m 长</td></tr><tr><td>落地后整理区</td><td>约 5.00 m 长</td></tr><tr><td>跳跃平台净宽</td><td>≥ 4.50 m</td></tr></tbody></table><p class="note">鱼缸平面旋转的理论对角包络约 <strong>3.88 m</strong>；窄道内不能假定可原地转向。宽度为有效净宽；墙、平台和断层全部做成可调模块。</p></article></section>
+<div class="heading"><h2>03　跳跃规则与搭建梯度</h2><small>协调为主 · 各跳各的</small></div>
+<section class="panel single"><div class="rule"><strong>已确认控制：</strong>每人 Space 仅触发本人主动跳跃；前后排可以错时跳，鱼缸按抓取、头部接触和实际受力运动。其他人可能被动带动，但不自动获得跳跃输入；不要求四人同一帧按键，不自动扶正鱼缸。异常弹飞应优先修正物理约束，而非改成全员联动。</div>
+<div class="statrow"><div class="stat"><small>单人原地跳高目标</small><b>0.65 m</b></div><div class="stat"><small>四人协调缸底抬升目标</small><b>0.55 m</b></div><div class="stat"><small>抬升后水平缸顶</small><b>3.20 m</b></div><div class="stat"><small>跳跃区域净高试搭</small><b>≥ 4.00 m</b></div></div>
+<p class="note">单人理想滞空约 0.73 s（按重力 9.81 m/s² 推算）；携缸滞空、空中纠偏及落地稳定均需实测。</p>
+<table class="table3"><thead><tr><th>关卡测试项</th><th>第一轮尺寸</th><th>说明</th></tr></thead><tbody>
+<tr><td>同高断层</td><td>0.60 / 0.80 / 1.00 / 1.20 m</td><td>由易到难逐档测；0.80 m 仅为首轮候选</td></tr>
+<tr><td>向上平台高差</td><td>+0.15 / +0.25 / +0.35 m</td><td>0.35 m 仅探索，不保证可通过</td></tr>
+<tr><td>可靠水平跳距 / 落地稳定</td><td>待四人实测</td><td>必须四人落稳且鱼缸不碰危险物才算通过</td></tr>
+</tbody></table>
+<div class="diagram-grid"><div class="diagram"><strong>跳跃的垂直空间</strong><svg aria-label="垂直比例示意：地面零米；正常缸底一点七米、缸顶二点六五米；协调起跳缸底二点二五米、缸顶三点二零米；净空参照四米。所有垂直距离按同一比例绘制。" role="img" viewbox="0 0 520 265">
+<path d="M34 218H488" stroke="#a3b8c3" stroke-width="2"></path>
+<path d="M34 26H488" stroke="#dce8ed" stroke-dasharray="4 6" stroke-width="1.2"></path>
+<text fill="#76919c" font-size="11" text-anchor="end" x="484" y="20">4.00 m 净高参考线</text>
+<g fill="#5aa5bd" fill-opacity=".21" stroke="#3796b5" stroke-width="2">
+<rect height="45.6" rx="3" width="118" x="88" y="90.8"></rect>
+<rect height="45.6" rx="3" stroke-dasharray="6 3" width="118" x="288" y="64.4"></rect>
+</g>
+<g fill="none" stroke="#55829b" stroke-linecap="round" stroke-width="8">
+<path d="M147 161V186 M147 186L132 218 M147 186L161 218 M137 161L126 145 M157 161L168 145"></path>
+<path d="M347 134.6V159.6 M347 159.6L332 191.6 M347 159.6L361 191.6 M337 134.6L326 118.6 M357 134.6L368 118.6"></path>
+</g>
+<g fill="#ebbf91"><circle cx="147" cy="147.4" r="11"></circle><circle cx="347" cy="121" r="11"></circle></g>
+<g fill="#4b6979" font-size="12" text-anchor="middle"><text x="147" y="249">正常水平搬运</text><text x="347" y="249">四人协调起跳（目标）</text></g>
+<g fill="none" stroke="#8da7b4" stroke-width="1.4">
+<path d="M76 136.4V218 M70 136.4H82 M70 218H82"></path>
+<path d="M218 90.8V136.4 M212 90.8H224 M212 136.4H224"></path>
+<path d="M418 64.4V110 M412 64.4H424 M412 110H424"></path>
+<path d="M440 110V136.4 M434 110H446 M434 136.4H446"></path>
+</g>
+<g fill="#587582" font-size="11"><text x="42" y="181">1.70</text><text x="224" y="117">0.95</text><text x="424" y="91">0.95</text><text fill="#1d7b9b" x="446" y="126">+0.55</text>
+<text x="104" y="82">缸顶 2.65 m</text><text x="303" y="57">缸顶 3.20 m</text></g>
+</svg><p>0.55 m 是缸底抬升目标，不代表能跳上 0.55 m 高台；倾斜后缸顶可能更高。</p></div><div class="diagram"><strong>同高断层的试搭梯度</strong><svg aria-label="同高断层四档水平间距示意：0.60米、0.80米、1.00米和1.20米。均是试搭尺寸不是通过能力保证。" role="img" viewbox="0 0 520 248">
+<text fill="#6f8795" font-size="11" x="17" y="15">所有行按相同比例展示断层净宽（示意，不代表通关轨迹）</text>
+<text fill="#436578" font-size="12" x="16" y="48">入门测试</text>
+<rect fill="#b6ccd7" height="19" rx="2" width="92" x="116" y="32"></rect><rect fill="#b6ccd7" height="19" rx="2" width="226.0" x="262.0" y="32"></rect>
+<path d="M208 56V63 H262.0 V56" fill="none" stroke="#c18b5c" stroke-width="1.3"></path>
+<text fill="#b37d50" font-size="11" font-weight="700" text-anchor="middle" x="235.0" y="76">0.60 m</text>
+<text fill="#436578" font-size="12" x="16" y="99">第一版候选</text>
+<rect fill="#b6ccd7" height="19" rx="2" width="92" x="116" y="83"></rect><rect fill="#b6ccd7" height="19" rx="2" width="208.0" x="280.0" y="83"></rect>
+<path d="M208 107V114 H280.0 V107" fill="none" stroke="#c18b5c" stroke-width="1.3"></path>
+<text fill="#b37d50" font-size="11" font-weight="700" text-anchor="middle" x="244.0" y="127">0.80 m</text>
+<text fill="#436578" font-size="12" x="16" y="150">进阶验证</text>
+<rect fill="#b6ccd7" height="19" rx="2" width="92" x="116" y="134"></rect><rect fill="#b6ccd7" height="19" rx="2" width="190.0" x="298.0" y="134"></rect>
+<path d="M208 158V165 H298.0 V158" fill="none" stroke="#c18b5c" stroke-width="1.3"></path>
+<text fill="#b37d50" font-size="11" font-weight="700" text-anchor="middle" x="253.0" y="178">1.00 m</text>
+<text fill="#436578" font-size="12" x="16" y="201">能力探索</text>
+<rect fill="#b6ccd7" height="19" rx="2" width="92" x="116" y="185"></rect><rect fill="#b6ccd7" height="19" rx="2" width="172.0" x="316.0" y="185"></rect>
+<path d="M208 209V216 H316.0 V209" fill="none" stroke="#c18b5c" stroke-width="1.3"></path>
+<text fill="#b37d50" font-size="11" font-weight="700" text-anchor="middle" x="262.0" y="229">1.20 m</text>
+</svg><p>跨度是白盒测试值，不是目前已具备的实际跳远能力。</p></div></div></section>
+<div class="heading"><h2>04　程序规则与首轮验证</h2><small>短清单 · 防止双方理解不一致</small></div>
+<section class="panel single"><div class="checks">
+<div class="check"><strong>抓取：</strong>左键按下瞬间判合法；按住保持、松开解除；右键不切换。底面合法位置可抓，不设四角固定点；换位需松手重抓。</div>
+<div class="check"><strong>碰撞：</strong>人物互挡，不穿队友；仅头顶接触可承托但不主动水平推动。鱼缸碰危险墙、地、顶及硬障碍即碎，合法支撑例外。</div>
+<div class="check"><strong>检查点：</strong>必须真实停放到四根棉花安全支撑，形成有效承托才激活；支撑间距、高度与稳定阈值待实测。</div>
+<div class="check"><strong>关卡：</strong>前三段为搬运 → 转弯 → 跳跃；允许团队自主调整站位。人坠落后须有合法归队路线；确认断线后移除该人的支撑/抓取，其余可继续。</div>
+<div class="check"><strong>跳跃验收：</strong>测“一跳三不跳”“前二后二错时跳”“四人近似同步”“集中/横排站位”；检查倾斜、受力、弹飞和可恢复性。</div>
+<div class="check"><strong>工程验收：</strong>先测启停、刹车、转角、断层、上跳平台和停车。M2 联机由四真人、四设备、不同网络验证；每轮记录场景版本与物理参数版本。</div>
+</div><div class="strip"><strong>暂不冻结：</strong>四人可靠跨距、真实携缸跳高、转向包络与惯性、悬挂长度、四柱精确几何及终点判定。优先先做可调原型，再通过四人实测收敛。</div></section>
+<footer class="foot">《搬鱼缸》尺寸与运动基线 V0.2.2（精简交接版）｜基于 V0.2.1 精简排版与重复说明，<strong>不改变原有尺寸、运动目标和独立跳跃决定</strong>。规则依据：程序资料包 V12 D-01～D-12、前三关任务书 V1.1；若调试数值与玩法规则冲突，以已确认规则为准，变更由主策划确认。</footer>
+</main></body></html>

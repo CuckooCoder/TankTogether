@@ -1,0 +1,113 @@
+{
+    "utc": "2026-10-13T08:26:28.1423953Z",
+    "scope": "editor-local-lobby-transitions-and-single-steam-host",
+    "complete": true,
+    "passed": true,
+    "checks": [
+        {
+            "name": "startup_home_no_steam_no_players_frozen",
+            "evidence": "initialized=False bodies=0",
+            "passed": true
+        },
+        {
+            "name": "home_cannot_accidentally_host",
+            "evidence": "network absent",
+            "passed": true
+        },
+        {
+            "name": "local_entry_available_without_steam_init",
+            "evidence": "started",
+            "passed": true
+        },
+        {
+            "name": "original_four_actor_simulator_restored",
+            "evidence": "bodies=4 mode=1",
+            "passed": true
+        },
+        {
+            "name": "duplicate_start_and_steam_during_local_rejected",
+            "evidence": "no reset or network takeover",
+            "passed": true
+        },
+        {
+            "name": "local_cannot_host_or_join",
+            "evidence": "network absent",
+            "passed": true
+        },
+        {
+            "name": "local_carry_physics_moves",
+            "evidence": "distance=2.271556",
+            "passed": true
+        },
+        {
+            "name": "return_clears_bodies_grips_and_cursor",
+            "evidence": "bodies=0",
+            "passed": true
+        },
+        {
+            "name": "repeat_local_0",
+            "evidence": "entry",
+            "passed": true
+        },
+        {
+            "name": "repeat_local_1",
+            "evidence": "entry",
+            "passed": true
+        },
+        {
+            "name": "repeat_local_2",
+            "evidence": "entry",
+            "passed": true
+        },
+        {
+            "name": "reentry_resets_simulation_mode",
+            "evidence": "mode=1",
+            "passed": true
+        },
+        {
+            "name": "local_testing_never_changes_campaign_files",
+            "evidence": "full directory content fingerprint",
+            "passed": true
+        },
+        {
+            "name": "steam_menu_after_local",
+            "evidence": "opened",
+            "passed": true
+        },
+        {
+            "name": "steam_initializes_on_demand",
+            "evidence": "single desktop account",
+            "passed": true
+        },
+        {
+            "name": "host_only_one_real_actor",
+            "evidence": "count=1 bodies=1",
+            "passed": true
+        },
+        {
+            "name": "single_host_cannot_play_or_switch_without_leaving",
+            "evidence": "minimum two preserved",
+            "passed": true
+        },
+        {
+            "name": "teardown_blocks_new_local_start",
+            "evidence": "wait for NGO disposal",
+            "passed": true
+        },
+        {
+            "name": "host_exit_returns_clean_home",
+            "evidence": "network removed",
+            "passed": true
+        },
+        {
+            "name": "local_after_host_shutdown",
+            "evidence": "started",
+            "passed": true
+        },
+        {
+            "name": "post_network_local_physics_restored",
+            "evidence": "bodies=4",
+            "passed": true
+        }
+    ]
+}

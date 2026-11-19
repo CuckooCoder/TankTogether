@@ -1,0 +1,23 @@
+new_profile_and_controller=True SproutCharacter
+four_unique_materials=True NPR_Sky,NPR_Lilac,NPR_Lemon,NPR_Coral
+textures_and_shaders=True four imported art materials
+Idle_bindings=True 250
+Walk_bindings=True 250
+Run_bindings=True 250
+Takeoff_bindings=True 250
+Rise_bindings=True 250
+Apex_bindings=True 250
+Fall_bindings=True 250
+LandSoft_bindings=True 250
+LandHard_bindings=True 250
+walk_speed=True 4
+run_speed=True 6
+returns_to_idle=True 0.0167649
+jump_air_and_land=True Locomotion,Takeoff,Rise,Apex,Fall,Land
+stretch_1.1=True -0.6
+stretch_5=True 3.3
+stretch_1.7=True 0
+grip_ik=True grip=True
+session_cosmetic=True slot3 coral
+passed=True
+scope=local runtime fixture and shared cosmetic entry, no real remote/full-route acceptance

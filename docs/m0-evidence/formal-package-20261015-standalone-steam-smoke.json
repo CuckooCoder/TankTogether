@@ -1,0 +1,20 @@
+{
+    "utc": "2026-10-15T09:22:57.9055087Z",
+    "protocol": "tank-together-steam-10",
+    "baseline": "v0.2.4-whitebox-3c1-b2e206b96701a428e98242f136d99400",
+    "error": "",
+    "steam": true,
+    "lobbyCreated": true,
+    "hostListening": true,
+    "offlineActorsDisabled": true,
+    "restarted": true,
+    "gmAvailable": true,
+    "glassAvailable": true,
+    "gmOnlineApplied": true,
+    "gmClipboardRoundtrip": true,
+    "gmDefaultsRestored": true,
+    "displayApplied": true,
+    "displayRestored": true,
+    "connectedClients": 1,
+    "app": 480
+}

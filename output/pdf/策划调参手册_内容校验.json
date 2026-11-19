@@ -1,0 +1,107 @@
+{
+  "pages": 15,
+  "editorControlsCovered": 35,
+  "controls": [
+    "airAcceleration",
+    "angularDamping",
+    "carryBottomHeight",
+    "carryBrakeAcceleration",
+    "carryJumpHeightTarget",
+    "carryJumpVelocity",
+    "carryMotorForce",
+    "carryMotorGain",
+    "carrySpeed",
+    "carrySprintSpeed",
+    "coyoteTime",
+    "crouchingHeight",
+    "freeAcceleration",
+    "freeDeceleration",
+    "freeFallGravityMultiplier",
+    "freeJumpHeight",
+    "gripInset",
+    "gripLimit",
+    "gripVerticalReach",
+    "jumpBufferTime",
+    "playerDiameter",
+    "playerMass",
+    "spawnHalfSpacing",
+    "sprintSpeed",
+    "standInset",
+    "standWidth",
+    "standingHeight",
+    "supportDamping",
+    "supportMaxForce",
+    "supportStiffness",
+    "tankDamping",
+    "tankMass",
+    "tankSize",
+    "version",
+    "walkSpeed"
+  ],
+  "sha256": "6e50e348c53e00c1fcec18fb6cc0c06f07ae33d8917d19d95f7b83439944e0f4",
+  "bytes": 404296,
+  "sourceAssetSHA256": "aef8e49751bfc3e152ef42193150f60dcd6ce60a5037cd45b6c3ed8a4e498646",
+  "scope": "documentation-only; source-checked; suggested increments are not tested/frozen balance",
+  "chapters": [
+    [
+      1,
+      "策划编辑器调参手册"
+    ],
+    [
+      2,
+      "01 / 找到面板并保存"
+    ],
+    [
+      3,
+      "02 / 保存、恢复与生效范围"
+    ],
+    [
+      4,
+      "03 / 移动：先决定目标速度"
+    ],
+    [
+      5,
+      "04 / 自由操作容错：让人物跟手"
+    ],
+    [
+      6,
+      "05 / 跳跃与刹停：不要混调"
+    ],
+    [
+      7,
+      "06 / 尺寸：占地、净空与头顶"
+    ],
+    [
+      8,
+      "07 / 站位与支架：先看场景类型"
+    ],
+    [
+      9,
+      "08 / 质量与阻尼：重量不等于重力"
+    ],
+    [
+      10,
+      "09 / 驱动力与抓取：能动、能抓、抓稳"
+    ],
+    [
+      11,
+      "10 / 头顶支撑：和抓取是两套作用"
+    ],
+    [
+      12,
+      "11 / 常见问题：优先改哪一项"
+    ],
+    [
+      13,
+      "12 / F1还有哪些编辑器没有的项"
+    ],
+    [
+      14,
+      "13 / 联机试调，再固化到工程"
+    ],
+    [
+      15,
+      "14 / 验收与交接记录"
+    ]
+  ]
+}

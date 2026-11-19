@@ -1,0 +1,33 @@
+{
+  "updated": "2026-10-15T20:53:35+08:00",
+  "build": {
+    "utc": "2026-10-15T11:30:38.6044352Z",
+    "result": "Succeeded",
+    "errors": 0,
+    "bytes": 183259904
+  },
+  "zip": {
+    "name": "TankTogether-Recovery-20261015.zip",
+    "bytes": 72861498,
+    "sha256": "e1e0e4f498f50d1ae254968931c6539c3b0ea24e3180b355bc607b03bc755090",
+    "crcVerified": true
+  },
+  "tests": {
+    "recovery": 36,
+    "frontEnd": 22,
+    "adventure": 24,
+    "settings": 17,
+    "saveSlots": 15,
+    "saveSafety": 29,
+    "independentLaunches": 2,
+    "matchingSavedSeconds": 7444,
+    "matchingMembers": 2,
+    "displayRollback": true,
+    "remoteMultiplayer": false,
+    "continuousRoute": false,
+    "standaloneVisualInspection": false
+  },
+  "consoleErrors": 0,
+  "diffCheck": true,
+  "evidenceLimits": "One real Steam host plus injected peers; fixture checkpoints; two isolated standalone processes; no remote multiplayer/full route/final standalone visual acceptance."
+}

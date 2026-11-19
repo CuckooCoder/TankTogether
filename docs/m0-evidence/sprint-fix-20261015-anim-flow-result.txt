@@ -1,0 +1,1 @@
+jump=True; repeatMovingJump=True; walkOff=True; states=Takeoff,Rise,Apex,Fall,Land,Locomotion; passed=True

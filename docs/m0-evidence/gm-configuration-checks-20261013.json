@@ -1,0 +1,187 @@
+{
+    "scope": "local-GM-and-single-account-Steam-host-with-injected-peer-messages-NOT-two-account-remote",
+    "complete": true,
+    "passed": true,
+    "checks": [
+        {
+            "name": "clipboard_uses_applied_not_draft",
+            "evidence": "50 parameters",
+            "passed": true
+        },
+        {
+            "name": "catalog_covers_all_active_fields",
+            "evidence": "50",
+            "passed": true
+        },
+        {
+            "name": "clipboard_import_roundtrip",
+            "evidence": "all values equal",
+            "passed": true
+        },
+        {
+            "name": "invalid_import_atomic",
+            "evidence": "NaN rejected without partial mutation",
+            "passed": true
+        },
+        {
+            "name": "duplicate_rejected",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "missing_rejected",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "wrong_level_rejected",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "network_profile_roundtrip",
+            "evidence": "4190 bytes; reliable fragmentation required",
+            "passed": true
+        },
+        {
+            "name": "hash_mismatch_rejected",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "all_component_domains_apply",
+            "evidence": "movement/geometry/lift/assist/camera/network",
+            "passed": true
+        },
+        {
+            "name": "tank_collision_matches_configuration",
+            "evidence": "(3.52, 1.05, 2.42)",
+            "passed": true
+        },
+        {
+            "name": "leave_local_restores_all_defaults",
+            "evidence": "25",
+            "passed": true
+        },
+        {
+            "name": "asset_and_user_air25_unchanged",
+            "evidence": "25",
+            "passed": true
+        },
+        {
+            "name": "client_applies_rebuilds_and_pauses",
+            "evidence": "isolated receive transition; no live remote connection",
+            "passed": true
+        },
+        {
+            "name": "duplicate_config_does_not_rebuild",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "late_old_config_does_not_rollback",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "bad_client_hash_cannot_mutate",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "old_config_snapshot_ignored",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "nonhost_snapshot_ignored",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "matching_config_snapshot_accepted",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "nonhost_cannot_apply_configuration",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "actual_Steam_host_created",
+            "evidence": "single Steam account",
+            "passed": true
+        },
+        {
+            "name": "host_initial_config",
+            "evidence": "配置 r1 · 03cfddc2 · 已确认 1/2",
+            "passed": true
+        },
+        {
+            "name": "online_GM_does_not_stop_network_clock",
+            "evidence": "paused physics, normal game clock",
+            "passed": true
+        },
+        {
+            "name": "host_applies_and_increments_revision",
+            "evidence": "配置 r2 · 8e8c77e8 · 已确认 1/2",
+            "passed": true
+        },
+        {
+            "name": "late_join_package_identity_stable",
+            "evidence": "runtime changes do not change lobby approval identity",
+            "passed": true
+        },
+        {
+            "name": "cannot_start_with_GM_open",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "unconfirmed_peer_blocks_resume",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "stale_ack_ignored",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "unregistered_sender_ignored",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "matching_ack_unlocks_readiness",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "old_config_input_ignored",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "remote_GM_pause_blocks_resume",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "peer_cannot_overwrite_host_config",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "host_clipboard_matches_live_network_hash",
+            "evidence": "8e8c77e8596ea3d9d1a7a3ce018d1da9",
+            "passed": true
+        },
+        {
+            "name": "leave_room_clears_revision_restores_defaults",
+            "evidence": "",
+            "passed": true
+        }
+    ]
+}

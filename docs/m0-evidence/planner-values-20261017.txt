@@ -1,0 +1,19 @@
+2026-10-17 15:26 +08:00
+scene=Assets/Scenes/SteamFormalWhiteboxV1.unity
+version=v0.3-formal-planner-feedback1
+freeJumpHeight=0.8
+freeFallGravityMultiplier=4
+stretchGrowSpeed=0.5
+stretchShrinkSpeed=0.5
+runtime_loaded_planner_values=True
+
+FeedbackTuningChecks (fresh run 15:26:48):
+editor_accepts_planner_values=True 
+GM_accepts_planner_values=True 
+copy_import_roundtrip=True 
+runtime_four_times_gravity=True -39.24
+editor_rejects_above_four=True 
+GM_rejects_above_four=True 
+test_restores_original_values=True 
+passed=True
+Unity console errors: 0. Play stopped after verification.

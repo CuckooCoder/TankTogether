@@ -1,0 +1,11 @@
+{
+  "verifiedAtUtc": "2026-10-10T04:07:39.1195181Z",
+  "localDigest": "sha256:b9674287c2bd47b3acc9ad699c8478632d295458901b4b25d81cac43613b22ed",
+  "assetName": "TankTogether-Steam-20261010.zip",
+  "privateRepository": true,
+  "releaseUrl": "https://github.com/1205971577/tank-together/releases/tag/steam-test-20261010",
+  "assetBytes": 73298802,
+  "serverDigest": "sha256:b9674287c2bd47b3acc9ad699c8478632d295458901b4b25d81cac43613b22ed",
+  "sourceCommit": "a0da02d78202066479563aabd3b51034b25e6f38",
+  "verification": "GitHub asset API server SHA256 matches local package"
+}

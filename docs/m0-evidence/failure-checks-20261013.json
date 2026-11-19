@@ -1,0 +1,133 @@
+{
+    "utc": "2026-10-13T08:24:47.5858016Z",
+    "scope": "local-physics-and-injected-network-states-not-remote-clients",
+    "complete": true,
+    "passed": true,
+    "checks": [
+        {
+            "name": "safe_stands_do_not_fail",
+            "evidence": "initial safe support",
+            "passed": true
+        },
+        {
+            "name": "single_fall_not_team_failure",
+            "evidence": "player respawned",
+            "passed": true
+        },
+        {
+            "name": "actual_danger_collision_fails_once",
+            "evidence": "count=1",
+            "passed": true
+        },
+        {
+            "name": "failure_freezes_and_clears_grips",
+            "evidence": "all bodies frozen",
+            "passed": true
+        },
+        {
+            "name": "short_feedback_window_prevents_accidental_retry",
+            "evidence": "first 0.65 s",
+            "passed": true
+        },
+        {
+            "name": "duplicate_failure_and_input_ignored",
+            "evidence": "one burst",
+            "passed": true
+        },
+        {
+            "name": "shards_are_cosmetic",
+            "evidence": "no collider or rigidbody",
+            "passed": true
+        },
+        {
+            "name": "local_retry_available",
+            "evidence": "checkpoint start",
+            "passed": true
+        },
+        {
+            "name": "local_retry_restores_intact_tank_and_inputs",
+            "evidence": "safe rebuilt actors",
+            "passed": true
+        },
+        {
+            "name": "can_grab_again_after_retry",
+            "evidence": "all four",
+            "passed": true
+        },
+        {
+            "name": "local_failure_and_retry_do_not_write_save",
+            "evidence": "directory hashes",
+            "passed": true
+        },
+        {
+            "name": "steam_host_available",
+            "evidence": "single real account; peer below is injected",
+            "passed": true
+        },
+        {
+            "name": "two_member_start_request",
+            "evidence": "injected peer",
+            "passed": true
+        },
+        {
+            "name": "checkpoint_handshake_enters_play",
+            "evidence": "injected ready",
+            "passed": true
+        },
+        {
+            "name": "host_failure_changes_session_phase",
+            "evidence": "Failed",
+            "passed": true
+        },
+        {
+            "name": "failed_round_cannot_save",
+            "evidence": "existing checkpoint only",
+            "passed": true
+        },
+        {
+            "name": "failure_does_not_repeat_epoch",
+            "evidence": "once",
+            "passed": true
+        },
+        {
+            "name": "host_retry_keeps_room",
+            "evidence": "same network host",
+            "passed": true
+        },
+        {
+            "name": "retry_rebuilds_same_room",
+            "evidence": "two actors",
+            "passed": true
+        },
+        {
+            "name": "host_failure_retry_do_not_rewrite_save",
+            "evidence": "directory hashes unchanged",
+            "passed": true
+        },
+        {
+            "name": "one_remaining_cannot_retry",
+            "evidence": "failure preserved",
+            "passed": true
+        },
+        {
+            "name": "client_repeated_failed_snapshot_one_burst",
+            "evidence": "proxy apply",
+            "passed": true
+        },
+        {
+            "name": "client_cannot_author_failure",
+            "evidence": "Simulate false",
+            "passed": true
+        },
+        {
+            "name": "client_retry_restores_visuals",
+            "evidence": "same tank object",
+            "passed": true
+        },
+        {
+            "name": "old_failure_epoch_rejected",
+            "evidence": "stale snapshot",
+            "passed": true
+        }
+    ]
+}

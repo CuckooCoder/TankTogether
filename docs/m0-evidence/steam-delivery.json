@@ -1,0 +1,54 @@
+{
+  "unity": "6000.6.5f1",
+  "steamHostAndRestartVerified": true,
+  "appId": 480,
+  "facepunchBundledVersion": "2.3.2",
+  "protocol": "tank-together-steam-01",
+  "physicsRegressionChecks": 24,
+  "windowsSmokeExitCode": 0,
+  "visualReview": "Editor menu and host screenshots only; hidden native screenshot black, not visual evidence",
+  "transportCommit": "0fab638470379ace12b0149dfb41c043d23dbce5",
+  "ngo": "2.13.3",
+  "internetMultiplayer": "PENDING: two separate Steam accounts/devices",
+  "remotePeerCount": 0,
+  "utc": "2026-10-10T03:11:59.3438985Z",
+  "sourceAndBuild": [
+    {
+      "path": "Assets/Scripts/SteamCarryProtocol.cs",
+      "sha256": "6FA5BFDBC63B0CA5147A534BC261C68BD43305DDCE884F6260237300D2844F3F"
+    },
+    {
+      "path": "Assets/Scripts/SteamCarrySession.cs",
+      "sha256": "25A616CFBDBFD3684B31B3F27C4B46BC8F9ACC3F9A33C42336E9F282A6C88A4A"
+    },
+    {
+      "path": "Assets/Scripts/M0CarryLab.cs",
+      "sha256": "402348FC7C99B1871E746535F2FE333C2968A3D2D39418E22F0780B3D1D83776"
+    },
+    {
+      "path": "Assets/Editor/SteamCarrySetup.cs",
+      "sha256": "07B7A60C39CA2D94835CA56255CA0562440CC455B7325FBB74693A11D85D6F3A"
+    },
+    {
+      "path": "Assets/Scenes/SteamCarryLab.unity",
+      "sha256": "8344DAB539950E61299A583AB208E3A59A7468C98A2769A82475B524BACB68D7"
+    },
+    {
+      "path": "Packages/manifest.json",
+      "sha256": "CCBC6C96551A42FECD72E0E41C91E01D5A485B0D10B244E1C85401A78F38DBDC"
+    },
+    {
+      "path": "Packages/packages-lock.json",
+      "sha256": "1390477B5E359E77E15C0BDA66B670563DA71D187AD5903448D7B86A8AF1E87E"
+    },
+    {
+      "path": "Builds/SteamCarryLab/TankTogether-Steam_Data/Managed/Assembly-CSharp.dll",
+      "sha256": "C3A8CE9BAF60243827683519BA903F8FC49947EA262ED712862E54759A581841"
+    },
+    {
+      "path": "Builds/TankTogether-Steam-20261010.zip",
+      "sha256": "B9674287C2BD47B3ACC9AD699C8478632D295458901B4B25D81CAC43613B22ED"
+    }
+  ],
+  "protocolChecks": 15
+}

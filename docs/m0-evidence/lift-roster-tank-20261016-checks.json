@@ -1,0 +1,177 @@
+{
+    "complete": true,
+    "passed": true,
+    "scope": "isolated-editor-physics-not-full-route-or-remote",
+    "checks": [
+        {
+            "name": "players_without_tank_cannot_start_2",
+            "evidence": "0",
+            "passed": true
+        },
+        {
+            "name": "tank_arrival_starts_countdown_2",
+            "evidence": "0.5999996",
+            "passed": true
+        },
+        {
+            "name": "tank_leaving_resets_countdown_2",
+            "evidence": "0",
+            "passed": true
+        },
+        {
+            "name": "actual_jump_preserves_countdown_2",
+            "evidence": "peak=0.6499252 wait=1.099999",
+            "passed": true
+        },
+        {
+            "name": "missing_active_player_blocks_2",
+            "evidence": "0",
+            "passed": true
+        },
+        {
+            "name": "full_delay_after_reentry_2",
+            "evidence": "1.799999",
+            "passed": true
+        },
+        {
+            "name": "starts_with_actual_roster_and_tank_2",
+            "evidence": "0.2999999",
+            "passed": true
+        },
+        {
+            "name": "once_started_continues_2",
+            "evidence": "0.5499998",
+            "passed": true
+        },
+        {
+            "name": "paused_freezes_lift_2",
+            "evidence": "0.5499998",
+            "passed": true
+        },
+        {
+            "name": "players_without_tank_cannot_start_3",
+            "evidence": "0",
+            "passed": true
+        },
+        {
+            "name": "tank_arrival_starts_countdown_3",
+            "evidence": "0.5999996",
+            "passed": true
+        },
+        {
+            "name": "tank_leaving_resets_countdown_3",
+            "evidence": "0",
+            "passed": true
+        },
+        {
+            "name": "actual_jump_preserves_countdown_3",
+            "evidence": "peak=0.6499252 wait=1.099999",
+            "passed": true
+        },
+        {
+            "name": "missing_active_player_blocks_3",
+            "evidence": "0",
+            "passed": true
+        },
+        {
+            "name": "full_delay_after_reentry_3",
+            "evidence": "1.799999",
+            "passed": true
+        },
+        {
+            "name": "starts_with_actual_roster_and_tank_3",
+            "evidence": "0.2999999",
+            "passed": true
+        },
+        {
+            "name": "once_started_continues_3",
+            "evidence": "0.5499998",
+            "passed": true
+        },
+        {
+            "name": "paused_freezes_lift_3",
+            "evidence": "0.5499998",
+            "passed": true
+        },
+        {
+            "name": "players_without_tank_cannot_start_4",
+            "evidence": "0",
+            "passed": true
+        },
+        {
+            "name": "tank_arrival_starts_countdown_4",
+            "evidence": "0.5999996",
+            "passed": true
+        },
+        {
+            "name": "tank_leaving_resets_countdown_4",
+            "evidence": "0",
+            "passed": true
+        },
+        {
+            "name": "actual_jump_preserves_countdown_4",
+            "evidence": "peak=0.6499252 wait=1.099999",
+            "passed": true
+        },
+        {
+            "name": "missing_active_player_blocks_4",
+            "evidence": "0",
+            "passed": true
+        },
+        {
+            "name": "full_delay_after_reentry_4",
+            "evidence": "1.799999",
+            "passed": true
+        },
+        {
+            "name": "starts_with_actual_roster_and_tank_4",
+            "evidence": "0.2999999",
+            "passed": true
+        },
+        {
+            "name": "once_started_continues_4",
+            "evidence": "0.5499998",
+            "passed": true
+        },
+        {
+            "name": "paused_freezes_lift_4",
+            "evidence": "0.5499998",
+            "passed": true
+        },
+        {
+            "name": "below_platform_rejected",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "other_floor_rejected",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "zero_delay_still_requires_tank",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "proxy_does_not_trigger",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "proxy_applies_authority",
+            "evidence": "23.75",
+            "passed": true
+        },
+        {
+            "name": "broken_tank_blocks_trigger",
+            "evidence": "鱼缸碎了，本次搬运失败。",
+            "passed": true
+        },
+        {
+            "name": "reset_returns_bottom",
+            "evidence": "",
+            "passed": true
+        }
+    ]
+}

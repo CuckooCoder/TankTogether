@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-10",
+  "checks": 24,
+  "standalone_exit_code": 0,
+  "build": {
+    "result": "Succeeded",
+    "utc": "2026-10-10T02:47:08.8528262Z",
+    "errors": 0,
+    "bytes": 174550842
+  },
+  "human_feel_validation": "pending",
+  "network_validation": "not implemented",
+  "sha256": {
+    "Assets/Scripts/M0CarryLab.cs": "8802fd3a373c77918d8a8f3cb951c918c981124bbee7d86cb7086f54bf805e3a",
+    "Assets/Scripts/M0CarryChecks.cs": "76c19bb408a2e8b48edfa685ab0b9103e0e0190113eb08665687c96aeaebe21a",
+    "Assets/Editor/M0CarryLabSetup.cs": "cf39b231f543fa2c492d2e932d9155be9e7479e0f745ee3e174696ce05e2bb0e",
+    "Assets/Scenes/M0CarryLab.unity": "21843752922c609d3d1405bd83426a6b976746c90888e6700dba58834e222f57",
+    "Builds/M0CarryLab/TankTogether-M0_Data/Managed/Assembly-CSharp.dll": "c513321591b230a7a17564cd05da9c0ac3825f5ec1e6c5c2e084b7378b324ff8"
+  }
+}

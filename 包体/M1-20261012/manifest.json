@@ -1,0 +1,13 @@
+{
+  "utc": "2026-10-12T03:29:44.425761+00:00",
+  "version": "m1-20261012",
+  "baseline": "v0.2.2-r1",
+  "localExperimentOnly": true,
+  "uploaded": false,
+  "parkingCheckpointImplemented": false,
+  "longTermHangingVerified": false,
+  "file": "TankTogether-M1-20261012.zip",
+  "bytes": 71737500,
+  "entries": 323,
+  "sha256": "86913d0185e13328048e30177dc17463ce5e299a8ac47286e1d12fa13fe13554"
+}

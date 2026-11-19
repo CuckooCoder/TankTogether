@@ -1,0 +1,117 @@
+{
+    "complete": true,
+    "passed": true,
+    "scope": "isolated-editor-physics-not-full-route-or-remote",
+    "checks": [
+        {
+            "name": "wait_before_start_2",
+            "evidence": "distance=0 wait=0.9999992",
+            "passed": true
+        },
+        {
+            "name": "leaving_resets_countdown_2",
+            "evidence": "wait=0",
+            "passed": true
+        },
+        {
+            "name": "fresh_two_second_delay_2",
+            "evidence": "wait=1.599999",
+            "passed": true
+        },
+        {
+            "name": "starts_with_actual_roster_2",
+            "evidence": "distance=0.7999995",
+            "passed": true
+        },
+        {
+            "name": "pause_freezes_lift_2",
+            "evidence": "distance=0.7999995",
+            "passed": true
+        },
+        {
+            "name": "wait_before_start_3",
+            "evidence": "distance=0 wait=0.9999992",
+            "passed": true
+        },
+        {
+            "name": "leaving_resets_countdown_3",
+            "evidence": "wait=0",
+            "passed": true
+        },
+        {
+            "name": "fresh_two_second_delay_3",
+            "evidence": "wait=1.599999",
+            "passed": true
+        },
+        {
+            "name": "starts_with_actual_roster_3",
+            "evidence": "distance=0.7999995",
+            "passed": true
+        },
+        {
+            "name": "pause_freezes_lift_3",
+            "evidence": "distance=0.7999995",
+            "passed": true
+        },
+        {
+            "name": "wait_before_start_4",
+            "evidence": "distance=0 wait=0.9999992",
+            "passed": true
+        },
+        {
+            "name": "leaving_resets_countdown_4",
+            "evidence": "wait=0",
+            "passed": true
+        },
+        {
+            "name": "fresh_two_second_delay_4",
+            "evidence": "wait=1.599999",
+            "passed": true
+        },
+        {
+            "name": "starts_with_actual_roster_4",
+            "evidence": "distance=0.7999995",
+            "passed": true
+        },
+        {
+            "name": "pause_freezes_lift_4",
+            "evidence": "distance=0.7999995",
+            "passed": true
+        },
+        {
+            "name": "authored_speed_2_5",
+            "evidence": "one-second delta=2.499998",
+            "passed": true
+        },
+        {
+            "name": "authored_travel_101",
+            "evidence": "distance=101",
+            "passed": true
+        },
+        {
+            "name": "four_riders_through_open_exit_reach_top",
+            "evidence": "(-222.90, 64.50, -3.00);(-221.10, 64.50, -3.00);(-222.90, 64.50, 3.00);(-221.10, 64.50, 3.00)",
+            "passed": true
+        },
+        {
+            "name": "lift_snapshot_roundtrip",
+            "evidence": "protocol=tank-together-steam-13",
+            "passed": true
+        },
+        {
+            "name": "proxy_applies_host_state_without_autosimulation",
+            "evidence": "distance=23.75",
+            "passed": true
+        },
+        {
+            "name": "invalid_lift_snapshot_rejected",
+            "evidence": "NaN rejected",
+            "passed": true
+        },
+        {
+            "name": "round_restart_resets_lift",
+            "evidence": "distance=0",
+            "passed": true
+        }
+    ]
+}

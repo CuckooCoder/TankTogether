@@ -1,0 +1,62 @@
+{
+    "complete": true,
+    "passed": true,
+    "scope": "isolated-editor-physics-not-full-route-or-remote",
+    "checks": [
+        {
+            "name": "four_visuals_physics_unchanged",
+            "evidence": "one Rigidbody/one capsule per player",
+            "passed": true
+        },
+        {
+            "name": "standing_feet_height",
+            "evidence": "height=1.7 feet=5.483627E-06",
+            "passed": true
+        },
+        {
+            "name": "visual_faces_movement_without_body_rotation",
+            "evidence": "(-1.00, 0.00, 0.00)",
+            "passed": true
+        },
+        {
+            "name": "crouch_visual_tracks_capsule",
+            "evidence": "height=1.1",
+            "passed": true
+        },
+        {
+            "name": "imported_actor_free_jump",
+            "evidence": "0.6499203",
+            "passed": true
+        },
+        {
+            "name": "proxy_roster_2",
+            "evidence": "visuals follow actual roster",
+            "passed": true
+        },
+        {
+            "name": "proxy_height_2",
+            "evidence": "same sizing path used by received snapshot",
+            "passed": true
+        },
+        {
+            "name": "proxy_roster_3",
+            "evidence": "visuals follow actual roster",
+            "passed": true
+        },
+        {
+            "name": "proxy_height_3",
+            "evidence": "same sizing path used by received snapshot",
+            "passed": true
+        },
+        {
+            "name": "proxy_roster_4",
+            "evidence": "visuals follow actual roster",
+            "passed": true
+        },
+        {
+            "name": "proxy_height_4",
+            "evidence": "same sizing path used by received snapshot",
+            "passed": true
+        }
+    ]
+}

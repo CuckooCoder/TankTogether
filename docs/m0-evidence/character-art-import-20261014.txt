@@ -1,0 +1,2 @@
+OriginalImport_1_7m sourceBounds=Center: (5.50, 2.10, -0.31), Extents: (1.19, 2.18, 0.45) wrapperScale=0.3895091 colliders=0
+URPColorPreview_1_7m sourceBounds=Center: (5.50, 2.10, -0.31), Extents: (1.19, 2.18, 0.45) wrapperScale=0.3895091 colliders=0

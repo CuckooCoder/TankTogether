@@ -1,0 +1,13 @@
+actual_local_F_press_starts=True
+held_F_not_repeated=True
+Q_shrink=True
+E_grow=True
+actual_Steam_host=True
+unknown_sender_rejected=True
+stale_configuration_rejected=True
+remote_handler_starts_lift=True
+replayed_press_rejected=True
+remote_distance_checked_by_host=True
+lobby_cannot_operate=True
+passed=True
+scope=actual keyboard events and one Steam host with injected peer messages; no remote multiplayer

@@ -1,0 +1,61 @@
+fileFormatVersion: 2
+guid: 5f42be44b00b59fca352d4dd9106d275
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "NPR_Sky"
+    second: {fileID: 2100000, guid: ca23ae87f8ae5892b10bdd0d9767cb04, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 0
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 0
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    animationCompression: 0
+    animationRotationError: 0
+    animationPositionError: 0
+    animationScaleError: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 2
+    useFileUnits: 1
+    useFileScale: 1
+    weldVertices: 0
+    preserveHierarchy: 1
+    skinWeightsMode: 1
+    maxBonesPerVertex: 32
+    minBoneWeight: 0
+    optimizeBones: 0
+    meshOptimizationFlags: 0
+    indexFormat: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 3
+    blendShapeNormalImportMode: 0
+    normalSmoothAngle: 60
+  referencedClips: []
+  importAnimation: 1
+  animationType: 2
+  avatarSetup: 1
+  autoGenerateAvatarMappingIfUnspecified: 1
+  userData: ToonBridge 1.1 prebound URP materials
+  assetBundleName: 
+  assetBundleVariant: 

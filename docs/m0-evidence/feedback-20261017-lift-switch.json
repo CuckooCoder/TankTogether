@@ -1,0 +1,117 @@
+{
+    "complete": true,
+    "passed": true,
+    "scope": "isolated-editor-physics-not-full-route-or-remote",
+    "checks": [
+        {
+            "name": "authored_switch_moves_with_platform",
+            "evidence": "Group 59 (UnityEngine.MeshCollider)",
+            "passed": true
+        },
+        {
+            "name": "never_auto_starts",
+            "evidence": "0",
+            "passed": true
+        },
+        {
+            "name": "near_authored_switch",
+            "evidence": "(-226.54, -36.50, -1.70)",
+            "passed": true
+        },
+        {
+            "name": "held_grab_rejected",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "far_rejected",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "one_operator_no_tank_required",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "same_step_double_toggle_rejected",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "ascent_speed",
+            "evidence": "0.9999994",
+            "passed": true
+        },
+        {
+            "name": "press_again_reverses",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "stops_at_bottom",
+            "evidence": "0",
+            "passed": true
+        },
+        {
+            "name": "proxy_cannot_authorize",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "proxy_descending_snapshot",
+            "evidence": "50",
+            "passed": true
+        },
+        {
+            "name": "pause_rejects",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "top_checkpoint_can_descend",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "actually_descends",
+            "evidence": "100.5",
+            "passed": true
+        },
+        {
+            "name": "pause_freezes_motion",
+            "evidence": "100.5",
+            "passed": true
+        },
+        {
+            "name": "reset_clears_direction",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "failure_rejects",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "interaction_input_roundtrip",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "direction_snapshot_roundtrip",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "old_default_keys_migrate",
+            "evidence": "",
+            "passed": true
+        },
+        {
+            "name": "custom_keys_preserved",
+            "evidence": "",
+            "passed": true
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "utc": "2026-10-13T06:55:09.9109835Z",
+    "protocol": "tank-together-steam-03",
+    "baseline": "v0.2.2-whitebox-gap2-r3-2612ef5523bc5c9afbbe737dc2399dd5",
+    "error": "",
+    "steam": true,
+    "lobbyCreated": true,
+    "hostListening": true,
+    "offlineActorsDisabled": true,
+    "restarted": true,
+    "connectedClients": 1,
+    "app": 480
+}

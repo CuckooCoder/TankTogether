@@ -1,0 +1,12 @@
+host_required=True
+host_automatically_agrees=True
+duplicate_start_rejected=True
+outsider_rejected=True
+stale_vote_rejected=True
+partial_not_passed=True
+disconnect_keeps_voter_removes_consent=True
+exact_deadline_rejected=True
+unanimous_passes=True
+cancel_is_not_pass=True
+host_alone_reset=True
+passed=True

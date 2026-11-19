@@ -1,0 +1,337 @@
+Mono path[0] = 'D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Builds/Formal-20261015/Windows/TankTogether-Steam_Data/Managed'
+Mono config path = 'D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Builds/Formal-20261015/Windows/MonoBleedingEdge/etc'
+CodeReloadManager initialized
+Found 2 interfaces on host : 0) 192.168.1.106 1) 172.30.16.1
+Player connection [73904]  Target information:
+
+Player connection [73904]  * "[IP] 192.168.1.106 [Port] 55000 [Flags] 2 [Guid] 178112124 [EditorId] 4023751638 [Version] 1048832 [Id] WindowsPlayer(2,DESKTOP-79KSQLP) [Debug] 0 [PackageName] WindowsPlayer [ProjectName] Tank Together"
+
+Player connection [73904]  * "[IP] 172.30.16.1 [Port] 55000 [Flags] 2 [Guid] 178112124 [EditorId] 4023751638 [Version] 1048832 [Id] WindowsPlayer(2,DESKTOP-79KSQLP) [Debug] 0 [PackageName] WindowsPlayer [ProjectName] Tank Together"
+
+Player connection [73904] Started UDP target info broadcast (1) on [225.0.0.222:54997].
+
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Initialize engine version: 6000.6.5f1 (3ff58d469c8a)
+[EntityIdStore] init: VM path (explicit commit), pageSize=4096, blockCount=1048576, entitiesPerBlock=256, slots reserved=4294967296 bytes
+[Subsystems] Discovering subsystems at path D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Builds/Formal-20261015/Windows/TankTogether-Steam_Data/UnitySubsystems
+GfxDevice: creating device client; kGfxThreadingModeClientWorkerJobs
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 5070 Ti (ID=0x2c05)
+    Vendor:   NVIDIA
+    VRAM:     15907 MB
+    Driver:   32.0.15.8129
+Begin MonoManager ReloadAssembly
+- Finished resetting the current domain, in  0.006 seconds
+[Physics::Module] Selected backend (deferred post-plugins).
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+<RI> Initializing input.
+
+Using Windows.Gaming.Input
+Detected one or more triangles where the distance between any 2 vertices is greater than 500 units. The resulting Triangle Mesh can impact simulation and query stability. It is recommended to tessellate meshes that have large triangles. Source mesh name: Mesh Group 7
+UnloadTime: 0.920900 ms
+[M0] baseline=v0.2.4-whitebox-3c1-b2e206b96701a428e98242f136d99400 parameters={"version":"v0.2.4-whitebox-3c1","tankSize":{"x":3.200000047683716,"y":0.949999988079071,"z":2.200000047683716},"standingHeight":1.7000000476837158,"playerDiameter":0.6000000238418579,"crouchingHeight":1.100000023841858,"spawnHalfSpacing":{"x":0.8999999761581421,"y":0.550000011920929},"carryBottomHeight":1.7000000476837158,"walkSpeed":4.0,"sprintSpeed":6.0,"carrySpeed":2.5,"carrySprintSpeed":3.5,"freeJumpHeight":0.6499999761581421,"carryJumpHeightTarget":1.3300000429153442,"standInset":{"x":0.20000000298023224,"y":0.15000000596046448},"standWidth":0.25,"gripInset":0.11999999731779099,"gripVerticalReach":0.23000000417232513,"tankMass":24.0,"playerMass":7.0,"tankDamping":0.800000011920929,"angularDamping":5.0,"motorGain":95.0,"motorForce":160.0,"carryMotorGain":65.0,"carryMotorForce":70.0,"carryBrakeAcceleration":2.5,"carryJumpVelocity":10.199999809265137,"gripLimit":0.11999999731779099,"supportStiffness":3500.0,"supportDamping":100.0,"supportMaxForce":240.0,"freeAcceleration":40.0,"freeDeceleration":60.0,"airAcceleration":25.0,"coyoteTime":0.10000000149011612,"jumpBufferTime":0.11999999731779099,"freeFallGravityMultiplier":2.0,"controlFeelMode":1.0,"airReleaseDeceleration":8.0,"cameraVerticalFollow":18.0}
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Debug:Log (object) (at C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs:130)
+TankTogether.M0.M0CarryLab:Awake () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/M0CarryLab.cs:115)
+
+(Filename: C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs Line: 130)
+
+[SteamCarry] steam_initialized app=480 compatibility=tank-together-steam-10:v0.2.4-whitebox-3c1-b2e206b96701a428e98242f136d99400:whitebox-route-v3:coop-prototype-20261013-1:160,18,40:1665fbd260f433c5713ee504dd0adfe6:stretch-b1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Debug:Log (object) (at C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs:130)
+TankTogether.Networking.SteamCarrySession:Log (string) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:177)
+TankTogether.Networking.SteamCarrySession:InitializeSteam () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:171)
+TankTogether.Networking.SteamCarrySession/<Start>d__195:MoveNext () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:95)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at C:/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs Line: 130)
+
+[SteamCarry] steam_initialized app=480 compatibility=tank-together-steam-10:v0.2.4-whitebox-3c1-b2e206b96701a428e98242f136d99400:whitebox-route-v3:coop-prototype-20261013-1:160,18,40:1665fbd260f433c5713ee504dd0adfe6:stretch-b1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Debug:Log (object) (at C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs:130)
+TankTogether.Networking.SteamCarrySession:Log (string) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:177)
+TankTogether.Networking.SteamCarrySession:InitializeSteam () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:171)
+TankTogether.Networking.SteamCarrySession:OpenSteamMenu () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:129)
+TankTogether.Networking.SteamCarrySession/<Start>d__195:MoveNext () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:110)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at C:/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs Line: 130)
+
+[SteamCarry] host_started protocol=tank-together-steam-10
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Debug:Log (object) (at C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs:130)
+TankTogether.Networking.SteamCarrySession:Log (string) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:177)
+TankTogether.Networking.SteamCarrySession/<CreateRoom>d__205:MoveNext () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:252)
+System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:InvokeMoveNext (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:Run ()
+System.Threading.Tasks.AwaitTaskContinuation:InvokeAction (object)
+System.Threading.Tasks.AwaitTaskContinuation:RunCallback (System.Threading.ContextCallback,object,System.Threading.Tasks.Task&)
+System.Threading.Tasks.SynchronizationContextAwaitTaskContinuation:Run (System.Threading.Tasks.Task,bool)
+System.Threading.Tasks.Task:FinishContinuations ()
+System.Threading.Tasks.Task:FinishStageThree ()
+System.Threading.Tasks.Task`1<System.Nullable`1<Steamworks.Data.Lobby>>:TrySetResult (System.Nullable`1<Steamworks.Data.Lobby>)
+System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Nullable`1<Steamworks.Data.Lobby>>:SetResult (System.Nullable`1<Steamworks.Data.Lobby>)
+Steamworks.SteamMatchmaking/<CreateLobbyAsync>d__45:MoveNext ()
+System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:InvokeMoveNext (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:Run ()
+Steamworks.Dispatch:ProcessResult (Steamworks.Dispatch/CallbackMsg_t)
+Steamworks.Dispatch:ProcessCallback (Steamworks.Dispatch/CallbackMsg_t,bool)
+Steamworks.Dispatch:Frame (Steamworks.Data.HSteamPipe)
+Steamworks.SteamClient:RunCallbacks ()
+TankTogether.Networking.SteamCarrySession:Update () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:535)
+
+(Filename: C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs Line: 130)
+
+Shader 'Hidden/Universal Render Pipeline/GaussianDepthOfField' is not supported or has been stripped from the build (in 'GaussianDepthOfField'). PostProcessing render passes will not execute.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Rendering.Universal.PostProcessUtils:LoadShader (UnityEngine.Shader,string,UnityEngine.LogType) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/PostProcessUtils.cs:28)
+UnityEngine.Rendering.Universal.DepthOfFieldGaussianPostProcessPass:.ctor (UnityEngine.Shader) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/Passes/PostProcess/DepthOfFieldGaussianPostProcessPass.cs:24)
+UnityEngine.Rendering.Universal.PostProcess:.ctor (UnityEngine.Rendering.Universal.PostProcessData) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/PostProcess.cs:56)
+UnityEngine.Rendering.Universal.UniversalRenderer:.ctor (UnityEngine.Rendering.Universal.UniversalRendererData) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/UniversalRenderer.cs:427)
+UnityEngine.Rendering.Universal.UniversalRendererData:Create () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/UniversalRendererData.cs:166)
+UnityEngine.Rendering.Universal.ScriptableRendererData:InternalCreateRenderer () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/ScriptableRendererData.cs:67)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:CreateRenderers () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/Data/UniversalRenderPipelineAsset.cs:862)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:CreatePipeline () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/Data/UniversalRenderPipelineAsset.cs:809)
+UnityEngine.Rendering.RenderPipelineAsset:InternalCreatePipeline () (at C:/build/output/unity/unity/Runtime/Export/RenderPipeline/RenderPipelineAsset.cs:15)
+UnityEngine.Rendering.RenderPipelineManager:TryPrepareRenderPipeline (UnityEngine.Rendering.RenderPipelineAsset) (at C:/build/output/unity/unity/Runtime/Export/RenderPipeline/RenderPipelineManager.cs:172)
+UnityEngine.Rendering.RenderPipelineManager:DoRenderLoop_Internal (UnityEngine.Rendering.RenderPipelineAsset,intptr,object) (at C:/build/output/unity/unity/Runtime/Export/RenderPipeline/RenderPipelineManager.cs:146)
+
+(Filename: ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/PostProcessUtils.cs Line: 28)
+
+Shader 'Hidden/Universal Render Pipeline/GaussianDepthOfField' is not supported or has been stripped from the build (in 'GaussianDepthOfField'). PostProcessing render passes will not execute.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Rendering.Universal.PostProcessUtils:LoadShader (UnityEngine.Shader,string,UnityEngine.LogType) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/PostProcessUtils.cs:28)
+UnityEngine.Rendering.Universal.DepthOfFieldGaussianPostProcessPass:.ctor (UnityEngine.Shader) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/Passes/PostProcess/DepthOfFieldGaussianPostProcessPass.cs:25)
+UnityEngine.Rendering.Universal.PostProcess:.ctor (UnityEngine.Rendering.Universal.PostProcessData) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/PostProcess.cs:56)
+UnityEngine.Rendering.Universal.UniversalRenderer:.ctor (UnityEngine.Rendering.Universal.UniversalRendererData) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/UniversalRenderer.cs:427)
+UnityEngine.Rendering.Universal.UniversalRendererData:Create () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/UniversalRendererData.cs:166)
+UnityEngine.Rendering.Universal.ScriptableRendererData:InternalCreateRenderer () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/ScriptableRendererData.cs:67)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:CreateRenderers () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/Data/UniversalRenderPipelineAsset.cs:862)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:CreatePipeline () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/Data/UniversalRenderPipelineAsset.cs:809)
+UnityEngine.Rendering.RenderPipelineAsset:InternalCreatePipeline () (at C:/build/output/unity/unity/Runtime/Export/RenderPipeline/RenderPipelineAsset.cs:15)
+UnityEngine.Rendering.RenderPipelineManager:TryPrepareRenderPipeline (UnityEngine.Rendering.RenderPipelineAsset) (at C:/build/output/unity/unity/Runtime/Export/RenderPipeline/RenderPipelineManager.cs:172)
+UnityEngine.Rendering.RenderPipelineManager:DoRenderLoop_Internal (UnityEngine.Rendering.RenderPipelineAsset,intptr,object) (at C:/build/output/unity/unity/Runtime/Export/RenderPipeline/RenderPipelineManager.cs:146)
+
+(Filename: ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/PostProcessUtils.cs Line: 28)
+
+Shader 'Hidden/Universal Render Pipeline/BokehDepthOfField' is not supported or has been stripped from the build (in 'BokehDepthOfField'). PostProcessing render passes will not execute.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Rendering.Universal.PostProcessUtils:LoadShader (UnityEngine.Shader,string,UnityEngine.LogType) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/PostProcessUtils.cs:28)
+UnityEngine.Rendering.Universal.DepthOfFieldBokehPostProcessPass:.ctor (UnityEngine.Shader) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/Passes/PostProcess/DepthOfFieldBokehProcessPass.cs:26)
+UnityEngine.Rendering.Universal.PostProcess:.ctor (UnityEngine.Rendering.Universal.PostProcessData) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/PostProcess.cs:57)
+UnityEngine.Rendering.Universal.UniversalRenderer:.ctor (UnityEngine.Rendering.Universal.UniversalRendererData) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/UniversalRenderer.cs:427)
+UnityEngine.Rendering.Universal.UniversalRendererData:Create () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/UniversalRendererData.cs:166)
+UnityEngine.Rendering.Universal.ScriptableRendererData:InternalCreateRenderer () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/ScriptableRendererData.cs:67)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:CreateRenderers () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/Data/UniversalRenderPipelineAsset.cs:862)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:CreatePipeline () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/Data/UniversalRenderPipelineAsset.cs:809)
+UnityEngine.Rendering.RenderPipelineAsset:InternalCreatePipeline () (at C:/build/output/unity/unity/Runtime/Export/RenderPipeline/RenderPipelineAsset.cs:15)
+UnityEngine.Rendering.RenderPipelineManager:TryPrepareRenderPipeline (UnityEngine.Rendering.RenderPipelineAsset) (at C:/build/output/unity/unity/Runtime/Export/RenderPipeline/RenderPipelineManager.cs:172)
+UnityEngine.Rendering.RenderPipelineManager:DoRenderLoop_Internal (UnityEngine.Rendering.RenderPipelineAsset,intptr,object) (at C:/build/output/unity/unity/Runtime/Export/RenderPipeline/RenderPipelineManager.cs:146)
+
+(Filename: ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/PostProcessUtils.cs Line: 28)
+
+Shader 'Hidden/Universal Render Pipeline/PaniniProjection' is not supported or has been stripped from the build (in 'PaniniProjection'). PostProcessing render passes will not execute.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Rendering.Universal.PostProcessUtils:LoadShader (UnityEngine.Shader,string,UnityEngine.LogType) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/PostProcessUtils.cs:28)
+UnityEngine.Rendering.Universal.PaniniProjectionPostProcessPass:.ctor (UnityEngine.Shader) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/Passes/PostProcess/PaniniProjectionPostProcessPass.cs:19)
+UnityEngine.Rendering.Universal.PostProcess:.ctor (UnityEngine.Rendering.Universal.PostProcessData) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/PostProcess.cs:64)
+UnityEngine.Rendering.Universal.UniversalRenderer:.ctor (UnityEngine.Rendering.Universal.UniversalRendererData) (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/UniversalRenderer.cs:427)
+UnityEngine.Rendering.Universal.UniversalRendererData:Create () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/UniversalRendererData.cs:166)
+UnityEngine.Rendering.Universal.ScriptableRendererData:InternalCreateRenderer () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/ScriptableRendererData.cs:67)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:CreateRenderers () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/Data/UniversalRenderPipelineAsset.cs:862)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:CreatePipeline () (at ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/Data/UniversalRenderPipelineAsset.cs:809)
+UnityEngine.Rendering.RenderPipelineAsset:InternalCreatePipeline () (at C:/build/output/unity/unity/Runtime/Export/RenderPipeline/RenderPipelineAsset.cs:15)
+UnityEngine.Rendering.RenderPipelineManager:TryPrepareRenderPipeline (UnityEngine.Rendering.RenderPipelineAsset) (at C:/build/output/unity/unity/Runtime/Export/RenderPipeline/RenderPipelineManager.cs:172)
+UnityEngine.Rendering.RenderPipelineManager:DoRenderLoop_Internal (UnityEngine.Rendering.RenderPipelineAsset,intptr,object) (at C:/build/output/unity/unity/Runtime/Export/RenderPipeline/RenderPipelineManager.cs:146)
+
+(Filename: ./Library/PackageCache/com.unity.render-pipelines.universal@2309ae255609/Runtime/PostProcessUtils.cs Line: 28)
+
+GPU Resident Drawer created.
+Direct3D: detected that IDXGISwapChain::GetFrameStatistics is broken (it does not return proper timestamps). Delta time will now be calculated using cpu-side time stampling until the game window is moved.
+Direct3D: detected that IDXGISwapChain::GetFrameStatistics is broken (it does not return proper timestamps). Delta time will now be calculated using cpu-side time stampling until the game window is moved.
+[SteamCarry] session_paused 房主打开 GM，调参后从检查点继续。
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Debug:Log (object) (at C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs:130)
+TankTogether.Networking.SteamCarrySession:Log (string) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:177)
+TankTogether.Networking.SteamCarrySession:PauseSession (string) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:492)
+TankTogether.Networking.SteamCarrySession:OpenGM () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarryTuning.cs:39)
+TankTogether.M0.CarryGMPanel:Open () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/CarryGMPanel.cs:52)
+TankTogether.Networking.SteamCarrySession/<Smoke>d__248:MoveNext () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:930)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at C:/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs Line: 130)
+
+[SteamCarry] session_paused 正在同步房主 GM 参数…
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Debug:Log (object) (at C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs:130)
+TankTogether.Networking.SteamCarrySession:Log (string) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:177)
+TankTogether.Networking.SteamCarrySession:PauseSession (string) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:492)
+TankTogether.Networking.SteamCarrySession:ApplyRoomConfiguration (TankTogether.M0.CarryTuningProfile,string&) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarryTuning.cs:54)
+TankTogether.Networking.SteamCarrySession/<Smoke>d__248:MoveNext () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:931)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at C:/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs Line: 130)
+
+[SteamCarry] gm_applied revision=2 hash=232ff9c0c59eee65138df6618fecd2af
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Debug:Log (object) (at C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs:130)
+TankTogether.Networking.SteamCarrySession:Log (string) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:177)
+TankTogether.Networking.SteamCarrySession:ApplyRoomConfiguration (TankTogether.M0.CarryTuningProfile,string&) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarryTuning.cs:59)
+TankTogether.Networking.SteamCarrySession/<Smoke>d__248:MoveNext () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:931)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at C:/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs Line: 130)
+
+[SteamCarry] session_left
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Debug:Log (object) (at C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs:130)
+TankTogether.Networking.SteamCarrySession:Log (string) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:177)
+TankTogether.Networking.SteamCarrySession:Leave (string) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:691)
+TankTogether.Networking.SteamCarrySession/<Smoke>d__248:MoveNext () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:934)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at C:/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs Line: 130)
+
+[SteamCarry] steam_initialized app=480 compatibility=tank-together-steam-10:v0.2.4-whitebox-3c1-b2e206b96701a428e98242f136d99400:whitebox-route-v3:coop-prototype-20261013-1:160,18,40:1665fbd260f433c5713ee504dd0adfe6:stretch-b1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Debug:Log (object) (at C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs:130)
+TankTogether.Networking.SteamCarrySession:Log (string) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:177)
+TankTogether.Networking.SteamCarrySession:InitializeSteam () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:171)
+TankTogether.Networking.SteamCarrySession/<AfterLeave>d__237:MoveNext () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:700)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at C:/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs Line: 130)
+
+[SteamCarry] host_started protocol=tank-together-steam-10
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Debug:Log (object) (at C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs:130)
+TankTogether.Networking.SteamCarrySession:Log (string) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:177)
+TankTogether.Networking.SteamCarrySession/<CreateRoom>d__205:MoveNext () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:252)
+System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:InvokeMoveNext (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:Run ()
+System.Threading.Tasks.AwaitTaskContinuation:InvokeAction (object)
+System.Threading.Tasks.AwaitTaskContinuation:RunCallback (System.Threading.ContextCallback,object,System.Threading.Tasks.Task&)
+System.Threading.Tasks.SynchronizationContextAwaitTaskContinuation:Run (System.Threading.Tasks.Task,bool)
+System.Threading.Tasks.Task:FinishContinuations ()
+System.Threading.Tasks.Task:FinishStageThree ()
+System.Threading.Tasks.Task`1<System.Nullable`1<Steamworks.Data.Lobby>>:TrySetResult (System.Nullable`1<Steamworks.Data.Lobby>)
+System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Nullable`1<Steamworks.Data.Lobby>>:SetResult (System.Nullable`1<Steamworks.Data.Lobby>)
+Steamworks.SteamMatchmaking/<CreateLobbyAsync>d__45:MoveNext ()
+System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:InvokeMoveNext (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Runtime.CompilerServices.AsyncMethodBuilderCore/MoveNextRunner:Run ()
+Steamworks.Dispatch:ProcessResult (Steamworks.Dispatch/CallbackMsg_t)
+Steamworks.Dispatch:ProcessCallback (Steamworks.Dispatch/CallbackMsg_t,bool)
+Steamworks.Dispatch:Frame (Steamworks.Data.HSteamPipe)
+Steamworks.SteamClient:RunCallbacks ()
+TankTogether.Networking.SteamCarrySession:Update () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:535)
+
+(Filename: C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs Line: 130)
+
+[SteamCarry] smoke_complete host=True remote_peers=0
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Debug:Log (object) (at C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs:130)
+TankTogether.Networking.SteamCarrySession:Log (string) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:177)
+TankTogether.Networking.SteamCarrySession/<Smoke>d__248:MoveNext () (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:945)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at C:/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs Line: 130)
+
+[SteamCarry] peer_disconnected slot=0
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at C:/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:23)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at C:/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at C:/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Debug:Log (object) (at C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs:130)
+TankTogether.Networking.SteamCarrySession:Log (string) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:177)
+TankTogether.Networking.SteamCarrySession:OnDisconnected (ulong) (at D:/工作区/Project/Game/搬鱼缸项目/Unity/TankTogether/Assets/Scripts/SteamCarrySession.cs:318)
+Unity.Netcode.NetworkConnectionManager:InvokeOnClientDisconnectCallback (ulong) (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Connection/NetworkConnectionManager.cs:214)
+Unity.Netcode.NetworkManager:ShutdownInternal () (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Core/NetworkManager.cs:1683)
+Unity.Netcode.NetworkManager:OnDestroy () (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Core/NetworkManager.cs:1754)
+Unity.Netcode.NetworkManager:OnApplicationQuit () (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Core/NetworkManager.cs:1740)
+
+(Filename: C:/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs Line: 130)
+
+GPU Resident Drawer disposed.
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+CodeReloadManager destroyed
+PlayerConnection::Cleanup##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1792056200854,"processId":89688,"allocatedMemory":593798,"memoryLabels":[{"Default":7184},{"Thread":1792},{"Manager":548660},{"GfxDevice":72},{"GfxThread":5376},{"Animation":600},{"Audio":544},{"Serialization":17000},{"Input":2440},{"Renderer":8},{"String":639},{"PoolAlloc":432},{"ScriptManager":5696},{"CodeReload":440},{"CloudService":288},{"VR":1928},{"Video":144},{"NativeArray":3468},{"Subsystems":96},{"Gui":167},{"CoreBusinessMetrics":128}]}

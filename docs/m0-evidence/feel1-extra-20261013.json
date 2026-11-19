@@ -1,0 +1,11 @@
+{
+  "carry": "grips=4 broken=False displacement=1.278859 tilt=0.8531751",
+  "gmFileRoundTrip": true,
+  "gmTestPresetRemovedAfterVerification": true,
+  "failure": {
+    "frozen": true,
+    "grips": 0,
+    "retry": true
+  },
+  "scope": "local-input-physics-and-API-checks-not-remote-network"
+}

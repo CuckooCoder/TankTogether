@@ -1,0 +1,439 @@
+{
+    "utc": "2026-10-13T02:20:47.7654337Z",
+    "baseline": "v0.2.2-r1-267def3bd0995bf0bcc110602c127381",
+    "legs": [
+        {
+            "name": "01_start_side",
+            "scope": "continuous_from_start",
+            "outcome": "reached_and_braked",
+            "message": "已抓取：移动会影响鱼缸；松开左键可换位。",
+            "start": {
+                "x": -3.76330008822201e-11,
+                "y": 2.1750006675720215,
+                "z": 2.200735149671118e-10
+            },
+            "target": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -4.0
+            },
+            "end": {
+                "x": 0.0014282104093581438,
+                "y": 2.157885789871216,
+                "z": -4.039859294891357
+            },
+            "seconds": 1.8199985027313232,
+            "maxGripError": 0.12028968334197998,
+            "maxTilt": 1.0317347049713135,
+            "cameraOccludedSeconds": 0.0,
+            "reached": true,
+            "broken": false
+        },
+        {
+            "name": "02_start_to_bridge",
+            "scope": "continuous_from_start",
+            "outcome": "reached_and_braked",
+            "message": "已抓取：移动会影响鱼缸；松开左键可换位。",
+            "start": {
+                "x": 0.0014282104093581438,
+                "y": 2.157885789871216,
+                "z": -4.039859294891357
+            },
+            "target": {
+                "x": -20.0,
+                "y": -0.5,
+                "z": -4.0
+            },
+            "end": {
+                "x": -20.0397891998291,
+                "y": 1.657481074333191,
+                "z": -3.9909799098968506
+            },
+            "seconds": 8.259998321533203,
+            "maxGripError": 0.16462582349777222,
+            "maxTilt": 17.951438903808594,
+            "cameraOccludedSeconds": 0.0,
+            "reached": true,
+            "broken": false
+        },
+        {
+            "name": "03_first_gap",
+            "scope": "continuous_from_start",
+            "outcome": "reached_and_braked",
+            "message": "已抓取：移动会影响鱼缸；松开左键可换位。",
+            "start": {
+                "x": -20.0397891998291,
+                "y": 1.657481074333191,
+                "z": -3.9909799098968506
+            },
+            "target": {
+                "x": -33.0,
+                "y": -0.5,
+                "z": -4.0
+            },
+            "end": {
+                "x": -33.04610061645508,
+                "y": 1.6575032472610474,
+                "z": -3.998762607574463
+            },
+            "seconds": 5.479995250701904,
+            "maxGripError": 0.1656814068555832,
+            "maxTilt": 12.953570365905762,
+            "cameraOccludedSeconds": 0.0,
+            "reached": true,
+            "broken": false
+        },
+        {
+            "name": "04_bridge_align",
+            "scope": "continuous_from_start",
+            "outcome": "reached_and_braked",
+            "message": "已抓取：移动会影响鱼缸；松开左键可换位。",
+            "start": {
+                "x": -33.04610061645508,
+                "y": 1.6575032472610474,
+                "z": -3.998762607574463
+            },
+            "target": {
+                "x": -34.0,
+                "y": -0.5,
+                "z": -6.25
+            },
+            "end": {
+                "x": -34.08683776855469,
+                "y": -0.2169329971075058,
+                "z": -7.3774518966674805
+            },
+            "seconds": 1.1999990940093994,
+            "maxGripError": 0.1656814068555832,
+            "maxTilt": 7.2075886726379395,
+            "cameraOccludedSeconds": 0.0,
+            "reached": true,
+            "broken": false
+        },
+        {
+            "name": "05_second_gap",
+            "scope": "continuous_from_start",
+            "outcome": "tank_broken",
+            "message": "鱼缸破碎：Group 3。按 R 回起点重试。",
+            "start": {
+                "x": -34.08683776855469,
+                "y": -0.2169329971075058,
+                "z": -7.3774518966674805
+            },
+            "target": {
+                "x": -44.0,
+                "y": -1.5,
+                "z": -6.25
+            },
+            "end": {
+                "x": -34.38209533691406,
+                "y": -1.9832229614257813,
+                "z": -7.654114723205566
+            },
+            "seconds": 0.39999979734420776,
+            "maxGripError": 0.1656814068555832,
+            "maxTilt": 125.76946258544922,
+            "cameraOccludedSeconds": 0.019999992102384567,
+            "reached": false,
+            "broken": true
+        },
+        {
+            "name": "06_split_left",
+            "scope": "isolated_after_blocker",
+            "outcome": "fell_below_route",
+            "message": "已抓取：移动会影响鱼缸；松开左键可换位。",
+            "start": {
+                "x": -41.0,
+                "y": 0.6750006079673767,
+                "z": -6.25
+            },
+            "target": {
+                "x": -61.0,
+                "y": -0.5,
+                "z": -6.25
+            },
+            "end": {
+                "x": -48.4359130859375,
+                "y": -3.982083559036255,
+                "z": -6.250108242034912
+            },
+            "seconds": 3.0999972820281982,
+            "maxGripError": 0.162881001830101,
+            "maxTilt": 53.19477462768555,
+            "cameraOccludedSeconds": 0.25999993085861206,
+            "reached": false,
+            "broken": false
+        },
+        {
+            "name": "07_split_right",
+            "scope": "isolated_after_blocker",
+            "outcome": "fell_below_route",
+            "message": "已抓取：移动会影响鱼缸；松开左键可换位。",
+            "start": {
+                "x": -41.0,
+                "y": 1.6750006675720215,
+                "z": 6.25
+            },
+            "target": {
+                "x": -61.0,
+                "y": -0.5,
+                "z": 6.25
+            },
+            "end": {
+                "x": -58.66767501831055,
+                "y": -3.0727076530456543,
+                "z": 6.250236511230469
+            },
+            "seconds": 7.19999361038208,
+            "maxGripError": 0.1661291867494583,
+            "maxTilt": 51.32442855834961,
+            "cameraOccludedSeconds": 0.13999995589256287,
+            "reached": false,
+            "broken": false
+        },
+        {
+            "name": "08_down_ramp",
+            "scope": "isolated_after_blocker",
+            "outcome": "fell_below_route",
+            "message": "已抓取：移动会影响鱼缸；松开左键可换位。",
+            "start": {
+                "x": -62.0,
+                "y": 1.6750006675720215,
+                "z": -4.3266268345831804e-10
+            },
+            "target": {
+                "x": -90.0,
+                "y": -14.199999809265137,
+                "z": 0.0
+            },
+            "end": {
+                "x": -64.81256866455078,
+                "y": 0.6354057788848877,
+                "z": -0.012799713760614395
+            },
+            "seconds": 3.6999967098236084,
+            "maxGripError": 0.16698971390724182,
+            "maxTilt": 29.739601135253906,
+            "cameraOccludedSeconds": 0.0,
+            "reached": false,
+            "broken": false
+        },
+        {
+            "name": "10_inner_turn",
+            "scope": "isolated_after_blocker",
+            "outcome": "reached_and_braked",
+            "message": "已抓取：移动会影响鱼缸；松开左键可换位。",
+            "start": {
+                "x": -94.0,
+                "y": -13.32499885559082,
+                "z": -10.0
+            },
+            "target": {
+                "x": -104.0,
+                "y": -18.5,
+                "z": -16.0
+            },
+            "end": {
+                "x": -103.94318389892578,
+                "y": -16.342180252075195,
+                "z": -15.940361022949219
+            },
+            "seconds": 5.23999547958374,
+            "maxGripError": 0.19642230868339539,
+            "maxTilt": 70.45172119140625,
+            "cameraOccludedSeconds": 0.9599992632865906,
+            "reached": true,
+            "broken": false
+        },
+        {
+            "name": "11_arc_platforms",
+            "scope": "isolated_after_blocker",
+            "outcome": "tank_broken",
+            "message": "鱼缸破碎：Group 11。按 R 回起点重试。",
+            "start": {
+                "x": -105.0,
+                "y": -17.82499885559082,
+                "z": -27.0
+            },
+            "target": {
+                "x": -118.0,
+                "y": -21.5,
+                "z": -32.0
+            },
+            "end": {
+                "x": -113.0371322631836,
+                "y": -19.90596580505371,
+                "z": -30.72371482849121
+            },
+            "seconds": 5.499995231628418,
+            "maxGripError": 0.16523496806621552,
+            "maxTilt": 65.7525863647461,
+            "cameraOccludedSeconds": 3.8199965953826904,
+            "reached": false,
+            "broken": true
+        },
+        {
+            "name": "12_arc_to_centre",
+            "scope": "isolated_after_blocker",
+            "outcome": "tank_broken",
+            "message": "鱼缸破碎：Group 11。按 R 回起点重试。",
+            "start": {
+                "x": -138.0,
+                "y": -20.82499885559082,
+                "z": -32.0
+            },
+            "target": {
+                "x": -139.0,
+                "y": -27.5,
+                "z": -19.0
+            },
+            "end": {
+                "x": -138.34588623046875,
+                "y": -26.035734176635742,
+                "z": -26.357641220092773
+            },
+            "seconds": 2.499997854232788,
+            "maxGripError": 0.16245195269584656,
+            "maxTilt": 90.05502319335938,
+            "cameraOccludedSeconds": 2.139998197555542,
+            "reached": false,
+            "broken": true
+        },
+        {
+            "name": "13_centre_exit",
+            "scope": "isolated_after_blocker",
+            "outcome": "reached_and_braked",
+            "message": "已抓取：移动会影响鱼缸；松开左键可换位。",
+            "start": {
+                "x": -126.0,
+                "y": -27.32499885559082,
+                "z": 4.0
+            },
+            "target": {
+                "x": -151.0,
+                "y": -36.5,
+                "z": 4.0
+            },
+            "end": {
+                "x": -151.0359649658203,
+                "y": -34.34246826171875,
+                "z": 3.9651598930358887
+            },
+            "seconds": 9.280021667480469,
+            "maxGripError": 0.14397341012954712,
+            "maxTilt": 49.596885681152344,
+            "cameraOccludedSeconds": 1.4999988079071045,
+            "reached": true,
+            "broken": false
+        },
+        {
+            "name": "14_exit_bridge",
+            "scope": "isolated_after_blocker",
+            "outcome": "reached_and_braked",
+            "message": "已抓取：移动会影响鱼缸；松开左键可换位。",
+            "start": {
+                "x": -151.0,
+                "y": -34.32500076293945,
+                "z": 4.0
+            },
+            "target": {
+                "x": -171.0,
+                "y": -36.5,
+                "z": 4.0
+            },
+            "end": {
+                "x": -171.04122924804688,
+                "y": -34.34252166748047,
+                "z": 3.99983811378479
+            },
+            "seconds": 8.199996948242188,
+            "maxGripError": 0.12019651383161545,
+            "maxTilt": 2.734018564224243,
+            "cameraOccludedSeconds": 0.0,
+            "reached": true,
+            "broken": false
+        },
+        {
+            "name": "15_final_narrow_path",
+            "scope": "isolated_after_blocker",
+            "outcome": "tank_broken",
+            "message": "鱼缸破碎：Group 1。按 R 回起点重试。",
+            "start": {
+                "x": -171.91888427734375,
+                "y": -34.339576721191406,
+                "z": 8.19278621673584
+            },
+            "target": {
+                "x": -223.0,
+                "y": -36.5,
+                "z": 6.5
+            },
+            "end": {
+                "x": -171.91836547851563,
+                "y": -34.3410530090332,
+                "z": 8.199728965759277
+            },
+            "seconds": 0.019999992102384567,
+            "maxGripError": 0.0,
+            "maxTilt": 6.158802032470703,
+            "cameraOccludedSeconds": 0.0,
+            "reached": false,
+            "broken": true
+        },
+        {
+            "name": "16_terminal_lift_wait",
+            "scope": "isolated_after_blocker",
+            "outcome": "observe_static_terminal",
+            "message": "Check actual displacement; no automatic lift or checkpoint assumed",
+            "start": {
+                "x": -234.6999969482422,
+                "y": -34.32500076293945,
+                "z": 2.081690236854783e-10
+            },
+            "target": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "end": {
+                "x": -234.6999969482422,
+                "y": -34.32500076293945,
+                "z": 1.998684273640805e-10
+            },
+            "seconds": 6.0,
+            "maxGripError": 0.0,
+            "maxTilt": 0.0,
+            "cameraOccludedSeconds": 0.0,
+            "reached": false,
+            "broken": false
+        },
+        {
+            "name": "17_upper_finish",
+            "scope": "isolated_upper_platform_not_reached_from_below",
+            "outcome": "fell_below_route",
+            "message": "已抓取：移动会影响鱼缸；松开左键可换位。",
+            "start": {
+                "x": -245.0,
+                "y": 66.67499542236328,
+                "z": 5.0
+            },
+            "target": {
+                "x": -231.0,
+                "y": 65.5,
+                "z": -6.0
+            },
+            "end": {
+                "x": -234.53274536132813,
+                "y": 62.085044860839844,
+                "z": -2.9119250774383545
+            },
+            "seconds": 5.6199951171875,
+            "maxGripError": 0.16501890122890472,
+            "maxTilt": 67.52265167236328,
+            "cameraOccludedSeconds": 0.39999979734420776,
+            "reached": false,
+            "broken": false
+        }
+    ],
+    "complete": true
+}

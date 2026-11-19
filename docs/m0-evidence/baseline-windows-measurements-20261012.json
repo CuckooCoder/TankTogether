@@ -1,0 +1,110 @@
+{
+    "utc": "2026-10-12T03:05:46.2583673Z",
+    "platform": "WindowsPlayer",
+    "parameters": "v0.2.2-r1-267def3bd0995bf0bcc110602c127381 {\"version\":\"v0.2.2-r1\",\"tankSize\":{\"x\":3.200000047683716,\"y\":0.949999988079071,\"z\":2.200000047683716},\"standingHeight\":1.7000000476837158,\"playerDiameter\":0.6000000238418579,\"crouchingHeight\":1.100000023841858,\"spawnHalfSpacing\":{\"x\":0.8999999761581421,\"y\":0.550000011920929},\"carryBottomHeight\":1.7000000476837158,\"walkSpeed\":4.0,\"sprintSpeed\":6.0,\"carrySpeed\":2.5,\"carrySprintSpeed\":3.5,\"freeJumpHeight\":0.6499999761581421,\"carryJumpHeightTarget\":0.550000011920929,\"standInset\":{\"x\":0.20000000298023224,\"y\":0.15000000596046448},\"standWidth\":0.25,\"gripInset\":0.11999999731779099,\"gripVerticalReach\":0.23000000417232513,\"tankMass\":24.0,\"playerMass\":7.0,\"tankDamping\":0.800000011920929,\"angularDamping\":2.0,\"motorGain\":95.0,\"motorForce\":160.0,\"carryMotorGain\":65.0,\"carryMotorForce\":70.0,\"carryBrakeAcceleration\":2.5,\"carryJumpVelocity\":6.0,\"gripLimit\":0.11999999731779099,\"supportStiffness\":3500.0,\"supportDamping\":100.0,\"supportMaxForce\":240.0}",
+    "tankSize": {
+        "x": 3.200000047683716,
+        "y": 0.949999988079071,
+        "z": 2.200000047683716
+    },
+    "standingHeight": 1.7000000476837158,
+    "fixedDeltaTime": 0.019999992102384567,
+    "samples": [
+        {
+            "name": "free_walk",
+            "steadySpeed": 4.000000476837158,
+            "startTo90Seconds": 0.19999992847442627,
+            "stopDistance": 0.35536766052246094,
+            "stopSeconds": 0.5199998021125793,
+            "playerRise": 0.0,
+            "tankBottomRise": 0.0,
+            "maxGripError": 0.0,
+            "broken": false,
+            "settled": true
+        },
+        {
+            "name": "free_sprint",
+            "steadySpeed": 5.999998092651367,
+            "startTo90Seconds": 0.2599999010562897,
+            "stopDistance": 0.7736988067626953,
+            "stopSeconds": 0.5999997854232788,
+            "playerRise": 0.0,
+            "tankBottomRise": 0.0,
+            "maxGripError": 0.0,
+            "broken": false,
+            "settled": true
+        },
+        {
+            "name": "four_carry_walk",
+            "steadySpeed": 2.4999938011169434,
+            "startTo90Seconds": 0.4999997913837433,
+            "stopDistance": 1.1235451698303223,
+            "stopSeconds": 1.2199995517730713,
+            "playerRise": 0.0,
+            "tankBottomRise": 0.0,
+            "maxGripError": 0.12039583176374435,
+            "broken": false,
+            "settled": true
+        },
+        {
+            "name": "four_carry_sprint",
+            "steadySpeed": 3.4999942779541016,
+            "startTo90Seconds": 0.6999997496604919,
+            "stopDistance": 1.9322052001953125,
+            "stopSeconds": 1.4999994039535522,
+            "playerRise": 0.0,
+            "tankBottomRise": 0.0,
+            "maxGripError": 0.12037916481494904,
+            "broken": false,
+            "settled": true
+        },
+        {
+            "name": "free_jump",
+            "steadySpeed": 0.0,
+            "startTo90Seconds": -1.0,
+            "stopDistance": 0.0,
+            "stopSeconds": 0.0,
+            "playerRise": 0.6499203443527222,
+            "tankBottomRise": 0.06388247013092041,
+            "maxGripError": 0.0,
+            "broken": false,
+            "settled": true
+        },
+        {
+            "name": "four_synchronous_jump",
+            "steadySpeed": 0.0,
+            "startTo90Seconds": -1.0,
+            "stopDistance": 0.0,
+            "stopSeconds": 0.0,
+            "playerRise": 0.40021419525146484,
+            "tankBottomRise": 0.5319992303848267,
+            "maxGripError": 0.14461922645568848,
+            "broken": false,
+            "settled": true
+        },
+        {
+            "name": "one_of_four_jump",
+            "steadySpeed": 0.0,
+            "startTo90Seconds": -1.0,
+            "stopDistance": 0.0,
+            "stopSeconds": 0.0,
+            "playerRise": 0.19381237030029297,
+            "tankBottomRise": 0.14239835739135742,
+            "maxGripError": 0.13045088946819305,
+            "broken": false,
+            "settled": true
+        },
+        {
+            "name": "front_back_stagger_jump",
+            "steadySpeed": 0.0,
+            "startTo90Seconds": -1.0,
+            "stopDistance": 0.0,
+            "stopSeconds": 0.0,
+            "playerRise": 0.23527777194976807,
+            "tankBottomRise": 0.3550208806991577,
+            "maxGripError": 0.1892174333333969,
+            "broken": false,
+            "settled": true
+        }
+    ]
+}

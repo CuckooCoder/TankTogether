@@ -1,0 +1,20 @@
+{
+  "version": "Lobby-20261013",
+  "utc": "2026-10-13T07:17:22.764862+00:00",
+  "protocol": "tank-together-steam-03",
+  "scene": "SteamWhiteboxCarryLab",
+  "steamAppId": 480,
+  "defaultMode": "Home",
+  "localSimulationPlayers": 4,
+  "minOnlinePlayers": 2,
+  "maxOnlinePlayers": 4,
+  "archive": "TankTogether-Lobby-20261013.zip",
+  "bytes": 72047395,
+  "sha256": "7164a19731f132352d7d123754d51dc18e25ec767ca2e544e0d34f2a5f957ed2",
+  "zipCrcVerified": true,
+  "sourceHead": "8eb0b5a75559a6c0e9933f422f827f364985a6c3",
+  "sourceHasUncommittedChanges": true,
+  "githubUploaded": true,
+  "realRemoteMultiplayerVerified": false,
+  "releaseUrl": "https://github.com/1205971577/tank-together/releases/tag/lobby-20261013"
+}

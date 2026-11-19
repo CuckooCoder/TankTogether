@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00288db5d01318b48997af9c9d2cbff1, type: 3}
+  m_Name: FormalWhiteboxV1
+  m_EditorClassIdentifier: Assembly-CSharp::TankTogether.M0.M0CarryBaseline
+  version: v0.3-formal-planner-feedback1
+  tankSize: {x: 4.2, y: 0.95, z: 3.2}
+  standingHeight: 1.7
+  playerDiameter: 0.6
+  crouchingHeight: 1.1
+  spawnHalfSpacing: {x: 0.9, y: 0.55}
+  carryBottomHeight: 1.7
+  walkSpeed: 4
+  sprintSpeed: 6
+  carrySpeed: 2.5
+  carrySprintSpeed: 3.5
+  freeJumpHeight: 0.8
+  carryJumpHeightTarget: 1.33
+  standInset: {x: 0.2, y: 0.15}
+  standWidth: 0.25
+  gripInset: 0.12
+  gripVerticalReach: 0.23
+  tankMass: 24
+  playerMass: 7
+  tankDamping: 0.8
+  angularDamping: 5
+  motorGain: 95
+  motorForce: 160
+  carryMotorGain: 65
+  carryMotorForce: 70
+  carryBrakeAcceleration: 2.5
+  carryJumpVelocity: 10.2
+  gripLimit: 0.12
+  supportStiffness: 3500
+  supportDamping: 100
+  supportMaxForce: 240
+  stretchMinHeight: 1.1
+  stretchMaxHeight: 3.4
+  stretchGrowSpeed: 0.5
+  stretchShrinkSpeed: 0.5
+  stretchGripStiffness: 3000
+  stretchGripDamping: 100
+  stretchGripMaxForce: 240
+  stretchCompliance: 0.08
+  stretchBalanceMode: 1
+  stretchBalanceStart: 2.3
+  stretchBalanceLever: 0.3
+  stretchBalanceTorque: 24
+  stretchBalanceLowDamping: 2
+  stretchBalanceHighDamping: 0.9
+  defaults:
+    twoPlayerGripSpring: 160
+    twoPlayerGripDamping: 18
+    twoPlayerGripMaxTorque: 40
+    cameraDistance: 7.5
+    cameraFollow: 25
+    cameraReturn: 10
+    mouseYaw: 0.12
+    mousePitch: 0.1
+    snapshotRate: 30
+    snapshotSmoothing: 25
+    inputHeartbeat: 10
+    liftSpeed: 2.5
+    liftDelay: 2
+  headSupportMode: 1
+  headSupportWidthRatio: 0.7
+  headSupportFriction: 0.15
+  freeAcceleration: 40
+  freeDeceleration: 60
+  airAcceleration: 25
+  coyoteTime: 0.1
+  jumpBufferTime: 0.12
+  freeFallGravityMultiplier: 4
+  controlFeelMode: 1
+  airReleaseDeceleration: 8
+  cameraVerticalFollow: 18

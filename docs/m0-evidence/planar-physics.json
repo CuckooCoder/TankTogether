@@ -1,0 +1,204 @@
+{
+    "utc": "2026-10-10T02:34:07.7928590Z",
+    "unityVersion": "6000.6.5f1",
+    "scope": "Planar dynamic-body/ConfigurableJoint feasibility only; no human or network validation.",
+    "limitations": "Gravity and pitch/roll disabled; fixed initial fixture anchors are NOT gameplay grab slots. No support, input validation, hanging, parking, fracture, camera, network or latency test.",
+    "fixedStep": 0.019999999552965164,
+    "duration": 4.0,
+    "targetSpeed": 2.0,
+    "motorGain": 110.0,
+    "maximumMotorForce": 180.0,
+    "gripLimit": 0.11999999731779099,
+    "tankMass": 20.0,
+    "playerMass": 5.0,
+    "tankLinearDamping": 0.800000011920929,
+    "samples": [
+        {
+            "name": "four_forward",
+            "forwardDistance": 7.454171657562256,
+            "sidewaysDistance": -1.378139685703772e-10,
+            "yawDegrees": -0.000030517578125,
+            "maxGripError": 0.14502239227294922,
+            "peakTankSpeed": 1.929823875427246,
+            "peakPlayerSpeed": 1.9298443794250488,
+            "immediateReleaseSpeed": 0.0,
+            "finalSpeed": 1.9298202991485596,
+            "blockedPlayerMaxZ": 8.224170684814453,
+            "finite": true
+        },
+        {
+            "name": "three_forward_one_back",
+            "forwardDistance": 5.143623352050781,
+            "sidewaysDistance": 0.10422912985086441,
+            "yawDegrees": -49.3680419921875,
+            "maxGripError": 0.14502239227294922,
+            "peakTankSpeed": 1.3833459615707397,
+            "peakPlayerSpeed": 1.874118447303772,
+            "immediateReleaseSpeed": 0.0,
+            "finalSpeed": 1.3833459615707397,
+            "blockedPlayerMaxZ": 4.927820205688477,
+            "finite": true
+        },
+        {
+            "name": "opposite_sides",
+            "forwardDistance": -0.0000023646689442102797,
+            "sidewaysDistance": 6.707087436552683e-7,
+            "yawDegrees": 89.91510772705078,
+            "maxGripError": 0.14502239227294922,
+            "peakTankSpeed": 0.00007285205356311053,
+            "peakPlayerSpeed": 1.874118447303772,
+            "immediateReleaseSpeed": 0.0,
+            "finalSpeed": 8.217725167014578e-7,
+            "blockedPlayerMaxZ": 1.3001396656036377,
+            "finite": true
+        },
+        {
+            "name": "opposite_sides_mirrored_positions",
+            "forwardDistance": -0.0000023646689442102797,
+            "sidewaysDistance": -6.707087436552683e-7,
+            "yawDegrees": -89.91510009765625,
+            "maxGripError": 0.14502239227294922,
+            "peakTankSpeed": 0.00007285205356311053,
+            "peakPlayerSpeed": 1.874118447303772,
+            "immediateReleaseSpeed": 0.0,
+            "finalSpeed": 8.217725167014578e-7,
+            "blockedPlayerMaxZ": 1.3001396656036377,
+            "finite": true
+        },
+        {
+            "name": "release_after_two_seconds",
+            "forwardDistance": 5.495128631591797,
+            "sidewaysDistance": -1.1183944048642758e-10,
+            "yawDegrees": -0.000030517578125,
+            "maxGripError": 0.14502239227294922,
+            "peakTankSpeed": 1.929823875427246,
+            "peakPlayerSpeed": 1.9298361539840698,
+            "immediateReleaseSpeed": 1.898945689201355,
+            "finalSpeed": 0.3846168518066406,
+            "blockedPlayerMaxZ": 4.419510841369629,
+            "finite": true
+        },
+        {
+            "name": "one_player_blocked",
+            "forwardDistance": 2.1766157150268555,
+            "sidewaysDistance": -0.8081558346748352,
+            "yawDegrees": -114.69577026367188,
+            "maxGripError": 0.14502239227294922,
+            "peakTankSpeed": 1.8064521551132202,
+            "peakPlayerSpeed": 1.9856576919555664,
+            "immediateReleaseSpeed": 0.0,
+            "finalSpeed": 0.18428021669387817,
+            "blockedPlayerMaxZ": 0.8823105692863464,
+            "finite": true
+        },
+        {
+            "name": "no_input",
+            "forwardDistance": 0.0,
+            "sidewaysDistance": 0.0,
+            "yawDegrees": 0.0,
+            "maxGripError": 0.0,
+            "peakTankSpeed": 0.0,
+            "peakPlayerSpeed": 0.0,
+            "immediateReleaseSpeed": 0.0,
+            "finalSpeed": 0.0,
+            "blockedPlayerMaxZ": 0.6499999761581421,
+            "finite": true
+        },
+        {
+            "name": "four_forward_repeat",
+            "forwardDistance": 7.454171657562256,
+            "sidewaysDistance": -1.378139685703772e-10,
+            "yawDegrees": -0.000030517578125,
+            "maxGripError": 0.14502239227294922,
+            "peakTankSpeed": 1.929823875427246,
+            "peakPlayerSpeed": 1.9298443794250488,
+            "immediateReleaseSpeed": 0.0,
+            "finalSpeed": 1.9298202991485596,
+            "blockedPlayerMaxZ": 8.224170684814453,
+            "finite": true
+        }
+    ],
+    "checks": [
+        {
+            "name": "forward_motion",
+            "criterion": "4 s displacement > 2 m, diagnostic threshold only",
+            "passed": true
+        },
+        {
+            "name": "minority_has_effect",
+            "criterion": "Opposing input changes final trajectory by > 0.5 m",
+            "passed": true
+        },
+        {
+            "name": "position_changes_turn_direction",
+            "criterion": "Same per-player inputs with mirrored anchors produce opposite yaw, > 10 degrees",
+            "passed": true
+        },
+        {
+            "name": "release_preserves_inertia",
+            "criterion": "First released step retains > 0.5 m/s, later damping reduces speed",
+            "passed": true
+        },
+        {
+            "name": "blocked_player_does_not_cross_wall",
+            "criterion": "Tracked front-left player stays behind wall front surface (z=1.075), allowing contact tolerance",
+            "passed": true
+        },
+        {
+            "name": "obstruction_affects_tank",
+            "criterion": "Obstruction reduces forward travel by at least 20 percent",
+            "passed": true
+        },
+        {
+            "name": "idle_does_not_drift",
+            "criterion": "Idle planar fixture drift < 1 cm",
+            "passed": true
+        },
+        {
+            "name": "repeatability",
+            "criterion": "Same-process repeated forward run differs < 1 cm; not cross-machine determinism",
+            "passed": true
+        },
+        {
+            "name": "four_forward_bounded",
+            "criterion": "Finite state; grip error < 0.3 m; tank speed < 6 m/s; proxy speed < 8 m/s. Experiment limits, not gameplay acceptance.",
+            "passed": true
+        },
+        {
+            "name": "three_forward_one_back_bounded",
+            "criterion": "Finite state; grip error < 0.3 m; tank speed < 6 m/s; proxy speed < 8 m/s. Experiment limits, not gameplay acceptance.",
+            "passed": true
+        },
+        {
+            "name": "opposite_sides_bounded",
+            "criterion": "Finite state; grip error < 0.3 m; tank speed < 6 m/s; proxy speed < 8 m/s. Experiment limits, not gameplay acceptance.",
+            "passed": true
+        },
+        {
+            "name": "opposite_sides_mirrored_positions_bounded",
+            "criterion": "Finite state; grip error < 0.3 m; tank speed < 6 m/s; proxy speed < 8 m/s. Experiment limits, not gameplay acceptance.",
+            "passed": true
+        },
+        {
+            "name": "release_after_two_seconds_bounded",
+            "criterion": "Finite state; grip error < 0.3 m; tank speed < 6 m/s; proxy speed < 8 m/s. Experiment limits, not gameplay acceptance.",
+            "passed": true
+        },
+        {
+            "name": "one_player_blocked_bounded",
+            "criterion": "Finite state; grip error < 0.3 m; tank speed < 6 m/s; proxy speed < 8 m/s. Experiment limits, not gameplay acceptance.",
+            "passed": true
+        },
+        {
+            "name": "no_input_bounded",
+            "criterion": "Finite state; grip error < 0.3 m; tank speed < 6 m/s; proxy speed < 8 m/s. Experiment limits, not gameplay acceptance.",
+            "passed": true
+        },
+        {
+            "name": "four_forward_repeat_bounded",
+            "criterion": "Finite state; grip error < 0.3 m; tank speed < 6 m/s; proxy speed < 8 m/s. Experiment limits, not gameplay acceptance.",
+            "passed": true
+        }
+    ],
+    "passed": true
+}

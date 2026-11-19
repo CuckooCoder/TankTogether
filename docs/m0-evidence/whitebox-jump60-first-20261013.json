@@ -1,0 +1,85 @@
+{
+    "utc": "2026-10-13T03:01:44.8890184Z",
+    "parameters": "v0.2.2-whitebox-jump60-r2-8ed6262e92d33352db781da7b454706f",
+    "complete": true,
+    "trials": [
+        {
+            "impulse": 6.0,
+            "rise": 0.5385775566101074,
+            "airSeconds": 0.6599997282028198,
+            "distance": 1.6090670824050903,
+            "maxGripError": 0.16498248279094696,
+            "sprint": false,
+            "broken": false,
+            "settled": true,
+            "mode": 0,
+            "groundedAtPress": 4,
+            "gripsAtPress": 4
+        },
+        {
+            "impulse": 6.0,
+            "rise": 0.5389018058776855,
+            "airSeconds": 0.6999997496604919,
+            "distance": 2.410778045654297,
+            "maxGripError": 0.16827711462974548,
+            "sprint": true,
+            "broken": false,
+            "settled": true,
+            "mode": 0,
+            "groundedAtPress": 4,
+            "gripsAtPress": 4
+        },
+        {
+            "impulse": 9.300000190734863,
+            "rise": 1.1748440265655518,
+            "airSeconds": 1.0399996042251587,
+            "distance": 2.5920286178588867,
+            "maxGripError": 0.2152266502380371,
+            "sprint": false,
+            "broken": false,
+            "settled": true,
+            "mode": 0,
+            "groundedAtPress": 4,
+            "gripsAtPress": 4
+        },
+        {
+            "impulse": 9.300000190734863,
+            "rise": 1.1706809997558594,
+            "airSeconds": 1.1199995279312134,
+            "distance": 3.932962417602539,
+            "maxGripError": 0.220180943608284,
+            "sprint": true,
+            "broken": false,
+            "settled": false,
+            "mode": 0,
+            "groundedAtPress": 4,
+            "gripsAtPress": 4
+        },
+        {
+            "impulse": 9.300000190734863,
+            "rise": 0.2487165927886963,
+            "airSeconds": 0.4799998104572296,
+            "distance": 1.1924487352371216,
+            "maxGripError": 0.21368920803070068,
+            "sprint": false,
+            "broken": false,
+            "settled": true,
+            "mode": 1,
+            "groundedAtPress": 4,
+            "gripsAtPress": 4
+        },
+        {
+            "impulse": 9.300000190734863,
+            "rise": 0.356827974319458,
+            "airSeconds": 0.8399996757507324,
+            "distance": 3.063596487045288,
+            "maxGripError": 0.21899184584617615,
+            "sprint": true,
+            "broken": false,
+            "settled": true,
+            "mode": 2,
+            "groundedAtPress": 4,
+            "gripsAtPress": 4
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "complete": true,
+    "passed": true,
+    "scope": "isolated-editor-physics-not-full-route-or-remote",
+    "checks": [
+        {
+            "name": "authored_lift_free_jump_2",
+            "evidence": "grounded=30/30 peak relative=0.6499081",
+            "passed": true
+        },
+        {
+            "name": "authored_lift_free_jump_3",
+            "evidence": "grounded=30/30 peak relative=0.6499081",
+            "passed": true
+        },
+        {
+            "name": "authored_lift_free_jump_4",
+            "evidence": "grounded=30/30 peak relative=0.6499081",
+            "passed": true
+        },
+        {
+            "name": "descending_platform_support",
+            "evidence": "(0.00, -1.00, 0.00)",
+            "passed": true
+        },
+        {
+            "name": "platform_stop_clears_ground_velocity",
+            "evidence": "(0.00, 0.00, 0.00)",
+            "passed": true
+        },
+        {
+            "name": "no_extra_air_jump_or_platform_impulse",
+            "evidence": "0.6499205",
+            "passed": true
+        }
+    ]
+}

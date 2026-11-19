@@ -1,0 +1,10 @@
+{
+  "version": "stretch-b1-20261015",
+  "startup": "headless-smoke-only",
+  "remoteMultiplayer": "not-tested",
+  "protocol": "tank-together-steam-08",
+  "sha256": "B8D6A92D00414337BEC046F3E6E614D09633AD77F10F873949F6D4ADC524D8E2",
+  "build": "Succeeded",
+  "zipEntriesVerified": true,
+  "bytes": 74418257
+}

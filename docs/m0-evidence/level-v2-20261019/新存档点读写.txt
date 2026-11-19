@@ -1,0 +1,6 @@
+pickup_exit_failed_write_no_advance=True
+pickup_exit_arrival_saved_and_loaded=True
+upper_failed_write_no_advance=True
+upper_arrival_saved_and_loaded=True
+maze_failed_write_no_advance=True
+maze_arrival_saved_and_loaded=True

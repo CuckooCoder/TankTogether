@@ -1,0 +1,133 @@
+{
+    "complete": true,
+    "passed": true,
+    "scope": "local-fixed-step-flat-ground-comparison-not-full-route-or-remote-multiplayer",
+    "samples": [
+        {
+            "multiplier": 1.0,
+            "speed": 0.0,
+            "peak": 0.6499205231666565,
+            "apexSeconds": 0.3599998652935028,
+            "landedSeconds": 0.759999692440033,
+            "distance": 0.0,
+            "landed": true
+        },
+        {
+            "multiplier": 1.0,
+            "speed": 4.0,
+            "peak": 0.6499204039573669,
+            "apexSeconds": 0.3599998652935028,
+            "landedSeconds": 0.759999692440033,
+            "distance": 3.0406494140625,
+            "landed": true
+        },
+        {
+            "multiplier": 1.0,
+            "speed": 6.0,
+            "peak": 0.6499204039573669,
+            "apexSeconds": 0.3599998652935028,
+            "landedSeconds": 0.759999692440033,
+            "distance": 4.559814453125,
+            "landed": true
+        },
+        {
+            "multiplier": 2.0,
+            "speed": 0.0,
+            "peak": 0.6499205231666565,
+            "apexSeconds": 0.3599998652935028,
+            "landedSeconds": 0.6599997282028198,
+            "distance": 0.0,
+            "landed": true
+        },
+        {
+            "multiplier": 2.0,
+            "speed": 4.0,
+            "peak": 0.6499204039573669,
+            "apexSeconds": 0.3599998652935028,
+            "landedSeconds": 0.6599997282028198,
+            "distance": 2.64056396484375,
+            "landed": true
+        },
+        {
+            "multiplier": 2.0,
+            "speed": 6.0,
+            "peak": 0.6499204039573669,
+            "apexSeconds": 0.3599998652935028,
+            "landedSeconds": 0.6599997282028198,
+            "distance": 3.9598388671875,
+            "landed": true
+        }
+    ],
+    "checks": [
+        {
+            "name": "shorter_airtime_speed_0",
+            "evidence": "0.760s -> 0.660s",
+            "passed": true
+        },
+        {
+            "name": "same_peak_speed_0",
+            "evidence": "0.650m -> 0.650m",
+            "passed": true
+        },
+        {
+            "name": "same_ascent_speed_0",
+            "evidence": "0.360s -> 0.360s",
+            "passed": true
+        },
+        {
+            "name": "shorter_airtime_speed_4",
+            "evidence": "0.760s -> 0.660s",
+            "passed": true
+        },
+        {
+            "name": "same_peak_speed_4",
+            "evidence": "0.650m -> 0.650m",
+            "passed": true
+        },
+        {
+            "name": "same_ascent_speed_4",
+            "evidence": "0.360s -> 0.360s",
+            "passed": true
+        },
+        {
+            "name": "shorter_airtime_speed_6",
+            "evidence": "0.760s -> 0.660s",
+            "passed": true
+        },
+        {
+            "name": "same_peak_speed_6",
+            "evidence": "0.650m -> 0.650m",
+            "passed": true
+        },
+        {
+            "name": "same_ascent_speed_6",
+            "evidence": "0.360s -> 0.360s",
+            "passed": true
+        },
+        {
+            "name": "carry_grips_multiplier_1",
+            "evidence": "all four actual joints",
+            "passed": true
+        },
+        {
+            "name": "carry_not_broken_multiplier_1",
+            "evidence": "1.372",
+            "passed": true
+        },
+        {
+            "name": "carry_grips_multiplier_2",
+            "evidence": "all four actual joints",
+            "passed": true
+        },
+        {
+            "name": "carry_not_broken_multiplier_2",
+            "evidence": "1.372",
+            "passed": true
+        },
+        {
+            "name": "held_tank_jump_unchanged",
+            "evidence": "tank rise: 1.372m -> 1.372m",
+            "passed": true
+        }
+    ]
+}

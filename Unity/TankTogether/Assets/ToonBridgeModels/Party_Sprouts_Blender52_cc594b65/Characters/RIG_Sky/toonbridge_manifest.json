@@ -1,0 +1,428 @@
+{
+  "schema_version": 1,
+  "auto_setup": true,
+  "package_id": "cc594b65c9df46e9929befd06b7a2067",
+  "generator_version": "1.1.0",
+  "model_file": "Model.fbx",
+  "materials": [
+    {
+      "name": "NPR_Sky",
+      "base_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "base_map": "Textures/Atlas_Sky_e2e975.png",
+      "normal_map": "",
+      "normal_strength": 1.0,
+      "emission_map": "",
+      "emission_color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "alpha_mode": "OPAQUE",
+      "alpha_cutoff": 0.5,
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "uv_scale": [
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0
+      ],
+      "conversion": "npr_single_atlas_to_urp",
+      "source_nodes": [
+        "TEX_IMAGE",
+        "BSDF_DIFFUSE",
+        "SHADERTORGB",
+        "VALTORGB",
+        "MIX_RGB",
+        "EMISSION",
+        "OUTPUT_MATERIAL"
+      ],
+      "source_ramps": [
+        {
+          "interpolation": "EASE",
+          "elements": [
+            {
+              "position": 0.0,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.6000000238418579,
+                1.0
+              ]
+            },
+            {
+              "position": 0.2800000011920929,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.6000000238418579,
+                1.0
+              ]
+            },
+            {
+              "position": 0.47999998927116394,
+              "color": [
+                0.7799999713897705,
+                0.800000011920929,
+                0.8399999737739563,
+                1.0
+              ]
+            },
+            {
+              "position": 0.6800000071525574,
+              "color": [
+                0.7799999713897705,
+                0.800000011920929,
+                0.8399999737739563,
+                1.0
+              ]
+            },
+            {
+              "position": 0.8999999761581421,
+              "color": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "color": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "fbx_embedded_base_map": true
+    }
+  ],
+  "toon": {
+    "threshold": 0.5,
+    "softness": 0.03,
+    "shadow_strength": 0.65,
+    "rim_strength": 0.15,
+    "outline_width": 0.002,
+    "outline_enabled": false
+  },
+  "audit": {
+    "summary": {
+      "mesh_count": 1,
+      "bone_count": 23,
+      "rig_count": 1,
+      "vertex_count": 2194,
+      "action_count": 3,
+      "image_count": 11
+    },
+    "meshes": [
+      {
+        "name": "Sprout_Sky",
+        "vertices": 2194,
+        "polygons": 2320,
+        "uvs": [
+          "UV_Atlas"
+        ],
+        "materials": [
+          "NPR_Sky"
+        ],
+        "armature": "RIG_Sky",
+        "max_influences": 2,
+        "unweighted": 0,
+        "max_weight_sum_error": 2.9802322387695312e-08,
+        "shape_keys": [],
+        "modifiers": []
+      }
+    ],
+    "rigs": [
+      {
+        "name": "RIG_Sky",
+        "bones": [
+          {
+            "name": "ROOT",
+            "parent": null,
+            "deform": false
+          },
+          {
+            "name": "pelvis",
+            "parent": "ROOT",
+            "deform": true
+          },
+          {
+            "name": "spine",
+            "parent": "pelvis",
+            "deform": true
+          },
+          {
+            "name": "chest",
+            "parent": "spine",
+            "deform": true
+          },
+          {
+            "name": "head",
+            "parent": "chest",
+            "deform": true
+          },
+          {
+            "name": "sprout_a",
+            "parent": "head",
+            "deform": true
+          },
+          {
+            "name": "sprout_a_tip",
+            "parent": "sprout_a",
+            "deform": true
+          },
+          {
+            "name": "sprout_b",
+            "parent": "head",
+            "deform": true
+          },
+          {
+            "name": "sprout_b_tip",
+            "parent": "sprout_b",
+            "deform": true
+          },
+          {
+            "name": "shoulder.L",
+            "parent": "chest",
+            "deform": true
+          },
+          {
+            "name": "upper_arm.L",
+            "parent": "shoulder.L",
+            "deform": true
+          },
+          {
+            "name": "forearm.L",
+            "parent": "upper_arm.L",
+            "deform": true
+          },
+          {
+            "name": "hand.L",
+            "parent": "forearm.L",
+            "deform": true
+          },
+          {
+            "name": "shoulder.R",
+            "parent": "chest",
+            "deform": true
+          },
+          {
+            "name": "upper_arm.R",
+            "parent": "shoulder.R",
+            "deform": true
+          },
+          {
+            "name": "forearm.R",
+            "parent": "upper_arm.R",
+            "deform": true
+          },
+          {
+            "name": "hand.R",
+            "parent": "forearm.R",
+            "deform": true
+          },
+          {
+            "name": "thigh.L",
+            "parent": "pelvis",
+            "deform": true
+          },
+          {
+            "name": "shin.L",
+            "parent": "thigh.L",
+            "deform": true
+          },
+          {
+            "name": "foot.L",
+            "parent": "shin.L",
+            "deform": true
+          },
+          {
+            "name": "thigh.R",
+            "parent": "pelvis",
+            "deform": true
+          },
+          {
+            "name": "shin.R",
+            "parent": "thigh.R",
+            "deform": true
+          },
+          {
+            "name": "foot.R",
+            "parent": "shin.R",
+            "deform": true
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "name": "Sprout_Celebrate",
+        "frames": [
+          1.0,
+          91.0
+        ],
+        "slots": [
+          "OBRIG_Coral"
+        ]
+      },
+      {
+        "name": "Sprout_Idle",
+        "frames": [
+          1.0,
+          61.0
+        ],
+        "slots": [
+          "OBRIG_Coral"
+        ]
+      },
+      {
+        "name": "Sprout_Run",
+        "frames": [
+          1.0,
+          25.0
+        ],
+        "slots": [
+          "OBRIG_Coral"
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "Atlas_Coral",
+        "source": "FILE",
+        "packed": true,
+        "size": [
+          1024,
+          1024
+        ],
+        "path": "C:\\Users\\junxuancai\\WorkBuddy\\2026-10-15-21-14-57\\outputs\\textures\\Coral_BaseColor.png"
+      },
+      {
+        "name": "Atlas_Coral_f0630c.png",
+        "source": "FILE",
+        "packed": true,
+        "size": [
+          1024,
+          1024
+        ],
+        "path": "C:\\Users\\junxuancai\\WorkBuddy\\2026-10-16-12-31-10\\outputs\\ToonBridge_v1_1\\Exports\\ToonBridge_20261016_145617_38a6a81b485746eeba525a440037c363\\Textures\\Atlas_Coral_f0630c.png"
+      },
+      {
+        "name": "Atlas_Lemon",
+        "source": "FILE",
+        "packed": true,
+        "size": [
+          1024,
+          1024
+        ],
+        "path": "C:\\Users\\junxuancai\\WorkBuddy\\2026-10-15-21-14-57\\outputs\\textures\\Lemon_BaseColor.png"
+      },
+      {
+        "name": "Atlas_Lemon_a6f03d.png",
+        "source": "FILE",
+        "packed": true,
+        "size": [
+          1024,
+          1024
+        ],
+        "path": "C:\\Users\\junxuancai\\WorkBuddy\\2026-10-16-12-31-10\\outputs\\ToonBridge_v1_1\\Exports\\ToonBridge_20261016_145617_38a6a81b485746eeba525a440037c363\\Textures\\Atlas_Lemon_a6f03d.png"
+      },
+      {
+        "name": "Atlas_Lilac",
+        "source": "FILE",
+        "packed": true,
+        "size": [
+          1024,
+          1024
+        ],
+        "path": "C:\\Users\\junxuancai\\WorkBuddy\\2026-10-15-21-14-57\\outputs\\textures\\Lilac_BaseColor.png"
+      },
+      {
+        "name": "Atlas_Lilac_346273.png",
+        "source": "FILE",
+        "packed": true,
+        "size": [
+          1024,
+          1024
+        ],
+        "path": "C:\\Users\\junxuancai\\WorkBuddy\\2026-10-16-12-31-10\\outputs\\ToonBridge_v1_1\\Exports\\ToonBridge_20261016_145617_38a6a81b485746eeba525a440037c363\\Textures\\Atlas_Lilac_346273.png"
+      },
+      {
+        "name": "Atlas_Mint",
+        "source": "FILE",
+        "packed": true,
+        "size": [
+          1024,
+          1024
+        ],
+        "path": "C:\\Users\\junxuancai\\WorkBuddy\\2026-10-15-21-14-57\\outputs\\textures\\Mint_BaseColor.png"
+      },
+      {
+        "name": "Atlas_Mint_0f3456.png",
+        "source": "FILE",
+        "packed": true,
+        "size": [
+          1024,
+          1024
+        ],
+        "path": "C:\\Users\\junxuancai\\WorkBuddy\\2026-10-16-12-31-10\\outputs\\ToonBridge_v1_1\\Exports\\ToonBridge_20261016_145617_38a6a81b485746eeba525a440037c363\\Textures\\Atlas_Mint_0f3456.png"
+      },
+      {
+        "name": "Atlas_Sky",
+        "source": "FILE",
+        "packed": true,
+        "size": [
+          1024,
+          1024
+        ],
+        "path": "C:\\Users\\junxuancai\\WorkBuddy\\2026-10-15-21-14-57\\outputs\\textures\\Sky_BaseColor.png"
+      },
+      {
+        "name": "Atlas_Sky_e2e975.png",
+        "source": "FILE",
+        "packed": true,
+        "size": [
+          1024,
+          1024
+        ],
+        "path": "C:\\Users\\junxuancai\\WorkBuddy\\2026-10-16-12-31-10\\outputs\\ToonBridge_v1_1\\Exports\\ToonBridge_20261016_145617_38a6a81b485746eeba525a440037c363\\Textures\\Atlas_Sky_e2e975.png"
+      },
+      {
+        "name": "clipboard-2026-10-15T13-15-00-951Z-7cdbfff1.jpg",
+        "source": "FILE",
+        "packed": true,
+        "size": [
+          1920,
+          1440
+        ],
+        "path": "C:\\Users\\junxuancai\\.workbuddy\\clipboard-images\\clipboard-2026-10-15T13-15-00-951Z-7cdbfff1.jpg"
+      }
+    ],
+    "fps": 30.0,
+    "frame_range": [
+      1,
+      61
+    ],
+    "blender_version": "5.2.1 LTS",
+    "warnings": [
+      "NPR_Coral: Blender Shader-to-RGB/ramp lighting is reconstructed with URP toon lighting, not a pixel-identical shader translation.",
+      "NPR_Lemon: Blender Shader-to-RGB/ramp lighting is reconstructed with URP toon lighting, not a pixel-identical shader translation.",
+      "NPR_Lilac: Blender Shader-to-RGB/ramp lighting is reconstructed with URP toon lighting, not a pixel-identical shader translation.",
+      "NPR_Mint: Blender Shader-to-RGB/ramp lighting is reconstructed with URP toon lighting, not a pixel-identical shader translation.",
+      "NPR_Sky: Blender Shader-to-RGB/ramp lighting is reconstructed with URP toon lighting, not a pixel-identical shader translation.",
+      "Multiple rigs: combined FBX may contain separate takes per rig. Use Characters/<rig>/toonbridge_manifest.json for independent playable characters."
+    ]
+  }
+}

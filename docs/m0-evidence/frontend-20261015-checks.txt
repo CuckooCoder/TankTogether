@@ -1,0 +1,24 @@
+direct_create_opens_save=True
+cancel_create_returns_home=True
+join_does_not_open_save=True
+create_after_cancel=True
+real_steam_host_created=True
+single_host_block_reason=True
+sync_before_ready_reason=True
+not_ready_reason=True
+two_ready_unblocked=True
+cosmetic_cancels_only_self=True
+duplicate_cosmetic_preserves_ready=True
+switch_slot_keeps_room=True
+switch_resets_ready=True
+save_error_reason=True
+completed_save_blocked=True
+replay_can_start=True
+two_player_start=True
+loading_reason=True
+load_timeout_back_to_lobby=True
+failed_load_preserves_completed_run=True
+presentation_cleaned=True
+local_entry_kept=True
+passed=True
+Single Steam host and injected member; not remote acceptance.

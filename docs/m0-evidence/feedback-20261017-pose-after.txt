@@ -1,0 +1,6 @@
+height=5 actual=4.994023 head_horizontal_offset=0.002763271 passed=True
+height=1.1 actual=1.105996 head_horizontal_offset=0.00147438 passed=True
+height=1.7 actual=1.694 head_horizontal_offset=0.002883911 passed=True
+height=5 actual=4.994023 head_horizontal_offset=0.001523149 passed=True
+height=1.7 actual=1.706 head_horizontal_offset=0.002840042 passed=True
+passed=True

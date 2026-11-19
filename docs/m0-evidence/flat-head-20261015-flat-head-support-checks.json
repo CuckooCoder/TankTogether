@@ -1,0 +1,110 @@
+{
+    "scope": "real Unity physics fixtures and repeated inputs; not full route / remote play",
+    "complete": true,
+    "passed": true,
+    "samples": [
+        {
+            "mode": 0,
+            "count": 2,
+            "initialTilt": 4.0,
+            "finalTilt": 7.131711483001709,
+            "maxSpeed": 0.3358946442604065,
+            "drift": 0.01638082042336464,
+            "height": 2.1594836711883545
+        },
+        {
+            "mode": 0,
+            "count": 4,
+            "initialTilt": 4.0,
+            "finalTilt": 0.0656106024980545,
+            "maxSpeed": 0.2420954555273056,
+            "drift": 0.02068820409476757,
+            "height": 2.158158540725708
+        },
+        {
+            "mode": 1,
+            "count": 2,
+            "initialTilt": 4.0,
+            "finalTilt": 0.6699800491333008,
+            "maxSpeed": 0.2589685618877411,
+            "drift": 0.03024103492498398,
+            "height": 2.1578569412231445
+        },
+        {
+            "mode": 1,
+            "count": 4,
+            "initialTilt": 4.0,
+            "finalTilt": 0.05595291033387184,
+            "maxSpeed": 0.2448713481426239,
+            "drift": 0.02070973813533783,
+            "height": 2.1581616401672363
+        }
+    ],
+    "checks": [
+        {
+            "name": "flat_settled_2",
+            "evidence": "{\"mode\":1,\"count\":2,\"initialTilt\":4.0,\"finalTilt\":0.6699800491333008,\"maxSpeed\":0.2589685618877411,\"drift\":0.03024103492498398,\"height\":2.1578569412231445}",
+            "passed": true
+        },
+        {
+            "name": "flat_settled_4",
+            "evidence": "{\"mode\":1,\"count\":4,\"initialTilt\":4.0,\"finalTilt\":0.05595291033387184,\"maxSpeed\":0.2448713481426239,\"drift\":0.02070973813533783,\"height\":2.1581616401672363}",
+            "passed": true
+        },
+        {
+            "name": "two_head_tilt_improved",
+            "evidence": "old=7.131711 flat=0.66998",
+            "passed": true
+        },
+        {
+            "name": "four_head_jump_finite",
+            "evidence": "rise=0.3395443 max=2.320143",
+            "passed": true
+        },
+        {
+            "name": "head_growth_lifts",
+            "evidence": "rise=0.5970078",
+            "passed": true
+        },
+        {
+            "name": "slides_off_finite_footprint",
+            "evidence": "tank=(1002.715, 1.201, 0.000)",
+            "passed": true
+        },
+        {
+            "name": "cap_not_multiplied",
+            "evidence": "force=240",
+            "passed": true
+        },
+        {
+            "name": "no_gap_attraction",
+            "evidence": "gap=.1m",
+            "passed": true
+        },
+        {
+            "name": "no_overturned_support",
+            "evidence": "tilt=80",
+            "passed": true
+        },
+        {
+            "name": "corners_inside_body",
+            "evidence": "corner radius=0.2969849",
+            "passed": true
+        },
+        {
+            "name": "GM_roundtrip",
+            "evidence": "all=56",
+            "passed": true
+        },
+        {
+            "name": "legacy_preset_preserves_old_mode",
+            "evidence": "mode=0",
+            "passed": true
+        },
+        {
+            "name": "reject_fractional_mode",
+            "evidence": "mode=.5 rejected",
+            "passed": true
+        }
+    ]
+}

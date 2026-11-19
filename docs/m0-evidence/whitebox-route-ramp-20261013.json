@@ -1,0 +1,65 @@
+{
+    "utc": "2026-10-13T02:34:15.9185735Z",
+    "baseline": "v0.2.2-r1-267def3bd0995bf0bcc110602c127381",
+    "legs": [
+        {
+            "name": "18_ramp_approach",
+            "scope": "walk_from_flat_no_slope_teleport",
+            "outcome": "reached_and_braked",
+            "message": "已抓取：移动会影响鱼缸；松开左键可换位。",
+            "start": {
+                "x": -94.0,
+                "y": -13.32499885559082,
+                "z": -10.0
+            },
+            "target": {
+                "x": -89.0,
+                "y": -13.680000305175781,
+                "z": -5.0
+            },
+            "end": {
+                "x": -89.95609283447266,
+                "y": -11.9465913772583,
+                "z": -5.003026962280273
+            },
+            "seconds": 7.439993381500244,
+            "maxGripError": 0.12750215828418732,
+            "maxTilt": 34.03178405761719,
+            "cameraOccludedSeconds": 0.0,
+            "reached": true,
+            "broken": false,
+            "initialGrounded": 4,
+            "initialGrips": 4
+        },
+        {
+            "name": "19_uphill",
+            "scope": "continuous_uphill_no_jump",
+            "outcome": "stuck_over_3_seconds",
+            "message": "已抓取：移动会影响鱼缸；松开左键可换位。",
+            "start": {
+                "x": -89.95609283447266,
+                "y": -11.9465913772583,
+                "z": -5.003026962280273
+            },
+            "target": {
+                "x": -65.0,
+                "y": -1.5,
+                "z": -5.0
+            },
+            "end": {
+                "x": -92.35063934326172,
+                "y": -13.269569396972656,
+                "z": -4.999634265899658
+            },
+            "seconds": 3.0399973392486572,
+            "maxGripError": 0.12750215828418732,
+            "maxTilt": 31.53506851196289,
+            "cameraOccludedSeconds": 0.0,
+            "reached": false,
+            "broken": false,
+            "initialGrounded": 4,
+            "initialGrips": 4
+        }
+    ],
+    "complete": true
+}

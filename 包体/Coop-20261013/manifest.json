@@ -1,0 +1,18 @@
+{
+  "version": "Coop-20261013",
+  "protocol": "tank-together-steam-03",
+  "unity": "6000.6.5f1",
+  "scene": "SteamWhiteboxCarryLab",
+  "steamAppId": 480,
+  "minPlayers": 2,
+  "maxPlayers": 4,
+  "checkpoint": "whitebox-route/start",
+  "archive": "TankTogether-Coop-20261013.zip",
+  "bytes": 72058321,
+  "sha256": "a392da1d169149c442f9c02d836dcbaccc172d33726d95fc5223ccb365f7dbf8",
+  "zipCrcVerified": true,
+  "sourceHead": "8eb0b5a75559a6c0e9933f422f827f364985a6c3",
+  "sourceHasUncommittedChanges": true,
+  "githubUploaded": false,
+  "realRemoteMultiplayerVerified": false
+}

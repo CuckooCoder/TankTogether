@@ -1,0 +1,21 @@
+{
+    "utc": "2026-10-10T03:07:06.6541483Z",
+    "passed": true,
+    "checks": [
+        "input_round_trip_edges_and_identity",
+        "ngo_named_message_payload_offset",
+        "old_round_input_rejected",
+        "duplicate_input_rejected",
+        "next_input_accepted",
+        "old_round_snapshot_rejected",
+        "out_of_order_snapshot_rejected",
+        "new_round_snapshot_accepted",
+        "snapshot_fits_unreliable_message",
+        "snapshot_state_round_trip",
+        "truncated_input_rejected",
+        "overspeed_input_rejected",
+        "nan_input_rejected",
+        "oversized_snapshot_rejected",
+        "invalid_rotation_rejected"
+    ]
+}

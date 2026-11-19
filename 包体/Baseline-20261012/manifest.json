@@ -1,0 +1,23 @@
+{
+  "utc": "2026-10-12T03:08:00.035581+00:00",
+  "version": "baseline-20261012",
+  "baseline": "v0.2.2-r1-267def3bd0995bf0bcc110602c127381",
+  "protocol": "tank-together-steam-02",
+  "appId": 480,
+  "uploaded": false,
+  "remoteMultiplayerVerified": false,
+  "files": [
+    {
+      "file": "TankTogether-M0-Baseline-20261012.zip",
+      "bytes": 71729064,
+      "entries": 323,
+      "sha256": "0e620b12eb335bcd42470892dadc900eb9787a37dd6f9a73f9b5bf4ce31a2700"
+    },
+    {
+      "file": "TankTogether-Steam-Baseline-20261012.zip",
+      "bytes": 71731014,
+      "entries": 324,
+      "sha256": "08bb7068b1fa9bf4dfb16d41fde9acfaa910ef0a4b551463f6ad3d4bee69fe42"
+    }
+  ]
+}

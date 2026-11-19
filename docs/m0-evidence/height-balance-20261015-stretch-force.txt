@@ -1,0 +1,47 @@
+fixtureGrip0=True feedback=已抓取
+fixtureGrip1=True feedback=已抓取
+fixtureGrip2=True feedback=已抓取
+fixtureGrip3=True feedback=已抓取
+fourGrow=True tankDelta=0.7755141 height=2.480006
+fourShrink=True delta=-0.531028
+fixtureGrip0=True feedback=已抓取
+fixtureGrip1=True feedback=已抓取
+fixtureGrip2=True feedback=已抓取
+fixtureGrip3=True feedback=已抓取
+opposedFinite=True maxSpeed=0.3134598 maxError=0.1203516
+headOnlyGrow=True delta=0.7770104
+headOnlyNoActivePull=True forces=0,0,0,0
+fixtureGrip0=True feedback=已抓取
+fixtureGrip1=True feedback=已抓取
+fixtureGrip2=True feedback=已抓取
+fixtureGrip3=True feedback=已抓取
+airCycleMomentum=True deltaMomentum=0.7086272
+protocolRoundtrip=True version=tank-together-steam-14
+protocolRejectsInvalid=True
+fixtureGrip0=True feedback=已抓取
+fixtureGrip1=True feedback=已抓取
+fixtureGrip2=True feedback=已抓取
+fixtureGrip3=True feedback=已抓取
+singleGrowFinite=True height=2.300004 other=1.7 tilt=19.35814
+neutralHeightPreserved=True height=1.7
+fixtureGrip0=True feedback=已抓取
+fixtureGrip1=True feedback=已抓取
+fixtureGrip2=True feedback=已抓取
+fixtureGrip3=True feedback=已抓取
+finiteHang=True error=0.02289017
+clusteredFinite=True maxSpeed=0.2826767 height=2.628853
+fixtureGrip0=True feedback=已抓取
+fixtureGrip1=True feedback=已抓取
+fixtureGrip2=True feedback=已抓取
+fixtureGrip3=True feedback=已抓取
+twoPlayerFinite=True maxSpeed=0.4163545 tilt=0
+shortCannotGrip=True
+noAutoRegrip=True
+repressGrips=True
+respawnHeldBlocked=True height=1.7
+fixtureGrip0=True feedback=已抓取
+fixtureGrip1=True feedback=已抓取
+fixtureGrip2=True feedback=已抓取
+fixtureGrip3=True feedback=已抓取
+dangerContactBreaks=True failures=1
+passed=True

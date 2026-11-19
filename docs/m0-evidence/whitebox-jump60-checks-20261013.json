@@ -1,0 +1,101 @@
+{
+    "utc": "2026-10-13T03:28:02.0338537Z",
+    "baseline": "v0.2.2-whitebox-jump60-r2-f8f12e4a20039619c43d09def486d69e",
+    "passed": true,
+    "checks": [
+        {
+            "name": "spawn_four_grounded_tank_intact",
+            "evidence": "tank=(0.00, 2.18, 0.00)",
+            "passed": true
+        },
+        {
+            "name": "no_old_floor_wall_or_m1",
+            "evidence": "Only imported route and initial safe stands",
+            "passed": true
+        },
+        {
+            "name": "four_grips_at_start",
+            "evidence": "baseline=v0.2.2-whitebox-jump60-r2-f8f12e4a20039619c43d09def486d69e",
+            "passed": true
+        },
+        {
+            "name": "carry_forward_and_brake",
+            "evidence": "forward metres=4.389277 speed=0.002111441",
+            "passed": true
+        },
+        {
+            "name": "fall_respawns_only_player_at_start",
+            "evidence": "P4=(4.00, 0.00, 1.05)",
+            "passed": true
+        },
+        {
+            "name": "imported_floor_contact_breaks_tank",
+            "evidence": "鱼缸破碎：Group 5。按 R 回起点重试。",
+            "passed": true
+        },
+        {
+            "name": "reset_returns_to_marker",
+            "evidence": "tank=(0.00, 2.18, 0.00)",
+            "passed": true
+        }
+    ],
+    "routeSamples": [
+        "-12,-0.5,Group 5",
+        "-13,-0.5,Group 5",
+        "-14,-0.4999847,Group 5",
+        "-15,-0.5,Group 5",
+        "-16,gap",
+        "-17,gap",
+        "-18,gap",
+        "-19,gap",
+        "-20,gap",
+        "-21,gap",
+        "-22,gap",
+        "-23,gap",
+        "-24,gap",
+        "-25,gap",
+        "-26,gap",
+        "-27,gap",
+        "-28,-0.5,Group 3",
+        "-29,-0.5,Group 3",
+        "-30,-0.5,Group 3",
+        "-31,-0.5,Group 3",
+        "-32,-0.5000153,Group 3",
+        "-33,-0.4999847,Group 3",
+        "-34,-0.5,Group 3",
+        "-35,-0.5,Group 3",
+        "-36,-0.4999847,Group 3",
+        "-37,-0.5,Group 3",
+        "-38,-0.5,Group 3",
+        "-39,gap",
+        "-40,gap",
+        "-41,gap",
+        "-42,gap",
+        "-43,gap",
+        "-44,gap",
+        "-45,gap",
+        "-46,gap",
+        "-47,gap",
+        "-48,gap",
+        "-49,gap",
+        "-50,gap",
+        "-51,gap",
+        "-52,gap",
+        "-53,gap",
+        "-54,gap",
+        "-55,gap",
+        "-56,gap",
+        "-57,gap",
+        "-58,gap",
+        "-59,gap",
+        "-60,gap",
+        "-61,gap",
+        "-62,gap",
+        "-63,-0.5,Group 3",
+        "-64,-1,Group 3",
+        "-65,-1.5,Group 3",
+        "-66,-2,Group 3",
+        "-67,-2.5,Group 3",
+        "-68,-3,Group 3"
+    ]
+}

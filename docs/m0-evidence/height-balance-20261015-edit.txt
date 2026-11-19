@@ -1,0 +1,10 @@
+saved_fields=True 0.6
+save_deep_copy=True 9
+disk_serialization=True 2155
+GM_editor_roundtrip=True 70
+legacy_56=True 56
+legacy_53=True 53
+invalid_spawn_height=True
+invalid_capsule_height=True
+source_unchanged=True
+passed=True

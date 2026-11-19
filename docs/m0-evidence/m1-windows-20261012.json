@@ -1,0 +1,68 @@
+{
+    "utc": "2026-10-12T03:27:12.7109184Z",
+    "platform": "WindowsPlayer",
+    "baseline": "v0.2.2-r1-267def3bd0995bf0bcc110602c127381",
+    "passed": true,
+    "checks": [
+        {
+            "name": "initial_four_safe_top_contacts",
+            "evidence": "mask=15",
+            "passed": true
+        },
+        {
+            "name": "hovering_over_parking_does_not_count",
+            "evidence": "mask=0",
+            "passed": true
+        },
+        {
+            "name": "two_posts_do_not_count",
+            "evidence": "mask=3",
+            "passed": true
+        },
+        {
+            "name": "drive_and_park_with_existing_controls",
+            "evidence": "z=5.352554; mask=15; error=0.1652377",
+            "passed": true
+        },
+        {
+            "name": "parking_does_not_require_release",
+            "evidence": "grippedMask=15",
+            "passed": true
+        },
+        {
+            "name": "leave_parking_without_magnet_or_new_button",
+            "evidence": "z=9.597025; mask=0",
+            "passed": true
+        },
+        {
+            "name": "one_player_reaches_real_hole",
+            "evidence": "feet=(0.90, -0.04, 2.65); tank=(0.00, 2.16, 1.99)",
+            "passed": true
+        },
+        {
+            "name": "finite_hanging_keeps_grip",
+            "evidence": "minFeetY=-0.5215845; maxHeadAnchor=0.1226596",
+            "passed": true
+        },
+        {
+            "name": "hanging_has_no_platform_penetration",
+            "evidence": "maxPenetration=0",
+            "passed": true
+        },
+        {
+            "name": "three_players_rescue_without_teleport",
+            "evidence": "rescuedFeet=(-0.26, 0.00, 1.74); maxError=0.1235081",
+            "passed": true
+        },
+        {
+            "name": "release_falls_and_respawns_only_that_player",
+            "evidence": "player=(-0.90, 0.00, -3.00); tankMoved=0.3714857",
+            "passed": true
+        },
+        {
+            "name": "other_grips_survive_single_fall",
+            "evidence": "remaining three relations",
+            "passed": true
+        }
+    ]
+}

@@ -1,0 +1,148 @@
+{
+    "utc": "2026-10-13T06:47:02.5689580Z",
+    "scope": "local-roster-and-physics",
+    "complete": true,
+    "passed": true,
+    "checks": [
+        {
+            "name": "menu_has_no_spawned_players",
+            "evidence": "actual=0",
+            "passed": true
+        },
+        {
+            "name": "one_member_one_actual_body",
+            "evidence": "actual=1",
+            "passed": true
+        },
+        {
+            "name": "waiting_physics_is_frozen",
+            "evidence": "tank=(0.00, 2.19, 0.00)",
+            "passed": true
+        },
+        {
+            "name": "2_actual_bodies",
+            "evidence": "count=2",
+            "passed": true
+        },
+        {
+            "name": "2_balanced_spawn",
+            "evidence": "(0.000, 0.020, 0.000)",
+            "passed": true
+        },
+        {
+            "name": "2_fixed_session_load",
+            "evidence": "kg=12",
+            "passed": true
+        },
+        {
+            "name": "2_carry_at_usable_speed",
+            "evidence": "z=3.774304; speed=2.500184; grips=2; broken=False",
+            "passed": true
+        },
+        {
+            "name": "2_jump_and_land",
+            "evidence": "lift=0.5107169; maxTilt=4.437075; broken=False",
+            "passed": true
+        },
+        {
+            "name": "2_departure_freezes_before_removal",
+            "evidence": "remaining=1",
+            "passed": true
+        },
+        {
+            "name": "3_actual_bodies",
+            "evidence": "count=3",
+            "passed": true
+        },
+        {
+            "name": "3_balanced_spawn",
+            "evidence": "(0.000, 0.020, 0.000)",
+            "passed": true
+        },
+        {
+            "name": "3_fixed_session_load",
+            "evidence": "kg=18",
+            "passed": true
+        },
+        {
+            "name": "3_carry_at_usable_speed",
+            "evidence": "z=3.726555; speed=2.521125; grips=3; broken=False",
+            "passed": true
+        },
+        {
+            "name": "3_jump_and_land",
+            "evidence": "lift=0.5051308; maxTilt=9.056489; broken=False",
+            "passed": true
+        },
+        {
+            "name": "3_departure_freezes_before_removal",
+            "evidence": "remaining=2",
+            "passed": true
+        },
+        {
+            "name": "4_actual_bodies",
+            "evidence": "count=4",
+            "passed": true
+        },
+        {
+            "name": "4_balanced_spawn",
+            "evidence": "(0.000, 0.020, 0.000)",
+            "passed": true
+        },
+        {
+            "name": "4_fixed_session_load",
+            "evidence": "kg=24",
+            "passed": true
+        },
+        {
+            "name": "4_carry_at_usable_speed",
+            "evidence": "z=3.77294; speed=2.501307; grips=4; broken=False",
+            "passed": true
+        },
+        {
+            "name": "4_jump_and_land",
+            "evidence": "lift=0.5126722; maxTilt=7.799158; broken=False",
+            "passed": true
+        },
+        {
+            "name": "4_departure_freezes_before_removal",
+            "evidence": "remaining=3",
+            "passed": true
+        },
+        {
+            "name": "two_player_direction_(-1.00, 0.00, 0.00)",
+            "evidence": "maxTilt=11.08942; broken=False",
+            "passed": true
+        },
+        {
+            "name": "two_player_direction_(0.00, 0.00, -1.00)",
+            "evidence": "maxTilt=4.339056; broken=False",
+            "passed": true
+        },
+        {
+            "name": "two_player_direction_(-0.71, 0.00, 0.71)",
+            "evidence": "maxTilt=8.970275; broken=False",
+            "passed": true
+        },
+        {
+            "name": "two_player_direction_change",
+            "evidence": "tilt=9.850037",
+            "passed": true
+        },
+        {
+            "name": "sparse_roster_keeps_slot_identity",
+            "evidence": "P1/P4 only",
+            "passed": true
+        },
+        {
+            "name": "sparse_roster_balanced",
+            "evidence": "front/back",
+            "passed": true
+        },
+        {
+            "name": "client_proxy_stays_kinematic",
+            "evidence": "no duplicate simulation",
+            "passed": true
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "complete": true,
+    "passed": true,
+    "samples": [],
+    "checks": [
+        "keyboard_start_turn_stop_False=True peak=13.62849 settled=0",
+        "keyboard_start_turn_stop_True=True peak=22.3431 settled=0",
+        "keyboard_full_walk_settles=True tilt=7.031042 torque=0.1003598",
+        "airborne_no_extra_torque=True (0.00, 0.00, 0.00)",
+        "three_players_bounded=True tilt=1.931075 torque=18",
+        "teleport_does_not_kick=True (0.00, 0.00, 0.00)",
+        "switch_off_restores_damping=True 5",
+        "proxy_no_added_force=True (0.00, 0.00, 0.00)"
+    ]
+}

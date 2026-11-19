@@ -1,0 +1,27 @@
+{
+  "checkedUTC": "2026-10-12T11:46:37.527240+00:00",
+  "release": "https://github.com/1205971577/tank-together/releases/tag/baseline-20261012",
+  "sourceCommit": "814c0a4e4b5f69553adf7f8585c3505b5f8f0b8d",
+  "uploaded": true,
+  "verification": "GitHub asset size and server SHA256 match local verified archives; not a full re-download.",
+  "assets": [
+    {
+      "name": "manifest.json",
+      "bytes": 696,
+      "digest": "sha256:98b68e36a8f2b00f62a3e0b528b41e94319bf4e09f1655a28b757c3bbc3df354",
+      "state": "uploaded"
+    },
+    {
+      "name": "TankTogether-M0-Baseline-20261012.zip",
+      "bytes": 71729064,
+      "digest": "sha256:0e620b12eb335bcd42470892dadc900eb9787a37dd6f9a73f9b5bf4ce31a2700",
+      "state": "uploaded"
+    },
+    {
+      "name": "TankTogether-Steam-Baseline-20261012.zip",
+      "bytes": 71731014,
+      "digest": "sha256:08bb7068b1fa9bf4dfb16d41fde9acfaa910ef0a4b551463f6ad3d4bee69fe42",
+      "state": "uploaded"
+    }
+  ]
+}

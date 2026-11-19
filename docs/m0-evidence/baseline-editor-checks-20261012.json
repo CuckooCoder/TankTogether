@@ -1,0 +1,129 @@
+{
+    "utc": "2026-10-12T03:02:15.7709806Z",
+    "unityVersion": "6000.6.5f1",
+    "platform": "WindowsEditor",
+    "baseline": "v0.2.2-r1-8504886fccaa13e746c0a5f7a3ca4b13",
+    "passed": true,
+    "checks": [
+        {
+            "name": "safe_start",
+            "evidence": "Tank center y=2.175",
+            "passed": true
+        },
+        {
+            "name": "outside_press_rejected",
+            "evidence": "抓取失败：请到鱼缸底下，松开后重按",
+            "passed": true
+        },
+        {
+            "name": "held_entry_no_auto_grab",
+            "evidence": "Held outside then moved under tank",
+            "passed": true
+        },
+        {
+            "name": "release_repress_grabs",
+            "evidence": "已抓取",
+            "passed": true
+        },
+        {
+            "name": "local_anchor_fixed",
+            "evidence": "Anchor=(-0.60, -0.48, -0.40)",
+            "passed": true
+        },
+        {
+            "name": "release_disconnects",
+            "evidence": "Release removes active relation synchronously",
+            "passed": true
+        },
+        {
+            "name": "gravity_four_player_carry",
+            "evidence": "z=4.272922; y=2.157257",
+            "passed": true
+        },
+        {
+            "name": "bounded_grip",
+            "evidence": "Maximum head-anchor distance=0.1202002",
+            "passed": true
+        },
+        {
+            "name": "release_keeps_motion",
+            "evidence": "Before=2.499115; after=2.459138",
+            "passed": true
+        },
+        {
+            "name": "passive_head_support",
+            "evidence": "supportCount=4; y=2.158183",
+            "passed": true
+        },
+        {
+            "name": "ungripped_no_horizontal_drive",
+            "evidence": "dz=0",
+            "passed": true
+        },
+        {
+            "name": "synchronous_jump_transfers_lift",
+            "evidence": "rest=2.15778; peak=2.644192",
+            "passed": true
+        },
+        {
+            "name": "crouch_changes_carry_height",
+            "evidence": "before=2.158064; crouched=1.543037",
+            "passed": true
+        },
+        {
+            "name": "vertical_constraints_bounded",
+            "evidence": "maximum=0.1649375",
+            "passed": true
+        },
+        {
+            "name": "single_grip_slow_movement",
+            "evidence": "single z=0.1664834; four-player z=4.272922",
+            "passed": true
+        },
+        {
+            "name": "unsupported_gravity",
+            "evidence": "Tank center y=3.569519",
+            "passed": true
+        },
+        {
+            "name": "no_airborne_auto_upright",
+            "evidence": "roll=25",
+            "passed": true
+        },
+        {
+            "name": "danger_floor_breaks",
+            "evidence": "Tank-floor contact produces failure",
+            "passed": true
+        },
+        {
+            "name": "failure_idempotent",
+            "evidence": "Duplicate failure did not increment counter",
+            "passed": true
+        },
+        {
+            "name": "failure_clears_grip_0",
+            "evidence": "No active relation after failure",
+            "passed": true
+        },
+        {
+            "name": "failure_clears_grip_1",
+            "evidence": "No active relation after failure",
+            "passed": true
+        },
+        {
+            "name": "failure_clears_grip_2",
+            "evidence": "No active relation after failure",
+            "passed": true
+        },
+        {
+            "name": "failure_clears_grip_3",
+            "evidence": "No active relation after failure",
+            "passed": true
+        },
+        {
+            "name": "reset_safe",
+            "evidence": "Safe stand restored",
+            "passed": true
+        }
+    ]
+}

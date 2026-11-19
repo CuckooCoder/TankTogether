@@ -1,0 +1,22 @@
+{
+  "version": "Failure-20261013",
+  "utc": "2026-10-13T08:28:29.723062+00:00",
+  "protocol": "tank-together-steam-04",
+  "scene": "SteamWhiteboxCarryLab",
+  "steamAppId": 480,
+  "archive": "TankTogether-Failure-20261013.zip",
+  "bytes": 72051280,
+  "sha256": "d5059c54d9e5ea242150caef4e7ad33e7b51f9e994f08588d358325c51fa02b4",
+  "zipCrcVerified": true,
+  "sourceHead": "88b8626f0e40cab0caa8f90583062c4931c3aeea",
+  "sourceHasUncommittedChanges": true,
+  "githubUploaded": false,
+  "realRemoteMultiplayerVerified": false,
+  "sourceSHA256": {
+    "Assets\\Scripts\\M0CarryLab.cs": "556d99647c85b48b85f1357281ec8d006d7ef1d977608183f75fa72c779bb5cf",
+    "Assets\\Scripts\\SteamCarrySession.cs": "fe67a2353ea0199a05b47f9aa7e5a7fd40cfc527f7ee9c37d829128108fd8e49",
+    "Assets\\Scripts\\SteamCarryProtocol.cs": "d0f2116cfbee954b4063fc8634736b10d8d683116cc08a6e84a5c77816dffc11",
+    "Assets\\Scripts\\TankFailureFeedback.cs": "0a8fe224c4509399eaaf6c573f861f529d3facfa53d08247b4b42e61579c0481",
+    "Assets\\Resources\\WhiteboxJumpTrial.asset": "4a9c7e3506977d7cd7145319b05dfecfe2db96c72c94c567687d8ad1191cd50a"
+  }
+}

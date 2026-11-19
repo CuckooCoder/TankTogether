@@ -1,0 +1,1 @@
+maxArmFrameDelta=4.73175;maxArmDegreesPerSecond=450.8872
