@@ -355,7 +355,6 @@ namespace TankTogether.M0
                     materials.Find(m => m.name == "M0 Player " + index) ?? Material("Player " + index, colors[index]), false).transform;
             actor.indicator = Shape("Interaction state", PrimitiveType.Sphere, go.transform,
                 Vector3.up * (standingHeight + 0.06f), Vector3.one * 0.13f, neutral, false).transform;
-            Physics.IgnoreCollision(actor.capsule, Tank.GetComponent<Collider>());
             // Reset while the button is held must not manufacture a new press edge.
             if (captured && !Testing && Mouse.current != null) actor.held = Prefs.Held(ControlAction.Grab);
             Players[index] = actor;
