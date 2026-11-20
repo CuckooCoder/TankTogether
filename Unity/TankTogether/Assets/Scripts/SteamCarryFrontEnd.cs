@@ -35,25 +35,22 @@ public sealed partial class SteamCarrySession {
  void FrontHeader(string title,string subtitle){Panel(new Rect(40,30,1200,100));GameText.RawLabel(new Rect(65,45,1100,38),title,heading);GameText.RawLabel(new Rect(65,90,1100,30),subtitle,small);}
  void DrawHome(){
   FrontHeader("搬鱼缸 / TANK TOGETHER",Ui("与朋友一起，把这一缸平安搬到终点。","Carry it together. Bring the tank home in one piece."));
-  float offset=Application.isEditor?0:230;
-  Panel(new Rect(40+offset,150,740,405));
-  GameText.RawLabel(new Rect(70+offset,177,680,40),Ui("开始合作冒险","Start a co-op adventure"),heading);
-  GameText.RawLabel(new Rect(70+offset,230,680,58),Ui("三人合作。房主选择存档，两位队友加入。\n共同进度保存在房主账号下。","Three-player co-op. The host chooses a save and two guests join.\nShared progress belongs to the host."),label);
+  Panel(new Rect(40,150,740,405));
+  GameText.RawLabel(new Rect(70,177,680,40),Ui("开始合作冒险","Start a co-op adventure"),heading);
+  GameText.RawLabel(new Rect(70,230,680,58),Ui("三人合作。房主选择存档，两位队友加入。\n共同进度保存在房主账号下。","Three-player co-op. The host chooses a save and two guests join.\nShared progress belongs to the host."),label);
   GUI.enabled=CanChooseMode;
-  if(GameText.RawButton(new Rect(70+offset,315,325,66),Ui("创建游戏","Create game"),button))BeginCreateFlow();
-  if(GameText.RawButton(new Rect(415+offset,315,335,66),Ui("加入游戏","Join game"),button))BeginJoinFlow();
-  if(GameText.Button(new Rect(70+offset,405,325,46),"个人设置",button))OpenSettings();
-  if(GameText.Button(new Rect(415+offset,405,335,46),"角色装扮",button))OpenCosmetic();
-  if(reconnectRoom!=0){if(GameText.RawButton(new Rect(70+offset,478,680,48),Ui("重试上次房间（须原房主仍在线）","Retry last room (host must still be online)"),FrontSmallButton))RetryLastRoom();}
-  else GameText.RawLabel(new Rect(70+offset,478,680,50),Ui("创建：选择存档 → 邀请好友 → 准备 → 出发","Create: choose save → invite friends → ready → start"),small);
-  if(Application.isEditor){
+  if(GameText.RawButton(new Rect(70,315,325,66),Ui("创建游戏","Create game"),button))BeginCreateFlow();
+  if(GameText.RawButton(new Rect(415,315,335,66),Ui("加入游戏","Join game"),button))BeginJoinFlow();
+  if(GameText.Button(new Rect(70,405,325,46),"个人设置",button))OpenSettings();
+  if(GameText.Button(new Rect(415,405,335,46),"角色装扮",button))OpenCosmetic();
+  if(reconnectRoom!=0){if(GameText.RawButton(new Rect(70,478,680,48),Ui("重试上次房间（须原房主仍在线）","Retry last room (host must still be online)"),FrontSmallButton))RetryLastRoom();}
+  else GameText.RawLabel(new Rect(70,478,680,50),Ui("创建：选择存档 → 邀请好友 → 准备 → 出发","Create: choose save → invite friends → ready → start"),small);
   Panel(new Rect(805,150,435,405));
   GameText.RawLabel(new Rect(835,180,375,35),Ui("本地测试","Local testing"),heading);
   GameText.RawLabel(new Rect(835,230,375,75),Ui("一个人调手感、跑关卡。\n无需 Steam，不写入合作存档。","Test movement and levels solo.\nNo Steam needed. Co-op saves are untouched."),label);
   if(GameText.RawButton(new Rect(835,323,375,54),Ui("进入关卡 · 伸缩 B","Play level · Stretch B"),button))StartLocalStretchLevel();
   if(GameText.RawButton(new Rect(835,392,375,38),localTools?Ui("收起对照工具","Hide comparison tools"):Ui("更多测试工具…","More test tools…"),button))localTools=!localTools;
   if(localTools){if(GameText.RawButton(new Rect(835,448,180,42),"A · "+Ui("旧版对照","Original"),button))StartLocalTest();if(GameText.RawButton(new Rect(1025,448,185,42),"B0 · "+Ui("伸缩沙盒","Sandbox"),button))StartLocalStretchLevel(false);}
-  }
   GUI.enabled=true;
   stretchNetwork=GameText.Toggle(new Rect(65,579,920,30),stretchNetwork,"Steam 启用伸缩实验 B（所有队友选择一致；Q/E 变高变矮）");
   if(GameText.Button(new Rect(1010,575,205,44),"退出游戏",button))Application.Quit();

@@ -114,7 +114,7 @@ namespace TankTogether.Networking
         }
         public bool StartLocalTest()
         {
-            if (!Application.isEditor || !CanChooseMode || Mode == EntryMode.LocalTest || !lab.Tank) return false;
+            if (!CanChooseMode || Mode == EntryMode.LocalTest || !lab.Tank) return false;
             Mode = EntryMode.LocalTest;
             Capture(false);
             lab.BeginLocalSimulation();

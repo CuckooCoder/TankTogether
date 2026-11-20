@@ -18,6 +18,7 @@ namespace TankTogether.M0
         public HeightExperiment Stretch { get; set; }
         public HeightCarryBalance HeightBalance { get; } = new HeightCarryBalance();
         public bool GMOpen => GM && GM.IsOpen;
+        internal Material SafeSupportMaterial => safe;
         [Tooltip("调试显示：半透明平头支撑面；仅显示，不改变碰撞/受力。F1可切换。青色空闲，黄色承托，绿色抓握。穿透显示便于观察，不代表可隔墙接触。 ")]
         public bool ShowHeadSupport = true;
         public const float MinPitch = -70, MaxPitch = 80;
@@ -115,8 +116,10 @@ namespace TankTogether.M0
         float yaw, pitch = 24;
         Vector3 cameraFocus;
         const int SharedGripMode = 4;
+        const int AutoJumpMode = 5;
         static bool Digit5Bound => Array.IndexOf(Prefs.Data.keys, (int)Key.Digit5) >= 0;
-        readonly string[] modes = { "单独控制", "三人同向模拟", "两顺一逆模拟", "两侧反向模拟", "队友原地抓取" };
+        static bool Digit6Bound => Array.IndexOf(Prefs.Data.keys, (int)Key.Digit6) >= 0;
+        readonly string[] modes = { "单独控制", "三人同向模拟", "两顺一逆模拟", "两侧反向模拟", "队友原地抓取", "队友同向自动跳" };
 
         void Awake()
         {
@@ -585,6 +588,17 @@ namespace TankTogether.M0
         public void ChangeMode(int mode)
         {
             Mode = mode;
+            if (mode == AutoJumpMode)
+            {
+                for (int i = 0; i < LocalPlayerCount; i++)
+                {
+                    if (i == Selected) continue;
+                    Players[i].jump = false;
+                    Players[i].jumpQueuedUntil = -100;
+                }
+                Message = "队友同向移动，过断口和上台阶时各自起跳。当前角色手动跳跃。";
+                return;
+            }
             if (mode != SharedGripMode)
                 for (int i = 0; i < LocalPlayerCount; i++) SetInput(i, Vector3.zero, false);
             Message = mode == SharedGripMode ? "队友保持抓取，不主动移动。当前角色独立操作，Tab 换人。" : modes[Mode] + "；模拟角色只复用输入，不自动寻路或救援。";
@@ -602,19 +616,27 @@ namespace TankTogether.M0
             if (k.rKey.wasPressedThisFrame) { if (Broken) RetryFailure(); else ResetLab(); }
             if (Broken) return;
             if (captured && k.f4Key.wasPressedThisFrame) { DebugTeleportToTank(k.leftShiftKey.isPressed || k.rightShiftKey.isPressed); return; }
-            if (!(Stretch && Stretch.Active && !Stretch.InLevel) && k.digit1Key.wasPressedThisFrame) ChangeMode(0);
-            if (!(Stretch && Stretch.Active && !Stretch.InLevel) && k.digit2Key.wasPressedThisFrame) ChangeMode(1);
-            if (!(Stretch && Stretch.Active && !Stretch.InLevel) && k.digit3Key.wasPressedThisFrame) ChangeMode(2);
             bool teamControls = !(Stretch && Stretch.Active && !Stretch.InLevel);
+            bool shift = k.leftShiftKey.isPressed || k.rightShiftKey.isPressed;
+            if (teamControls && k.digit1Key.wasPressedThisFrame) ChangeMode(0);
+            if (teamControls && k.digit2Key.wasPressedThisFrame) ChangeMode(1);
+            if (teamControls && k.digit3Key.wasPressedThisFrame)
+                ChangeMode(Digit6Bound && shift ? AutoJumpMode : 2);
             bool mode4Pressed = teamControls && k.digit4Key.wasPressedThisFrame;
             bool sharedGripPressed = Digit5Bound
-                ? mode4Pressed && (k.leftShiftKey.isPressed || k.rightShiftKey.isPressed)
+                ? mode4Pressed && shift
                 : teamControls && k.digit5Key.wasPressedThisFrame;
             if (sharedGripPressed) ChangeMode(SharedGripMode);
             else if (mode4Pressed) ChangeMode(3);
-            if (!(Stretch && Stretch.Active && !Stretch.InLevel) && k.tabKey.wasPressedThisFrame)
+            if (teamControls && !Digit6Bound && k.digit6Key.wasPressedThisFrame) ChangeMode(AutoJumpMode);
+            if (teamControls && k.tabKey.wasPressedThisFrame)
             {
-                if (Mode != SharedGripMode) SetInput(Selected, Vector3.zero, false);
+                if (Mode == AutoJumpMode)
+                {
+                    Players[Selected].jump = false;
+                    Players[Selected].jumpQueuedUntil = -100;
+                }
+                else if (Mode != SharedGripMode) SetInput(Selected, Vector3.zero, false);
                 Selected = (Selected + 1) % LocalPlayerCount;
                 Message = "切换至 P" + (Selected + 1) + "；切换操作是本地测试工具。";
             }
@@ -641,6 +663,7 @@ namespace TankTogether.M0
                     if (!teammate.held) teammate.gripArmed = true;
                     SetInput(i, Vector3.zero, true);
                 }
+                else if (Mode == AutoJumpMode) SetInput(i, move, hold);
                 else
                 {
                     float sign = Mode == 2 && i == (Selected + 1) % LocalPlayerCount ? -1 : 1;
@@ -714,6 +737,7 @@ namespace TankTogether.M0
             if (Tank == null || !Simulate || sessionPaused) return;
             int grips = 0, movers = 0;
             int jumpingGrips = 0;
+            bool canAutoJump = Mode == AutoJumpMode && captured && !ExternalControl && !Players[Selected].jump;
             bool carryingInFlight = false;
             bool plantedSupport = false;
             Actor driver = null;
@@ -776,6 +800,11 @@ namespace TankTogether.M0
                 Vector3 footVelocity = grounded ? Vector3.ProjectOnPlane(a.body.linearVelocity - groundVelocity, Vector3.up) : horizontal;
                 a.grounded = grounded;
                 if (grounded) { a.lastGrounded = Time.time; a.groundVelocity = groundVelocity; }
+                if (canAutoJump && i != Selected && grounded && ShouldAutoJump(a, groundNormal, footVelocity))
+                {
+                    a.jump = true;
+                    canAutoJump = false;
+                }
                 if (a.jump && !a.joint) a.jumpQueuedUntil = Time.time + baseline.jumpBufferTime;
                 Vector3 motor;
                 if (!a.joint)
@@ -884,6 +913,54 @@ namespace TankTogether.M0
             HeightBalance.Step(this,Time.fixedDeltaTime);
             if (unstable && plantedSupport && !Broken && !tankContact.HasSupport) Tank.AddTorque(tipTorque);
             if (Tank.position.y < (route ? route.killHeight - 4 : -8)) Fail("鱼缸离开测试区域");
+        }
+
+        bool ShouldAutoJump(Actor actor, Vector3 groundNormal, Vector3 footVelocity)
+        {
+            if (actor.move.sqrMagnitude < CarryInputDeadZoneSquared) return false;
+            Vector3 heading = actor.move.normalized;
+            float forwardSpeed = Vector3.Dot(footVelocity, heading);
+            // Probe along the current ground plane so a walkable downslope doesn't look like a gap.
+            heading.y = -Vector3.Dot(heading, groundNormal) / groundNormal.y;
+            if (HasStepUpAhead(actor, heading, forwardSpeed)) return true;
+            if (forwardSpeed <= .15f) return false;
+            float lead = Mathf.Clamp(forwardSpeed * .065f, .10f, .20f);
+            Vector3 feet = actor.body.position;
+            return !HasGroundAhead(feet + heading * lead) &&
+                   !HasGroundAhead(feet + heading * (lead + actor.capsule.radius));
+        }
+
+        bool HasStepUpAhead(Actor actor, Vector3 heading, float forwardSpeed)
+        {
+            const float minRise = .08f;
+            float maxRise = (actor.joint ? GripJumpHeight : baseline.freeJumpHeight) - .05f;
+            if (maxRise <= minRise) return false;
+
+            Vector3 feet = actor.body.position;
+            float reach = actor.capsule.radius + Mathf.Clamp(forwardSpeed * .15f, .12f, .35f);
+            foreach (var riser in Physics.RaycastAll(feet + Vector3.up * minRise, heading.normalized,
+                         reach * heading.magnitude, ~0, QueryTriggerInteraction.Ignore))
+            {
+                if (riser.normal.y >= .55f || Vector3.Dot(riser.normal, heading) > -.5f ||
+                    !IsEnvironment(riser.collider)) continue;
+                // The obstacle must have a walkable top just beyond the riser, within jump height.
+                Vector3 beyond = riser.point + heading * .10f - Vector3.up * minRise;
+                var down = new Ray(beyond + Vector3.up * maxRise, Vector3.down);
+                if (riser.collider.Raycast(down, out var tread, maxRise - minRise) && tread.normal.y >= .55f)
+                    return true;
+            }
+            return false;
+        }
+
+        bool HasGroundAhead(Vector3 point)
+        {
+            const float probeHeight = .18f;
+            const float maxStepDown = 1.05f;
+            // A nearby lower tread is walkable ground even when it lies below the foot contact probe.
+            foreach (var hit in Physics.RaycastAll(point + Vector3.up * probeHeight, Vector3.down,
+                         probeHeight + maxStepDown, ~0, QueryTriggerInteraction.Ignore))
+                if (hit.normal.y >= .55f && IsEnvironment(hit.collider)) return true;
+            return false;
         }
 
         bool ProbeGround(Actor actor, out Vector3 normal, out Vector3 velocity)
@@ -1049,7 +1126,7 @@ namespace TankTogether.M0
             GUI.Label(new Rect(42, height - 108, width - 90, 29), Message, textStyle);
             string jumpHelp = Prefs.Binding(ControlAction.Jump) + " 跳跃";
             GUI.Label(new Rect(42, height - 74, width - 90, 24), (Stretch && Stretch.Active ? "WASD 移动   鼠标看向   Shift 奔跑   "+jumpHelp+"   "+Prefs.Binding(ControlAction.Shrink)+" 变矮 / "+Prefs.Binding(ControlAction.Grow)+" 长高   F2 伸缩参数" : "WASD 移动   鼠标看向   左键按住抓取 / 松开脱手   Shift 奔跑   "+jumpHelp+"   Ctrl 蹲下   Tab 换角色"), smallStyle);
-            GUI.Label(new Rect(42, height - 49, width - 90, 24), (Stretch && Stretch.Active && !Stretch.InLevel ? "B0 单人沙盒 · 暂无鱼缸交互" : "1 单独控制 / 2 同向 / 3 两顺一逆 / 4 两侧反向 / " + (Digit5Bound ? "Shift+4" : "5") + " 队友原地抓取   Tab 换人") + "   R 重置   Esc 释放鼠标   Enter 开始操作", smallStyle);
+            GUI.Label(new Rect(42, height - 49, width - 90, 24), (Stretch && Stretch.Active && !Stretch.InLevel ? "B0 单人沙盒 · 暂无鱼缸交互" : "1 单控 / 2 同向 / 3 两顺一逆 / 4 两侧反向 / " + (Digit5Bound ? "Shift+4" : "5") + " 队友原地抓取 / " + (Digit6Bound ? "Shift+3" : "6") + " 同向自动跳   Tab 换人") + "   R 重置   Esc 释放鼠标   Enter 开始操作", smallStyle);
             if (Broken && !Testing)
             {
                 float x = width / 2 - 260, y = height / 2 - 90;
