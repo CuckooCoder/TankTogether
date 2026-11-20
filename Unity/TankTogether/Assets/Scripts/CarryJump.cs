@@ -25,7 +25,8 @@ namespace TankTogether.M0
         {
             Rigidbody tank = lab.Tank;
             float gravity = -Physics.gravity.y;
-            float launchSpeed = Mathf.Sqrt(2 * gravity * lab.GripJumpHeight);
+            float jumpHeight = lab.baseline.freeJumpHeight;
+            float launchSpeed = Mathf.Sqrt(2 * gravity * jumpHeight);
             int assist = 0;
             for (int i = 0; i < lab.LocalPlayerCount; i++)
             {
@@ -34,7 +35,7 @@ namespace TankTogether.M0
                 bool takeoff = (jumpMask & (1 << i)) != 0;
                 if (takeoff)
                 {
-                    apex[i] = grip.y + lab.GripJumpHeight;
+                    apex[i] = grip.y + jumpHeight;
                     deadline[i] = Time.fixedTime + launchSpeed / gravity + Time.fixedDeltaTime;
                 }
                 float speed = tank.GetPointVelocity(grip).y;

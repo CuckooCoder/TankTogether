@@ -13,13 +13,15 @@ namespace TankTogether.M0
         public Vector2 spawnHalfSpacing = new Vector2(0.9f, 0.55f);
         public float carryBottomHeight = 1.7f;
         public float walkSpeed = 4, sprintSpeed = 6, carrySpeed = 2.5f, carrySprintSpeed = 3.5f;
-        public float freeJumpHeight = 0.65f, carryJumpHeightTarget = 0.55f;
+        public float freeJumpHeight = 0.65f;
+        [HideInInspector] public float carryJumpHeightTarget = 0.55f;
         [Header("实验参数：非冻结玩法规则")]
         public Vector2 standInset = new Vector2(0.20f, 0.15f);
         public float standWidth = 0.25f, gripInset = 0.12f, gripVerticalReach = 0.23f;
         public float tankMass = 24, playerMass = 7, tankDamping = 0.8f, angularDamping = 2;
         public float motorGain = 95, motorForce = 160, carryMotorGain = 65, carryMotorForce = 70;
-        public float carryBrakeAcceleration = 2.5f, carryJumpVelocity = 6;
+        public float carryBrakeAcceleration = 2.5f;
+        [HideInInspector] public float carryJumpVelocity = 6;
         public float gripLimit = 0.12f, supportStiffness = 3500, supportDamping = 100, supportMaxForce = 240;
         [Header("人物伸缩：B / B0 实验")]
         public float stretchMinHeight = 1.1f;

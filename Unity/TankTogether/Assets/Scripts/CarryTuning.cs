@@ -58,7 +58,7 @@ namespace TankTogether.M0
             new Parameter(0,"b.freeAcceleration","起步 / 转向 m/s²",1,120,"越大越跟手；只影响空手移动。"),
             new Parameter(0,"b.freeDeceleration","松键刹停 m/s²",1,160,"越大松开方向后滑得越短。"),
             new Parameter(0,"b.airAcceleration","空中修正 m/s²",0,80,"越大越容易调整落点；不增加跳高。"),
-            new Parameter(0,"b.freeJumpHeight","自由跳高 m",.1f,3,"越大跳得更高，滞空和跳远也增加。"),
+            new Parameter(0,"b.freeJumpHeight","跳跃高度 m",.1f,3,"空手和抓缸共用的起跳目标高度。障碍和抓缸站位会影响实际升幅。"),
             new Parameter(0,"b.freeFallGravityMultiplier","空手下落重力倍率",1,4,"只加快空手下降；不改上升/跳高，不用于抓缸或头顶支撑。1为旧节奏。"),
             new Parameter(0,"b.coyoteTime","离地补跳窗口 s",0,.25f,"离开边缘后短暂允许补按跳跃；每次落地仅一次。"),
             new Parameter(0,"b.jumpBufferTime","提前按跳缓存 s",0,.25f,"落地前略早按跳也能触发，降低卡帧要求。"),
@@ -83,7 +83,7 @@ namespace TankTogether.M0
             new Parameter(2,"b.carryMotorGain","搬运移动响应",1,180,"把速度误差转成推力；越大响应越快，受最大推力限制。"),
             new Parameter(2,"b.carryMotorForce","搬运最大推力 N",1,300,"限制每个角色的移动力；越大越容易推得动。"),
             new Parameter(2,"b.carryBrakeAcceleration","抓住时刹停 m/s²",.1f,20,"仅仍抓住且松开方向时起作用，不是松手后的鱼缸刹车。"),
-            new Parameter(2,"b.carryJumpVelocity","搬缸起跳增速 m/s",1,20,"越大越高、滞空越长；错时发力仍可能翻缸。"),
+            new Parameter(4,"b.carryJumpVelocity","旧搬缸起跳增速（已停用）",1,20,"保留旧版配置值。跳跃高度统一在人物走跳页设置。"),
             new Parameter(3,"b.gripInset","抓取边缘内缩 m",0,.4f,"越大有效抓取区域越小，避免站在缸外也能抓到。"),
             new Parameter(3,"b.gripVerticalReach","抓取垂直范围 m",.05f,.6f,"越大越容易抓到头顶附近的缸；过大可能隔空抓取。"),
             new Parameter(3,"b.gripLimit","抓取关节限距 m",.02f,.4f,"越大连接允许的位移越多、越松；小值可能增加抖动。"),
@@ -114,7 +114,7 @@ namespace TankTogether.M0
         }
         public static CarryTuningProfile Capture(M0CarryBaseline b,CarryTuningExtras e,string level)
         {
-            var p=new CarryTuningProfile{levelId=level,baselineVersion=b.version,values=new CarryTuningValue[All.Length],context="世界重力="+Physics.gravity+"；物理步长="+Time.fixedDeltaTime+"；俯仰=-70..80；升降行程由地图定义；carryJumpHeightTarget="+b.carryJumpHeightTarget+"（默认起跳档位下的抓点抬升目标）；motorGain/motorForce为已停用旧字段。"};
+            var p=new CarryTuningProfile{levelId=level,baselineVersion=b.version,values=new CarryTuningValue[All.Length],context="世界重力="+Physics.gravity+"；物理步长="+Time.fixedDeltaTime+"；俯仰=-70..80；升降行程由地图定义；空手和抓缸的跳跃目标="+b.freeJumpHeight+"米；motorGain/motorForce为已停用旧字段。"};
             for(int i=0;i<All.Length;i++)p.values[i]=new CarryTuningValue{key=All[i].key,label=All[i].label,value=All[i].Read(b,e)};return p;
         }
         public static string Validate(M0CarryBaseline b,CarryTuningExtras e)

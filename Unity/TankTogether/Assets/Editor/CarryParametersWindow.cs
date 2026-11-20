@@ -83,11 +83,9 @@ namespace TankTogether.Editor
                 case nameof(M0CarryBaseline.sprintSpeed): return "未抓鱼缸、按住奔跑时的目标水平速度，单位米/秒。\n调大跑得更快，相同腾空时间下通常跳得更远；调小相反。\n不直接改变起跳高度，实际速度仍受推力和碰撞影响。";
                 case nameof(M0CarryBaseline.carrySpeed): return "四人抓住鱼缸时的目标水平行走速度，单位米/秒。\n调大通常搬得更快、同样滞空时跨得更远；调小相反。\n抓取人数不足四人会额外降速，质量、输入配合和推力也会影响实际速度。";
                 case nameof(M0CarryBaseline.carrySprintSpeed): return "四人抓缸并奔跑时的目标水平速度，单位米/秒。\n调大通常增加跑跳距离，也更考验起跳和刹停时机；调小相反。\n不直接增加跳高；少人抓取、碰撞或推力不足时达不到目标速度。";
-                case nameof(M0CarryBaseline.carryJumpVelocity): return "抓缸角色的起跳力度档位，单位米/秒。\n调大通常跳得更高、滞空更久，也可能更远；调小相反。\n过大或多人错时发力可能掀翻鱼缸，结果不是线性增长；不会让全队自动一起跳。";
                 case nameof(M0CarryBaseline.freeFallGravityMultiplier): return "空手下降时的重力倍率。1为原效果，2为当前试调；增大下降更快、滞空缩短，同速跳远也缩短。\n上升重力和跳高不变；抓缸及头顶支撑时不附加此重力。范围1～4。";
-                case nameof(M0CarryBaseline.freeJumpHeight): return "未抓缸时的自由跳跃目标高度，单位米。\n调大跳得更高、滞空更久，相同水平速度下通常跳得更远；调小相反。\n只影响自由跳；实际高度可能受碰撞影响。";
+                case nameof(M0CarryBaseline.freeJumpHeight): return "空手和抓缸共用的起跳目标高度，单位米。\n实际升幅受碰撞、抓点和队友支撑影响。";
                 case nameof(M0CarryBaseline.carryBrakeAcceleration): return "保持抓缸、松开方向输入时的刹停力度，单位米/秒²。\n调大通常停得更快、滑行更短；调小停得更缓、滑得更远。\n实际减速还受搬运移动响应、队友输入和接触影响；不是松手后的鱼缸刹车。";
-                case nameof(M0CarryBaseline.carryJumpHeightTarget): return "三人固定抓点搬运时，按默认力度起跳的单个抓点目标升高，单位米。\n从每个人实际起跳时的抓点高度计算。障碍或共线支撑会限制可达高度。";
                 case nameof(M0CarryBaseline.tankSize): return "鱼缸本体的尺寸与碰撞范围：X长、Y高、Z宽，单位米。\n调大会增加通道占用、转弯空间，并改变支撑/抓取范围与旋转惯性；调小相反。\n不会自动增大质量；改后需复查站位、支架和关卡净空。";
                 case nameof(M0CarryBaseline.standingHeight): return "角色站立时的胶囊碰撞高度及头顶位置，单位米。\n调大头顶更高，更容易顶到缸或低顶；调小可能够不到鱼缸。\n需联动初始缸底高度和抓取垂直范围；站高不能小于蹲高。";
                 case nameof(M0CarryBaseline.crouchingHeight): return "角色蹲下时的胶囊碰撞高度及头顶位置，单位米。\n调小蹲得更低、可通过更矮空间，也会改变抓缸锚点和支撑；调大下蹲幅度更小。\n不能大于站高，也不能小于角色碰撞直径。";
@@ -239,11 +237,9 @@ namespace TankTogether.Editor
                 F("freeAcceleration","地面起步加速度");F("freeDeceleration","松键刹停加速度");F("airAcceleration","空中调整加速度");
                 F("coyoteTime","离地补跳窗口（秒）");F("jumpBufferTime","提前按跳缓存（秒）");
                 Header("跳跃与刹停");
-                F("carryJumpVelocity","搬缸起跳力度（米/秒）");
-                F("freeJumpHeight","自由跳高（米）");
+                F("freeJumpHeight","跳跃高度（米）");
                 F("freeFallGravityMultiplier","空手下落重力倍率");
                 F("carryBrakeAcceleration","搬运刹停力度（米/秒²）");
-                using(new EditorGUI.DisabledScope(true))F("carryJumpHeightTarget","默认力度的抓点跳高（米）");
                 dimensions=EditorGUILayout.Foldout(dimensions,new GUIContent("尺寸与初始站位","展开碰撞尺寸、开局站位与支架参数。\n这些参数相互关联，修改后需检查出生是否重叠、能否抓取与通道净空。"),true);
                 if(dimensions)
                 {

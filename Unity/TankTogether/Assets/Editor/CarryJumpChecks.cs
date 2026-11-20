@@ -110,8 +110,8 @@ namespace TankTogether.Editor
         {
             var wide = lateRear ? new[] { lab.CarryFormationOffset(0), lab.CarryFormationOffset(1), lab.CarryFormationOffset(2) } : null;
             yield return Arrange(lab, slope, yaw, offset, wide);
-            float mass = lab.Tank.mass, jumpTuning = lab.baseline.carryJumpVelocity;
-            f.target = lab.baseline.carryJumpHeightTarget;
+            float mass = lab.Tank.mass;
+            f.target = lab.baseline.freeJumpHeight;
             var initial = new Vector3[3];
             var joints = new ConfigurableJoint[3];
             var localAnchors = new Vector3[3];
@@ -175,7 +175,7 @@ namespace TankTogether.Editor
                         lab.SetInput(i, i == 0 && airControl ? Vector3.forward * steer : Vector3.zero, true, jump);
                     }
                     yield return Tick;
-                    f.tuningPreserved &= Mathf.Approximately(mass, lab.Tank.mass) && Mathf.Approximately(jumpTuning, lab.baseline.carryJumpVelocity);
+                    f.tuningPreserved &= Mathf.Approximately(mass, lab.Tank.mass) && Mathf.Approximately(f.target, lab.baseline.freeJumpHeight);
                     int airborne = 0, airMask = 0;
                     float activeRise = 0;
                     for (int i = 0; i < 3; i++)
@@ -415,6 +415,22 @@ namespace TankTogether.Editor
             yield return Run(lab, null);
         }
 
+        static IEnumerator MeasureFreeJump(M0CarryLab lab, Action<float> record)
+        {
+            lab.ResetLab();
+            lab.PlacePlayer(0, Origin + Vector3.up * .005f);
+            for (int step = 0; step < 12; step++) yield return Tick;
+            float start = lab.Players[0].body.position.y;
+            float peak = 0;
+            for (int step = 0; step < 90; step++)
+            {
+                lab.SetInput(0, Vector3.zero, false, step == 0);
+                yield return Tick;
+                peak = Mathf.Max(peak, lab.Players[0].body.position.y - start);
+            }
+            record(peak);
+        }
+
         static IEnumerator Run(M0CarryLab lab, SteamCarrySession session)
         {
             lab.Testing = true;
@@ -426,6 +442,8 @@ namespace TankTogether.Editor
             floor.transform.localScale = new Vector3(32, 1, 32);
             try
             {
+                float freeApex = 0;
+                yield return MeasureFreeJump(lab, peak => freeApex = peak);
                 Flight neutralOne = null;
                 for (int trial = 0; trial < 3; trial++)
                 {
@@ -445,6 +463,16 @@ namespace TankTogether.Editor
                 yield return Fly(lab, 3, three);
                 Check("three_jump_and_land_together", three.ready && three.held && three.landed && three.ReachedHeight(3) && three.airTicks >= 3 &&
                     three.tilt < 8f && three.maxGripError < .25f, three.Evidence);
+                const float apexTolerance = .05f;
+                bool MatchesFreeJump(float peak) => Mathf.Abs(peak - freeApex) <= apexTolerance;
+                Check("carry_jump_matches_free_jump", MatchesFreeJump(lab.baseline.freeJumpHeight) &&
+                    neutralOne.ready && neutralOne.held && neutralOne.jumpEvents[0] == 1 &&
+                    MatchesFreeJump(neutralOne.headPeakRise[0]) && two.ready && two.held &&
+                    two.jumpEvents[0] == 1 && two.jumpEvents[1] == 1 &&
+                    MatchesFreeJump(two.headPeakRise[0]) && MatchesFreeJump(two.headPeakRise[1]) &&
+                    three.ready && three.held && Array.TrueForAll(three.jumpEvents, count => count == 1) &&
+                    Array.TrueForAll(three.headPeakRise, MatchesFreeJump),
+                    $"free={freeApex:F3} single={neutralOne.headPeakRise[0]:F3} pair={two.headPeakRise[0]:F3},{two.headPeakRise[1]:F3} simultaneous={string.Join(",", Array.ConvertAll(three.headPeakRise, h => h.ToString("F3")))}");
                 var offset = new Flight();
                 yield return Fly(lab, 3, offset, offset: .32f);
                 Check("off_center_team_reaches_three_grip_apices", offset.ready && offset.held && offset.landed && offset.ReachedHeight(3) &&

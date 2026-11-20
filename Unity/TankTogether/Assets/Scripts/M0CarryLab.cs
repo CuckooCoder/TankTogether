@@ -60,8 +60,6 @@ namespace TankTogether.M0
         M0TankContact tankContact;
         readonly CarryGripStability gripStability = new CarryGripStability();
         readonly CarryJump carryJump = new CarryJump();
-        internal float GripJumpHeight => baseline.carryJumpHeightTarget *
-            Mathf.Pow(baseline.carryJumpVelocity / Mathf.Max(.01f, shippedBaseline.carryJumpVelocity), 2);
         public bool Testing { get; set; }
         public bool ExternalControl { get; set; }
         public bool Simulate { get; set; } = true;
@@ -855,8 +853,7 @@ namespace TankTogether.M0
                     }
                     else
                     {
-                        float velocity = a.joint ? baseline.carryJumpVelocity :
-                            Mathf.Sqrt(2 * Mathf.Abs(Physics.gravity.y) * baseline.freeJumpHeight) + Mathf.Abs(Physics.gravity.y) * Time.fixedDeltaTime / 2
+                        float velocity = Mathf.Sqrt(2 * Mathf.Abs(Physics.gravity.y) * baseline.freeJumpHeight) + Mathf.Abs(Physics.gravity.y) * Time.fixedDeltaTime / 2
                             + (candidate ? a.groundVelocity.y : 0) - a.body.linearVelocity.y;
                         a.body.AddForce(Vector3.up * velocity, ForceMode.VelocityChange);
                     }
@@ -933,7 +930,7 @@ namespace TankTogether.M0
         bool HasStepUpAhead(Actor actor, Vector3 heading, float forwardSpeed)
         {
             const float minRise = .08f;
-            float maxRise = (actor.joint ? GripJumpHeight : baseline.freeJumpHeight) - .05f;
+            float maxRise = baseline.freeJumpHeight - .05f;
             if (maxRise <= minRise) return false;
 
             Vector3 feet = actor.body.position;

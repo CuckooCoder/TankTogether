@@ -23,7 +23,7 @@ MonoBehaviour:
   sprintSpeed: 6
   carrySpeed: 2.5
   carrySprintSpeed: 3.5
-  freeJumpHeight: 0.8
+  freeJumpHeight: 1
   carryJumpHeightTarget: 1.33
   standInset: {x: 0.2, y: 0.15}
   standWidth: 0.25
