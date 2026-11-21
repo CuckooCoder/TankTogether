@@ -7,7 +7,7 @@ namespace TankTogether.Networking
     // Versioned application messages. Steam/NGO owns delivery; only the host owns simulation.
     public static class SteamCarryProtocol
     {
-        public const string Version = "tank-together-steam-20";
+        public const string Version = "tank-together-steam-21";
         public const int MaxPacket = 1024;
         public enum Phase : byte { Waiting, Playing, Paused, Preparing, Failed, Finished }
         public struct Input
@@ -27,7 +27,7 @@ namespace TankTogether.Networking
         public sealed class Snapshot
         {
             public int configRevision, round, tick;
-            public int checkpoint;
+            public int checkpoint, tankTeleportRevision;
             public int readyRevision = 1;
             public byte readyMask;
             public int voteRevision;
@@ -73,7 +73,7 @@ namespace TankTogether.Networking
         }
         public static byte[] Encode(Snapshot s) => Write(w => {
             w.Write(s.configRevision); w.Write(s.round); w.Write(s.tick); w.Write((byte)s.phase); w.Write((byte)s.teamSize); w.Write(s.broken); V(w, s.position); V(w, s.velocity);
-            w.Write(s.rotation.x); w.Write(s.rotation.y); w.Write(s.rotation.z); w.Write(s.rotation.w);
+            w.Write(s.rotation.x); w.Write(s.rotation.y); w.Write(s.rotation.z); w.Write(s.rotation.w); w.Write(s.tankTeleportRevision);
             w.Write(s.movingBlockPhase); w.Write(s.liftDistance); w.Write(s.liftMoving); w.Write(s.liftGoingUp); w.Write((byte)s.checkpoint); w.Write(s.readyRevision); w.Write(s.readyMask); w.Write(s.voteRevision); w.Write(s.voteMask); w.Write(s.voteYes); w.Write(s.voteSeconds);
             foreach (var a in s.actors) { w.Write(a.active); w.Write(a.grip); w.Write(a.support); w.Write(a.rejected); V(w, a.position); w.Write(a.height); }
         });
@@ -81,6 +81,7 @@ namespace TankTogether.Networking
         {
             using var r = Reader(data);
             var s = new Snapshot { configRevision = r.ReadInt32(), round = r.ReadInt32(), tick = r.ReadInt32(), phase = (Phase)r.ReadByte(), teamSize = r.ReadByte(), broken = r.ReadBoolean(), position = V(r), velocity = V(r), rotation = new Quaternion(F(r), F(r), F(r), F(r)) };
+            s.tankTeleportRevision = r.ReadInt32();
             s.movingBlockPhase = F(r); s.liftDistance = F(r); s.liftMoving = r.ReadBoolean(); s.liftGoingUp = r.ReadBoolean(); s.checkpoint = r.ReadByte(); s.readyRevision = r.ReadInt32(); s.readyMask = r.ReadByte(); s.voteRevision=r.ReadInt32();s.voteMask=r.ReadByte();s.voteYes=r.ReadByte();s.voteSeconds=F(r);
             if(s.voteRevision<0||s.voteMask>=(1<<SessionRoster.RequiredPlayers)||(s.voteYes & ~s.voteMask)!=0||s.voteSeconds<0||s.voteSeconds>20)throw new InvalidDataException("Invalid vote state");
             if (s.readyRevision < 1 || s.readyMask >= (1 << SessionRoster.RequiredPlayers)) throw new InvalidDataException("Invalid ready state");
@@ -95,7 +96,7 @@ namespace TankTogether.Networking
             }
             End(r);
             float q = Quaternion.Dot(s.rotation, s.rotation);
-            if (s.round < 1 || s.tick < 0 || s.phase > Phase.Finished || s.teamSize < 2 || s.teamSize > SessionRoster.RequiredPlayers || q < 0.9f || q > 1.1f) throw new InvalidDataException("Invalid snapshot");
+            if (s.round < 1 || s.tick < 0 || s.tankTeleportRevision < 0 || s.phase > Phase.Finished || s.teamSize < 2 || s.teamSize > SessionRoster.RequiredPlayers || q < 0.9f || q > 1.1f) throw new InvalidDataException("Invalid snapshot");
             return s;
         }
         public static bool IsNewer(int round, int tick, int previousRound, int previousTick) => round > previousRound || (round == previousRound && tick > previousTick);

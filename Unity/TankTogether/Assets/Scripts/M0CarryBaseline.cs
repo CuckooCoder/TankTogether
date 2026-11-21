@@ -22,6 +22,7 @@ namespace TankTogether.M0
         public float motorGain = 95, motorForce = 160, carryMotorGain = 65, carryMotorForce = 70;
         public float carryBrakeAcceleration = 2.5f;
         [HideInInspector] public float carryJumpVelocity = 6;
+        [Range(1,4)] public float carryRiseGravityMultiplier = 1, carryFallGravityMultiplier = 1;
         public float gripLimit = 0.12f, supportStiffness = 3500, supportDamping = 100, supportMaxForce = 240;
         [Header("人物伸缩：B / B0 实验")]
         public float stretchMinHeight = 1.1f;
@@ -44,6 +45,8 @@ namespace TankTogether.M0
         [Header("自由走跳：仅未抓缸时，米/秒²与秒")]
         public float freeAcceleration = 40, freeDeceleration = 60, airAcceleration = 18;
         public float coyoteTime = .10f, jumpBufferTime = .12f;
+        [Range(0,1)] public float instantMovementMode = 0;
+        [Range(1,4)] public float freeRiseGravityMultiplier = 1;
         [Tooltip("空手且不在头顶支撑鱼缸时，下落阶段的重力倍率。1为原效果；增大落地更快、跳远略短，不改变上升和跳高。")]
         [Range(1,4)] public float freeFallGravityMultiplier = 2;
         [Header("3C 对照：0旧版 / 1候选版")]

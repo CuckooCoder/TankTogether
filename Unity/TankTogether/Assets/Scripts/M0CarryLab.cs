@@ -43,7 +43,7 @@ namespace TankTogether.M0
         }
         public M0CarryBaseline baseline;
         public Vector3 tankSize => baseline.tankSize;
-        public const float MaximumPlayerHeight = 3.4f;
+        public const float MaximumPlayerHeight = 5f;
         public float standingHeight => Mathf.Min(baseline.standingHeight, MaximumPlayerHeight);
         public BoxCollider GlassCollider => Tank.GetComponent<BoxCollider>();
         public M0TankContact TankContacts => tankContact;
@@ -582,6 +582,33 @@ namespace TankTogether.M0
             return moved;
         }
 
+        internal bool TryTeleportTankOverPlayer(int index)
+        {
+            var a = ActorAt(index);
+            if (!Simulate || sessionPaused || Broken || !Tank || Tank.isKinematic ||
+                a == null || !a.active || !a.body) return false;
+
+            var rotation = Quaternion.Euler(0, Tank.rotation.eulerAngles.y, 0);
+            var center = a.body.position + Vector3.up * (a.height + tankSize.y * .5f + .015f);
+            Physics.SyncTransforms();
+            foreach (var obstacle in Physics.OverlapBox(center, tankSize * .5f, rotation, ~0, QueryTriggerInteraction.Ignore))
+                if (obstacle != GlassCollider) return false;
+
+            for (int i = 0; i < Players.Length; i++)
+            {
+                Release(i);
+                if (Players[i] != null) Players[i].support = false;
+            }
+            Tank.position = center;
+            Tank.rotation = rotation;
+            Tank.transform.SetPositionAndRotation(center, rotation);
+            Tank.linearVelocity = Tank.angularVelocity = Vector3.zero;
+            TankContacts.ClearSupports();
+            if (route) route.DisarmCheckpointZone();
+            Physics.SyncTransforms();
+            return true;
+        }
+
         public void ChangeMode(int mode)
         {
             Mode = mode;
@@ -739,6 +766,7 @@ namespace TankTogether.M0
             bool plantedSupport = false;
             Actor driver = null;
             Vector3 anchorSum = Vector3.zero;
+            Vector3 carryIntent = Vector3.zero;
             float carryGrade = 0;
             foreach (var player in Players)
             {
@@ -747,6 +775,7 @@ namespace TankTogether.M0
                 anchorSum += player.anchor;
                 if (player.move.sqrMagnitude < CarryInputDeadZoneSquared) continue;
                 movers++;
+                carryIntent += player.move;
                 driver = player;
                 float speed = player.sprint ? baseline.carrySprintSpeed : baseline.carrySpeed;
                 carryGrade = Mathf.Max(carryGrade, speed);
@@ -760,6 +789,7 @@ namespace TankTogether.M0
             // At half the active speed grade one planted carrier absorbs one motor's maximum push.
             float halfGrade = Mathf.Max(.05f, carryGrade * .5f);
             float footDrag = baseline.carryMotorForce / (halfGrade * halfGrade);
+            Vector3 sharedMove = Vector3.ClampMagnitude(carryIntent, 1);
             Vector3 turnMotor = Vector3.zero;
             if (grips == 3 && movers == 1 && !Broken)
                 turnMotor = SoloCarryMotor(driver, anchorSum / grips, carryGrade);
@@ -794,7 +824,7 @@ namespace TankTogether.M0
                 // Contact is relative to the supporting surface, not world vertical speed.
                 bool grounded = hasGround && Time.time >= a.jumpLockUntil && Vector3.Dot(a.body.linearVelocity-groundVelocity, groundNormal) < 1.5f;
                 if (grounded) a.carryJumpAirborne = false;
-                Vector3 footVelocity = grounded ? Vector3.ProjectOnPlane(a.body.linearVelocity - groundVelocity, Vector3.up) : horizontal;
+                Vector3 footVelocity = grounded ? Vector3.ProjectOnPlane(a.body.linearVelocity - groundVelocity, groundNormal) : horizontal;
                 a.grounded = grounded;
                 if (grounded) { a.lastGrounded = Time.time; a.groundVelocity = groundVelocity; }
                 if (canAutoJump && i != Selected && grounded && ShouldAutoJump(a, groundNormal, footVelocity))
@@ -812,12 +842,15 @@ namespace TankTogether.M0
                     float acceleration = grounded ? (a.move.sqrMagnitude < .0001f ? baseline.freeDeceleration : baseline.freeAcceleration) : baseline.airAcceleration;
                     if (candidate && !grounded && a.move.sqrMagnitude < .0001f)
                         acceleration = baseline.airReleaseDeceleration;
-                    motor = Vector3.ClampMagnitude((desired-velocity)/Time.fixedDeltaTime, acceleration) * a.body.mass;
+                    Vector3 velocityChange = desired - velocity;
+                    bool instant = baseline.instantMovementMode >= .5f && (grounded || a.move.sqrMagnitude >= .0001f);
+                    if (!instant) velocityChange = Vector3.ClampMagnitude(velocityChange, acceleration * Time.fixedDeltaTime);
+                    motor = velocityChange * (a.body.mass / Time.fixedDeltaTime);
                     // Cancel downhill gravity only while supported. Air and held-tank physics stay physical.
                     if (grounded) motor -= Vector3.ProjectOnPlane(Physics.gravity, groundNormal) * a.body.mass;
                 }
                 else if (a == turnDriver)
-                    motor = turnMotor;
+                    motor = grounded ? Vector3.ProjectOnPlane(turnMotor, groundNormal).normalized * turnMotor.magnitude : turnMotor;
                 else if (a.move.sqrMagnitude < CarryInputDeadZoneSquared)
                 {
                     motor = Vector3.zero;
@@ -829,6 +862,7 @@ namespace TankTogether.M0
                 {
                     // Independent world-space drives reach the tank through their individual grip levers.
                     Vector3 desired = a.move * targetSpeed;
+                    if (grounded) desired = Vector3.ProjectOnPlane(desired, groundNormal).normalized * desired.magnitude;
                     motor = (desired - footVelocity) * baseline.carryMotorGain;
                     motor += desired * Tank.mass * baseline.tankDamping / grips;
                     motor = Vector3.ClampMagnitude(motor, baseline.carryMotorForce);
@@ -837,9 +871,14 @@ namespace TankTogether.M0
                 {
                     // A foot resists the part of its motion that this player isn't walking with.
                     // Pulling backwards therefore keeps the passive load and adds an opposing drive.
-                    Vector3 heading = a.move.normalized;
+                    Vector3 heading = Vector3.ProjectOnPlane(a.move, groundNormal).normalized;
                     Vector3 slip = footVelocity - heading * Mathf.Clamp(Vector3.Dot(footVelocity, heading), 0, a.move.magnitude * targetSpeed);
                     motor -= Vector3.ClampMagnitude(slip * (footDrag * slip.magnitude), 2f * baseline.carryMotorForce);
+                    // Planted legs carry their share of the weight uphill, including when dragged.
+                    Vector3 uphillInput = a.move.sqrMagnitude < CarryInputDeadZoneSquared ? sharedMove : a.move;
+                    Vector3 uphill = Vector3.ProjectOnPlane(uphillInput, groundNormal).normalized;
+                    float uphillGravity = Mathf.Max(0, -Vector3.Dot(Physics.gravity, uphill));
+                    motor += uphill * (uphillGravity * (a.body.mass + Tank.mass / grips) * uphillInput.magnitude);
                 }
                 a.body.AddForce(motor);
                 bool jumpNow = a.joint ? a.jump && grounded : Time.time <= a.jumpQueuedUntil && Time.time - a.lastGrounded <= baseline.coyoteTime;
@@ -852,7 +891,8 @@ namespace TankTogether.M0
                     }
                     else
                     {
-                        float velocity = Mathf.Sqrt(2 * Mathf.Abs(Physics.gravity.y) * baseline.freeJumpHeight) + Mathf.Abs(Physics.gravity.y) * Time.fixedDeltaTime / 2
+                        float riseGravity = Mathf.Abs(Physics.gravity.y) * baseline.freeRiseGravityMultiplier;
+                        float velocity = Mathf.Sqrt(2 * riseGravity * baseline.freeJumpHeight) + riseGravity * Time.fixedDeltaTime / 2
                             + (candidate ? a.groundVelocity.y : 0) - a.body.linearVelocity.y;
                         a.body.AddForce(Vector3.up * velocity, ForceMode.VelocityChange);
                     }
@@ -890,9 +930,11 @@ namespace TankTogether.M0
                     }
                 }
                 if(Stretch && Stretch.Active && Stretch.PhysicsEnabled) Stretch.ApplyGripForce(a);
-                // Faster free descent only. Never pull a held or head-supported tank down.
-                if (!a.joint && !a.support && !grounded && !jumpNow && a.body.linearVelocity.y < 0)
-                    a.body.AddForce(Physics.gravity * (Mathf.Clamp(baseline.freeFallGravityMultiplier, 1, 4)-1), ForceMode.Acceleration);
+                if (!a.joint && (jumpNow || !grounded && !a.support))
+                {
+                    float gravityMultiplier = jumpNow || a.body.linearVelocity.y > 0 ? baseline.freeRiseGravityMultiplier : baseline.freeFallGravityMultiplier;
+                    a.body.AddForce(Physics.gravity * (gravityMultiplier - 1), ForceMode.Acceleration);
+                }
                 if (a.joint)
                     MaxGripError = Mathf.Max(MaxGripError, Vector3.Distance(head, Tank.transform.TransformPoint(a.anchor)));
                 if (a.body.position.y < (route ? route.killHeight : -4))
@@ -904,7 +946,11 @@ namespace TankTogether.M0
                 plantedSupport |= a.grounded && (a.joint || a.support);
             }
             // All holders now have this tick's ground contact and takeoff state, independent of slot order.
-            if ((jumpingGrips != 0 || carryingInFlight) && !Broken && !Tank.isKinematic) carryJump.Apply(this, jumpingGrips);
+            if (grips > 0 && !Broken && !Tank.isKinematic)
+            {
+                CarryJump.ApplyAirGravity(this, jumpingGrips, grips);
+                if (jumpingGrips != 0 || carryingInFlight) carryJump.Apply(this, jumpingGrips);
+            }
             if (carryingInFlight && movers == 0 && !Broken) CarryJump.BrakePlantedGrips(this);
             HeightBalance.Step(this,Time.fixedDeltaTime);
             if (unstable && plantedSupport && !Broken && !tankContact.HasSupport) Tank.AddTorque(tipTorque);
@@ -1157,6 +1203,7 @@ namespace TankTogether.M0
         public M0CarryLab lab;
         readonly HashSet<Collider> supports = new HashSet<Collider>();
         public bool Touches(Collider surface) => supports.Contains(surface);
+        internal void ClearSupports() => supports.Clear();
         public bool HasSupport
         {
             get

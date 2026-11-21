@@ -13,6 +13,8 @@ namespace TankTogether.M0
         float age, vertical, lastDownward;
         public CarryMotionState State { get; private set; }
         public float Impact { get; private set; }
+        public bool Grounded { get; private set; }
+        public Vector3 GroundVelocity { get; private set; }
         public Animator Animator => animator;
         public CarryAnimatorDriver(Transform root,M0CarryLab owner,M0CarryLab.Actor target)
         {
@@ -34,17 +36,22 @@ namespace TankTogether.M0
             var displacement=position-previous;previous=position;
             if(paused)return;
             bool teleport=displacement.sqrMagnitude>4;
-            var velocity=lab.Simulate?actor.body.linearVelocity-actor.groundVelocity:displacement/dt;
-            // On peers smooth interpolation noise; do not delay the authoritative local jump.
-            vertical=lab.Simulate?velocity.y:Mathf.Lerp(vertical,velocity.y,1-Mathf.Exp(-dt*20));
-            bool grounded=actor.grounded;
-            if(!lab.Simulate)
+            var velocity = lab.Simulate ? actor.body.linearVelocity : displacement / dt;
+            bool grounded = actor.grounded;
+            GroundVelocity = grounded ? actor.groundVelocity : Vector3.zero;
+            if (!lab.Simulate)
             {
-                grounded=false;
-                foreach(var h in Physics.RaycastAll(position+Vector3.up*.1f,Vector3.down,.2f,~0,QueryTriggerInteraction.Ignore))
-                    if(lab.IsEnvironment(h.collider)&&h.normal.y>.55f){grounded=true;break;}
+                RaycastHit support = default;
+                foreach (var hit in Physics.RaycastAll(position + Vector3.up * .1f, Vector3.down, .2f, ~0, QueryTriggerInteraction.Ignore))
+                    if (hit.normal.y > .55f && lab.IsEnvironment(hit.collider) && (!support.collider || hit.distance < support.distance))
+                        support = hit;
+                GroundVelocity = support.rigidbody ? support.rigidbody.GetPointVelocity(support.point) : Vector3.zero;
+                grounded = support.collider && Vector3.Dot(velocity - GroundVelocity, support.normal) < .5f;
             }
-            if(vertical>.5f)grounded=false;
+            Grounded = grounded;
+            velocity -= GroundVelocity;
+            // Use surface contact for locomotion. A planted character also moves upward on a ramp.
+            vertical = lab.Simulate ? velocity.y : Mathf.Lerp(vertical, velocity.y, 1 - Mathf.Exp(-dt * 20));
             float speed=Vector3.ProjectOnPlane(velocity,Vector3.up).magnitude;
             if(!initialized||teleport)
             {

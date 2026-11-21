@@ -384,13 +384,15 @@ namespace TankTogether.Editor
             floor.transform.localScale = new Vector3(20, 1, 20);
             lab.PlacePlayer(0, Origin);
             lab.SetInput(0, Vector3.zero, false);
-            for (int step = 0; step < 260; step++)
+            float maxHeight = Mathf.Min(lab.baseline.stretchMaxHeight, M0CarryLab.MaximumPlayerHeight);
+            int growSteps = Mathf.CeilToInt((maxHeight - lab.standingHeight) / (lab.baseline.stretchGrowSpeed * Time.fixedDeltaTime)) + 10;
+            for (int step = 0; step < growSteps; step++)
             {
                 lab.SetInput(0, Vector3.zero, false, stretch: 1);
                 yield return Tick;
             }
             float height = lab.Players[0].height;
-            Check("standing_growth_stops_at_3_4", Mathf.Abs(height - 3.4f) < .005f, $"height={height:F3}");
+            Check("standing_growth_stops_at_configured_limit", Mathf.Abs(height - maxHeight) < .005f, $"height={height:F3} target={maxHeight:F3}");
             for (int test = 0; test < 3; test++)
             {
                 lab.ResetLab();
@@ -404,7 +406,7 @@ namespace TankTogether.Editor
                 lab.Tank.position = Origin + Vector3.up * (test == 1 ? 2 : 3);
                 lab.Tank.linearVelocity = test == 1 ? Vector3.right * 12 : Vector3.down * 4;
                 Physics.SyncTransforms();
-                for (int step = 0; step < 45 && !lab.Broken; step++) yield return Tick;
+                for (int step = 0; step < 125 && !lab.Broken; step++) yield return Tick;
                 Check(test == 0 ? "plain_floor_breaks_glass" : test == 1 ? "plain_wall_breaks_glass" : "pickup_stand_top_supports_glass",
                     test == 2 ? !lab.Broken && lab.TankContacts.Touches(target.GetComponent<Collider>()) : lab.Broken && lab.LastFailureWasDanger,
                     $"broken={lab.Broken} collisionFailure={lab.LastFailureWasDanger}");

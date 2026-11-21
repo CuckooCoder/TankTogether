@@ -57,6 +57,7 @@ namespace TankTogether.M0
         [Min(1), Tooltip("黄点地面以上允许的缸底高度（米），覆盖最高身形搬运。")]
         public float checkpointHeight = 6;
         bool zoneArmed;
+        internal void DisarmCheckpointZone() => zoneArmed = false;
         public event Action Finished;
         void OnEnable() => AfterPhysicsStep.Completed += ResolvePhysicsStep;
         void OnDisable() => AfterPhysicsStep.Completed -= ResolvePhysicsStep;

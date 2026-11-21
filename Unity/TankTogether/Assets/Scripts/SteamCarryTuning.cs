@@ -10,11 +10,11 @@ namespace TankTogether.Networking
 {
     public sealed partial class SteamCarrySession
     {
-        const string ConfigMessage="tt.config.1",ConfigAckMessage="tt.config-ack.1",GMPauseMessage="tt.gm-pause.1";
+        const string ConfigMessage="tt.config.1",ConfigAckMessage="tt.config-ack.1",GMTeleportMessage="tt.gm-teleport.1";
         [Serializable] public sealed class ConfigEnvelope { public int revision,round; public string hash; public CarryTuningProfile profile; }
         [Serializable] sealed class ConfigAck { public int revision; public string hash; }
         readonly bool[] configReady=new bool[4];
-        int configRevision;
+        int configRevision, tankTeleportRevision;
         string configHash="",packageCompatibility;
         float nextConfigResend;
         public bool InRoom=>Running;
@@ -27,7 +27,7 @@ namespace TankTogether.Networking
         {
             net.CustomMessagingManager.RegisterNamedMessageHandler(ConfigMessage,ReceiveConfiguration);
             net.CustomMessagingManager.RegisterNamedMessageHandler(ConfigAckMessage,ReceiveConfigurationAck);
-            net.CustomMessagingManager.RegisterNamedMessageHandler(GMPauseMessage,ReceiveGMPause);
+            net.CustomMessagingManager.RegisterNamedMessageHandler(GMTeleportMessage,ReceiveGMTeleport);
         }
         void InitializeHostConfiguration()
         {
@@ -36,15 +36,52 @@ namespace TankTogether.Networking
         public bool OpenGM()
         {
             if(!Running)return false;
-            if(Host)PauseSession("房主打开 GM，调参后从检查点继续。");
-            else Send(GMPauseMessage,NetworkManager.ServerClientId,new byte[]{1},NetworkDelivery.ReliableSequenced);
             Capture(false);return true;
         }
-        void ReceiveGMPause(ulong sender,FastBufferReader reader)
+
+        internal string RequestTankTeleport()
         {
-            if(!Host||sender==NetworkManager.ServerClientId||!slots.ContainsKey(sender)||reader.Length-reader.Position!=1)return;
-            reader.ReadValueSafe(out byte value);if(value!=1)return;
-            if(phase==SteamCarryProtocol.Phase.Playing||phase==SteamCarryProtocol.Phase.Preparing)PauseSession("队友正在查看 GM，关闭后由房主从检查点继续。");
+            if (!IsPlaying || configRevision < 1) return "鱼缸传送仅在进行中的关卡可用。";
+            if (Host) return TeleportTank(localSlot) ? CarryGMPanel.TeleportSucceeded : CarryGMPanel.TeleportBlocked;
+
+            using var writer = new FastBufferWriter(sizeof(int) * 2, Allocator.Temp);
+            writer.WriteValueSafe(round);
+            writer.WriteValueSafe(configRevision);
+            net.CustomMessagingManager.SendNamedMessage(GMTeleportMessage, NetworkManager.ServerClientId, writer, NetworkDelivery.ReliableSequenced);
+            return "已请求房主传送鱼缸。";
+        }
+
+        bool TeleportTank(int slot)
+        {
+            if (!connected[slot] || !lab.TryTeleportTankOverPlayer(slot)) return false;
+            tankTeleportRevision++;
+            tick++;
+            nextSnapshot = 0;
+            return true;
+        }
+
+        void ReceiveGMTeleport(ulong sender, FastBufferReader reader)
+        {
+            if (!Running) return;
+            if (Host)
+            {
+                if (sender == NetworkManager.ServerClientId || !slots.TryGetValue(sender, out int slot) ||
+                    reader.Length - reader.Position != sizeof(int) * 2) return;
+                reader.ReadValueSafe(out int requestedRound);
+                reader.ReadValueSafe(out int requestedRevision);
+                if (requestedRound != round || requestedRevision != configRevision || !configReady[slot]) return;
+                bool moved = IsPlaying && TeleportTank(slot);
+                using var writer = new FastBufferWriter(sizeof(int) + sizeof(byte), Allocator.Temp);
+                writer.WriteValueSafe(round);
+                writer.WriteValueSafe((byte)(moved ? 1 : 0));
+                net.CustomMessagingManager.SendNamedMessage(GMTeleportMessage, sender, writer, NetworkDelivery.ReliableSequenced);
+            }
+            else if (sender == NetworkManager.ServerClientId && reader.Length - reader.Position == sizeof(int) + sizeof(byte))
+            {
+                reader.ReadValueSafe(out int resultRound);
+                reader.ReadValueSafe(out byte result);
+                if (resultRound == round && lab.GM) lab.GM.ShowTankTeleportResult(result == 1);
+            }
         }
         public bool ApplyRoomConfiguration(CarryTuningProfile profile,out string error)
         {

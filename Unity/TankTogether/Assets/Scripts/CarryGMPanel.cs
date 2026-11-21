@@ -24,6 +24,12 @@ namespace TankTogether.M0
         bool previousCapture,diagnostics,onlineOpen;
         int tab;
         string search="",notice="修改草稿后应用；从当前检查点重开。";
+        internal const string TeleportSucceeded = "鱼缸已传送到当前角色头顶。";
+        internal const string TeleportBlocked = "传送失败：当前角色头顶放不下鱼缸。";
+        internal void ShowTankTeleportResult(bool moved) => notice = moved ? TeleportSucceeded : TeleportBlocked;
+        bool CanTeleportTank => Online ? session.IsPlaying :
+            CanEdit && lab.Simulate && !lab.SessionPaused && !lab.Broken && lab.Tank && !lab.Tank.isKinematic;
+
         public bool IsOpen {get;private set;}
         bool Online=>session&&session.InRoom;
         bool CanOpen=>CanEdit||Online;
@@ -52,7 +58,7 @@ namespace TankTogether.M0
             previousCapture=lab.LocalInputCaptured;previousTimeScale=Time.timeScale;
             if(onlineOpen){if(!session.OpenGM())return false;}
             else{Time.timeScale=0;lab.SetDebugCapture(false);}
-            IsOpen=true;notice=onlineOpen?(CanEdit?"房主应用后全员同步；关闭面板后从检查点开始。":"队友只能查看/复制。关闭面板后等待房主继续。"):"应用仅影响本次模拟；返回大厅恢复随包配置。";
+            IsOpen=true;notice=onlineOpen?(CanEdit?"应用参数会同步给全员，并从检查点重开。":"可查看、复制参数和请求传送鱼缸。"):"应用仅影响本次模拟；返回大厅恢复随包配置。";
             return true;
         }
         public bool OpenStretch()
@@ -162,6 +168,12 @@ namespace TankTogether.M0
             GUILayout.BeginHorizontal();GUI.enabled=!Online||session.ConfigRevision>0;
             if(GUILayout.Button("一键复制当前生效参数",button,GUILayout.Height(35)))CopyCurrent();GUI.enabled=CanEdit;
             if(GUILayout.Button("从剪贴板导入草稿",button))ImportDraft(GUIUtility.systemCopyBuffer);
+            GUI.enabled=CanTeleportTank;
+            if(GUILayout.Button("鱼缸传送到当前角色头顶",button))
+            {
+                if(Online) notice=session.RequestTankTeleport();
+                else ShowTankTeleportResult(lab.TryTeleportTankOverPlayer(lab.Selected));
+            }
             GUI.enabled=true;GUILayout.EndHorizontal();
             GUILayout.BeginHorizontal();GUILayout.Label("筛选",hint,GUILayout.Width(40));string q=GUILayout.TextField(search,field);if(q!=search){search=q;scroll=Vector2.zero;}lab.ShowHeadSupport=GUILayout.Toggle(lab.ShowHeadSupport,new GUIContent("显示头顶支撑面","仅本机调试显示；青色空闲、黄色承托、绿色抓握。线框按实际平头尺寸绘制，穿透显示不代表隔墙接触。旧单点模式不显示矩形。"),button,GUILayout.Width(170));GUILayout.EndHorizontal();
             int selected=GUILayout.Toolbar(tab,CarryTuning.Groups,button,GUILayout.Height(32));if(selected!=tab){tab=selected;scroll=Vector2.zero;}

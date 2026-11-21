@@ -35,6 +35,7 @@ namespace TankTogether.M0
             public void Write(M0CarryBaseline b,CarryTuningExtras e,float value){var a=key.Split('.');object o=a[0]=="b"?(object)b:e;var f=o.GetType().GetField(a[1]);if(a.Length==2)f.SetValue(o,value);else{object v=f.GetValue(o);v.GetType().GetField(a[2]).SetValue(v,value);f.SetValue(o,v);}}
         }
         public const int StretchGroup = 7;
+        const int PreviousParameterCount = 70;
         public static readonly Parameter[] All={
             new Parameter(7,"b.stretchBalanceMode","身高搬运代价：0关/1开",0,1,"B关卡中生效。开启后两名及以上接地承托/抓握者按平均身高影响稳定性；空手、无接触、空中不主动摇缸。0恢复原物理对照。"),
             new Parameter(7,"b.stretchBalanceStart","高身形代价起点 m",1.7f,4.9f,"从此平均身高起逐渐增加转向/启停带来的倾斜。默认站高不额外施加摇摆力矩；最高身高达到完整代价。若起点高于身高上限，则不产生高身形代价。"),
@@ -44,8 +45,8 @@ namespace TankTogether.M0
             new Parameter(7,"b.stretchBalanceHighDamping","最高旋转阻尼倍率",.3f,1,"高于代价起点渐变，最高身高达到此倍率。越小越难收稳。失去足够的接地承托后恢复原阻尼，松手但仍顶缸不算失去承托。"),
             new Parameter(7,"b.stretchMinHeight","伸缩最低身高 m",.6f,2.5f,"B/B0按缩矮键（默认Q）能缩到的最低高度。调小可过更低通道，也更容易失去头顶承托；不能低于身体直径，且须不高于出生站高。A模式蹲高独立。"),
             new Parameter(7,"b.stretchMaxHeight","伸缩最高身高 m",1,5,"B/B0按长高键（默认E）可达到的身高上限。调大增加上顶范围，也更容易碰低顶；必须高于最低身高且不低于出生站高。遇阻仍会提前停下。"),
-            new Parameter(7,"b.stretchGrowSpeed","长高速率 m/s",.05f,1.5f,"按长高键（默认E）每秒增加的身高。默认0.3；调大响应更快，也更容易突然顶缸。受天花板、推拉力和受力偏差限制，不保证顶着缸也达到此速度。"),
-            new Parameter(7,"b.stretchShrinkSpeed","缩矮速率 m/s",.05f,1.5f,"按缩矮键（默认Q）每秒降低的身高。默认0.3；调大放低更快。未抓握只减少支撑，已抓握才通过固定连接下拉；松键保留身高。"),
+            new Parameter(7,"b.stretchGrowSpeed","长高速率 m/s",.05f,1.5f,"按长高键（默认E）每秒增加的身高。调大响应更快，也更容易突然顶缸。受天花板、推拉力和受力偏差限制，不保证顶着缸也达到此速度。"),
+            new Parameter(7,"b.stretchShrinkSpeed","缩矮速率 m/s",.05f,1.5f,"按缩矮键（默认Q）每秒降低的身高。调大放低更快。未抓握只减少支撑，已抓握才通过固定连接下拉；松键保留身高。"),
             new Parameter(7,"b.stretchGripMaxForce","伸缩抓握推拉上限 N",10,800,"每个已抓握角色的主动竖直推拉力上限，默认240。调大更容易抬/拉缸，也更易抖动或翻缸；总系统仍受反作用力。头顶未抓握承托上限在抓取支撑页。"),
             new Parameter(7,"b.stretchGripStiffness","伸缩抓握刚度 N/m",100,8000,"头顶与固定抓握点的高度差乘此值产生推拉力，默认3000。调大更硬、更紧，过大可能振荡；实际力受推拉上限限制，不改变被动关节限距。"),
             new Parameter(7,"b.stretchGripDamping","伸缩抓握阻尼 N·s/m",0,400,"按人物和固定抓握点的竖直相对速度修正推拉力，默认100。调大抑制晃动但可能拖慢伸缩，过大也可能冲击；与刚度一起调。"),
@@ -53,12 +54,14 @@ namespace TankTogether.M0
             new Parameter(0,"b.controlFeelMode","3C 对照版：0旧 / 1新",0,1,"0保留旧控制；1启用移动平台相对速度、独立空中松键减速与镜头纵向跟随。应用后重开本段。只接受0或1。"),
             new Parameter(0,"b.airReleaseDeceleration","空中松键减速 m/s²",0,80,"仅3C新版、空手且没有方向输入时生效。越小越保留跳跃水平惯性；0完全保留，8为候选值。按方向时仍用空中修正参数；地面刹停不变。"),
             new Parameter(5,"b.cameraVerticalFollow","镜头纵向跟随响应",5,80,"仅3C新版生效；越小越柔和但上下跟随滞后越大。水平跟随、鼠标旋转和墙体避障独立；18为候选值。"),
+            new Parameter(0,"b.instantMovementMode","空手移动：0渐进 / 1即时",0,1,"1使空手起步和转向在一个物理步内达到目标速度，地面松键即时刹停。空中松键仍使用减速设置。"),
             new Parameter(0,"b.walkSpeed","行走速度 m/s",1,12,"变大走得更快，也增加同一跳跃的水平距离。"),
             new Parameter(0,"b.sprintSpeed","奔跑速度 m/s",1,16,"按 Shift 使用；变大跑得更快。"),
             new Parameter(0,"b.freeAcceleration","起步 / 转向 m/s²",1,120,"越大越跟手；只影响空手移动。"),
             new Parameter(0,"b.freeDeceleration","松键刹停 m/s²",1,160,"越大松开方向后滑得越短。"),
             new Parameter(0,"b.airAcceleration","空中修正 m/s²",0,80,"越大越容易调整落点；不增加跳高。"),
             new Parameter(0,"b.freeJumpHeight","跳跃高度 m",.1f,3,"空手和抓缸共用的起跳目标高度。障碍和抓缸站位会影响实际升幅。"),
+            new Parameter(0,"b.freeRiseGravityMultiplier","空手起跳重力倍率",1,4,"增大可缩短上升时间。起跳速度随倍率调整，跳高由跳跃高度设置。"),
             new Parameter(0,"b.freeFallGravityMultiplier","空手下落重力倍率",1,4,"只加快空手下降；不改上升/跳高，不用于抓缸或头顶支撑。1为旧节奏。"),
             new Parameter(0,"b.coyoteTime","离地补跳窗口 s",0,.25f,"离开边缘后短暂允许补按跳跃；每次落地仅一次。"),
             new Parameter(0,"b.jumpBufferTime","提前按跳缓存 s",0,.25f,"落地前略早按跳也能触发，降低卡帧要求。"),
@@ -82,6 +85,8 @@ namespace TankTogether.M0
             new Parameter(2,"b.carrySprintSpeed","满员抓缸奔跑 m/s",.5f,10,"变大跳得更远，也更难停稳。"),
             new Parameter(2,"b.carryMotorGain","搬运移动响应",1,180,"把速度误差转成推力；越大响应越快，受最大推力限制。"),
             new Parameter(2,"b.carryMotorForce","搬运最大推力 N",1,300,"限制每个角色的移动力；越大越容易推得动。"),
+            new Parameter(2,"b.carryRiseGravityMultiplier","抓缸时起跳重力倍率",1,4,"增大可缩短抓缸起跳的上升时间。起跳速度随倍率调整，跳高目标在人物走跳页。"),
+            new Parameter(2,"b.carryFallGravityMultiplier","抓缸时下落重力倍率",1,4,"增大可加快抓缸腾空后的下落。"),
             new Parameter(2,"b.carryBrakeAcceleration","抓住时刹停 m/s²",.1f,20,"仅仍抓住且松开方向时起作用，不是松手后的鱼缸刹车。"),
             new Parameter(4,"b.carryJumpVelocity","旧搬缸起跳增速（已停用）",1,20,"保留旧版配置值。跳跃高度统一在人物走跳页设置。"),
             new Parameter(3,"b.gripInset","抓取边缘内缩 m",0,.4f,"越大有效抓取区域越小，避免站在缸外也能抓到。"),
@@ -126,6 +131,7 @@ namespace TankTogether.M0
             if(b.stretchMinHeight<b.playerDiameter)return "伸缩最低身高不能小于人物碰撞直径。";
             if(b.stretchBalanceMode!=0&&b.stretchBalanceMode!=1)return "身高搬运代价只能为0或1。";
             if(b.headSupportMode!=0&&b.headSupportMode!=1)return "头顶承托对照只能为0或1。";
+            if(b.instantMovementMode!=0&&b.instantMovementMode!=1)return "空手移动对照只能为0或1。";
             if(b.controlFeelMode!=0&&b.controlFeelMode!=1)return "3C 对照版只能为0或1。";
             if(b.crouchingHeight>b.standingHeight||b.playerDiameter>b.crouchingHeight)return "蹲高不得超过站高，碰撞直径不得超过蹲高。";
             if(b.spawnHalfSpacing.x>=b.tankSize.x/2-b.gripInset||b.spawnHalfSpacing.y>=b.tankSize.z/2-b.gripInset)return "旧配置横向半间距和双人纵向半间距都要在缸底抓取范围内。";
@@ -134,7 +140,7 @@ namespace TankTogether.M0
         }
         public static void Read(CarryTuningProfile p,M0CarryBaseline b,CarryTuningExtras e,string level)
         {
-            if(p==null||p.schema!=1||p.levelId!=level||p.values==null||(p.values.Length!=All.Length && p.values.Length!=64 && p.values.Length!=56 && p.values.Length!=53))throw new InvalidDataException("配置格式、关卡或参数数量不匹配。");
+            if(p==null||p.schema!=1||p.levelId!=level||p.values==null||(p.values.Length!=All.Length && p.values.Length!=PreviousParameterCount && p.values.Length!=64 && p.values.Length!=56 && p.values.Length!=53))throw new InvalidDataException("配置格式、关卡或参数数量不匹配。");
             var values=new Dictionary<string,float>();foreach(var v in p.values){if(v==null||v.key==null||values.ContainsKey(v.key))throw new InvalidDataException("配置包含重复/空参数。");values.Add(v.key,v.value);}
             if(p.values.Length==53){
                 if(values.ContainsKey("b.headSupportMode")||values.ContainsKey("b.headSupportWidthRatio")||values.ContainsKey("b.headSupportFriction"))throw new InvalidDataException("旧版参数不完整。");
@@ -145,10 +151,17 @@ namespace TankTogether.M0
                 try{foreach(var f in All)if(f.group==StretchGroup){if(values.ContainsKey(f.key))throw new InvalidDataException("旧版伸缩参数不完整。");values.Add(f.key,f.Read(defaults,new CarryTuningExtras()));}}
                 finally{if(Application.isPlaying)UnityEngine.Object.Destroy(defaults);else UnityEngine.Object.DestroyImmediate(defaults);}
             }
-            if(p.values.Length<All.Length){
+            if(p.values.Length<=64){
                 var defaults=UnityEngine.ScriptableObject.CreateInstance<M0CarryBaseline>();
                 try{foreach(var f in All)if(f.key.StartsWith("b.stretchBalance")&&!values.ContainsKey(f.key))values.Add(f.key,f.Read(defaults,new CarryTuningExtras()));values["b.stretchBalanceMode"]=0;}
                 finally{if(Application.isPlaying)UnityEngine.Object.Destroy(defaults);else UnityEngine.Object.DestroyImmediate(defaults);}
+            }
+            if(p.values.Length<=PreviousParameterCount)
+            {
+                values.TryAdd("b.instantMovementMode", 0);
+                values.TryAdd("b.freeRiseGravityMultiplier", 1);
+                values.TryAdd("b.carryRiseGravityMultiplier", 1);
+                values.TryAdd("b.carryFallGravityMultiplier", 1);
             }
             // Validate on temporary objects so a failed import cannot partly overwrite the live settings.
             var copy=UnityEngine.Object.Instantiate(b);var extra=Clone(e);

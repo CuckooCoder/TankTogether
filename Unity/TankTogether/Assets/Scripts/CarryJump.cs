@@ -20,13 +20,34 @@ namespace TankTogether.M0
             }
         }
 
+        public static void ApplyAirGravity(M0CarryLab lab, int jumpMask, int grips)
+        {
+            Rigidbody tank = lab.Tank;
+            var baseline = lab.baseline;
+            if (baseline.carryRiseGravityMultiplier == 1 && baseline.carryFallGravityMultiplier == 1) return;
+            Vector3 tankExtraGravity = Vector3.zero;
+            for (int i = 0; i < lab.Players.Length; i++)
+            {
+                var a = lab.Players[i];
+                if (a == null || !a.joint || a.grounded) continue;
+                Vector3 grip = tank.position + tank.rotation * a.anchor;
+                bool rising = (jumpMask & (1 << i)) != 0 || tank.GetPointVelocity(grip).y > 0;
+                float multiplier = rising ? baseline.carryRiseGravityMultiplier : baseline.carryFallGravityMultiplier;
+                Vector3 extra = Physics.gravity * (multiplier - 1);
+                a.body.AddForce(extra, ForceMode.Acceleration);
+                tankExtraGravity += extra;
+            }
+            tank.AddForce(tankExtraGravity / grips, ForceMode.Acceleration);
+        }
+
         // Project this step's leg impulses onto the motion allowed by the remaining planted grips.
         public void Apply(M0CarryLab lab, int jumpMask)
         {
             Rigidbody tank = lab.Tank;
-            float gravity = -Physics.gravity.y;
+            float gravity = -Physics.gravity.y * lab.baseline.carryRiseGravityMultiplier;
             float jumpHeight = lab.baseline.freeJumpHeight;
             float launchSpeed = Mathf.Sqrt(2 * gravity * jumpHeight);
+            float angularDampingStep = tank.angularDamping * Time.fixedDeltaTime;
             int assist = 0;
             for (int i = 0; i < lab.LocalPlayerCount; i++)
             {
@@ -41,7 +62,11 @@ namespace TankTogether.M0
                 float speed = tank.GetPointVelocity(grip).y;
                 if (Time.fixedTime > deadline[i] || (!takeoff && speed <= 0)) continue;
                 float target = Mathf.Sqrt(2 * gravity * Mathf.Max(0, apex[i] - grip.y)) + gravity * Time.fixedDeltaTime * .5f;
-                correction[i] = Mathf.Clamp(target - speed, takeoff ? -launchSpeed : -.30f, takeoff ? 2 * launchSpeed : .40f);
+                // The pivot arc loses angular speed each physics step, especially at high tank damping.
+                float angularRise = Vector3.Cross(tank.angularVelocity, grip - tank.worldCenterOfMass).y;
+                float dampingLoss = Mathf.Max(0, angularRise * angularDampingStep);
+                correction[i] = Mathf.Clamp(target - speed + dampingLoss,
+                    takeoff ? -launchSpeed : -.30f - dampingLoss, takeoff ? 2 * launchSpeed : .40f + dampingLoss);
                 assist |= 1 << i;
             }
             if (assist == 0) return;
@@ -102,7 +127,8 @@ namespace TankTogether.M0
                 lift += impulse * liftPerImpulse;
                 spin += response[i] * impulse;
             }
-            spin = Vector3.ClampMagnitude(spin, jumpMask == 0 ? .45f : tank.maxAngularVelocity);
+            float spinLimit = .45f + tank.angularVelocity.magnitude * angularDampingStep;
+            spin = Vector3.ClampMagnitude(spin, jumpMask == 0 ? spinLimit : tank.maxAngularVelocity);
             Vector3 travel = Vector3.up * Mathf.Clamp(lift, -launchSpeed, 2 * launchSpeed);
             tank.AddForce(travel + Vector3.Cross(spin, -pivot), ForceMode.VelocityChange);
             tank.AddTorque(spin, ForceMode.VelocityChange);

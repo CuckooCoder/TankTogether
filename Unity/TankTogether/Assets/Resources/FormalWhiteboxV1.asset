@@ -12,39 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00288db5d01318b48997af9c9d2cbff1, type: 3}
   m_Name: FormalWhiteboxV1
   m_EditorClassIdentifier: Assembly-CSharp::TankTogether.M0.M0CarryBaseline
-  version: v0.3-formal-planner-feedback1
+  version: v0.3-carry-feel-20261115
   tankSize: {x: 4.2, y: 0.95, z: 3.2}
   standingHeight: 1.7
   playerDiameter: 0.6
   crouchingHeight: 1.1
-  spawnHalfSpacing: {x: 0.9, y: 0.55}
+  spawnHalfSpacing: {x: 0.9, y: 0.9}
   carryBottomHeight: 1.7
-  walkSpeed: 4
-  sprintSpeed: 6
-  carrySpeed: 2.5
-  carrySprintSpeed: 3.5
-  freeJumpHeight: 1
+  walkSpeed: 5
+  sprintSpeed: 8
+  carrySpeed: 3
+  carrySprintSpeed: 6
+  freeJumpHeight: 1.2
   carryJumpHeightTarget: 1.33
   standInset: {x: 0.2, y: 0.15}
   standWidth: 0.25
   gripInset: 0.12
   gripVerticalReach: 0.23
-  tankMass: 24
-  playerMass: 7
-  tankDamping: 0.8
-  angularDamping: 5
+  tankMass: 30
+  playerMass: 10
+  tankDamping: 5
+  angularDamping: 15
   motorGain: 95
   motorForce: 160
-  carryMotorGain: 65
-  carryMotorForce: 70
-  carryBrakeAcceleration: 2.5
-  carryJumpVelocity: 10.2
-  gripLimit: 0.12
+  carryMotorGain: 150
+  carryMotorForce: 150
+  carryBrakeAcceleration: 20
+  carryJumpVelocity: 17
+  gripLimit: 0.02
   supportStiffness: 3500
   supportDamping: 100
   supportMaxForce: 240
   stretchMinHeight: 1.1
-  stretchMaxHeight: 3.4
+  stretchMaxHeight: 5
   stretchGrowSpeed: 0.5
   stretchShrinkSpeed: 0.5
   stretchGripStiffness: 3000
@@ -74,12 +74,16 @@ MonoBehaviour:
   headSupportMode: 1
   headSupportWidthRatio: 0.7
   headSupportFriction: 0.15
-  freeAcceleration: 40
-  freeDeceleration: 60
-  airAcceleration: 25
+  freeAcceleration: 90
+  freeDeceleration: 160
+  airAcceleration: 65
   coyoteTime: 0.1
   jumpBufferTime: 0.12
-  freeFallGravityMultiplier: 4
+  freeFallGravityMultiplier: 3.5
   controlFeelMode: 1
   airReleaseDeceleration: 8
   cameraVerticalFollow: 18
+  instantMovementMode: 1
+  carryRiseGravityMultiplier: 3.5
+  carryFallGravityMultiplier: 3.5
+  freeRiseGravityMultiplier: 3.5

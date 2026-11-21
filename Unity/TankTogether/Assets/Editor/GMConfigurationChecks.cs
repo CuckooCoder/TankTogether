@@ -29,15 +29,23 @@ namespace TankTogether.Editor
         static IEnumerator Run(SteamCarrySession s)
         {
             Last=new Report();var lab=s.lab;var gm=lab.GM;string clipboard=GUIUtility.systemCopyBuffer;
-            var asset=AssetDatabase.LoadAssetAtPath<M0CarryBaseline>("Assets/Resources/WhiteboxJumpTrial.asset");string assetBefore=JsonUtility.ToJson(asset);
+            var asset=(M0CarryBaseline)Get(lab,"shippedBaseline");string assetBefore=JsonUtility.ToJson(asset);
             s.StartLocalTest();yield return null;gm.Open();var current=CarryTuning.Capture(lab);string beforeHash=CarryTuning.Hash(current);
-            var draft=(M0CarryBaseline)Get(gm,"draft");var extra=(CarryTuningExtras)Get(gm,"extra");draft.walkSpeed=5;
+            var draft=(M0CarryBaseline)Get(gm,"draft");var extra=(CarryTuningExtras)Get(gm,"extra");draft.walkSpeed=asset.walkSpeed+.5f;
             string copied=gm.CopyCurrent();var copy=CarryTuning.Parse(copied);
             Check(GUIUtility.systemCopyBuffer==copied&&CarryTuning.Hash(copy)==beforeHash&&copy.values.Single(v=>v.key=="b.walkSpeed").value==asset.walkSpeed,"clipboard_uses_applied_not_draft",copy.values.Length+" parameters");
             string[] omitted={"version","motorGain","motorForce","carryJumpHeightTarget","defaults"};
             bool coverage=typeof(M0CarryBaseline).GetFields(BindingFlags.Public|BindingFlags.Instance).Where(f=>!omitted.Contains(f.Name)).All(f=>CarryTuning.All.Any(c=>c.key.StartsWith("b."+f.Name)))&&typeof(CarryTuningExtras).GetFields().All(f=>CarryTuning.All.Any(c=>c.key=="e."+f.Name));
             Check(coverage&&CarryTuning.All.Select(c=>c.key).Distinct().Count()==CarryTuning.All.Length,"catalog_covers_all_active_fields",CarryTuning.All.Length.ToString());
             Check(gm.ImportDraft(copied)&&CarryTuning.Hash(CarryTuning.Capture(draft,extra,s.LevelId))==beforeHash,"clipboard_import_roundtrip","all values equal");
+            var legacy=CarryTuning.Parse(copied);
+            legacy.values=legacy.values.Where(v=>v.key!="b.instantMovementMode"&&v.key!="b.freeRiseGravityMultiplier"&&
+                v.key!="b.carryRiseGravityMultiplier"&&v.key!="b.carryFallGravityMultiplier").ToArray();
+            CarryTuning.Read(legacy,draft,extra,s.LevelId);
+            Check(draft.instantMovementMode==0&&draft.freeRiseGravityMultiplier==1&&draft.carryRiseGravityMultiplier==1&&
+                draft.carryFallGravityMultiplier==1&&draft.stretchBalanceMode==lab.baseline.stretchBalanceMode,
+                "previous_profile_keeps_its_movement_and_gravity","70-parameter preset");
+            gm.ImportDraft(copied);
             var bad=CarryTuning.Parse(copied);bad.values[0].value=float.NaN;
             Check(Reject(()=>CarryTuning.Read(bad,draft,extra,s.LevelId))&&CarryTuning.Hash(CarryTuning.Capture(draft,extra,s.LevelId))==beforeHash,"invalid_import_atomic","NaN rejected without partial mutation");
             bad=CarryTuning.Parse(copied);bad.values[1].key=bad.values[0].key;Check(Reject(()=>CarryTuning.Read(bad,draft,extra,s.LevelId)),"duplicate_rejected","");
@@ -46,12 +54,12 @@ namespace TankTogether.Editor
             var packet=new SteamCarrySession.ConfigEnvelope{revision=2,round=3,hash=beforeHash,profile=current};
             SteamCarrySession.ValidateConfiguration(packet,draft,extra,s.LevelId);Check(true,"network_profile_roundtrip",Encoding.UTF8.GetByteCount(JsonUtility.ToJson(packet))+" bytes; reliable fragmentation required");
             packet.hash=new string('0',32);Check(Reject(()=>SteamCarrySession.ValidateConfiguration(packet,draft,extra,s.LevelId)),"hash_mismatch_rejected","");
-            draft.walkSpeed=5;draft.tankSize*=1.1f;extra.liftSpeed=3;extra.twoPlayerGripMaxTorque=55;extra.cameraDistance=9;extra.snapshotRate=40;
-            Check(gm.ApplyDraft()&&lab.baseline.walkSpeed==5&&lab.GetComponent<WhiteboxLift>().speed==3&&lab.twoPlayerGripMaxTorque==55&&lab.Tuning.cameraDistance==9&&lab.Tuning.snapshotRate==40,"all_component_domains_apply","movement/geometry/lift/camera/network and preserved legacy assist value");
+            draft.walkSpeed=5.75f;draft.tankSize*=1.1f;extra.liftSpeed=3;extra.twoPlayerGripMaxTorque=55;extra.cameraDistance=9;extra.snapshotRate=40;
+            Check(gm.ApplyDraft()&&lab.baseline.walkSpeed==5.75f&&lab.GetComponent<WhiteboxLift>().speed==3&&lab.twoPlayerGripMaxTorque==55&&lab.Tuning.cameraDistance==9&&lab.Tuning.snapshotRate==40,"all_component_domains_apply","movement/geometry/lift/camera/network and preserved legacy assist value");
             Check(Vector3.Distance(lab.Tank.GetComponent<BoxCollider>().size,draft.tankSize)<.001f,"tank_collision_matches_configuration",lab.tankSize.ToString());
             gm.Close();s.ReturnToLobby();yield return null;
             Check(Time.timeScale==1&&CarryTuning.Hash(CarryTuning.Capture(lab))==beforeHash,"leave_local_restores_all_defaults",lab.baseline.airAcceleration.ToString());
-            Check(JsonUtility.ToJson(asset)==assetBefore,"asset_and_user_air25_unchanged",asset.airAcceleration.ToString());
+            Check(JsonUtility.ToJson(asset)==assetBefore,"shipped_asset_unchanged",asset.airAcceleration.ToString());
             // Exercise the real client state transition in an isolated, disconnected fixture.
             // This validates application logic, not Steam transport between two accounts.
             var accept=typeof(SteamCarrySession).GetMethod("AcceptHostConfiguration",Private);
@@ -69,6 +77,10 @@ namespace TankTogether.Editor
             snapshot.configRevision=4;Message(s,"ReceiveState",999,SteamCarryProtocol.Encode(snapshot));Check((int)Get(s,"snapshotTick")==-1,"nonhost_snapshot_ignored","");
             Message(s,"ReceiveState",NetworkManager.ServerClientId,SteamCarryProtocol.Encode(snapshot));Check((int)Get(s,"snapshotTick")==2,"matching_config_snapshot_accepted","");
             typeof(SteamCarrySession).GetMethod("ApplySnapshot",Private).Invoke(s,new object[]{1f});
+            snapshot.tick++;snapshot.tankTeleportRevision++;snapshot.position+=Vector3.right*40;
+            Message(s,"ReceiveState",NetworkManager.ServerClientId,SteamCarryProtocol.Encode(snapshot));
+            Check(Vector3.Distance(lab.Tank.transform.position,snapshot.position)<.001f,
+                "client_snaps_on_teleport_revision","tank jumps to the host pose on receipt");
             Check(!gm.CanEdit&&!gm.ApplyDraft(),"nonhost_cannot_apply_configuration","");
             Set(s,"localSlot",-1);Set(s,"configRevision",0);Set(s,"configHash","");Set(s,"target",null);Set(s,"snapshotTick",-1);Set(s,"round",1);s.ReturnToLobby();yield return null;
             string stable=(string)typeof(SteamCarrySession).GetProperty("Compatibility",Private).GetValue(s);
@@ -95,7 +107,10 @@ namespace TankTogether.Editor
                 int round=(int)Get(s,"round");var input=new SteamCarryProtocol.Input{configRevision=1,round=round,sequence=900,pauseRequested=true};
                 Message(s,"ReceiveInput",999,SteamCarryProtocol.Encode(input));Check(((int[])Get(s,"lastSequence"))[1]!=900,"old_config_input_ignored","");
                 input.configRevision=2;Message(s,"ReceiveInput",999,SteamCarryProtocol.Encode(input));Check(((bool[])Get(s,"rearm"))[1],"inactive_input_rearms_grip","");
-                Set(s,"phase",SteamCarryProtocol.Phase.Playing);Message(s,"ReceiveGMPause",999,new byte[]{1});Check(!ready[1]&&!Everyone()&&lab.SessionPaused,"remote_GM_message_pauses_round","");
+                lab.SetSessionPaused(false);Set(s,"phase",SteamCarryProtocol.Phase.Playing);
+                gm.Open();Check(s.IsPlaying&&!lab.SessionPaused&&(int)Get(s,"round")==round,
+                    "online_GM_open_preserves_live_round","applying configuration still pauses and rebuilds");
+                gm.Close();
                 var authoritativeHash=s.ConfigHash;Message(s,"ReceiveConfiguration",999,Encoding.UTF8.GetBytes("{}"));Check(s.ConfigHash==authoritativeHash,"peer_cannot_overwrite_host_config","");
                 slots.Remove(999);connected[1]=false;configs[1]=false;ready[1]=false;
                 slots.Remove(998);connected[2]=false;configs[2]=false;ready[2]=false;

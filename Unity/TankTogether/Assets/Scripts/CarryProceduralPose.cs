@@ -15,14 +15,13 @@ namespace TankTogether.M0
         readonly Dictionary<string, Quaternion> rest = new Dictionary<string, Quaternion>();
         float phase, motion, air, grip, landing;
         float lean, leanVelocity, turnLag, previousYaw;
-        Vector3 pelvisRest, leftFootRest, rightFootRest;
+        Vector3 pelvisRest;
         bool hasYaw;
         bool wasGrounded = true;
         Vector2 carryLean;
         Vector3 lastRoot;
-        readonly FootContact[] contacts={new FootContact(),new FootContact()};
-        sealed class FootContact { public Transform surface; public Vector3 localPoint; public float weight; public bool planted, exhausted; }
-        public float ContactWeight {get;private set;}
+        readonly CarryFootsteps footsteps;
+        public float ContactWeight => footsteps.ContactWeight;
         public Vector2 CarryLean => carryLean;
 
         public CarryProceduralPose(Transform visual)
@@ -32,8 +31,7 @@ namespace TankTogether.M0
                 foreach (var bone in renderer.bones)
                     if (bone && !bones.ContainsKey(bone.name)) { bones.Add(bone.name, bone); rest.Add(bone.name, bone.localRotation); }
             if(bones.ContainsKey("Pelvis")) pelvisRest=bones["Pelvis"].localPosition;
-            if(bones.ContainsKey("Foot.L")) leftFootRest=root.InverseTransformPoint(bones["Foot.L"].position);
-            if(bones.ContainsKey("Foot.R")) rightFootRest=root.InverseTransformPoint(bones["Foot.R"].position);
+            footsteps = new CarryFootsteps(root, bones);
         }
         void Rotate(string name, float degrees)
         {
@@ -46,7 +44,7 @@ namespace TankTogether.M0
             if (bones.TryGetValue(name, out b)) b.rotation=Quaternion.AngleAxis(degrees,axis)*b.rotation;
         }
         // Animator supplies base poses; contact, balance and grasp are applied in this order.
-        public void ApplyGrip(M0CarryLab lab,M0CarryLab.Actor actor,float dt)
+        public void ApplyGrip(M0CarryLab lab,M0CarryLab.Actor actor,CarryAnimatorDriver animation,float dt)
         {
             grip=Mathf.Lerp(grip,actor.joint||actor.remoteGrip?1:0,1-Mathf.Exp(-dt*18));
             // Small inertial response on top of authored clips, never on the physics root.
@@ -64,9 +62,9 @@ namespace TankTogether.M0
             RotateAxis("Head",root.up,turnLag*.2f*freedom);
             var displacement=root.position-lastRoot;lastRoot=root.position;
             bool teleported=displacement.sqrMagnitude>4;
-            if(teleported){carryLean=Vector2.zero;foreach(var f in contacts){f.planted=false;f.weight=0;}}
+            if(teleported)carryLean=Vector2.zero;
             playful.Apply(actor,root.GetComponent<Animator>(),grip,dt,teleported);
-            GroundFeet(lab,actor,dt,teleported);
+            footsteps.Apply(lab, animation.Grounded, animation.GroundVelocity, dt, teleported);
             if(grip<.001f||!lab.Tank){KeepShortHandsClear(actor);carryLean=Vector2.Lerp(carryLean,Vector2.zero,1-Mathf.Exp(-dt*12));return;}
             var point=actor.joint?actor.anchor:lab.Tank.transform.InverseTransformPoint(actor.body.transform.position+Vector3.up*actor.height);
             point.x=Mathf.Clamp(point.x,-lab.tankSize.x*.5f,lab.tankSize.x*.5f);
@@ -81,51 +79,6 @@ namespace TankTogether.M0
             Rotate("Head",-carryLean.x*.35f);RotateAxis("Head",root.forward,-carryLean.y*.35f);
             // Hands are solved last so torso reaction does not pull them away from the tank.
             CarryArms(lab,target,grip);
-        }
-        void GroundFeet(M0CarryLab lab,M0CarryLab.Actor actor,float dt,bool teleport)
-        {
-            var animator=root.GetComponent<Animator>();
-            if(!animator)return;
-            var state=animator.GetCurrentAnimatorStateInfo(0);
-            float cycle=Mathf.Repeat(state.normalizedTime,1);
-            float speed=animator.GetFloat("Speed");
-            // Never pin a foot through takeoff, a fall, or a controller blend.
-            bool onGround=actor.grounded&&actor.body.linearVelocity.y-actor.groundVelocity.y<.5f;
-            bool locomotion=state.IsName("Locomotion")&&!animator.IsInTransition(0);
-            ContactWeight=0;
-            for(int i=0;i<2;i++)
-            {
-                string side=i==0?"L":"R";var contact=contacts[i];
-                if(!bones.TryGetValue("Foot."+side,out var foot))continue;
-                bool stance=speed<.15f||Mathf.Sin((cycle+i*.5f)*Mathf.PI*2)>=0;
-                if(!stance||speed<.15f)contact.exhausted=false;
-                bool active=onGround&&locomotion&&stance&&!teleport&&!contact.exhausted;
-                var original=foot.position;var rotation=foot.rotation;
-                RaycastHit best=new RaycastHit();bool found=false;
-                foreach(var hit in Physics.RaycastAll(original+Vector3.up*.25f,Vector3.down,.55f,~0,QueryTriggerInteraction.Ignore))
-                    if(lab.IsEnvironment(hit.collider)&&hit.normal.y>.65f&&(!found||hit.distance<best.distance)){best=hit;found=true;}
-                active &= found;
-                if(active)
-                {
-                    float sole=Mathf.Max(.025f,(i==0?leftFootRest.y:rightFootRest.y)*root.lossyScale.y);
-                    var target=best.point+Vector3.up*sole;
-                    if(!contact.planted||contact.surface!=best.collider.transform)
-                    {contact.surface=best.collider.transform;contact.localPoint=contact.surface.InverseTransformPoint(target);contact.planted=true;}
-                    var planted=contact.surface.TransformPoint(contact.localPoint);
-                    // Short legs have limited reach: release smoothly rather than stretch or snap.
-                    float drift=Vector3.ProjectOnPlane(planted-original,Vector3.up).magnitude;
-                    if(drift>.10f){contact.planted=false;contact.exhausted=true;active=false;}
-                    else target=planted;
-                    contact.weight=Mathf.MoveTowards(contact.weight,active?1:0,dt*18);
-                    var upper=bones["Thigh."+side];var lower=bones["Shin."+side];
-                    target=original+Vector3.ClampMagnitude(target-original,.12f);
-                    Solve(upper,lower,foot,target,contact.weight);
-                    var tilt=Quaternion.FromToRotation(Vector3.up,best.normal);
-                    foot.rotation=Quaternion.Slerp(rotation,tilt*rotation,contact.weight*.75f);
-                }
-                else {contact.planted=false;contact.weight=Mathf.MoveTowards(contact.weight,0,dt*20);}
-                ContactWeight=Mathf.Max(ContactWeight,contact.weight);
-            }
         }
         public void Tick(M0CarryLab lab, M0CarryLab.Actor actor, Vector3 delta, float dt)
         {
@@ -184,11 +137,7 @@ namespace TankTogether.M0
             Rotate("UpperArm.R", step*.35f*(1-grip)-12*air*(1-grip));
             RotateAxis("UpperArm.L",root.forward,-12*(1-grip));
             RotateAxis("UpperArm.R",root.forward,12*(1-grip));
-            if(grounded && motion>.01f)
-            {
-                StepFoot("L",phase,leftFootRest,motion);
-                StepFoot("R",phase+Mathf.PI,rightFootRest,motion);
-            }
+            footsteps.Apply(lab, grounded, lab.Simulate ? actor.groundVelocity : Vector3.zero, dt, teleport);
             if (grip>.001f && lab.Tank)
             {
                 var local=actor.joint ? actor.anchor : lab.Tank.transform.InverseTransformPoint(actor.body.transform.position+Vector3.up*actor.height);
@@ -198,19 +147,6 @@ namespace TankTogether.M0
                 Vector3 target=lab.Tank.transform.TransformPoint(local);
                 CarryArms(lab,target,grip);
             }
-        }
-        // Alternating stance sweep and lifted recovery; visual approximation, not world foot locking.
-        void StepFoot(string side,float angle,Vector3 restPoint,float weight)
-        {
-            Transform upper,lower,foot;
-            if(!bones.TryGetValue("Thigh."+side,out upper)||!bones.TryGetValue("Shin."+side,out lower)||!bones.TryGetValue("Foot."+side,out foot))return;
-            float cycle=Mathf.Repeat(angle/(2*Mathf.PI),1);
-            float sweep=cycle<.6f ? Mathf.Lerp(.045f,-.045f,cycle/.6f) : Mathf.Lerp(-.045f,.045f,(cycle-.6f)/.4f);
-            float lift=cycle<.6f ? 0 : Mathf.Sin((cycle-.6f)/.4f*Mathf.PI)*.055f;
-            Vector3 target=root.TransformPoint(restPoint+new Vector3(0,lift,sweep)*weight);
-            Quaternion footRotation=foot.rotation;
-            Solve(upper,lower,foot,target,weight);
-            foot.rotation=footRotation;
         }
         void KeepShortHandsClear(M0CarryLab.Actor actor)
         {
@@ -247,9 +183,9 @@ namespace TankTogether.M0
         {
             Transform upper, lower, hand;
             if (!bones.TryGetValue("UpperArm."+side,out upper) || !bones.TryGetValue("Forearm."+side,out lower) || !bones.TryGetValue("Hand."+side,out hand)) return;
-            Solve(upper,lower,hand,target,weight,carrying?(Vector3?)(root.right*(side=="L"?-1:1)+root.forward*.35f):null);
+            Solve(root,upper,lower,hand,target,weight,carrying?(Vector3?)(root.right*(side=="L"?-1:1)+root.forward*.35f):null);
         }
-        void Solve(Transform upper,Transform lower,Transform hand,Vector3 target,float weight,Vector3? bendHint=null)
+        internal static void Solve(Transform root,Transform upper,Transform lower,Transform hand,Vector3 target,float weight,Vector3? bendHint=null)
         {
             Quaternion upperStart=upper.localRotation, lowerStart=lower.localRotation;
             float a=Vector3.Distance(upper.position,lower.position), b=Vector3.Distance(lower.position,hand.position);

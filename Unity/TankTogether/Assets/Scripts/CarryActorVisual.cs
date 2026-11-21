@@ -69,7 +69,7 @@ namespace TankTogether.M0
             if (pose != null)
             {
                 if(Animation != null && Animation.Animator && Animation.Animator.runtimeAnimatorController)
-                    pose.ApplyGrip(lab, actor, Time.deltaTime);
+                    pose.ApplyGrip(lab, actor, Animation, Time.deltaTime);
                 else pose.Tick(lab, actor, delta, Time.deltaTime);
             }
         }

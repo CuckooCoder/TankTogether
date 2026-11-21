@@ -408,6 +408,7 @@ namespace TankTogether.Networking
                 if (state.configRevision != configRevision || configRevision < 1) return;
                 if (!SteamCarryProtocol.IsNewer(state.round, state.tick, round, snapshotTick)) return;
                 bool reset = state.round != round || target == null;
+                bool tankTeleported = !reset && state.tankTeleportRevision != target.tankTeleportRevision;
                 if (reset) {
                     round = state.round; blockHeld = true;
                     if (target == null || state.phase == SteamCarryProtocol.Phase.Preparing) { var route = lab.GetComponent<WhiteboxCarryLevel>(); yaw = route ? route.startYaw : 0; }
@@ -419,6 +420,7 @@ namespace TankTogether.Networking
                 if (snapshotsReceived > 0) maxGap = Mathf.Max(maxGap, gap);
                 lastSnapshotAt = Time.unscaledTime; snapshotTick = state.tick; target = state; snapshotsReceived++;
                 if (reset) ApplySnapshot(1);
+                else if (tankTeleported) ApplyTankPose(state, 1);
             }
             catch (Exception e) when (e is IOException || e is InvalidDataException || e is OverflowException) { Log("invalid_snapshot"); Leave("收到无效同步数据，请确认两端版本相同。"); }
         }
@@ -634,7 +636,7 @@ namespace TankTogether.Networking
             if (!Host) { if (target != null) ApplySnapshot(1 - Mathf.Exp(-Time.unscaledDeltaTime * lab.Tuning.snapshotSmoothing)); return; }
             if (Time.unscaledTime < nextSnapshot) return;
             nextSnapshot = Mathf.Max(nextSnapshot + 1f / lab.Tuning.snapshotRate, Time.unscaledTime); // Keep cadence across variable frame times; never send a backlog.
-            var s = new Snapshot { voteRevision=resetVote.Revision, voteMask=resetVote.Voters, voteYes=resetVote.Yes, voteSeconds=resetVote.Active?Mathf.Max(0,resetVote.Deadline-Time.unscaledTime):0, readyRevision=playerReady.Revision, readyMask=playerReady.ReadyMask, configRevision=configRevision, round = round, tick = tick, phase = phase, teamSize = lab.SessionTeamSize, broken = lab.Broken, position = lab.Tank.position, rotation = lab.Tank.rotation, velocity = lab.Tank.linearVelocity };
+            var s = new Snapshot { tankTeleportRevision = tankTeleportRevision, voteRevision=resetVote.Revision, voteMask=resetVote.Voters, voteYes=resetVote.Yes, voteSeconds=resetVote.Active?Mathf.Max(0,resetVote.Deadline-Time.unscaledTime):0, readyRevision=playerReady.Revision, readyMask=playerReady.ReadyMask, configRevision=configRevision, round = round, tick = tick, phase = phase, teamSize = lab.SessionTeamSize, broken = lab.Broken, position = lab.Tank.position, rotation = lab.Tank.rotation, velocity = lab.Tank.linearVelocity };
             for (int i = 0; i < 4; i++)
             {
                 var a = lab.Players[i];
@@ -661,8 +663,7 @@ namespace TankTogether.Networking
             var lift = lab.GetComponent<WhiteboxLift>();
             if (lift) lift.ApplyProxy(target.liftDistance, target.liftMoving, target.liftGoingUp);
             lab.GetComponent<WhiteboxMovingBlocks>()?.ApplyNetworkPhase(target.movingBlockPhase, blend);
-            lab.Tank.transform.SetPositionAndRotation(Vector3.Lerp(lab.Tank.transform.position, target.position, blend), Quaternion.Slerp(lab.Tank.transform.rotation, target.rotation, blend));
-            lab.Tank.linearVelocity = target.velocity;
+            ApplyTankPose(target, blend);
             lab.SetProxyState(target.broken, target.broken ? "鱼缸破碎，请房主按 R 重置。" : "状态来自房主物理模拟");
             for (int i = 0; i < RequiredPlayers; i++)
             {
@@ -678,6 +679,12 @@ namespace TankTogether.Networking
                 a.capsule.height = a.height; a.capsule.center = Vector3.up * a.height / 2;
                 a.indicator.localPosition = Vector3.up * (a.height + 0.06f);
             }
+        }
+        void ApplyTankPose(Snapshot state, float blend)
+        {
+            var tank = lab.Tank.transform;
+            tank.SetPositionAndRotation(Vector3.Lerp(tank.position, state.position, blend), Quaternion.Slerp(tank.rotation, state.rotation, blend));
+            lab.Tank.linearVelocity = state.velocity;
         }
         void Capture(bool value)
         {
@@ -707,7 +714,7 @@ namespace TankTogether.Networking
             }
             resetVote.Cancel(); roster.Clear(); playerReady.Clear(); slots.Clear(); pending.Clear(); Array.Clear(connected, 0, 4); Array.Clear(peerReady, 0, 4);
             phase = SteamCarryProtocol.Phase.Waiting; saveReady = false; progress = null; pendingReplay=false;reportSaved=false;adventureInfo=null;returnedToRoom=0;exitConfirmation=false;showSaveMenu=false;steamOverlayActive=false;appliedCosmetics.Clear();
-            localSlot = -1; snapshotTick = -1; target = null; sequence = 0; round = 1; rtt = 0; maxGap = 0; snapshotsReceived = 0; lastSnapshotAt = 0;
+            localSlot = -1; tankTeleportRevision = 0; snapshotTick = -1; target = null; sequence = 0; round = 1; rtt = 0; maxGap = 0; snapshotsReceived = 0; lastSnapshotAt = 0;
             if (lab != null && lab.Tank != null) { FreezeProxy(); }
             status = message; Log("session_left");
             if (!quitting) StartCoroutine(AfterLeave());
