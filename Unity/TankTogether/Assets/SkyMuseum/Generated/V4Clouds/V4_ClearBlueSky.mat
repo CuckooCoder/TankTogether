@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: V4_ClearBlueSky
+  m_Shader: {fileID: 4800000, guid: f1254d3b867605e42870a1400a94da50, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _Exposure: 1.02
+    - _GradientPower: 0.5
+    - _HorizonWidth: 0.12
+    - _SunGlow: 0.035
+    - _SunSize: 0.6
+    - _SunSoftness: 0.42
+    m_Colors:
+    - _HorizonColor: {r: 0.46, g: 0.79, b: 0.98, a: 1}
+    - _LowerColor: {r: 0.38, g: 0.68, b: 0.84, a: 1}
+    - _SunColor: {r: 1, g: 0.975, b: 0.9, a: 1}
+    - _SunDirection: {r: 0.38302225, g: 0.6427877, b: -0.66341394, a: 0}
+    - _ZenithColor: {r: 0.055, g: 0.43, b: 0.88, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
